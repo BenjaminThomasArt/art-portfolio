@@ -57,3 +57,4 @@
 ## Profile Photo
 - [x] Upload profile photo to S3 storage
 - [x] Update artist_info database with profile photo URL
+- [x] Adjust profile photo size (25% smaller), add black border, and round corners
