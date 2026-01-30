@@ -63,3 +63,4 @@
 - [x] Upload "The Subject of Paint" images to S3
 - [x] Add artwork entry to database with all details
 - [x] Verify artwork appears in gallery and homepage
+- [x] Upload "I saw the whole thing" artwork to gallery
