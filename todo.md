@@ -75,3 +75,5 @@
 - [x] Upload and add both artworks to gallery
 - [x] Download and add artwork from https://www.instagram.com/p/DKZUEFeMQC8/
 - [x] Update Shop section text to "High-quality prints available to purchase"
+- [x] Add hero image to Shop section
+
