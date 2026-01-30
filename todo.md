@@ -53,3 +53,7 @@
 - [x] Add Shop navigation link between Gallery and About
 - [x] Implement PayPal buy button functionality
 - [x] Test shop and payment flow
+
+## Profile Photo
+- [x] Upload profile photo to S3 storage
+- [x] Update artist_info database with profile photo URL
