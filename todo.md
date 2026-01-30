@@ -64,3 +64,4 @@
 - [x] Add artwork entry to database with all details
 - [x] Verify artwork appears in gallery and homepage
 - [x] Upload "I saw the whole thing" artwork to gallery
+- [x] Upload "Chrysalis I & II" artwork to gallery
