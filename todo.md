@@ -58,3 +58,8 @@
 - [x] Upload profile photo to S3 storage
 - [x] Update artist_info database with profile photo URL
 - [x] Adjust profile photo size (25% smaller), add black border, and round corners
+
+## Artwork Upload
+- [x] Upload "The Subject of Paint" images to S3
+- [x] Add artwork entry to database with all details
+- [x] Verify artwork appears in gallery and homepage
