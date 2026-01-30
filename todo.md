@@ -40,4 +40,7 @@
 - [x] Test Instagram integration
 - [x] Test responsive design on mobile
 - [x] Create vitest tests for backend procedures
-- [ ] Final checkpoint for deployment
+- [x] Final checkpoint for deployment
+
+## Content Updates
+- [x] Update hero tagline to "Contemporary artist exploring themes of idea, imagination and revival"
