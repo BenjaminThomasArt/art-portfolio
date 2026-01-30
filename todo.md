@@ -69,3 +69,4 @@
 - [x] Increase hero background image opacity to 30%
 - [x] Increase hero background image opacity to 45%
 - [x] Add subtle zoom-in hover effect to hero background image
+- [x] Update homepage tagline to "Ideas; imagination; revival"

@@ -25,7 +25,7 @@ export default function Home() {
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contemporary artist exploring themes of idea, imagination and revival
+            Ideas; imagination; revival
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link href="/gallery">
