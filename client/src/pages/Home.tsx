@@ -10,8 +10,17 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center bg-muted/30">
-        <div className="container text-center">
+      <section className="relative h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{
+            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg)'
+          }}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-background/60" />
+        <div className="container text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-serif tracking-tight mb-6">
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
