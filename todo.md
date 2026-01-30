@@ -44,3 +44,4 @@
 
 ## Content Updates
 - [x] Update hero tagline to "Contemporary artist exploring themes of idea, imagination and revival"
+- [x] Update About page bio with custom artist text

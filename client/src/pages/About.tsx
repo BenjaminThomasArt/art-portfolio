@@ -74,7 +74,7 @@ export default function About() {
               <div className="prose prose-lg max-w-none">
                 <p className="text-foreground leading-relaxed whitespace-pre-line">
                   {artistInfo?.bio ||
-                    "Benjamin Thomas is a contemporary artist whose work explores the intersection of form, color, and emotion. Through a unique visual language, Benjamin creates pieces that invite viewers to pause and reflect on the beauty found in everyday moments.\n\nWith a background in fine arts and years of dedication to the craft, Benjamin's work has been featured in galleries and private collections. Each piece is created with meticulous attention to detail and a deep passion for artistic expression."}
+                    "Benjamin is a contemporary artist based in east London, whose work takes cues from nature, and is expressed through a range of modern techniques. With a background in creative industry, the foundations of Benjamin's work are creativity, invention and craft. His work is created with meticulous attention to detail and a deep passion for artistic expression. Benjamin's work has been featured in galleries and private collections in the UK and beyond."}
                 </p>
               </div>
             </div>
