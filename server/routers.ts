@@ -34,6 +34,14 @@ export const appRouter = router({
     }),
   }),
 
+  // Shop routes
+  shop: router({
+    getArtworks: publicProcedure.query(async () => {
+      const { getShopArtworks } = await import("./db");
+      return getShopArtworks();
+    }),
+  }),
+
   // Artist info routes
   artist: router({
     getInfo: publicProcedure.query(async () => {

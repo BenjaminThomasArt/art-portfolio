@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
+import Shop from "./pages/Shop";
 import ArtworkDetail from "./pages/ArtworkDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -20,6 +21,7 @@ function Router() {
         <Switch>
           <Route path={"/"} component={Home} />
           <Route path="/gallery" component={Gallery} />
+          <Route path="/shop" component={Shop} />
           <Route path="/artwork/:id" component={ArtworkDetail} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />

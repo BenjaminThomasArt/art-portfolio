@@ -45,3 +45,11 @@
 ## Content Updates
 - [x] Update hero tagline to "Contemporary artist exploring themes of idea, imagination and revival"
 - [x] Update About page bio with custom artist text
+
+## Shop Feature
+- [x] Add price and forSale fields to artworks schema
+- [x] Add PayPal integration fields to database
+- [x] Create Shop page component
+- [x] Add Shop navigation link between Gallery and About
+- [x] Implement PayPal buy button functionality
+- [x] Test shop and payment flow

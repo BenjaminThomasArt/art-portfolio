@@ -39,6 +39,9 @@ export const artworks = mysqlTable("artworks", {
   dimensions: varchar("dimensions", { length: 255 }),
   available: mysqlEnum("available", ["yes", "no", "sold"]).default("yes").notNull(),
   featured: int("featured").default(0).notNull(), // 0 = not featured, 1 = featured
+  forSale: int("for_sale").default(0).notNull(), // 0 = not for sale, 1 = for sale in shop
+  price: varchar("price", { length: 50 }), // e.g., "£250" or "$350"
+  paypalButtonId: text("paypal_button_id"), // PayPal hosted button ID
   displayOrder: int("display_order").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),

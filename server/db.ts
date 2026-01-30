@@ -111,6 +111,12 @@ export async function getFeaturedArtworks() {
   return db.select().from(artworks).where(eq(artworks.featured, 1)).orderBy(artworks.displayOrder);
 }
 
+export async function getShopArtworks() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(artworks).where(eq(artworks.forSale, 1)).orderBy(artworks.displayOrder, artworks.createdAt);
+}
+
 export async function getArtworkById(id: number) {
   const db = await getDb();
   if (!db) return undefined;
