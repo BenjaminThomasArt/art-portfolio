@@ -8,7 +8,9 @@ import {
   inquiries, 
   InsertInquiry,
   artistInfo,
-  InsertArtistInfo 
+  InsertArtistInfo,
+  prints,
+  InsertPrint
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -181,4 +183,25 @@ export async function upsertArtistInfo(info: InsertArtistInfo) {
   } else {
     await db.insert(artistInfo).values(info);
   }
+}
+
+// Print queries
+export async function getAllPrints() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(prints).where(eq(prints.available, 1)).orderBy(prints.displayOrder, prints.createdAt);
+}
+
+export async function getPrintById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(prints).where(eq(prints.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createPrint(print: InsertPrint) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(prints).values(print);
+  return result;
 }

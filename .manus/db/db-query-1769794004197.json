@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order) \nVALUES (\n  'The Subject of Paint',\n  'Abstract artwork featuring soft pinks, corals, and greens with organic forms',\n  'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop-hero/shop-hero-image.jpg',\n  'shop-hero/shop-hero-image.jpg',\n  'Available in custom sizes',\n  NULL,\n  1,\n  1\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order) \nVALUES (\n  'The Subject of Paint',\n  'Abstract artwork featuring soft pinks, corals, and greens with organic forms',\n  'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop-hero/shop-hero-image.jpg',\n  'shop-hero/shop-hero-image.jpg',\n  'Available in custom sizes',\n  NULL,\n  1,\n  1\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 108
+}

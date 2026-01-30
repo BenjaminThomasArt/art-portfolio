@@ -1,9 +1,9 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 
 export default function Shop() {
-  const { data: artworks, isLoading } = trpc.shop.getArtworks.useQuery();
+  const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
 
   return (
     <div>
@@ -25,95 +25,67 @@ export default function Shop() {
         </div>
       </div>
 
-      {/* Products Section */}
+      {/* Print Catalog Section */}
       <div className="py-24">
-      <div className="container">
-
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="space-y-4">
-                <div className="aspect-square bg-muted animate-pulse" />
-                <div className="h-6 bg-muted animate-pulse w-3/4" />
-                <div className="h-8 bg-muted animate-pulse w-1/2" />
-              </div>
-            ))}
-          </div>
-        ) : artworks && artworks.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {artworks.map((artwork) => (
-              <div key={artwork.id} className="group">
-                <Link href={`/artwork/${artwork.id}`}>
-                  <div className="aspect-square overflow-hidden bg-muted mb-4 cursor-pointer">
+        <div className="container">
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="space-y-4">
+                  <div className="aspect-square bg-muted animate-pulse" />
+                  <div className="h-6 bg-muted animate-pulse w-3/4" />
+                  <div className="h-10 bg-muted animate-pulse w-full" />
+                </div>
+              ))}
+            </div>
+          ) : prints && prints.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {prints.map((print) => (
+                <div key={print.id} className="group">
+                  <div className="aspect-square overflow-hidden bg-muted mb-4">
                     <img
-                      src={artwork.imageUrl}
-                      alt={artwork.title}
+                      src={print.imageUrl}
+                      alt={print.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                </Link>
-                
-                <div className="space-y-3">
-                  <div>
-                    <h3 className="text-lg font-serif mb-1">{artwork.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      {artwork.year && <span>{artwork.year}</span>}
-                      {artwork.medium && (
-                        <>
-                          {artwork.year && <span>•</span>}
-                          <span>{artwork.medium}</span>
-                        </>
+                  
+                  <div className="space-y-3">
+                    <div>
+                      <h3 className="text-xl font-serif mb-2">{print.title}</h3>
+                      {print.description && (
+                        <p className="text-sm text-muted-foreground mb-2">{print.description}</p>
+                      )}
+                      {print.sizeInfo && (
+                        <p className="text-sm text-muted-foreground italic">{print.sizeInfo}</p>
+                      )}
+                      {print.price && (
+                        <p className="text-lg font-serif mt-2">{print.price}</p>
                       )}
                     </div>
-                    {artwork.dimensions && (
-                      <p className="text-sm text-muted-foreground mt-1">{artwork.dimensions}</p>
-                    )}
-                  </div>
 
-                  {artwork.price && (
-                    <div className="flex items-center justify-between pt-3 border-t border-border">
-                      <span className="text-xl font-serif">{artwork.price}</span>
-                      
-                      {artwork.paypalButtonId ? (
-                        <form
-                          action="https://www.paypal.com/cgi-bin/webscr"
-                          method="post"
-                          target="_blank"
-                        >
-                          <input type="hidden" name="cmd" value="_s-xclick" />
-                          <input type="hidden" name="hosted_button_id" value={artwork.paypalButtonId} />
-                          <button
-                            type="submit"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm"
-                          >
-                            <ShoppingCart size={16} />
-                            Buy Now
-                          </button>
-                        </form>
-                      ) : (
-                        <Link href={`/contact`}>
-                          <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm">
-                            Inquire
-                          </button>
-                        </Link>
-                      )}
-                    </div>
-                  )}
+                    <Link href="/contact">
+                      <button className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                        <ShoppingBag size={18} />
+                        Order
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-24">
-            <ShoppingCart size={48} className="mx-auto mb-4 text-muted-foreground" />
-            <p className="text-lg text-muted-foreground mb-8">No artworks available for purchase at the moment</p>
-            <Link href="/gallery">
-              <button className="px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                Browse Gallery
-              </button>
-            </Link>
-          </div>
-         )}      </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-24">
+              <ShoppingBag size={48} className="mx-auto mb-4 text-muted-foreground" />
+              <p className="text-lg text-muted-foreground mb-8">No prints available at the moment</p>
+              <Link href="/gallery">
+                <button className="px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                  Browse Gallery
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

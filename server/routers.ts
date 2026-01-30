@@ -42,6 +42,18 @@ export const appRouter = router({
     }),
   }),
 
+  // Prints routes
+  prints: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllPrints } = await import("./db");
+      return getAllPrints();
+    }),
+    getById: publicProcedure.input(z.object({ id: z.number() })).query(async ({ input }) => {
+      const { getPrintById } = await import("./db");
+      return getPrintById(input.id);
+    }),
+  }),
+
   // Artist info routes
   artist: router({
     getInfo: publicProcedure.query(async () => {

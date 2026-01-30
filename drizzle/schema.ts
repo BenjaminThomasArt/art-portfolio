@@ -88,3 +88,24 @@ export const artistInfo = mysqlTable("artist_info", {
 
 export type ArtistInfo = typeof artistInfo.$inferSelect;
 export type InsertArtistInfo = typeof artistInfo.$inferInsert;
+
+/**
+ * Prints table - stores print products available for purchase
+ * Separate from original artworks to allow different images and custom sizing
+ */
+export const prints = mysqlTable("prints", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  imageUrl: text("image_url").notNull(),
+  imageKey: varchar("image_key", { length: 512 }).notNull(),
+  sizeInfo: varchar("size_info", { length: 255 }), // e.g., "Available in custom sizes", "A3 only", etc.
+  price: varchar("price", { length: 50 }), // Optional - can be null if custom pricing
+  available: int("available").default(1).notNull(), // 0 = unavailable, 1 = available
+  displayOrder: int("display_order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Print = typeof prints.$inferSelect;
+export type InsertPrint = typeof prints.$inferInsert;

@@ -77,3 +77,5 @@
 - [x] Update Shop section text to "High-quality prints available to purchase"
 - [x] Add hero image to Shop section
 
+- [x] Create print catalog structure with database and Shop page layout
+- [x] Add first print product "The Subject of Paint" with Order button
