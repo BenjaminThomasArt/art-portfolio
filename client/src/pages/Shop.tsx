@@ -10,7 +10,7 @@ export default function Shop() {
       <div className="container">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">Shop</h1>
-          <p className="text-lg text-muted-foreground">Original artworks available for purchase</p>
+          <p className="text-lg text-muted-foreground">High-quality prints available to purchase</p>
         </div>
 
         {isLoading ? (
