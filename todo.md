@@ -67,3 +67,4 @@
 - [x] Upload "Chrysalis I & II" artwork to gallery
 - [x] Add hero background image using The Subject of Paint diptych
 - [x] Increase hero background image opacity to 30%
+- [x] Increase hero background image opacity to 45%
