@@ -70,3 +70,7 @@
 - [x] Increase hero background image opacity to 45%
 - [x] Add subtle zoom-in hover effect to hero background image
 - [x] Update homepage tagline to "Ideas; imagination; revival"
+- [x] Download "Delphium" from Instagram
+- [x] Download "Tiefenschwarz" from Instagram
+- [x] Upload and add both artworks to gallery
+- [x] Download and add artwork from https://www.instagram.com/p/DKZUEFeMQC8/
