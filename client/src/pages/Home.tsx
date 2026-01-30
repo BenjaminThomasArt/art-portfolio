@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden">
+      <section className="relative h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden group">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-45"
+          className="absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110"
           style={{
             backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg)'
           }}

@@ -68,3 +68,4 @@
 - [x] Add hero background image using The Subject of Paint diptych
 - [x] Increase hero background image opacity to 30%
 - [x] Increase hero background image opacity to 45%
+- [x] Add subtle zoom-in hover effect to hero background image
