@@ -25,4 +25,63 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+/**
+ * Artworks table - stores all artwork pieces
+ */
+export const artworks = mysqlTable("artworks", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description"),
+  imageUrl: text("image_url").notNull(),
+  imageKey: varchar("image_key", { length: 512 }).notNull(),
+  year: int("year"),
+  medium: varchar("medium", { length: 255 }),
+  dimensions: varchar("dimensions", { length: 255 }),
+  available: mysqlEnum("available", ["yes", "no", "sold"]).default("yes").notNull(),
+  featured: int("featured").default(0).notNull(), // 0 = not featured, 1 = featured
+  displayOrder: int("display_order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Artwork = typeof artworks.$inferSelect;
+export type InsertArtwork = typeof artworks.$inferInsert;
+
+/**
+ * Inquiries table - stores contact form and print inquiry submissions
+ */
+export const inquiries = mysqlTable("inquiries", {
+  id: int("id").autoincrement().primaryKey(),
+  type: mysqlEnum("type", ["contact", "print", "commission"]).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 50 }),
+  message: text("message").notNull(),
+  artworkId: int("artwork_id"), // null for general inquiries
+  status: mysqlEnum("status", ["new", "read", "replied", "archived"]).default("new").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type Inquiry = typeof inquiries.$inferSelect;
+export type InsertInquiry = typeof inquiries.$inferInsert;
+
+/**
+ * Artist info table - stores bio and social links (single row)
+ */
+export const artistInfo = mysqlTable("artist_info", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  bio: text("bio").notNull(),
+  profileImageUrl: text("profile_image_url"),
+  profileImageKey: varchar("profile_image_key", { length: 512 }),
+  instagramHandle: varchar("instagram_handle", { length: 100 }),
+  instagramUrl: varchar("instagram_url", { length: 255 }),
+  facebookUrl: varchar("facebook_url", { length: 255 }),
+  twitterUrl: varchar("twitter_url", { length: 255 }),
+  linkedinUrl: varchar("linkedin_url", { length: 255 }),
+  websiteUrl: varchar("website_url", { length: 255 }),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ArtistInfo = typeof artistInfo.$inferSelect;
+export type InsertArtistInfo = typeof artistInfo.$inferInsert;

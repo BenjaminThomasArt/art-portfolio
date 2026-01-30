@@ -1,0 +1,43 @@
+# Art Portfolio TODO
+
+## Core Features
+- [x] Instagram feed integration (@__benjaminthomas)
+- [x] Gallery page with grid layout
+- [x] Individual artwork detail pages with high-res images
+- [x] About/bio section
+- [x] Contact form for inquiries and commissions
+- [x] Print inquiry system (contact form based)
+- [x] Social media links section
+- [x] Responsive mobile-first design
+
+## Backend Infrastructure
+- [x] Database schema for artworks, inquiries, and artist info
+- [x] tRPC procedures for artwork management
+- [x] tRPC procedures for contact/inquiry forms
+- [x] Instagram API integration research and implementation
+- [x] Image storage setup with S3
+
+## Frontend Pages & Components
+- [x] Homepage with hero and featured works
+- [x] Gallery page with filterable grid
+- [x] Individual artwork detail pages with high-res images
+- [x] About page
+- [x] Contact page
+- [x] Navigation component
+- [x] Footer with social links
+- [ ] Instagram feed component (using manual upload approach)
+- [x] Print inquiry form component
+
+## Design & Styling
+- [x] Minimalist color palette and typography
+- [x] Clean layout system
+- [x] Image optimization and lazy loading
+- [x] Smooth transitions and animations
+- [x] Mobile responsive breakpoints
+
+## Testing & Deployment
+- [x] Test all forms and submissions
+- [x] Test Instagram integration
+- [x] Test responsive design on mobile
+- [x] Create vitest tests for backend procedures
+- [ ] Final checkpoint for deployment

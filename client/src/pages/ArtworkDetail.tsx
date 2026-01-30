@@ -1,0 +1,193 @@
+import { trpc } from "@/lib/trpc";
+import { useRoute, Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
+
+export default function ArtworkDetail() {
+  const [, params] = useRoute("/artwork/:id");
+  const artworkId = params?.id ? parseInt(params.id) : 0;
+  
+  const { data: artwork, isLoading } = trpc.artworks.getById.useQuery({ id: artworkId });
+  const submitInquiry = trpc.inquiries.submit.useMutation();
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      await submitInquiry.mutateAsync({
+        type: "print",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        artworkId: artworkId,
+      });
+
+      toast.success("Inquiry sent successfully! We'll be in touch soon.");
+      setDialogOpen(false);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      toast.error("Failed to send inquiry. Please try again.");
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="py-24">
+        <div className="container">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="aspect-square bg-muted animate-pulse" />
+              <div className="space-y-4">
+                <div className="h-12 bg-muted animate-pulse" />
+                <div className="h-6 bg-muted animate-pulse w-1/2" />
+                <div className="h-24 bg-muted animate-pulse" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!artwork) {
+    return (
+      <div className="py-24">
+        <div className="container text-center">
+          <h1 className="text-3xl font-serif mb-4">Artwork not found</h1>
+          <Link href="/gallery">
+            <Button variant="outline">Back to Gallery</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-24">
+      <div className="container">
+        <Link href="/gallery">
+          <Button variant="ghost" className="mb-8 gap-2">
+            <ArrowLeft size={18} /> Back to Gallery
+          </Button>
+        </Link>
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Image */}
+            <div className="aspect-square bg-muted">
+              <img
+                src={artwork.imageUrl}
+                alt={artwork.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Details */}
+            <div className="flex flex-col">
+              <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">
+                {artwork.title}
+              </h1>
+
+              <div className="space-y-2 mb-8 text-muted-foreground">
+                {artwork.year && <p>{artwork.year}</p>}
+                {artwork.medium && <p>{artwork.medium}</p>}
+                {artwork.dimensions && <p>{artwork.dimensions}</p>}
+              </div>
+
+              {artwork.description && (
+                <div className="mb-8">
+                  <p className="text-foreground leading-relaxed">{artwork.description}</p>
+                </div>
+              )}
+
+              {/* Print Inquiry */}
+              <div className="mt-auto pt-8 border-t border-border">
+                <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="w-full md:w-auto">
+                      Inquire About Prints
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[500px]">
+                    <DialogHeader>
+                      <DialogTitle>Print Inquiry</DialogTitle>
+                      <DialogDescription>
+                        Interested in a print of "{artwork.title}"? Fill out the form below and we'll get back to you with details.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+                      <div>
+                        <Label htmlFor="name">Name *</Label>
+                        <Input
+                          id="name"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="email">Email *</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="message">Message *</Label>
+                        <Textarea
+                          id="message"
+                          required
+                          rows={4}
+                          placeholder="Please let us know your preferred size and any other details..."
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        />
+                      </div>
+                      <Button type="submit" className="w-full" disabled={submitInquiry.isPending}>
+                        {submitInquiry.isPending ? "Sending..." : "Send Inquiry"}
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
