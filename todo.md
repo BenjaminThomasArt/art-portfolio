@@ -85,3 +85,4 @@
 - [x] Update size option from 100x120cm to 120x100cm
 - [x] Update homepage tagline to "Fine art & prints"
 - [x] Update Shop page hero background with new print photo
+- [x] Add "Portmanteau" print to Shop catalog with same pricing structure

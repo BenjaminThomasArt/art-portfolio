@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO prints (title, description, imageUrl, price, createdAt) VALUES ('Portmanteau', 'Vibrant abstract artwork featuring bold pinks, blues, and yellows on black background', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/portmanteau-print.jpg', 'Available in custom sizes', NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, imageUrl, price, createdAt) VALUES ('Portmanteau', 'Vibrant abstract artwork featuring bold pinks, blues, and yellows on black background', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/portmanteau-print.jpg', 'Available in custom sizes', NOW());",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'imageUrl' in 'field list'"
+  ]
+}

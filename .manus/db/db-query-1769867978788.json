@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order, created_at, updated_at) VALUES ('Portmanteau', 'Vibrant abstract artwork featuring bold pinks, blues, and yellows on black background', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/portmanteau-print.jpg', 'prints/portmanteau-print.jpg', 'Available in custom sizes', 'Available in custom sizes', 1, 1, NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order, created_at, updated_at) VALUES ('Portmanteau', 'Vibrant abstract artwork featuring bold pinks, blues, and yellows on black background', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/portmanteau-print.jpg', 'prints/portmanteau-print.jpg', 'Available in custom sizes', 'Available in custom sizes', 1, 1, NOW(), NOW());",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 71
+}
