@@ -73,6 +73,15 @@ function PrintCard({ print }: { print: any }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
 
+  // Price mapping based on size
+  const priceMap: Record<string, string> = {
+    "80x60": "£150",
+    "120x100": "£225",
+    "custom": "Contact for pricing"
+  };
+
+  const currentPrice = priceMap[size] || "Contact for pricing";
+
   const handleOrder = () => {
     // Build query params with selected options
     const params = new URLSearchParams({
@@ -128,10 +137,18 @@ function PrintCard({ print }: { print: any }) {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="80x60">80 x 60 cm</SelectItem>
-              <SelectItem value="100x120">100 x 120 cm</SelectItem>
+              <SelectItem value="120x100">120 x 100 cm</SelectItem>
               <SelectItem value="custom">Custom size - contact for details</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+
+        {/* Price Display */}
+        <div className="pt-2 pb-1 border-t border-border">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Price:</span>
+            <span className="text-xl font-serif">{currentPrice}</span>
+          </div>
         </div>
 
         <button 
