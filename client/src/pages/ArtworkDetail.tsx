@@ -203,7 +203,7 @@ export default function ArtworkDetail() {
             {/* Details */}
             <div className="flex flex-col">
               <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">
-                {artwork.title}
+                '{artwork.title}'
               </h1>
 
               <div className="space-y-2 mb-8 text-muted-foreground">

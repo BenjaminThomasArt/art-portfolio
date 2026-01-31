@@ -72,7 +72,7 @@ export default function Home() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <h3 className="text-lg font-serif mb-1">{artwork.title}</h3>
+                    <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
                     {artwork.year && (
                       <p className="text-sm text-muted-foreground">{artwork.year}</p>
                     )}

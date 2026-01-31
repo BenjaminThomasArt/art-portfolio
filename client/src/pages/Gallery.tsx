@@ -36,7 +36,7 @@ export default function Gallery() {
                   />
                 </div>
                 <Link href={`/artwork/${artwork.id}`}>
-                  <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">{artwork.title}</h3>
+                  <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">'{artwork.title}'</h3>
                 </Link>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   {artwork.year && <span>{artwork.year}</span>}
