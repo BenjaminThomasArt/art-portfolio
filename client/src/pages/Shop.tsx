@@ -1,6 +1,14 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Shop() {
   const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
@@ -41,37 +49,7 @@ export default function Shop() {
           ) : prints && prints.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {prints.map((print) => (
-                <div key={print.id} className="group">
-                  <div className="aspect-square overflow-hidden bg-muted mb-4">
-                    <img
-                      src={print.imageUrl}
-                      alt={print.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <h3 className="text-xl font-serif mb-2">{print.title}</h3>
-                      {print.description && (
-                        <p className="text-sm text-muted-foreground mb-2">{print.description}</p>
-                      )}
-                      {print.sizeInfo && (
-                        <p className="text-sm text-muted-foreground italic">{print.sizeInfo}</p>
-                      )}
-                      {print.price && (
-                        <p className="text-lg font-serif mt-2">{print.price}</p>
-                      )}
-                    </div>
-
-                    <Link href="/contact">
-                      <button className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                        <ShoppingBag size={18} />
-                        Order
-                      </button>
-                    </Link>
-                  </div>
-                </div>
+                <PrintCard key={print.id} print={print} />
               ))}
             </div>
           ) : (
@@ -86,6 +64,83 @@ export default function Shop() {
             </div>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function PrintCard({ print }: { print: any }) {
+  const [material, setMaterial] = useState<string>("giclee");
+  const [size, setSize] = useState<string>("80x60");
+
+  const handleOrder = () => {
+    // Build query params with selected options
+    const params = new URLSearchParams({
+      printTitle: print.title,
+      material: material,
+      size: size
+    });
+    window.location.href = `/contact?${params.toString()}`;
+  };
+
+  return (
+    <div className="group">
+      <div className="aspect-square overflow-hidden bg-muted mb-4">
+        <img
+          src={print.imageUrl}
+          alt={print.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      
+      <div className="space-y-3">
+        <div>
+          <h3 className="text-xl font-serif mb-2">{print.title}</h3>
+          {print.description && (
+            <p className="text-sm text-muted-foreground mb-2">{print.description}</p>
+          )}
+          {print.price && (
+            <p className="text-lg font-serif mt-2">{print.price}</p>
+          )}
+        </div>
+
+        {/* Material Selector */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Material</label>
+          <Select value={material} onValueChange={setMaterial}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select material" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="giclee">Giclée</SelectItem>
+              <SelectItem value="pvc">PVC board</SelectItem>
+              <SelectItem value="canvas">Canvas inkjet</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Size Selector */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium">Size</label>
+          <Select value={size} onValueChange={setSize}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select size" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="80x60">80 x 60 cm</SelectItem>
+              <SelectItem value="100x120">100 x 120 cm</SelectItem>
+              <SelectItem value="custom">Custom size - contact for details</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <button 
+          onClick={handleOrder}
+          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+        >
+          <ShoppingBag size={18} />
+          Order
+        </button>
       </div>
     </div>
   );

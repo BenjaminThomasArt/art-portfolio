@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -24,6 +24,38 @@ export default function Contact() {
     phone: "",
     message: "",
   });
+
+  // Pre-fill form with print order details from URL params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const printTitle = params.get('printTitle');
+    const material = params.get('material');
+    const size = params.get('size');
+
+    if (printTitle && material && size) {
+      // Format material name
+      const materialNames: Record<string, string> = {
+        'giclee': 'Giclée',
+        'pvc': 'PVC board',
+        'canvas': 'Canvas inkjet'
+      };
+
+      // Format size
+      const sizeNames: Record<string, string> = {
+        '80x60': '80 x 60 cm',
+        '100x120': '100 x 120 cm',
+        'custom': 'Custom size'
+      };
+
+      const message = `I would like to order a print of "${printTitle}"\n\nMaterial: ${materialNames[material] || material}\nSize: ${sizeNames[size] || size}\n\nPlease provide pricing and availability.`;
+
+      setFormData(prev => ({
+        ...prev,
+        type: 'print',
+        message: message
+      }));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
