@@ -1,8 +1,11 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
+import { useState } from "react";
+import { ImageZoom } from "@/components/ImageZoom";
 
 export default function Gallery() {
   const { data: artworks, isLoading } = trpc.artworks.getAll.useQuery();
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <div className="py-24">
@@ -21,27 +24,30 @@ export default function Gallery() {
         ) : artworks && artworks.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {artworks.map((artwork) => (
-              <Link key={artwork.id} href={`/artwork/${artwork.id}`}>
-                <div className="group cursor-pointer">
-                  <div className="aspect-square overflow-hidden bg-muted mb-4">
-                    <img
-                      src={artwork.imageUrl}
-                      alt={artwork.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="text-lg font-serif mb-1">{artwork.title}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    {artwork.year && <span>{artwork.year}</span>}
-                    {artwork.medium && (
-                      <>
-                        {artwork.year && <span>•</span>}
-                        <span>{artwork.medium}</span>
-                      </>
-                    )}
-                  </div>
+              <div key={artwork.id} className="group">
+                <div 
+                  className="aspect-square overflow-hidden bg-muted mb-4 cursor-zoom-in"
+                  onClick={() => setZoomImage({ src: artwork.imageUrl, alt: artwork.title })}
+                >
+                  <img
+                    src={artwork.imageUrl}
+                    alt={artwork.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-              </Link>
+                <Link href={`/artwork/${artwork.id}`}>
+                  <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">{artwork.title}</h3>
+                </Link>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {artwork.year && <span>{artwork.year}</span>}
+                  {artwork.medium && (
+                    <>
+                      {artwork.year && <span>•</span>}
+                      <span>{artwork.medium}</span>
+                    </>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         ) : (
@@ -50,6 +56,14 @@ export default function Gallery() {
           </div>
         )}
       </div>
+
+      {/* Image Zoom Modal */}
+      <ImageZoom
+        src={zoomImage?.src || ""}
+        alt={zoomImage?.alt || ""}
+        isOpen={!!zoomImage}
+        onClose={() => setZoomImage(null)}
+      />
     </div>
   );
 }

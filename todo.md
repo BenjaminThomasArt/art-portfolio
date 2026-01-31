@@ -93,3 +93,4 @@
 - [x] Add comprehensive FAQ section to About page
 - [x] Add image carousel to Chrysalis I & II gallery page
 - [x] Add Candyflip diptych print to Shop catalog
+- [x] Implement click-to-zoom functionality on Gallery and Shop images

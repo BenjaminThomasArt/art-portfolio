@@ -2,6 +2,7 @@ import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
+import { ImageZoom } from "@/components/ImageZoom";
 import {
   Select,
   SelectContent,
@@ -12,6 +13,7 @@ import {
 
 export default function Shop() {
   const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <div>
@@ -49,7 +51,7 @@ export default function Shop() {
           ) : prints && prints.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {prints.map((print) => (
-                <PrintCard key={print.id} print={print} />
+                <PrintCard key={print.id} print={print} onImageClick={() => setZoomImage({ src: print.imageUrl, alt: print.title })} />
               ))}
             </div>
           ) : (
@@ -65,11 +67,19 @@ export default function Shop() {
           )}
         </div>
       </div>
+
+      {/* Image Zoom Modal */}
+      <ImageZoom
+        src={zoomImage?.src || ""}
+        alt={zoomImage?.alt || ""}
+        isOpen={!!zoomImage}
+        onClose={() => setZoomImage(null)}
+      />
     </div>
   );
 }
 
-function PrintCard({ print }: { print: any }) {
+function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => void }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
 
@@ -94,7 +104,10 @@ function PrintCard({ print }: { print: any }) {
 
   return (
     <div className="group">
-      <div className="aspect-square overflow-hidden bg-muted mb-4">
+      <div 
+        className="aspect-square overflow-hidden bg-muted mb-4 cursor-zoom-in"
+        onClick={onImageClick}
+      >
         <img
           src={print.imageUrl}
           alt={print.title}
