@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
+import { Mail, MessageCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -162,19 +163,51 @@ export default function Contact() {
           </form>
 
           {/* Contact Info */}
-          {artistInfo?.instagramHandle && (
-            <div className="mt-12 pt-12 border-t border-border text-center">
-              <p className="text-sm text-muted-foreground mb-2">You can also reach me on Instagram</p>
+          <div className="mt-12 pt-12 border-t border-border">
+            <p className="text-sm text-muted-foreground mb-6 text-center">Or reach out directly</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              {/* WhatsApp */}
               <a
-                href={artistInfo.instagramUrl || `https://instagram.com/${artistInfo.instagramHandle}`}
+                href="https://wa.me/447597765530"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:text-muted-foreground transition-colors"
+                className="flex items-center gap-3 p-4 border border-border rounded-lg hover:bg-accent transition-colors group"
               >
-                @{artistInfo.instagramHandle}
+                <MessageCircle className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                <div className="text-left">
+                  <div className="text-sm font-medium">WhatsApp</div>
+                  <div className="text-sm text-muted-foreground">+44 7597 765530</div>
+                </div>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:info@benjaminthomas.art"
+                className="flex items-center gap-3 p-4 border border-border rounded-lg hover:bg-accent transition-colors group"
+              >
+                <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                <div className="text-left">
+                  <div className="text-sm font-medium">Email</div>
+                  <div className="text-sm text-muted-foreground">info@benjaminthomas.art</div>
+                </div>
               </a>
             </div>
-          )}
+
+            {artistInfo?.instagramHandle && (
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground mb-2">Follow on Instagram</p>
+                <a
+                  href={artistInfo.instagramUrl || `https://instagram.com/${artistInfo.instagramHandle}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-muted-foreground transition-colors"
+                >
+                  @{artistInfo.instagramHandle}
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

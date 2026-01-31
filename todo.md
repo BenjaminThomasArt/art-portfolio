@@ -80,3 +80,4 @@
 - [x] Create print catalog structure with database and Shop page layout
 - [x] Add first print product "The Subject of Paint" with Order button
 - [x] Add material and size dropdown selectors to print catalog (Giclée, PVC board, Canvas inkjet; 80x60cm, 100x120cm)
+- [x] Add WhatsApp (+44 7597765530) and email (info@benjaminthomas.art) contact options to Contact page
