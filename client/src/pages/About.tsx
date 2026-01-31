@@ -80,6 +80,73 @@ export default function About() {
             </div>
           </div>
 
+          {/* FAQ Section */}
+          <div className="border-t border-border pt-12 mb-12">
+            <h3 className="text-2xl font-serif mb-8 text-center">Frequently Asked Questions</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-serif mb-2">What materials do you use for prints?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We offer three premium print options: Giclée prints on archival fine art paper for museum-quality reproductions, 
+                  PVC board prints for a modern, rigid display option, and Canvas inkjet prints for a traditional textured finish. 
+                  All materials are carefully selected for longevity and color accuracy.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">What's the difference between Giclée, PVC board, and Canvas inkjet?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  <strong>Giclée</strong> uses archival inks on fine art paper for exceptional detail and color depth—ideal for collectors. 
+                  <strong>PVC board</strong> offers a sleek, rigid surface perfect for contemporary spaces and easy mounting. 
+                  <strong>Canvas inkjet</strong> provides a classic textured finish reminiscent of traditional paintings, ready for stretching or framing.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">How long does delivery take?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Standard delivery typically takes 2-3 weeks from order confirmation. Custom size orders may require additional time. 
+                  You'll receive tracking information once your print ships.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">Do you offer international shipping?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Yes, we ship worldwide. International delivery times vary by location (typically 3-4 weeks). 
+                  Customs duties and import taxes may apply depending on your country.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">Can prints be framed?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Prints are sold unframed to give you flexibility in choosing frames that match your space. 
+                  We're happy to recommend framing services or provide guidance on suitable frame styles. 
+                  Contact us for framing consultation.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">What's your return policy?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We accept returns within 30 days of delivery for standard size prints in original condition. 
+                  Custom size orders are made to order and cannot be returned unless damaged in transit. 
+                  Please contact us immediately if your print arrives damaged.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-serif mb-2">How do custom sizes work?</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Select "Custom size - contact for details" when ordering, and we'll reach out to discuss your specific dimensions and pricing. 
+                  Custom prints maintain the original artwork's proportions and are produced to your exact specifications. 
+                  Lead time for custom orders is typically 3-4 weeks.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Social Links */}
           <div className="border-t border-border pt-12">
             <h3 className="text-xl font-serif mb-6 text-center">Connect</h3>
