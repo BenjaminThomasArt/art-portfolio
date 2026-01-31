@@ -98,3 +98,4 @@
 - [x] Add keyboard navigation (left/right arrow keys) to carousels
 - [x] Add single quotation marks around all artwork titles throughout the site
 - [x] Add single quotation marks to print titles on Shop page
+- [x] Implement lazy loading for all images to improve initial page load performance

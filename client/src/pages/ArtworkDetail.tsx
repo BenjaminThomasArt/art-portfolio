@@ -146,6 +146,7 @@ export default function ArtworkDetail() {
               <img
                 src={galleryImages[currentImageIndex]}
                 alt={`${artwork.title} - Image ${currentImageIndex + 1}`}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               

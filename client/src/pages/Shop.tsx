@@ -111,6 +111,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
         <img
           src={print.imageUrl}
           alt={print.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
