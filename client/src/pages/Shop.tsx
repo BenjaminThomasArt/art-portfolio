@@ -117,7 +117,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
       
       <div className="space-y-3">
         <div>
-          <h3 className="text-xl font-serif mb-2">{print.title}</h3>
+          <h3 className="text-xl font-serif mb-2">'{print.title}'</h3>
           {print.description && (
             <p className="text-sm text-muted-foreground mb-2">{print.description}</p>
           )}

@@ -97,3 +97,4 @@
 - [x] Add click-to-zoom functionality to carousel images on artwork detail pages
 - [x] Add keyboard navigation (left/right arrow keys) to carousels
 - [x] Add single quotation marks around all artwork titles throughout the site
+- [x] Add single quotation marks to print titles on Shop page
