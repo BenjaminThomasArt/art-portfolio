@@ -86,3 +86,4 @@
 - [x] Update homepage tagline to "Fine art & prints"
 - [x] Update Shop page hero background with new print photo
 - [x] Add "Portmanteau" print to Shop catalog with same pricing structure
+- [x] Add "One way or another" print to Shop catalog with same pricing structure
