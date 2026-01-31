@@ -83,3 +83,4 @@
 - [x] Add WhatsApp (+44 7597765530) and email (info@benjaminthomas.art) contact options to Contact page
 - [x] Add dynamic pricing display to Shop page (80x60cm: £150, 120x100cm: £225)
 - [x] Update size option from 100x120cm to 120x100cm
+- [x] Update homepage tagline to "Fine art & prints"
