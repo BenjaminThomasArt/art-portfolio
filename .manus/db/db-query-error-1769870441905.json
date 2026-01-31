@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO prints (title, description, imageUrl, imageKey, sizeInfo, price, available, displayOrder)\nVALUES (\n  'Candyflip',\n  'A striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels.',\n  'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop/candyflip.png',\n  'shop/candyflip.png',\n  'Diptych - two pieces',\n  NULL,\n  1,\n  5\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, imageUrl, imageKey, sizeInfo, price, available, displayOrder)\nVALUES (\n  'Candyflip',\n  'A striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels.',\n  'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop/candyflip.png',\n  'shop/candyflip.png',\n  'Diptych - two pieces',\n  NULL,\n  1,\n  5\n);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'imageUrl' in 'field list'"
+  ]
+}

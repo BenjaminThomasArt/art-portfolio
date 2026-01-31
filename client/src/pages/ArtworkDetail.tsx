@@ -1,7 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -24,6 +24,20 @@ export default function ArtworkDetail() {
   const submitInquiry = trpc.inquiries.submit.useMutation();
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Parse gallery images from JSON string
+  const galleryImages = artwork?.galleryImages 
+    ? JSON.parse(artwork.galleryImages) 
+    : [artwork?.imageUrl];
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -95,13 +109,54 @@ export default function ArtworkDetail() {
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Image */}
-            <div className="aspect-square bg-muted">
+            {/* Image Carousel */}
+            <div className="relative aspect-square bg-muted group">
               <img
-                src={artwork.imageUrl}
-                alt={artwork.title}
+                src={galleryImages[currentImageIndex]}
+                alt={`${artwork.title} - Image ${currentImageIndex + 1}`}
                 className="w-full h-full object-cover"
               />
+              
+              {/* Carousel controls - only show if multiple images */}
+              {galleryImages.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={handleNextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                  
+                  {/* Image counter */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                    {currentImageIndex + 1} / {galleryImages.length}
+                  </div>
+                  
+                  {/* Thumbnail dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {galleryImages.map((_: string, index: number) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === currentImageIndex 
+                            ? 'bg-white w-6' 
+                            : 'bg-white/50 hover:bg-white/70'
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Details */}

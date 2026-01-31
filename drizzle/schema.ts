@@ -34,6 +34,7 @@ export const artworks = mysqlTable("artworks", {
   description: text("description"),
   imageUrl: text("image_url").notNull(),
   imageKey: varchar("image_key", { length: 512 }).notNull(),
+  galleryImages: text("gallery_images"), // JSON array of additional image URLs for carousel
   year: int("year"),
   medium: varchar("medium", { length: 255 }),
   dimensions: varchar("dimensions", { length: 255 }),

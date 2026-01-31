@@ -91,3 +91,5 @@
 - [x] Add "Tiefenschwartz" diptych to Shop catalog with same pricing structure
 - [x] Update pricing display to show "per piece" for clarity
 - [x] Add comprehensive FAQ section to About page
+- [x] Add image carousel to Chrysalis I & II gallery page
+- [x] Add Candyflip diptych print to Shop catalog
