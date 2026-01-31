@@ -146,7 +146,7 @@ function PrintCard({ print }: { print: any }) {
         {/* Price Display */}
         <div className="pt-2 pb-1 border-t border-border">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Price:</span>
+            <span className="text-sm text-muted-foreground">Price (per piece):</span>
             <span className="text-xl font-serif">{currentPrice}</span>
           </div>
         </div>

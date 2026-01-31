@@ -88,3 +88,5 @@
 - [x] Add "Portmanteau" print to Shop catalog with same pricing structure
 - [x] Add "One way or another" print to Shop catalog with same pricing structure
 - [x] Update Shop page subtitle copy to mention materials, sizes, and custom orders
+- [x] Add "Tiefenschwartz" diptych to Shop catalog with same pricing structure
+- [x] Update pricing display to show "per piece" for clarity
