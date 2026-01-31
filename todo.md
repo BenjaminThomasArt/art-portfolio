@@ -95,3 +95,4 @@
 - [x] Add Candyflip diptych print to Shop catalog
 - [x] Implement click-to-zoom functionality on Gallery and Shop images
 - [x] Add click-to-zoom functionality to carousel images on artwork detail pages
+- [x] Add keyboard navigation (left/right arrow keys) to carousels

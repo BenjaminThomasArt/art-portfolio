@@ -2,7 +2,7 @@ import { trpc } from "@/lib/trpc";
 import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 import {
   Dialog,
@@ -40,6 +40,30 @@ export default function ArtworkDetail() {
   const handleNextImage = () => {
     setCurrentImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
   };
+
+  // Keyboard navigation for carousel
+  useEffect(() => {
+    // Only enable keyboard navigation if there are multiple images and zoom is not open
+    if (galleryImages.length <= 1 || zoomImage) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input field
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handlePrevImage();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [galleryImages.length, zoomImage, handlePrevImage, handleNextImage]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
