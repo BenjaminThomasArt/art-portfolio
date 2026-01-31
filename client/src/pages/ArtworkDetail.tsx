@@ -3,6 +3,7 @@ import { useRoute, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { ImageZoom } from "@/components/ImageZoom";
 import {
   Dialog,
   DialogContent,
@@ -25,6 +26,7 @@ export default function ArtworkDetail() {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   // Parse gallery images from JSON string
   const galleryImages = artwork?.galleryImages 
@@ -110,7 +112,13 @@ export default function ArtworkDetail() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Image Carousel */}
-            <div className="relative aspect-square bg-muted group">
+            <div 
+              className="relative aspect-square bg-muted group cursor-zoom-in"
+              onClick={() => setZoomImage({ 
+                src: galleryImages[currentImageIndex], 
+                alt: `${artwork.title} - Image ${currentImageIndex + 1}` 
+              })}
+            >
               <img
                 src={galleryImages[currentImageIndex]}
                 alt={`${artwork.title} - Image ${currentImageIndex + 1}`}
@@ -121,15 +129,21 @@ export default function ArtworkDetail() {
               {galleryImages.length > 1 && (
                 <>
                   <button
-                    onClick={handlePrevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrevImage();
+                    }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
                     aria-label="Previous image"
                   >
                     <ChevronLeft size={24} />
                   </button>
                   <button
-                    onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNextImage();
+                    }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
                     aria-label="Next image"
                   >
                     <ChevronRight size={24} />
@@ -141,11 +155,14 @@ export default function ArtworkDetail() {
                   </div>
                   
                   {/* Thumbnail dots */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                     {galleryImages.map((_: string, index: number) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentImageIndex(index)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentImageIndex(index);
+                        }}
                         className={`w-2 h-2 rounded-full transition-all ${
                           index === currentImageIndex 
                             ? 'bg-white w-6' 
@@ -243,6 +260,14 @@ export default function ArtworkDetail() {
           </div>
         </div>
       </div>
+
+      {/* Image Zoom Modal */}
+      <ImageZoom
+        src={zoomImage?.src || ""}
+        alt={zoomImage?.alt || ""}
+        isOpen={!!zoomImage}
+        onClose={() => setZoomImage(null)}
+      />
     </div>
   );
 }
