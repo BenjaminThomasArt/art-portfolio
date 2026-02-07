@@ -34,6 +34,10 @@ export default function About() {
     {
       question: "How do custom sizes work?",
       answer: "Select \"Custom size - contact for details\" when ordering, and I'll reach out to discuss your specific dimensions and pricing. Custom prints maintain the original artwork's proportions and are produced to your exact specifications. Lead time for custom orders is typically 3-4 weeks."
+    },
+    {
+      question: "What is your creative process?",
+      answer: "My creative process begins with observation and inspiration from nature, urban environments, and the interplay of light and color. I work intuitively, allowing the materials to guide the direction of each piece. I often start with loose gestural marks and build layers through a combination of controlled techniques and spontaneous expression. Each work evolves organically, with decisions made in response to what emerges on the canvas. The process is both meditative and exploratory, balancing intention with discovery."
     }
   ];
 

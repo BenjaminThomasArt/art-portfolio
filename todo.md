@@ -140,3 +140,4 @@
 - [x] Update homepage text to 'Interested in a print?' with lowercase 'p'
 - [ ] Implement availability badges on Gallery items showing 'Available' or 'Sold' status
 - [x] Change 'Benjamin Thomas' text color to Prussian blue on homepage and navigation
+- [x] Add FAQ about creative process
