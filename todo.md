@@ -137,3 +137,4 @@
 - [x] Fix buggy close function when clicking on images
 - [x] Reduce FAQ answer text size by 25% and add accordion open/close functionality
 - [x] Remove return policy question from FAQ and replace 'we' with 'I' in all answers
+- [x] Update homepage text to 'Interested in a print?' with lowercase 'p'

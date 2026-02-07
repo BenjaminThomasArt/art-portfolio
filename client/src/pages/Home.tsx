@@ -119,7 +119,7 @@ export default function Home() {
       <section className="py-24 bg-muted/30">
         <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6">
-            Interested in a Print?
+            Interested in a print?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             High-quality prints of selected works are available. Get in touch to inquire about sizes and pricing.
