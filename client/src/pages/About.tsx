@@ -13,7 +13,7 @@ export default function About() {
   const faqs = [
     {
       question: "What materials do you use for prints?",
-      answer: "We offer three premium print options: Giclée prints on archival fine art paper for museum-quality reproductions, PVC board prints for a modern, rigid display option, and Canvas inkjet prints for a traditional textured finish. All materials are carefully selected for longevity and color accuracy."
+      answer: "I offer three premium print options: Giclée prints on archival fine art paper for museum-quality reproductions, PVC board prints for a modern, rigid display option, and Canvas inkjet prints for a traditional textured finish. All materials are carefully selected for longevity and color accuracy."
     },
     {
       question: "What's the difference between Giclée, PVC board, and Canvas inkjet?",
@@ -25,19 +25,15 @@ export default function About() {
     },
     {
       question: "Do you offer international shipping?",
-      answer: "Yes, we ship worldwide. International delivery times vary by location (typically 3-4 weeks). Customs duties and import taxes may apply depending on your country."
+      answer: "Yes, I ship worldwide. International delivery times vary by location (typically 3-4 weeks). Customs duties and import taxes may apply depending on your country."
     },
     {
       question: "Can prints be framed?",
-      answer: "Prints are sold unframed to give you flexibility in choosing frames that match your space. We're happy to recommend framing services or provide guidance on suitable frame styles. Contact us for framing consultation."
-    },
-    {
-      question: "What's your return policy?",
-      answer: "We accept returns within 30 days of delivery for standard size prints in original condition. Custom size orders are made to order and cannot be returned unless damaged in transit. Please contact us immediately if your print arrives damaged."
+      answer: "Prints are sold unframed to give you flexibility in choosing frames that match your space. I'm happy to recommend framing services or provide guidance on suitable frame styles. Contact me for framing consultation."
     },
     {
       question: "How do custom sizes work?",
-      answer: "Select \"Custom size - contact for details\" when ordering, and we'll reach out to discuss your specific dimensions and pricing. Custom prints maintain the original artwork's proportions and are produced to your exact specifications. Lead time for custom orders is typically 3-4 weeks."
+      answer: "Select \"Custom size - contact for details\" when ordering, and I'll reach out to discuss your specific dimensions and pricing. Custom prints maintain the original artwork's proportions and are produced to your exact specifications. Lead time for custom orders is typically 3-4 weeks."
     }
   ];
 
