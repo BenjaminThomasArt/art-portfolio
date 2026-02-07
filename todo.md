@@ -121,3 +121,4 @@
 - [x] Move Contact page background to right for mobile face visibility
 - [x] Replace Contact page background with new studio photo
 - [x] Move Contact page background 25% to the right
+- [x] Adjust Contact page background to make face visible again
