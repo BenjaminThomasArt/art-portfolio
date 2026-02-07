@@ -37,7 +37,7 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
           src={displayImage}
           alt={artworkTitle}
           loading="lazy"
-          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
       </div>
       
