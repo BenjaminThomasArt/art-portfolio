@@ -117,3 +117,4 @@
 - [x] Adjust Contact page background to be more visible (reposition to top, increase opacity)
 - [x] Reposition Contact page background to show artist's face
 - [x] Center artist's face in Contact page background
+- [x] Fine-tune Contact page background to perfectly center artist's face
