@@ -126,3 +126,4 @@
 - [x] Fix Gallery carousels not working on mobile devices
 - [x] Implement touch swipe gestures for Gallery carousel navigation
 - [x] Reduce spacing between Gallery images and titles by 50%
+- [x] Change grey background boxes around Gallery images to white
