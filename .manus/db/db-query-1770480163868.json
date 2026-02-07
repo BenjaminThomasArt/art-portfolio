@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, gallery_images FROM artworks WHERE title LIKE '%Chrysalis%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, gallery_images FROM artworks WHERE title LIKE '%Chrysalis%';",
+  "rows": [
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "gallery_images": "[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/gallery/chrysalis-1.jpg\", \"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/gallery/chrysalis-2.jpg\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tgallery_images\n3\tChrysalis I & II\t[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/gallery/chrysalis-1.jpg\", \"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/gallery/chrysalis-2.jpg\"]\n",
+  "stderr": "",
+  "execution_time_ms": 103
+}

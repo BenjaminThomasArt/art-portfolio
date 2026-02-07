@@ -109,3 +109,4 @@
 - [x] Add 3-image carousel to Tiefenschwarz artwork with two detail shots
 - [x] Fix Tiefenschwarz diptych image (both paintings together) not showing in carousel
 - [x] Adjust 'I saw the whole thing' image aspect ratio in Gallery to match compact horizontal format of carousel artworks
+- [x] Add Chrysalis diptych image (both paintings together) as first image in Chrysalis carousel on Gallery page
