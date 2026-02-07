@@ -1,7 +1,7 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 
 export const appRouter = router({
@@ -32,6 +32,22 @@ export const appRouter = router({
       const { getArtworkById } = await import("./db");
       return getArtworkById(input.id);
     }),
+    updateDisplayOrder: protectedProcedure
+      .input(
+        z.object({
+          artworkId: z.number(),
+          newDisplayOrder: z.number(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        // Only allow admin users to reorder
+        if (ctx.user?.role !== 'admin') {
+          throw new Error('Unauthorized');
+        }
+        const { updateArtwork } = await import("./db");
+        await updateArtwork(input.artworkId, { displayOrder: input.newDisplayOrder });
+        return { success: true };
+      }),
   }),
 
   // Shop routes
