@@ -28,9 +28,9 @@ export default function Shop() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-background" />
         <div className="relative h-full flex items-center justify-center">
-          <div className="text-center">
+          <div className="text-center px-8 md:px-16 lg:px-24">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight mb-4">Shop</h1>
-            <p className="text-lg md:text-xl text-muted-foreground">Quality prints available to order in a range of materials and sizes. Custom orders available on request.</p>
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">Quality prints available to order in a range of materials and sizes. Custom orders available on request.</p>
           </div>
         </div>
       </div>

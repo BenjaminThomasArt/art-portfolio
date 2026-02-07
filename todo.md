@@ -129,3 +129,4 @@
 - [x] Change grey background boxes around Gallery images to white
 - [x] Change carousel dot indicators from white to grey for visibility
 - [x] Implement scroll-to-top behavior when navigating between pages
+- [x] Reduce text size under Shop headline and increase horizontal padding by 25%
