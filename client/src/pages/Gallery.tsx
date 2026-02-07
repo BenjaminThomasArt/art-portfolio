@@ -61,7 +61,7 @@ export default function Gallery() {
                             e.stopPropagation();
                             setCarouselIndex(artwork.id, currentIndex - 1);
                           }}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                           aria-label="Previous image"
                         >
                           <ChevronLeft size={20} />
@@ -73,7 +73,7 @@ export default function Gallery() {
                             e.stopPropagation();
                             setCarouselIndex(artwork.id, currentIndex + 1);
                           }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                           aria-label="Next image"
                         >
                           <ChevronRight size={20} />

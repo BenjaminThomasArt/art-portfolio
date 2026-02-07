@@ -123,3 +123,4 @@
 - [x] Move Contact page background 25% to the right
 - [x] Adjust Contact page background to make face visible again
 - [x] Optimize Contact page background for mobile to match desktop face visibility
+- [x] Fix Gallery carousels not working on mobile devices
