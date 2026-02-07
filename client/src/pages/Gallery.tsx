@@ -38,7 +38,7 @@ export default function Gallery() {
                     onImageClick={(src, alt) => setZoomImage({ src, alt })}
                   />
                 ) : (
-                  <div className="aspect-[3/4] overflow-hidden bg-muted mb-4 relative">
+                  <div className="aspect-[3/4] overflow-hidden bg-muted mb-2 relative">
                     <div 
                       className="w-full h-full cursor-zoom-in"
                       onClick={() => setZoomImage({ src: artwork.imageUrl, alt: artwork.title })}
