@@ -114,3 +114,4 @@
 - [x] Fix missing images in Chrysalis carousel on Gallery page
 - [x] Migrate all remaining old CloudFront CDN URLs to new CDN to prevent 403 errors
 - [x] Add studio photo as background image to Contact page
+- [x] Adjust Contact page background to be more visible (reposition to top, increase opacity)

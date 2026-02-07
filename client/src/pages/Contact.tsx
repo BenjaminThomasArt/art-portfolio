@@ -87,12 +87,12 @@ export default function Contact() {
     <div className="relative min-h-screen py-24">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
+        className="absolute inset-0 bg-cover bg-top opacity-35"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BIQmMlpQZUsOSVPV.png)'
         }}
       />
-      <div className="absolute inset-0 bg-background/80" />
+      <div className="absolute inset-0 bg-background/70" />
       
       {/* Content */}
       <div className="container relative z-10">
