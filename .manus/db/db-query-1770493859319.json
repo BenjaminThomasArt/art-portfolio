@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks SET display_order = 15 WHERE title = 'Tiefenschwarz';\nUPDATE artworks SET display_order = 20 WHERE title = 'Candyflip';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks SET display_order = 15 WHERE title = 'Tiefenschwarz';\nUPDATE artworks SET display_order = 20 WHERE title = 'Candyflip';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 70
+}

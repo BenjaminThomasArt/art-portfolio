@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, year FROM artworks ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, year FROM artworks ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "year": "2026"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "year": "2024"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "year": "2026"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "year": "2025"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "year": "2025"
+    },
+    {
+      "id": "6",
+      "title": "Candyflip",
+      "year": "2025"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tyear\n1\tThe Subject of Paint\t2026\n2\tI saw the whole thing\t2024\n3\tChrysalis I & II\t2026\n4\tTiefenschwarz\t2025\n5\tDelphium\t2025\n6\tCandyflip\t2025\n",
+  "stderr": "",
+  "execution_time_ms": 189
+}

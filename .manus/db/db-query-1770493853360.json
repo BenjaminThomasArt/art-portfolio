@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, display_order FROM artworks ORDER BY display_order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, display_order FROM artworks ORDER BY display_order;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "display_order": "0"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "display_order": "0"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "display_order": "0"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "display_order": "0"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "display_order": "1"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "display_order": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdisplay_order\n1\tThe Subject of Paint\t0\n4\tTiefenschwarz\t0\n5\tDelphium\t0\n999\tCandyflip\t0\n2\tI saw the whole thing\t1\n3\tChrysalis I & II\t2\n",
+  "stderr": "",
+  "execution_time_ms": 73
+}
