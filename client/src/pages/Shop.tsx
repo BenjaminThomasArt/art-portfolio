@@ -105,14 +105,14 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   return (
     <div className="group">
       <div 
-        className="aspect-square overflow-hidden bg-muted mb-4 cursor-zoom-in"
+        className="aspect-square overflow-hidden bg-white mb-4 cursor-zoom-in"
         onClick={onImageClick}
       >
         <img
           src={print.imageUrl}
           alt={print.title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
       </div>
       
