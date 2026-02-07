@@ -116,3 +116,4 @@
 - [x] Add studio photo as background image to Contact page
 - [x] Adjust Contact page background to be more visible (reposition to top, increase opacity)
 - [x] Reposition Contact page background to show artist's face
+- [x] Center artist's face in Contact page background

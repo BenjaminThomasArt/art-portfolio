@@ -90,7 +90,7 @@ export default function Contact() {
         className="absolute inset-0 bg-cover opacity-35"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BIQmMlpQZUsOSVPV.png)',
-          backgroundPosition: '20% 30%'
+          backgroundPosition: '35% 30%'
         }}
       />
       <div className="absolute inset-0 bg-background/70" />
