@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks SET available = 'yes' WHERE title = 'Delphium';\nUPDATE artworks SET available = 'sold' WHERE title IN ('Candyflip', 'Chrysalis 1', 'Chrysalis 2');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks SET available = 'yes' WHERE title = 'Delphium';\nUPDATE artworks SET available = 'sold' WHERE title IN ('Candyflip', 'Chrysalis 1', 'Chrysalis 2');",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 83
+}

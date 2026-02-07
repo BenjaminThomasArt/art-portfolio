@@ -144,3 +144,4 @@
 - [x] Change 'Fine art & prints' text to deep maroon color
 - [x] Add classic gallery-style red dots to sold artworks on Gallery page
 - [x] Move red dot to appear next to artwork title instead of on image
+- [x] Update sold status: remove from Delphium, ensure on Candy Flip and Chrysalis 1 & 2
