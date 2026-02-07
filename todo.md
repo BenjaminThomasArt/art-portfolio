@@ -113,3 +113,4 @@
 - [x] Adjust diptych images (Tiefenschwarz, Candyflip, Chrysalis) in Gallery to show full width without cropping
 - [x] Fix missing images in Chrysalis carousel on Gallery page
 - [x] Migrate all remaining old CloudFront CDN URLs to new CDN to prevent 403 errors
+- [x] Add studio photo as background image to Contact page

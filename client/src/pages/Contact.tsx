@@ -84,8 +84,18 @@ export default function Contact() {
   };
 
   return (
-    <div className="py-24">
-      <div className="container">
+    <div className="relative min-h-screen py-24">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-20"
+        style={{
+          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BIQmMlpQZUsOSVPV.png)'
+        }}
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      
+      {/* Content */}
+      <div className="container relative z-10">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">Get in Touch</h1>
