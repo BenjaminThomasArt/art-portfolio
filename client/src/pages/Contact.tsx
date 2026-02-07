@@ -89,7 +89,7 @@ export default function Contact() {
       <div 
         className="absolute inset-0 bg-cover opacity-35"
         style={{
-          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BIQmMlpQZUsOSVPV.png)',
+          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png)',
           backgroundPosition: '40% 35%'
         }}
       />
