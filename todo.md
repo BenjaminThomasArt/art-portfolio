@@ -108,3 +108,4 @@
 - [x] Fix third image not showing in Subject of Paint carousel (still not working)
 - [x] Add 3-image carousel to Tiefenschwarz artwork with two detail shots
 - [x] Fix Tiefenschwarz diptych image (both paintings together) not showing in carousel
+- [x] Adjust 'I saw the whole thing' image aspect ratio in Gallery to match compact horizontal format of carousel artworks

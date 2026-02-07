@@ -25,7 +25,7 @@ export default function Gallery() {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="aspect-square bg-muted animate-pulse" />
+              <div key={i} className="aspect-[3/4] bg-muted animate-pulse" />
             ))}
           </div>
         ) : artworks && artworks.length > 0 ? (
@@ -39,7 +39,7 @@ export default function Gallery() {
 
               return (
               <div key={artwork.id} className="group">
-                <div className="aspect-square overflow-hidden bg-muted mb-4 relative">
+                <div className="aspect-[3/4] overflow-hidden bg-muted mb-4 relative">
                   <div 
                     className="w-full h-full cursor-zoom-in"
                     onClick={() => setZoomImage({ src: displayImage, alt: artwork.title })}
