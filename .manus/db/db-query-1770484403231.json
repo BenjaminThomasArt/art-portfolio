@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, year, image_url FROM artworks WHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' ORDER BY title;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, year, image_url FROM artworks WHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' ORDER BY title;",
+  "rows": [
+    {
+      "id": "6",
+      "title": "Candyflip",
+      "year": "2025",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "year": "2026",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "year": "2025",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "year": "2024",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/i-saw-the-whole-thing-1769770913762.jpeg"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "year": "2025",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tyear\timage_url\n6\tCandyflip\t2025\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png\n3\tChrysalis I & II\t2026\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg\n5\tDelphium\t2025\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg\n2\tI saw the whole thing\t2024\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/i-saw-the-whole-thing-1769770913762.jpeg\n4\tTiefenschwarz\t2025\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

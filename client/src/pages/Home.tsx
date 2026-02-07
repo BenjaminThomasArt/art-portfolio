@@ -12,7 +12,7 @@ export default function Home() {
       id: 1,
       title: 'The Subject of Paint',
       year: 2026,
-      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg',
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg',
       medium: 'Mixed media on PVC board'
     },
     {
@@ -33,7 +33,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110"
           style={{
-            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg)'
+            backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg)'
           }}
         />
         {/* Overlay for better text readability */}

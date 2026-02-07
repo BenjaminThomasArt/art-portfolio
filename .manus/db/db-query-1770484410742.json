@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks \nSET image_url = JSON_UNQUOTE(JSON_EXTRACT(gallery_images, '$[0]'))\nWHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' \nAND gallery_images IS NOT NULL \nAND JSON_LENGTH(gallery_images) > 0;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks \nSET image_url = JSON_UNQUOTE(JSON_EXTRACT(gallery_images, '$[0]'))\nWHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' \nAND gallery_images IS NOT NULL \nAND JSON_LENGTH(gallery_images) > 0;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 73
+}

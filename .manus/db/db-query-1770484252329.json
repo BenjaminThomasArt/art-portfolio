@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, image_url FROM artworks WHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url FROM artworks WHERE image_url LIKE '%d2xsxph8kpxj0f.cloudfront.net%' ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/i-saw-the-whole-thing-1769770913762.jpeg"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg"
+    },
+    {
+      "id": "6",
+      "title": "Candyflip",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\n1\tThe Subject of Paint\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg\n2\tI saw the whole thing\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/i-saw-the-whole-thing-1769770913762.jpeg\n3\tChrysalis I & II\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg\n4\tTiefenschwarz\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg\n5\tDelphium\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg\n6\tCandyflip\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}
