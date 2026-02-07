@@ -118,3 +118,4 @@
 - [x] Reposition Contact page background to show artist's face
 - [x] Center artist's face in Contact page background
 - [x] Fine-tune Contact page background to perfectly center artist's face
+- [x] Move Contact page background to right for mobile face visibility
