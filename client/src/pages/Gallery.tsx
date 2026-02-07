@@ -31,12 +31,17 @@ export default function Gallery() {
               return (
               <div key={artwork.id} className="group">
                 {hasCarousel ? (
-                  <ArtworkCarousel
-                    artworkId={artwork.id}
-                    galleryImages={galleryImages}
-                    artworkTitle={artwork.title}
-                    onImageClick={(src, alt) => setZoomImage({ src, alt })}
-                  />
+                  <div className="relative">
+                    <ArtworkCarousel
+                      artworkId={artwork.id}
+                      galleryImages={galleryImages}
+                      artworkTitle={artwork.title}
+                      onImageClick={(src, alt) => setZoomImage({ src, alt })}
+                    />
+                    {artwork.available === 'sold' && (
+                      <div className="absolute top-3 right-3 w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-md" title="Sold" />
+                    )}
+                  </div>
                 ) : (
                   <div className="aspect-[3/4] overflow-hidden bg-white mb-2 relative">
                     <div 
@@ -50,6 +55,9 @@ export default function Gallery() {
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
+                    {artwork.available === 'sold' && (
+                      <div className="absolute top-3 right-3 w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-md" title="Sold" />
+                    )}
                   </div>
                 )}
                 <Link href={`/artwork/${artwork.id}`}>
