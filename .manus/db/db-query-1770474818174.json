@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, gallery_images FROM artworks WHERE title = 'The Subject of Paint';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, gallery_images FROM artworks WHERE title = 'The Subject of Paint';",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wqNrJxVdXRHmUQJH.png\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tgallery_images\n1\tThe Subject of Paint\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wqNrJxVdXRHmUQJH.png\"]\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}
