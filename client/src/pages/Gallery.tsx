@@ -31,17 +31,12 @@ export default function Gallery() {
               return (
               <div key={artwork.id} className="group">
                 {hasCarousel ? (
-                  <div className="relative">
-                    <ArtworkCarousel
-                      artworkId={artwork.id}
-                      galleryImages={galleryImages}
-                      artworkTitle={artwork.title}
-                      onImageClick={(src, alt) => setZoomImage({ src, alt })}
-                    />
-                    {artwork.available === 'sold' && (
-                      <div className="absolute top-3 right-3 w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-md" title="Sold" />
-                    )}
-                  </div>
+                  <ArtworkCarousel
+                    artworkId={artwork.id}
+                    galleryImages={galleryImages}
+                    artworkTitle={artwork.title}
+                    onImageClick={(src, alt) => setZoomImage({ src, alt })}
+                  />
                 ) : (
                   <div className="aspect-[3/4] overflow-hidden bg-white mb-2 relative">
                     <div 
@@ -55,14 +50,16 @@ export default function Gallery() {
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    {artwork.available === 'sold' && (
-                      <div className="absolute top-3 right-3 w-4 h-4 bg-red-600 rounded-full border-2 border-white shadow-md" title="Sold" />
-                    )}
                   </div>
                 )}
-                <Link href={`/artwork/${artwork.id}`}>
-                  <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">'{artwork.title}'</h3>
-                </Link>
+                <div className="flex items-center gap-2">
+                  <Link href={`/artwork/${artwork.id}`}>
+                    <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">'{artwork.title}'</h3>
+                  </Link>
+                  {artwork.available === 'sold' && (
+                    <div className="w-2.5 h-2.5 bg-red-600 rounded-full flex-shrink-0" title="Sold" />
+                  )}
+                </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   {artwork.year && <span>{artwork.year}</span>}
                   {artwork.medium && (
