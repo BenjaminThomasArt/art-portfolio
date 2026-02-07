@@ -12,7 +12,7 @@ export default function Gallery() {
       <div className="container">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">Gallery</h1>
-          <p className="text-lg text-muted-foreground">Explore the complete collection</p>
+          <p className="text-lg text-muted-foreground">Explore more works</p>
         </div>
 
         {isLoading ? (
