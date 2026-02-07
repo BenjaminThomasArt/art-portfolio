@@ -134,3 +134,4 @@
 - [x] Add subtle border to Shop page print containers
 - [x] Add light grey border to Gallery artwork containers for consistency
 - [x] Make image hover zoom effect more gentle with slower transition
+- [x] Fix buggy close function when clicking on images

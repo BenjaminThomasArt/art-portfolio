@@ -46,16 +46,12 @@ export function ImageZoom({ src, alt, isOpen, onClose }: ImageZoomProps) {
       </button>
 
       {/* Zoomed image */}
-      <div
-        className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-[90vh] object-contain animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="max-w-full max-h-full object-contain animate-in zoom-in-95 duration-300"
-        />
-      </div>
+      />
 
       {/* Click anywhere to close hint */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">
