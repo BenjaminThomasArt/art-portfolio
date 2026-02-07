@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, image_url FROM artworks WHERE title = 'Tiefenschwarz';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url FROM artworks WHERE title = 'Tiefenschwarz';",
+  "rows": [
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\n4\tTiefenschwarz\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/tiefenschwarz-nGvFlhHDw9NhlYlmnh0hO.jpeg\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

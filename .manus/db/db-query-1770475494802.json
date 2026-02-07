@@ -1,0 +1,34 @@
+{
+  "query": "SELECT id, title FROM artworks ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title FROM artworks ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz"
+    },
+    {
+      "id": "5",
+      "title": "Delphium"
+    },
+    {
+      "id": "6",
+      "title": "Candyflip"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\n1\tThe Subject of Paint\n2\tI saw the whole thing\n3\tChrysalis I & II\n4\tTiefenschwarz\n5\tDelphium\n6\tCandyflip\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

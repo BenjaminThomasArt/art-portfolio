@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks \nSET gallery_images = '[\"https://d2xsxph8kpxj0f.cloudfront.net/312\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iFwzTINRPHkqFBuZ.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ykMgjlFOTgWVvDvJ.jpeg\"]'\nWHERE title = 'Tiefenschwarz';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks \nSET gallery_images = '[\"https://d2xsxph8kpxj0f.cloudfront.net/312\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iFwzTINRPHkqFBuZ.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ykMgjlFOTgWVvDvJ.jpeg\"]'\nWHERE title = 'Tiefenschwarz';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 67
+}
