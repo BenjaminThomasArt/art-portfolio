@@ -127,3 +127,4 @@
 - [x] Implement touch swipe gestures for Gallery carousel navigation
 - [x] Reduce spacing between Gallery images and titles by 50%
 - [x] Change grey background boxes around Gallery images to white
+- [x] Change carousel dot indicators from white to grey for visibility

@@ -78,8 +78,8 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
             }}
             className={`w-2 h-2 rounded-full transition-all ${
               idx === currentIndex
-                ? "bg-white w-6"
-                : "bg-white/50 hover:bg-white/75"
+                ? "bg-gray-800 w-6"
+                : "bg-gray-400 hover:bg-gray-600"
             }`}
             aria-label={`Go to image ${idx + 1}`}
           />
