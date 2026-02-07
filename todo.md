@@ -103,3 +103,4 @@
 - [x] Add 'Chrysalis' as second featured artwork on homepage
 - [x] Update 'View Gallery' button to match 'Follow on Instagram' button style (outline variant)
 - [x] Update Gallery page subtitle to 'Explore more works'
+- [x] Add carousel with two additional images to 'The Subject of Paint' artwork
