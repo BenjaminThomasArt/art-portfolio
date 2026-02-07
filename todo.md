@@ -107,3 +107,4 @@
 - [x] Add carousel to Gallery page grid for 'The Subject of Paint' with all three images
 - [x] Fix third image not showing in Subject of Paint carousel (still not working)
 - [x] Add 3-image carousel to Tiefenschwarz artwork with two detail shots
+- [x] Fix Tiefenschwarz diptych image (both paintings together) not showing in carousel
