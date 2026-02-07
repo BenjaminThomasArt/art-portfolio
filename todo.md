@@ -104,3 +104,4 @@
 - [x] Update 'View Gallery' button to match 'Follow on Instagram' button style (outline variant)
 - [x] Update Gallery page subtitle to 'Explore more works'
 - [x] Add carousel with two additional images to 'The Subject of Paint' artwork
+- [x] Add carousel to Gallery page grid for 'The Subject of Paint' with all three images
