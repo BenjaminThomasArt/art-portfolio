@@ -110,3 +110,4 @@
 - [x] Fix Tiefenschwarz diptych image (both paintings together) not showing in carousel
 - [x] Adjust 'I saw the whole thing' image aspect ratio in Gallery to match compact horizontal format of carousel artworks
 - [x] Add Chrysalis diptych image (both paintings together) as first image in Chrysalis carousel on Gallery page
+- [x] Adjust diptych images (Tiefenschwarz, Candyflip, Chrysalis) in Gallery to show full width without cropping
