@@ -25,7 +25,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <Link href="/">
-            <span className="text-xl font-serif tracking-tight text-foreground hover:opacity-70 transition-opacity">
+            <span className="text-xl font-serif tracking-tight text-[#003153] hover:opacity-70 transition-opacity">
               Benjamin Thomas
             </span>
           </Link>

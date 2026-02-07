@@ -39,7 +39,7 @@ export default function Home() {
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-background/60" />
         <div className="container text-center relative z-10">
-          <h1 className="text-5xl md:text-7xl font-serif tracking-tight mb-6">
+          <h1 className="text-5xl md:text-7xl font-serif tracking-tight mb-6 text-[#003153]">
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">

@@ -138,3 +138,5 @@
 - [x] Reduce FAQ answer text size by 25% and add accordion open/close functionality
 - [x] Remove return policy question from FAQ and replace 'we' with 'I' in all answers
 - [x] Update homepage text to 'Interested in a print?' with lowercase 'p'
+- [ ] Implement availability badges on Gallery items showing 'Available' or 'Sold' status
+- [x] Change 'Benjamin Thomas' text color to Prussian blue on homepage and navigation
