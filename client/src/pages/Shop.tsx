@@ -105,7 +105,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   return (
     <div className="group">
       <div 
-        className="aspect-square overflow-hidden bg-white mb-4 cursor-zoom-in"
+        className="aspect-square overflow-hidden bg-white border border-gray-200 mb-4 cursor-zoom-in"
         onClick={onImageClick}
       >
         <img
