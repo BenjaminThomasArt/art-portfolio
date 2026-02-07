@@ -141,3 +141,4 @@
 - [ ] Implement availability badges on Gallery items showing 'Available' or 'Sold' status
 - [x] Change 'Benjamin Thomas' text color to Prussian blue on homepage and navigation
 - [x] Add FAQ about creative process
+- [x] Change 'Fine art & prints' text to deep maroon color
