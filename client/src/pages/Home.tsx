@@ -47,7 +47,7 @@ export default function Home() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link href="/gallery">
-              <Button size="lg" className="gap-2">
+              <Button size="lg" variant="outline" className="gap-2">
                 View Gallery <ArrowRight size={18} />
               </Button>
             </Link>
