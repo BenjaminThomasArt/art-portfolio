@@ -124,3 +124,4 @@
 - [x] Adjust Contact page background to make face visible again
 - [x] Optimize Contact page background for mobile to match desktop face visibility
 - [x] Fix Gallery carousels not working on mobile devices
+- [x] Implement touch swipe gestures for Gallery carousel navigation

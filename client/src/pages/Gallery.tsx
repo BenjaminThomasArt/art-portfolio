@@ -2,17 +2,11 @@ import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArtworkCarousel } from "@/components/ArtworkCarousel";
 
 export default function Gallery() {
   const { data: artworks, isLoading } = trpc.artworks.getAll.useQuery();
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
-  const [carouselIndices, setCarouselIndices] = useState<Record<number, number>>({});
-
-  const getCarouselIndex = (artworkId: number) => carouselIndices[artworkId] || 0;
-  const setCarouselIndex = (artworkId: number, index: number) => {
-    setCarouselIndices(prev => ({ ...prev, [artworkId]: index }));
-  };
 
   return (
     <div className="py-24">
@@ -33,79 +27,31 @@ export default function Gallery() {
             {artworks.map((artwork) => {
               const galleryImages = artwork.galleryImages ? JSON.parse(artwork.galleryImages as string) : [];
               const hasCarousel = galleryImages.length > 0;
-              const currentIndex = getCarouselIndex(artwork.id);
-              const displayImage = hasCarousel ? galleryImages[currentIndex] : artwork.imageUrl;
-              const totalImages = hasCarousel ? galleryImages.length : 1;
 
               return (
               <div key={artwork.id} className="group">
-                <div className="aspect-[3/4] overflow-hidden bg-muted mb-4 relative">
-                  <div 
-                    className="w-full h-full cursor-zoom-in"
-                    onClick={() => setZoomImage({ src: displayImage, alt: artwork.title })}
-                  >
-                    <img
-                      src={displayImage}
-                      alt={artwork.title}
-                      loading="lazy"
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                    />
+                {hasCarousel ? (
+                  <ArtworkCarousel
+                    artworkId={artwork.id}
+                    galleryImages={galleryImages}
+                    artworkTitle={artwork.title}
+                    onImageClick={(src, alt) => setZoomImage({ src, alt })}
+                  />
+                ) : (
+                  <div className="aspect-[3/4] overflow-hidden bg-muted mb-4 relative">
+                    <div 
+                      className="w-full h-full cursor-zoom-in"
+                      onClick={() => setZoomImage({ src: artwork.imageUrl, alt: artwork.title })}
+                    >
+                      <img
+                        src={artwork.imageUrl}
+                        alt={artwork.title}
+                        loading="lazy"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
                   </div>
-                  
-                  {hasCarousel && (
-                    <>
-                      {/* Carousel Navigation */}
-                      {currentIndex > 0 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setCarouselIndex(artwork.id, currentIndex - 1);
-                          }}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
-                          aria-label="Previous image"
-                        >
-                          <ChevronLeft size={20} />
-                        </button>
-                      )}
-                      {currentIndex < totalImages - 1 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setCarouselIndex(artwork.id, currentIndex + 1);
-                          }}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
-                          aria-label="Next image"
-                        >
-                          <ChevronRight size={20} />
-                        </button>
-                      )}
-                      
-                      {/* Dot Indicators */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                        {Array.from({ length: totalImages }).map((_, idx) => (
-                          <button
-                            key={idx}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCarouselIndex(artwork.id, idx);
-                            }}
-                            className={`w-2 h-2 rounded-full transition-all ${
-                              idx === currentIndex
-                                ? "bg-white w-6"
-                                : "bg-white/50 hover:bg-white/75"
-                            }`}
-                            aria-label={`Go to image ${idx + 1}`}
-                          />
-                        ))}
-                      </div>
-                      
-                      {/* Image Counter */}
-                      <div className="absolute top-3 right-3 bg-black/50 text-white text-xs px-2 py-1 rounded">
-                        {currentIndex + 1} / {totalImages}
-                      </div>
-                    </>
-                  )}
-                </div>
+                )}
                 <Link href={`/artwork/${artwork.id}`}>
                   <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">'{artwork.title}'</h3>
                 </Link>
