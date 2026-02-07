@@ -174,4 +174,15 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+
+  /* Contact page background positioning */
+  .contact-bg {
+    background-position: 20% 35%; /* Mobile: face more centered */
+  }
+
+  @media (min-width: 768px) {
+    .contact-bg {
+      background-position: 30% 35%; /* Desktop: current optimal position */
+    }
+  }
 }

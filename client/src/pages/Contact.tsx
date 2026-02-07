@@ -87,10 +87,9 @@ export default function Contact() {
     <div className="relative min-h-screen py-24">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover opacity-35"
+        className="absolute inset-0 bg-cover opacity-35 contact-bg"
         style={{
-          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png)',
-          backgroundPosition: '30% 35%'
+          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png)'
         }}
       />
       <div className="absolute inset-0 bg-background/70" />
