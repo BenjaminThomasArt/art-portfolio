@@ -4,8 +4,26 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram } from "lucide-react";
 
 export default function Home() {
-  const { data: featuredArtworks, isLoading } = trpc.artworks.getFeatured.useQuery();
   const { data: artistInfo } = trpc.artist.getInfo.useQuery();
+  
+  // Hardcoded featured artworks for homepage
+  const featuredArtworks = [
+    {
+      id: 1,
+      title: 'The Subject of Paint',
+      year: 2026,
+      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/subject-of-paint-1-1769770549126.jpeg',
+      medium: 'Mixed media on PVC board'
+    },
+    {
+      id: 3,
+      title: 'Chrysalis',
+      year: 2026,
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XAbYnsfjzEAaaWmE.jpg',
+      medium: 'Mixed media diptych on canvas'
+    }
+  ];
+  const isLoading = false;
 
   return (
     <div className="flex flex-col">
@@ -74,9 +92,9 @@ export default function Home() {
                       />
                     </div>
                     <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
-                    {artwork.year && (
-                      <p className="text-sm text-muted-foreground">{artwork.year}</p>
-                    )}
+                    <p className="text-sm text-muted-foreground">
+                      {artwork.year}{artwork.medium && ` • ${artwork.medium}`}
+                    </p>
                   </div>
                 </Link>
               ))}

@@ -100,3 +100,4 @@
 - [x] Add single quotation marks to print titles on Shop page
 - [x] Implement lazy loading for all images to improve initial page load performance
 - [x] Preload hero background image on homepage for immediate loading
+- [x] Add 'Chrysalis' as second featured artwork on homepage
