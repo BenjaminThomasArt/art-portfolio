@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%Chrysalis%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%Chrysalis%';",
+  "rows": [
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XAbYnsfjzEAaaWmE.jpg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/EcnUbJqzXwfGNAUv.jpg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xkCFwPGjZLUFxqPc.jpg\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tgallery_images\n3\tChrysalis I & II\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/chrysalis-1769771286048.jpg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XAbYnsfjzEAaaWmE.jpg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/EcnUbJqzXwfGNAUv.jpg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xkCFwPGjZLUFxqPc.jpg\"]\n",
+  "stderr": "",
+  "execution_time_ms": 171
+}
