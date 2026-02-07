@@ -132,3 +132,4 @@
 - [x] Reduce text size under Shop headline and increase horizontal padding by 25%
 - [x] Fix Portmanteau and One way or another images to show full paintings without cropping
 - [x] Add subtle border to Shop page print containers
+- [x] Add light grey border to Gallery artwork containers for consistency

@@ -28,7 +28,7 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
   });
 
   return (
-    <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-white mb-2 relative">
+    <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-white border border-gray-200 mb-2 relative">
       <div 
         className="w-full h-full cursor-zoom-in"
         onClick={() => onImageClick(displayImage, artworkTitle)}
