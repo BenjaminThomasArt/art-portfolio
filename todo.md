@@ -173,3 +173,6 @@
 - [x] Add Vercel configuration file (vercel.json)
 - [x] Create environment variables documentation for Vercel deployment
 - [x] Create step-by-step deployment guide
+- [x] Fix Vercel deployment to use serverless function for Express backend
+- [x] Create api/index.ts serverless handler
+- [x] Update vercel.json with correct routing
