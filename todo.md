@@ -148,3 +148,4 @@
 - [x] Add red dot to 'Chrysalis I & II' artwork
 - [x] Reorder Gallery to place Candyflip above Tiefenschwarz
 - [x] Implement drag-and-drop interface for reordering artworks in Gallery
+- [x] Change 'Fine art & prints' text to lighter pink color
