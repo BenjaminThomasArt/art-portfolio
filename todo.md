@@ -151,3 +151,4 @@
 - [x] Change 'Fine art & prints' text to lighter pink color
 - [x] Improve readability of 'Fine art & prints' text on homepage
 - [x] Center-align Featured Works content on desktop version
+- [x] Add 'I Saw the Whole Thing' to Shop section

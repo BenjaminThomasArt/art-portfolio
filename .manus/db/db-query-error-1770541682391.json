@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO prints (artwork_id, title, description, base_price, image_url, detail_image_url, created_at) \nVALUES (\n  (SELECT id FROM artworks WHERE title = 'I Saw the Whole Thing'),\n  'I Saw the Whole Thing',\n  'High-quality giclée print on archival paper',\n  150.00,\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cpxzAhHzcFNffAjU.png',\n  NOW()\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (artwork_id, title, description, base_price, image_url, detail_image_url, created_at) \nVALUES (\n  (SELECT id FROM artworks WHERE title = 'I Saw the Whole Thing'),\n  'I Saw the Whole Thing',\n  'High-quality giclée print on archival paper',\n  150.00,\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cpxzAhHzcFNffAjU.png',\n  NOW()\n);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'artwork_id' in 'field list'"
+  ]
+}

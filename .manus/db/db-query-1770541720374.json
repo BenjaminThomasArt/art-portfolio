@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order, created_at, updated_at) \nVALUES (\n  'I Saw the Whole Thing',\n  'High-quality giclée print on archival paper',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png',\n  'i-saw-the-whole-thing',\n  'Available in A3 and A2',\n  '£150',\n  1,\n  30,\n  NOW(),\n  NOW()\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, image_url, image_key, size_info, price, available, display_order, created_at, updated_at) \nVALUES (\n  'I Saw the Whole Thing',\n  'High-quality giclée print on archival paper',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png',\n  'i-saw-the-whole-thing',\n  'Available in A3 and A2',\n  '£150',\n  1,\n  30,\n  NOW(),\n  NOW()\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 61
+}
