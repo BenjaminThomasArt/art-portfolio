@@ -189,7 +189,29 @@ export async function upsertArtistInfo(info: InsertArtistInfo) {
 export async function getAllPrints() {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(prints).where(eq(prints.available, 1)).orderBy(prints.displayOrder, prints.createdAt);
+  
+  // Join with artworks to get gallery_images
+  const result = await db
+    .select({
+      id: prints.id,
+      title: prints.title,
+      description: prints.description,
+      imageUrl: prints.imageUrl,
+      imageKey: prints.imageKey,
+      price: prints.price,
+      sizeInfo: prints.sizeInfo,
+      available: prints.available,
+      displayOrder: prints.displayOrder,
+      createdAt: prints.createdAt,
+      galleryImages: prints.galleryImages,
+      artworkGalleryImages: artworks.galleryImages,
+    })
+    .from(prints)
+    .leftJoin(artworks, eq(prints.title, artworks.title))
+    .where(eq(prints.available, 1))
+    .orderBy(prints.displayOrder, prints.createdAt);
+  
+  return result;
 }
 
 export async function getPrintById(id: number) {

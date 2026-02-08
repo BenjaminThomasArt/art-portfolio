@@ -1,0 +1,25 @@
+{
+  "query": "SELECT p.title as print_title, a.title as artwork_title, a.gallery_images \nFROM prints p \nLEFT JOIN artworks a ON p.title = a.title \nLIMIT 3;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT p.title as print_title, a.title as artwork_title, a.gallery_images \nFROM prints p \nLEFT JOIN artworks a ON p.title = a.title \nLIMIT 3;",
+  "rows": [
+    {
+      "print_title": "The Subject of Paint",
+      "artwork_title": "The Subject of Paint",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg\"]"
+    },
+    {
+      "print_title": "Portmanteau",
+      "artwork_title": "NULL",
+      "gallery_images": "NULL"
+    },
+    {
+      "print_title": "One way or another",
+      "artwork_title": "NULL",
+      "gallery_images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "print_title\tartwork_title\tgallery_images\nThe Subject of Paint\tThe Subject of Paint\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg\"]\nPortmanteau\tNULL\tNULL\nOne way or another\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 69
+}

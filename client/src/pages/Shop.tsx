@@ -85,13 +85,28 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   
   // Build array of all images (main + gallery)
+  // Prioritize artwork gallery images from Gallery section, fallback to print-specific gallery
   const allImages = [print.imageUrl];
-  if (print.galleryImages) {
+  
+  // First try to use artwork gallery images (from Gallery section)
+  if (print.artworkGalleryImages) {
+    try {
+      const artworkGalleryArray = JSON.parse(print.artworkGalleryImages);
+      if (artworkGalleryArray && artworkGalleryArray.length > 0) {
+        allImages.push(...artworkGalleryArray);
+      }
+    } catch (e) {
+      console.error('Failed to parse artwork gallery images:', e);
+    }
+  }
+  
+  // If no artwork gallery images, use print-specific gallery images
+  if (allImages.length === 1 && print.galleryImages) {
     try {
       const galleryArray = JSON.parse(print.galleryImages);
       allImages.push(...galleryArray);
     } catch (e) {
-      console.error('Failed to parse gallery images:', e);
+      console.error('Failed to parse print gallery images:', e);
     }
   }
   
