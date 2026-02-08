@@ -1,17 +1,23 @@
 {
   "version": 2,
-  "installCommand": "pnpm install",
-  "buildCommand": "vite build && esbuild api/index.ts --platform=node --packages=external --bundle --format=esm --outdir=api-dist",
-  "outputDirectory": "dist/public",
-  "functions": {
-    "api/index.ts": {
-      "runtime": "@vercel/node@3.0.0"
+  "builds": [
+    {
+      "src": "api/index.mjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/public"
+      }
     }
-  },
-  "rewrites": [
-    { "source": "/api/trpc/:path*", "destination": "/api" },
-    { "source": "/api/oauth/:path*", "destination": "/api" },
-    { "source": "/api/health", "destination": "/api" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "routes": [
+    { "src": "/api/trpc/(.*)", "dest": "/api/index.mjs" },
+    { "src": "/api/oauth/(.*)", "dest": "/api/index.mjs" },
+    { "src": "/api/health", "dest": "/api/index.mjs" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
