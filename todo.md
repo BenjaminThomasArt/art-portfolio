@@ -157,3 +157,4 @@
 - [x] Update carousel second image to use correct detail image
 - [x] Add Gallery-style carousel to Shop section to display artwork image galleries
 - [x] Remove duplicate first image from 'The Subject of Paint' carousel
+- [ ] Match Tiefenschwartz carousel images between Gallery and Shop sections

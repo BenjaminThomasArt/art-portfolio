@@ -1,0 +1,18 @@
+{
+  "query": "SELECT 'artwork' as source, title FROM artworks WHERE title LIKE '%Tiefen%' UNION SELECT 'print' as source, title FROM prints WHERE title LIKE '%Tiefen%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT 'artwork' as source, title FROM artworks WHERE title LIKE '%Tiefen%' UNION SELECT 'print' as source, title FROM prints WHERE title LIKE '%Tiefen%';",
+  "rows": [
+    {
+      "source": "artwork",
+      "title": "Tiefenschwarz"
+    },
+    {
+      "source": "print",
+      "title": "'Tiefenschwarz'"
+    }
+  ],
+  "messages": [],
+  "stdout": "source\ttitle\nartwork\tTiefenschwarz\nprint\t'Tiefenschwarz'\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

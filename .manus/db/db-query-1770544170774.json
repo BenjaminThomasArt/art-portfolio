@@ -1,0 +1,13 @@
+{
+  "query": "SELECT title FROM prints WHERE title LIKE '%Tiefen%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT title FROM prints WHERE title LIKE '%Tiefen%';",
+  "rows": [
+    {
+      "title": "Tiefenschwartz"
+    }
+  ],
+  "messages": [],
+  "stdout": "title\nTiefenschwartz\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}
