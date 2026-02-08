@@ -163,3 +163,9 @@
 - [x] Update database schema to mark prints as diptychs
 - [x] Implement UI for panel selection (Both panels / Left panel only / Right panel only)
 - [x] Adjust pricing display based on panel selection
+
+- [x] Improve carousel swiping smoothness with momentum scrolling
+- [x] Add smooth slide transitions with easing animations
+- [x] Implement swipe velocity detection for natural flick gestures
+- [x] Add visual feedback during swipe (image follows finger)
+- [x] Improve touch responsiveness and reduce lag

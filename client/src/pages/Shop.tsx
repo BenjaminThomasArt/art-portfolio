@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
+import { useSwipe } from "@/hooks/useSwipe";
 import {
   Select,
   SelectContent,
@@ -84,6 +85,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   const [size, setSize] = useState<string>("80x60");
   const [panelSelection, setPanelSelection] = useState<string>("both"); // both, left, right
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [isZoomClick, setIsZoomClick] = useState(false);
   
   const isDiptych = print.isDiptych === 1;
   
@@ -128,6 +130,21 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
   };
+  
+  const { ref: swipeRef, dragOffset, isDragging } = useSwipe({
+    onSwipeLeft: () => {
+      if (currentImageIndex < allImages.length - 1) {
+        nextImage();
+      }
+    },
+    onSwipeRight: () => {
+      if (currentImageIndex > 0) {
+        prevImage();
+      }
+    },
+    onSwipeStart: () => setIsZoomClick(false),
+    onSwipeEnd: () => setTimeout(() => setIsZoomClick(true), 100)
+  });
 
   // Price mapping based on size
   const priceMap: Record<string, string> = {
@@ -156,19 +173,23 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
 
   return (
     <div className="group">
-      <div className="relative aspect-square overflow-hidden bg-white border border-gray-200 mb-4">
+      <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-white border border-gray-200 mb-4 relative group">
         <div 
           className="w-full h-full cursor-zoom-in"
-          onClick={onImageClick}
+          onClick={() => isZoomClick && !isDragging && onImageClick()}
+          style={{
+            transform: `translateX(${dragOffset}px)`,
+            transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+          }}
         >
           <img
             src={currentImage}
             alt={print.title}
             loading="lazy"
             className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            style={{ pointerEvents: isDragging ? 'none' : 'auto' }}
           />
-        </div>
-        
+        </div>      
         {hasMultipleImages && (
           <>
             {/* Previous Button */}

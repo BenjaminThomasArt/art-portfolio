@@ -14,7 +14,7 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
   const totalImages = galleryImages.length;
   const displayImage = galleryImages[currentIndex];
 
-  const swipeRef = useSwipe({
+  const { ref: swipeRef, dragOffset, isDragging } = useSwipe({
     onSwipeLeft: () => {
       if (currentIndex < totalImages - 1) {
         setCurrentIndex(currentIndex + 1);
@@ -31,13 +31,18 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
     <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-white border border-gray-200 mb-2 relative">
       <div 
         className="w-full h-full cursor-zoom-in"
-        onClick={() => onImageClick(displayImage, artworkTitle)}
+        onClick={() => !isDragging && onImageClick(displayImage, artworkTitle)}
+        style={{
+          transform: `translateX(${dragOffset}px)`,
+          transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
       >
         <img
           src={displayImage}
           alt={artworkTitle}
           loading="lazy"
           className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          style={{ pointerEvents: isDragging ? 'none' : 'auto' }}
         />
       </div>
       
@@ -76,7 +81,7 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
               e.stopPropagation();
               setCurrentIndex(idx);
             }}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
               idx === currentIndex
                 ? "bg-gray-800 w-6"
                 : "bg-gray-400 hover:bg-gray-600"
