@@ -169,3 +169,7 @@
 - [x] Implement swipe velocity detection for natural flick gestures
 - [x] Add visual feedback during swipe (image follows finger)
 - [x] Improve touch responsiveness and reduce lag
+
+- [x] Add Vercel configuration file (vercel.json)
+- [x] Create environment variables documentation for Vercel deployment
+- [x] Create step-by-step deployment guide
