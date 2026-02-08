@@ -150,3 +150,4 @@
 - [x] Implement drag-and-drop interface for reordering artworks in Gallery
 - [x] Change 'Fine art & prints' text to lighter pink color
 - [x] Improve readability of 'Fine art & prints' text on homepage
+- [x] Center-align Featured Works content on desktop version
