@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "framework": null,
+  "buildCommand": "vite build",
+  "outputDirectory": "dist/public",
   "functions": {
     "api/index.ts": {
       "runtime": "@vercel/node@3",
@@ -10,8 +10,8 @@
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/((?!api).*)", "destination": "/dist/public/$1" }
-  ],
-  "outputDirectory": "dist/public"
+    { "source": "/api/oauth/:path*", "destination": "/api" },
+    { "source": "/api/trpc/:path*", "destination": "/api" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
 }
