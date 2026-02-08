@@ -154,3 +154,4 @@
 - [x] Add 'I Saw the Whole Thing' to Shop section
 - [x] Update 'I Saw the Whole Thing' print to use detail image and remove standalone price
 - [x] Add carousel functionality to Shop print section for multiple images
+- [x] Update carousel second image to use correct detail image
