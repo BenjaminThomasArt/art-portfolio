@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE prints \nSET gallery_images = '[\\\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cpxzAhHzcFNffAjU.png\\\"]' \nWHERE title = 'I Saw the Whole Thing';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE prints \nSET gallery_images = '[\\\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cpxzAhHzcFNffAjU.png\\\"]' \nWHERE title = 'I Saw the Whole Thing';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 92
+}

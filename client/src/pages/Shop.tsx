@@ -82,6 +82,29 @@ export default function Shop() {
 function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => void }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  
+  // Build array of all images (main + gallery)
+  const allImages = [print.imageUrl];
+  if (print.galleryImages) {
+    try {
+      const galleryArray = JSON.parse(print.galleryImages);
+      allImages.push(...galleryArray);
+    } catch (e) {
+      console.error('Failed to parse gallery images:', e);
+    }
+  }
+  
+  const hasMultipleImages = allImages.length > 1;
+  const currentImage = allImages[currentImageIndex];
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
 
   // Price mapping based on size
   const priceMap: Record<string, string> = {
@@ -104,16 +127,63 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
 
   return (
     <div className="group">
-      <div 
-        className="aspect-square overflow-hidden bg-white border border-gray-200 mb-4 cursor-zoom-in"
-        onClick={onImageClick}
-      >
-        <img
-          src={print.imageUrl}
-          alt={print.title}
-          loading="lazy"
-          className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        />
+      <div className="relative aspect-square overflow-hidden bg-white border border-gray-200 mb-4">
+        <div 
+          className="w-full h-full cursor-zoom-in"
+          onClick={onImageClick}
+        >
+          <img
+            src={currentImage}
+            alt={print.title}
+            loading="lazy"
+            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          />
+        </div>
+        
+        {hasMultipleImages && (
+          <>
+            {/* Previous Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+            
+            {/* Next Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+              aria-label="Next image"
+            >
+              ›
+            </button>
+            
+            {/* Image Indicators */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {allImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex(index);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  aria-label={`View image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       
       <div className="space-y-3">

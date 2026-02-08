@@ -36,6 +36,13 @@
       "when": 1769870399345,
       "tag": "0004_dashing_alex_power",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1770542667852,
+      "tag": "0005_cooing_mandroid",
+      "breakpoints": true
     }
   ]
 }

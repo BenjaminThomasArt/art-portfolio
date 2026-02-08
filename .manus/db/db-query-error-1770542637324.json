@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, title, image_url, detail_image_url FROM prints WHERE title = 'I Saw the Whole Thing';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, detail_image_url FROM prints WHERE title = 'I Saw the Whole Thing';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'detail_image_url' in 'field list'"
+  ]
+}

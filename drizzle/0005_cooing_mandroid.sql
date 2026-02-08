@@ -1,0 +1,1 @@
+ALTER TABLE `prints` ADD `gallery_images` text;

@@ -100,6 +100,7 @@ export const prints = mysqlTable("prints", {
   description: text("description"),
   imageUrl: text("image_url").notNull(),
   imageKey: varchar("image_key", { length: 512 }).notNull(),
+  galleryImages: text("gallery_images"), // JSON array of additional image URLs for carousel
   sizeInfo: varchar("size_info", { length: 255 }), // e.g., "Available in custom sizes", "A3 only", etc.
   price: varchar("price", { length: 50 }), // Optional - can be null if custom pricing
   available: int("available").default(1).notNull(), // 0 = unavailable, 1 = available
