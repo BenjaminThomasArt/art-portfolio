@@ -82,7 +82,10 @@ export default function Shop() {
 function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => void }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
+  const [panelSelection, setPanelSelection] = useState<string>("both"); // both, left, right
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  
+  const isDiptych = print.isDiptych === 1;
   
   // Build array of all images
   // Prioritize artwork gallery images from Gallery section (which already include the main image)
@@ -133,14 +136,20 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
     "custom": "Contact for pricing"
   };
 
-  const currentPrice = priceMap[size] || "Contact for pricing";
+  // Calculate price based on panel selection for diptychs
+  let currentPrice = priceMap[size] || "Contact for pricing";
+  if (isDiptych && panelSelection === "both" && currentPrice.startsWith("£")) {
+    const singlePrice = parseInt(currentPrice.replace("£", ""));
+    currentPrice = `£${singlePrice * 2}`;
+  }
 
   const handleOrder = () => {
     // Build query params with selected options
     const params = new URLSearchParams({
       printTitle: print.title,
       material: material,
-      size: size
+      size: size,
+      ...(isDiptych && { panels: panelSelection })
     });
     window.location.href = `/contact?${params.toString()}`;
   };
@@ -247,10 +256,29 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
           </Select>
         </div>
 
+        {/* Diptych Panel Selector - only show for diptychs */}
+        {isDiptych && (
+          <div className="space-y-1">
+            <label className="text-sm font-medium">Panels</label>
+            <Select value={panelSelection} onValueChange={setPanelSelection}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select panels" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="both">Both panels (set)</SelectItem>
+                <SelectItem value="left">Left panel only</SelectItem>
+                <SelectItem value="right">Right panel only</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
         {/* Price Display */}
         <div className="pt-2 pb-1 border-t border-border">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Price (per piece):</span>
+            <span className="text-sm text-muted-foreground">
+              {isDiptych && panelSelection === "both" ? "Total price:" : "Price (per piece):"}
+            </span>
             <span className="text-xl font-serif">{currentPrice}</span>
           </div>
         </div>

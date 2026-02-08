@@ -201,6 +201,7 @@ export async function getAllPrints() {
       price: prints.price,
       sizeInfo: prints.sizeInfo,
       available: prints.available,
+      isDiptych: prints.isDiptych,
       displayOrder: prints.displayOrder,
       createdAt: prints.createdAt,
       galleryImages: prints.galleryImages,

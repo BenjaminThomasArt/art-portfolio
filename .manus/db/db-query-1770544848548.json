@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, is_diptych FROM prints;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, is_diptych FROM prints;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "is_diptych": "0"
+    },
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "is_diptych": "0"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "is_diptych": "0"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "is_diptych": "0"
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "is_diptych": "0"
+    },
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "is_diptych": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tis_diptych\n1\tThe Subject of Paint\t0\n30001\tPortmanteau\t0\n30002\tOne way or another\t0\n30003\tTiefenschwarz\t0\n30004\tCandyflip\t0\n60001\tI Saw the Whole Thing\t0\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

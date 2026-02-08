@@ -157,4 +157,9 @@
 - [x] Update carousel second image to use correct detail image
 - [x] Add Gallery-style carousel to Shop section to display artwork image galleries
 - [x] Remove duplicate first image from 'The Subject of Paint' carousel
-- [ ] Match Tiefenschwartz carousel images between Gallery and Shop sections
+- [x] Match Tiefenschwartz carousel images between Gallery and Shop sections
+- [x] Add diptych panel selection functionality to Shop section
+- [x] Allow customers to choose between full set or individual panels for diptychs
+- [x] Update database schema to mark prints as diptychs
+- [x] Implement UI for panel selection (Both panels / Left panel only / Right panel only)
+- [x] Adjust pricing display based on panel selection
