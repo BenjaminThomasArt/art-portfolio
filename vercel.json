@@ -5,7 +5,8 @@
   "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
   "functions": {
     "api/index.mjs": {
-      "runtime": "@vercel/node@5"
+      "memory": 256,
+      "maxDuration": 10
     }
   },
   "rewrites": [
