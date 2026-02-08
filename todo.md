@@ -176,3 +176,4 @@
 - [x] Fix Vercel deployment to use serverless function for Express backend
 - [x] Create api/index.ts serverless handler
 - [x] Update vercel.json with correct routing
+- [ ] Fix broken images on Gallery and Shop pages on live Vercel deployment
