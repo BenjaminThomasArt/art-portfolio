@@ -152,3 +152,4 @@
 - [x] Improve readability of 'Fine art & prints' text on homepage
 - [x] Center-align Featured Works content on desktop version
 - [x] Add 'I Saw the Whole Thing' to Shop section
+- [x] Update 'I Saw the Whole Thing' print to use detail image and remove standalone price
