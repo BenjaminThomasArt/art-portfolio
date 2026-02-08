@@ -84,16 +84,16 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   const [size, setSize] = useState<string>("80x60");
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   
-  // Build array of all images (main + gallery)
-  // Prioritize artwork gallery images from Gallery section, fallback to print-specific gallery
-  const allImages = [print.imageUrl];
+  // Build array of all images
+  // Prioritize artwork gallery images from Gallery section (which already include the main image)
+  let allImages: string[] = [];
   
   // First try to use artwork gallery images (from Gallery section)
   if (print.artworkGalleryImages) {
     try {
       const artworkGalleryArray = JSON.parse(print.artworkGalleryImages);
       if (artworkGalleryArray && artworkGalleryArray.length > 0) {
-        allImages.push(...artworkGalleryArray);
+        allImages = artworkGalleryArray;
       }
     } catch (e) {
       console.error('Failed to parse artwork gallery images:', e);
@@ -101,13 +101,18 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   }
   
   // If no artwork gallery images, use print-specific gallery images
-  if (allImages.length === 1 && print.galleryImages) {
+  if (allImages.length === 0 && print.galleryImages) {
     try {
       const galleryArray = JSON.parse(print.galleryImages);
-      allImages.push(...galleryArray);
+      allImages = galleryArray;
     } catch (e) {
       console.error('Failed to parse print gallery images:', e);
     }
+  }
+  
+  // Fallback to main image if no gallery images
+  if (allImages.length === 0) {
+    allImages = [print.imageUrl];
   }
   
   const hasMultipleImages = allImages.length > 1;

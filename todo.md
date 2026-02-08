@@ -156,3 +156,4 @@
 - [x] Add carousel functionality to Shop print section for multiple images
 - [x] Update carousel second image to use correct detail image
 - [x] Add Gallery-style carousel to Shop section to display artwork image galleries
+- [x] Remove duplicate first image from 'The Subject of Paint' carousel
