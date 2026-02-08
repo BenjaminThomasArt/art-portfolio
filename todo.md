@@ -176,4 +176,12 @@
 - [x] Fix Vercel deployment to use serverless function for Express backend
 - [x] Create api/index.ts serverless handler
 - [x] Update vercel.json with correct routing
-- [ ] Fix broken images on Gallery and Shop pages on live Vercel deployment
+- [x] Fix broken images on Gallery and Shop pages on live Vercel deployment
+
+## Email Setup
+- [x] Set up Zoho Mail for benjaminthomas.art domain (cancelled - using mail.com instead)
+- [x] Configure MX, SPF, DKIM DNS records for email delivery (cancelled)
+- [x] Create info@benjaminthomas.art email account with "Benjamin Thomas" sender name (cancelled)
+- [x] Set up email notification for contact form submissions to benjaminthomasart@mail.com (using Manus notifications instead)
+- [x] Update Contact page email from info@benjaminthomas.art to benjaminthomasart@mail.com
+- [x] Clean up unused SMTP code

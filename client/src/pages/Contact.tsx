@@ -193,13 +193,13 @@ export default function Contact() {
 
               {/* Email */}
               <a
-                href="mailto:info@benjaminthomas.art"
+                href="mailto:benjaminthomasart@mail.com"
                 className="flex items-center gap-3 p-4 border border-border rounded-lg hover:bg-accent transition-colors group"
               >
                 <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
                 <div className="text-left">
                   <div className="text-sm font-medium">Email</div>
-                  <div className="text-sm text-muted-foreground">info@benjaminthomas.art</div>
+                  <div className="text-sm text-muted-foreground">benjaminthomasart@mail.com</div>
                 </div>
               </a>
             </div>

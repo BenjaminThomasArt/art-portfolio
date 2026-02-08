@@ -104,7 +104,7 @@ export const appRouter = router({
           artworkId: input.artworkId || null,
         });
 
-        // Notify owner of new inquiry
+        // Notify owner via Manus notification system
         await notifyOwner({
           title: `New ${input.type} inquiry`,
           content: `From: ${input.name} (${input.email})\nMessage: ${input.message}`,
