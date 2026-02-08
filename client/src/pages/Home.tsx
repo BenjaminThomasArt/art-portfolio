@@ -42,7 +42,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-serif tracking-tight mb-6 text-[#003153]">
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#E8B4C8]">
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#D87093]">
             Fine art & prints
           </p>
           <div className="flex items-center justify-center gap-4">
