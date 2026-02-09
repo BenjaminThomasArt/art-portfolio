@@ -93,11 +93,11 @@ export default function About() {
             {/* Profile Image */}
             {artistInfo?.profileImageUrl && (
               <div className="md:col-span-1 flex justify-center md:justify-start">
-                <div className="aspect-square bg-muted overflow-hidden w-3/4 rounded-lg">
+                <div className="bg-muted overflow-hidden w-3/4 rounded-lg" style={{ aspectRatio: '3/4' }}>
                   <img
                     src={artistInfo.profileImageUrl}
                     alt={artistInfo.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
               </div>

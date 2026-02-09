@@ -192,3 +192,4 @@
 - [x] Replace 'Subject of Paint' featured image on homepage with new user-provided image
 - [x] Add new image as first carousel image for 'I Saw the Whole Thing' print on Shop page
 - [x] Remove black border around profile image on About page
+- [x] Adjust About page profile image cropping so headphones are not cropped on desktop
