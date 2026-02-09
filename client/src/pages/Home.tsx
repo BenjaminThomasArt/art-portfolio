@@ -85,7 +85,7 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="aspect-square overflow-hidden bg-muted mb-4">
                       <img
-                        src={artwork.imageUrl}
+                        src={artwork.title === 'The Subject of Paint' ? 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/AIFzVznJcNdkQTyi.PNG' : artwork.imageUrl}
                         alt={artwork.title}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

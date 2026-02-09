@@ -189,3 +189,4 @@
 - [x] Verify live site shows benjaminthomasart@mail.com
 - [x] Change Contact page email from benjaminthomasart@mail.com to benjaminthomas_art@mail.com
 - [x] Make 'Fine art & prints' text on homepage a lighter, more delicate font weight
+- [x] Replace 'Subject of Paint' featured image on homepage with new user-provided image
