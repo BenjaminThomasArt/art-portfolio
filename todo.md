@@ -188,3 +188,4 @@
 - [x] Deploy updated contact email to Vercel production via CLI
 - [x] Verify live site shows benjaminthomasart@mail.com
 - [x] Change Contact page email from benjaminthomasart@mail.com to benjaminthomas_art@mail.com
+- [x] Make 'Fine art & prints' text on homepage a lighter, more delicate font weight
