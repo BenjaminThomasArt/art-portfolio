@@ -185,3 +185,6 @@
 - [x] Set up email notification for contact form submissions to benjaminthomasart@mail.com (using Manus notifications instead)
 - [x] Update Contact page email from info@benjaminthomas.art to benjaminthomasart@mail.com
 - [x] Clean up unused SMTP code
+- [x] Deploy updated contact email to Vercel production via CLI
+- [x] Verify live site shows benjaminthomasart@mail.com
+- [x] Change Contact page email from benjaminthomasart@mail.com to benjaminthomas_art@mail.com
