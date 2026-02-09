@@ -196,3 +196,4 @@
 - [x] Make About page profile image more square (5:6 aspect ratio)
 - [x] Make all page headers Prussian blue (#003153) on desktop and mobile
 - [x] Add more spacing underneath painting names on Gallery page
+- [x] Reduce spacing between painting title and date/medium on Gallery page by a third
