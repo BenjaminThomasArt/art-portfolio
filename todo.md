@@ -200,3 +200,4 @@
 - [x] Rename 'Gallery' to 'Originals' across all sections, navigation, and references
 - [x] Rename 'Shop' to 'Prints' across all sections, navigation, and references
 - [x] Add new 'Upcycles' page with 'Coming soon' placeholder between Prints and About
+- [x] Update homepage tagline from 'Fine art & prints' to 'Fine art & more'
