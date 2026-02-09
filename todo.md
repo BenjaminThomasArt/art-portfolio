@@ -197,3 +197,6 @@
 - [x] Make all page headers Prussian blue (#003153) on desktop and mobile
 - [x] Add more spacing underneath painting names on Gallery page
 - [x] Reduce spacing between painting title and date/medium on Gallery page by a third
+- [x] Rename 'Gallery' to 'Originals' across all sections, navigation, and references
+- [x] Rename 'Shop' to 'Prints' across all sections, navigation, and references
+- [x] Add new 'Upcycles' page with 'Coming soon' placeholder between Prints and About

@@ -117,7 +117,7 @@ export default function ArtworkDetail() {
         <div className="container text-center">
           <h1 className="text-3xl font-serif mb-4">Artwork not found</h1>
           <Link href="/gallery">
-            <Button variant="outline">Back to Gallery</Button>
+            <Button variant="outline">Back to Originals</Button>
           </Link>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function ArtworkDetail() {
       <div className="container">
         <Link href="/gallery">
           <Button variant="ghost" className="mb-8 gap-2">
-            <ArrowLeft size={18} /> Back to Gallery
+            <ArrowLeft size={18} /> Back to Originals
           </Button>
         </Link>
 
