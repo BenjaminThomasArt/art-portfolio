@@ -1,0 +1,25 @@
+{
+  "query": "SELECT * FROM prints WHERE title LIKE '%saw%' OR title LIKE '%Saw%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT * FROM prints WHERE title LIKE '%saw%' OR title LIKE '%Saw%';",
+  "rows": [
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "description": "High-quality giclée print on archival paper",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png",
+      "image_key": "i-saw-the-whole-thing",
+      "size_info": "Available in A3 and A2",
+      "price": "NULL",
+      "available": "1",
+      "display_order": "30",
+      "created_at": "2026-02-08 09:08:40",
+      "updated_at": "2026-02-08 09:28:35",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/llMMEtkAknyoDoAv.png\"]",
+      "is_diptych": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdescription\timage_url\timage_key\tsize_info\tprice\tavailable\tdisplay_order\tcreated_at\tupdated_at\tgallery_images\tis_diptych\n60001\tI Saw the Whole Thing\tHigh-quality giclée print on archival paper\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xdrWBekIUEKcStrG.png\ti-saw-the-whole-thing\tAvailable in A3 and A2\tNULL\t1\t30\t2026-02-08 09:08:40\t2026-02-08 09:28:35\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/llMMEtkAknyoDoAv.png\"]\t0\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

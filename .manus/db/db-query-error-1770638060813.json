@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, title, imageUrl, images FROM prints WHERE title LIKE '%saw%' OR title LIKE '%Saw%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, imageUrl, images FROM prints WHERE title LIKE '%saw%' OR title LIKE '%Saw%';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'imageurl' in 'field list'"
+  ]
+}
