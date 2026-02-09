@@ -85,7 +85,7 @@ function SortableArtwork({ artwork, isEditMode, onImageClick }: SortableArtworkP
       )}
       <div className="flex items-center gap-2">
         <Link href={`/artwork/${artwork.id}`}>
-          <h3 className="text-lg font-serif mb-1 hover:underline cursor-pointer">'{artwork.title}'</h3>
+          <h3 className="text-lg font-serif mb-3 hover:underline cursor-pointer">'{artwork.title}'</h3>
         </Link>
         {artwork.available === 'sold' && (
           <div className="w-2.5 h-2.5 bg-red-600 rounded-full flex-shrink-0" title="Sold" />
