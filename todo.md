@@ -193,3 +193,4 @@
 - [x] Add new image as first carousel image for 'I Saw the Whole Thing' print on Shop page
 - [x] Remove black border around profile image on About page
 - [x] Adjust About page profile image cropping so headphones are not cropped on desktop
+- [x] Make About page profile image more square (5:6 aspect ratio)
