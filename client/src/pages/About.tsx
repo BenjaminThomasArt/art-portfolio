@@ -93,7 +93,7 @@ export default function About() {
             {/* Profile Image */}
             {artistInfo?.profileImageUrl && (
               <div className="md:col-span-1 flex justify-center md:justify-start">
-                <div className="aspect-square bg-muted overflow-hidden w-3/4 border border-black rounded-lg">
+                <div className="aspect-square bg-muted overflow-hidden w-3/4 rounded-lg">
                   <img
                     src={artistInfo.profileImageUrl}
                     alt={artistInfo.name}
