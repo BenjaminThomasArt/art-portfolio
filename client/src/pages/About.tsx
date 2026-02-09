@@ -85,7 +85,7 @@ export default function About() {
     <div className="py-24">
       <div className="container">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-12 text-center text-[#003153]">
             About the Artist
           </h1>
 
@@ -105,7 +105,7 @@ export default function About() {
 
             {/* Bio */}
             <div className={artistInfo?.profileImageUrl ? "md:col-span-2" : "md:col-span-3"}>
-              <h2 className="text-2xl font-serif mb-4">
+              <h2 className="text-2xl font-serif mb-4 text-[#003153]">
                 {artistInfo?.name || "Benjamin Thomas"}
               </h2>
               <div className="prose prose-lg max-w-none">

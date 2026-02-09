@@ -98,7 +98,7 @@ export default function Contact() {
       <div className="container relative z-10">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4">Get in Touch</h1>
+            <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4 text-[#003153]">Get in Touch</h1>
             <p className="text-lg text-muted-foreground">
               Have a question or interested in commissioning a piece? I'd love to hear from you.
             </p>

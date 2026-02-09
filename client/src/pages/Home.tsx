@@ -68,7 +68,7 @@ export default function Home() {
       <section className="py-24">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4">Featured Works</h2>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4 text-[#003153]">Featured Works</h2>
             <p className="text-muted-foreground">A selection of recent pieces</p>
           </div>
 
@@ -118,7 +118,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 bg-muted/30">
         <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6 text-[#003153]">
             Interested in a print?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
