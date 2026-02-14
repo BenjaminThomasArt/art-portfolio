@@ -6,6 +6,7 @@ const upcycleArtworks = [
   {
     id: 1,
     title: "Pre & Post",
+    description: 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"',
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BuDNLXqkpRNyTRgX.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/kozKpAhIvAcgYroL.jpeg",
@@ -15,6 +16,7 @@ const upcycleArtworks = [
   {
     id: 2,
     title: "Do You Wanna Dance",
+    description: 'Upcycled vintage LP triptych, 3 x 12"x12"',
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/CuRLZscWwxTUWdoG.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xLMzCLgwUiGZIvZV.jpeg",
@@ -44,6 +46,7 @@ export default function Upcycles() {
                 onImageClick={(src, alt) => setZoomImage({ src, alt })}
               />
               <h3 className="text-lg font-serif mb-2">'{artwork.title}'</h3>
+              <p className="text-sm text-muted-foreground">{artwork.description}</p>
             </div>
           ))}
         </div>
