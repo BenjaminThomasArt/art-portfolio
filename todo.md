@@ -239,3 +239,4 @@
 - [x] Remove white border (extended background) from Portmanteau and One way or another in Prints
 - [x] Apply shadow cleanup to 'I Saw the Whole Thing' print and revert to original dimensions
 - [x] Draft alternative About section summary based on artist's statement
+- [x] Update About section bio with Option C, rename to 'upcycled' series
