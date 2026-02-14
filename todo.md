@@ -214,3 +214,4 @@
 - [x] Add 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"' to Pre & Post
 - [x] Add 'Upcycled vintage LP triptych, 3 x 12"x12"' to Do You Wanna Dance
 - [x] Update Upcycles subtitle with intro text about salvaged vinyl records
+- [x] Reduce Upcycles intro text size by a third (text-lg to text-sm)
