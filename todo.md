@@ -237,3 +237,5 @@
 - [x] Fix beige colouring in top-left corner of 'One way or another' in Prints section
 - [x] Lighten shadow in top-left corner of Portmanteau in Prints section
 - [x] Remove white border (extended background) from Portmanteau and One way or another in Prints
+- [x] Apply shadow cleanup to 'I Saw the Whole Thing' print and revert to original dimensions
+- [x] Draft alternative About section summary based on artist's statement
