@@ -64,9 +64,9 @@ export default function Upcycles() {
                 <span className="text-lg font-medium">£{artwork.price}</span>
                 <button
                   onClick={() => handlePurchase(artwork)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
                 >
-                  <ShoppingBag size={18} />
+                  <ShoppingBag size={15} />
                   Order
                 </button>
               </div>

@@ -245,3 +245,4 @@
 - [x] Fix broken Upcycles page (was loading correctly - verified)
 - [x] Revert About bio back to third person
 - [x] Add price and purchase button to Upcycles page (Pre & Post £75, Do You Wanna Dance £100)
+- [x] Make Upcycles Order button a third smaller, white outline with dark text
