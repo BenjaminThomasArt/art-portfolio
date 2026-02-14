@@ -221,3 +221,4 @@
 - [x] Reduce image size of 'I Saw the Whole Thing' on Originals page for more uniformity
 - [x] Replace Portmanteau print image with new uploaded image
 - [x] Change 'Inquire' to 'Enquire about prints' across the site
+- [x] Replace Candyflip artwork images with three new uploaded photos

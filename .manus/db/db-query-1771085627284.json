@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%andyflip%' OR title LIKE '%andy%flip%' OR title LIKE '%Candy%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%andyflip%' OR title LIKE '%andy%flip%' OR title LIKE '%Candy%';",
+  "rows": [
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png",
+      "gallery_images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tgallery_images\n999\tCandyflip\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/candyflip-2-ZiZIuFftmdJ-GwHrHRu1X.png\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

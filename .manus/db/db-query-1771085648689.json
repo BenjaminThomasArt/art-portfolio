@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks SET image_url = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg', gallery_images = '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/TguDoOqXCEWBONTn.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xEComNQSKHGVoqHF.jpeg\"]' WHERE id = 999;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks SET image_url = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg', gallery_images = '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/TguDoOqXCEWBONTn.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xEComNQSKHGVoqHF.jpeg\"]' WHERE id = 999;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 61
+}
