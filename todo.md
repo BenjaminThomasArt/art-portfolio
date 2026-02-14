@@ -251,3 +251,5 @@
 - [x] Add 'How does payment work?' FAQ to About page
 - [x] Update Prints Order button to link to PayPal (paypal.me/benjaminthomasg)
 - [x] Update Upcycles Order button to link to PayPal (paypal.me/benjaminthomasg)
+- [x] Add confirmation pop-up before PayPal redirect on Upcycles Order button
+- [x] Add confirmation pop-up before PayPal redirect on Prints Order button

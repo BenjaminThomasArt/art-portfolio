@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 import { UpcycleCarousel } from "@/components/UpcycleCarousel";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, X } from "lucide-react";
 
 const upcycleArtworks = [
   {
@@ -31,9 +31,13 @@ const upcycleArtworks = [
 
 export default function Upcycles() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
+  const [confirmArtwork, setConfirmArtwork] = useState<typeof upcycleArtworks[0] | null>(null);
 
-  const handlePurchase = (artwork: typeof upcycleArtworks[0]) => {
-    window.open(`https://paypal.me/benjaminthomasg/${artwork.price}GBP`, '_blank');
+  const handleConfirmPurchase = () => {
+    if (confirmArtwork) {
+      window.open(`https://paypal.me/benjaminthomasg/${confirmArtwork.price}GBP`, '_blank');
+      setConfirmArtwork(null);
+    }
   };
 
   return (
@@ -57,7 +61,7 @@ export default function Upcycles() {
               <div className="flex items-center justify-between">
                 <span className="text-lg font-medium">£{artwork.price}</span>
                 <button
-                  onClick={() => handlePurchase(artwork)}
+                  onClick={() => setConfirmArtwork(artwork)}
                   className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
                 >
                   <ShoppingBag size={13} />
@@ -68,6 +72,43 @@ export default function Upcycles() {
           ))}
         </div>
       </div>
+
+      {/* Confirmation Dialog */}
+      {confirmArtwork && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setConfirmArtwork(null)} />
+          <div className="relative bg-background border border-border rounded-lg shadow-xl max-w-sm w-full mx-4 p-6">
+            <button
+              onClick={() => setConfirmArtwork(null)}
+              className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+            <h3 className="text-lg font-serif mb-1">Confirm Order</h3>
+            <p className="text-sm text-muted-foreground mb-4">You'll be redirected to PayPal to complete payment.</p>
+            <div className="border border-border rounded-md p-4 mb-5">
+              <p className="font-medium">'{confirmArtwork.title}'</p>
+              <p className="text-sm text-muted-foreground">{confirmArtwork.description}</p>
+              <p className="text-lg font-medium mt-2">£{confirmArtwork.price}</p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setConfirmArtwork(null)}
+                className="flex-1 px-4 py-2 text-sm border border-border text-foreground bg-transparent hover:bg-muted transition-colors rounded-md"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmPurchase}
+                className="flex-1 px-4 py-2 text-sm bg-foreground text-background hover:bg-foreground/90 transition-colors rounded-md"
+              >
+                Pay with PayPal
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <ImageZoom
         src={zoomImage?.src || ""}
