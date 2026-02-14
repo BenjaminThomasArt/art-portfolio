@@ -258,3 +258,4 @@
 - [x] Wire Upcycles confirmation dialog to send notification on Pay with PayPal
 - [x] Change Originals page text to 'Original and unique artworks'
 - [x] Reduce Originals subtitle text size by a third
+- [x] Match Prints and Upcycles subtitle text size to Originals (text-sm)
