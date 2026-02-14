@@ -226,3 +226,4 @@
 - [x] Brighten Portmanteau image in Prints section (too dark)
 - [x] Apply gallery mat treatment to Prints section to match Originals
 - [x] Make 'One way or another' print image smaller to match other prints in Prints section
+- [x] Remove description text underneath works on Prints section
