@@ -229,3 +229,4 @@
 - [x] Remove description text underneath works on Prints section
 - [x] Replace Featured Works images on homepage with single-painting images from Prints section
 - [x] Replace Portmanteau with Chrysalis (first single-painting image from Prints) in Featured Works
+- [x] Extend background of 'I Saw the Whole Thing' image in Originals by ~20%
