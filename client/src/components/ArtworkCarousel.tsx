@@ -28,9 +28,9 @@ export function ArtworkCarousel({ artworkId, galleryImages, artworkTitle, onImag
   });
 
   return (
-    <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-white border border-gray-200 mb-2 relative">
+    <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-[#f5f3f0] border border-gray-200 mb-2 relative shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
       <div 
-        className="w-full h-full cursor-zoom-in"
+        className="w-full h-full p-[8%] cursor-zoom-in"
         onClick={() => !isDragging && onImageClick(displayImage, artworkTitle)}
         style={{
           transform: `translateX(${dragOffset}px)`,
