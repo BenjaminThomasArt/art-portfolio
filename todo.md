@@ -216,3 +216,4 @@
 - [x] Update Upcycles subtitle with intro text about salvaged vinyl records
 - [x] Reduce Upcycles intro text size by a third (text-lg to text-sm)
 - [x] Split Upcycles intro text so second sentence starts on a new line
+- [x] Update Upcycles intro text ending with 'original vinyl record included' and 'A treat for walls and record players alike'
