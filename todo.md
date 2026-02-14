@@ -256,3 +256,4 @@
 - [x] Add server-side tRPC procedure to notify owner on PayPal click
 - [x] Wire Prints confirmation dialog to send notification on Pay with PayPal
 - [x] Wire Upcycles confirmation dialog to send notification on Pay with PayPal
+- [x] Change Originals page text to 'Original and unique artworks'

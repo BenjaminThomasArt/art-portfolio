@@ -178,7 +178,7 @@ export default function Gallery() {
             )}
           </div>
           <p className="text-lg text-muted-foreground">
-            {isEditMode ? "Drag artworks to reorder them" : "Explore more works"}
+            {isEditMode ? "Drag artworks to reorder them" : "Original and unique artworks"}
           </p>
         </div>
 
