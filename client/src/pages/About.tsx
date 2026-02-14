@@ -37,7 +37,7 @@ export default function About() {
     },
     {
       question: "What is your creative process?",
-      answer: "My creative process begins with observation and inspiration from nature, urban environments, and the interplay of light and color. I work intuitively, allowing the materials to guide the direction of each piece. I often start with loose gestural marks and build layers through a combination of controlled techniques and spontaneous expression. Each work evolves organically, with decisions made in response to what emerges on the canvas. The process is both meditative and exploratory, balancing intention with discovery."
+      answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'upcycled' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
     }
   ];
 
