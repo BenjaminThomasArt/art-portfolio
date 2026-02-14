@@ -224,3 +224,4 @@
 - [x] Replace Candyflip artwork images with three new uploaded photos
 - [x] Replace Chrysalis images in Originals section with three new photos (IMG_7054, IMG_7056, IMG_7059)
 - [x] Brighten Portmanteau image in Prints section (too dark)
+- [x] Apply gallery mat treatment to Prints section to match Originals
