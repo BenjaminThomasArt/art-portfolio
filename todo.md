@@ -259,3 +259,4 @@
 - [x] Change Originals page text to 'Original and unique artworks'
 - [x] Reduce Originals subtitle text size by a third
 - [x] Match Prints and Upcycles subtitle text size to Originals (text-sm)
+- [x] Update Upcycles page subtitle text to new copy
