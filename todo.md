@@ -220,3 +220,4 @@
 - [x] Reduce Upcycles intro text size by 20% (text-sm to 0.7rem)
 - [x] Reduce image size of 'I Saw the Whole Thing' on Originals page for more uniformity
 - [x] Replace Portmanteau print image with new uploaded image
+- [x] Change 'Inquire' to 'Enquire about prints' across the site

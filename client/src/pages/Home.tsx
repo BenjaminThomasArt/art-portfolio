@@ -122,7 +122,7 @@ export default function Home() {
             Interested in a print?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            High-quality prints of selected works are available. Get in touch to inquire about sizes and pricing.
+            High-quality prints of selected works are available. Get in touch to enquire about sizes and pricing.
           </p>
           <Link href="/contact">
             <Button size="lg">Contact Me</Button>

@@ -106,7 +106,7 @@ export default function Contact() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <Label htmlFor="type">Inquiry Type *</Label>
+              <Label htmlFor="type">Enquiry Type *</Label>
               <Select
                 value={formData.type}
                 onValueChange={(value: "contact" | "print" | "commission") =>
@@ -114,10 +114,10 @@ export default function Contact() {
                 }
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select inquiry type" />
+                  <SelectValue placeholder="Select enquiry type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="contact">General Inquiry</SelectItem>
+                  <SelectItem value="contact">General Enquiry</SelectItem>
                   <SelectItem value="print">Print Request</SelectItem>
                   <SelectItem value="commission">Commission Request</SelectItem>
                 </SelectContent>
@@ -161,7 +161,7 @@ export default function Contact() {
                 id="message"
                 required
                 rows={6}
-                placeholder="Tell me about your inquiry..."
+                placeholder="Tell me about your enquiry..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />

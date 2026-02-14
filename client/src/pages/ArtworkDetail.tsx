@@ -84,11 +84,11 @@ export default function ArtworkDetail() {
         artworkId: artworkId,
       });
 
-      toast.success("Inquiry sent successfully! We'll be in touch soon.");
+      toast.success("Enquiry sent successfully! We'll be in touch soon.");
       setDialogOpen(false);
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
-      toast.error("Failed to send inquiry. Please try again.");
+      toast.error("Failed to send enquiry. Please try again.");
     }
   };
 
@@ -224,12 +224,12 @@ export default function ArtworkDetail() {
                 <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                   <DialogTrigger asChild>
                     <Button size="lg" className="w-full md:w-auto">
-                      Inquire About Prints
+                      Enquire about prints
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[500px]">
                     <DialogHeader>
-                      <DialogTitle>Print Inquiry</DialogTitle>
+                      <DialogTitle>Print Enquiry</DialogTitle>
                       <DialogDescription>
                         Interested in a print of "{artwork.title}"? Fill out the form below and we'll get back to you with details.
                       </DialogDescription>
@@ -275,7 +275,7 @@ export default function ArtworkDetail() {
                         />
                       </div>
                       <Button type="submit" className="w-full" disabled={submitInquiry.isPending}>
-                        {submitInquiry.isPending ? "Sending..." : "Send Inquiry"}
+                        {submitInquiry.isPending ? "Sending..." : "Send Enquiry"}
                       </Button>
                     </form>
                   </DialogContent>
