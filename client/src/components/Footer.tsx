@@ -41,12 +41,12 @@ export default function Footer() {
       <div className="container py-12">
         <div className="flex flex-col items-center gap-6">
           {/* Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
               </Link>

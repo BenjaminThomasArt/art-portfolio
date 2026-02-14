@@ -268,3 +268,4 @@
 - [x] Add footer navigation links (Originals, Prints, Upcycles, Contact)
 - [x] Add Open Graph meta tags for social sharing
 - [x] Add subtle scroll indicator on homepage hero
+- [x] Reduce footer nav text size on mobile so all five links fit on one line
