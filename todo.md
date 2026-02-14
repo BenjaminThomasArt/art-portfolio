@@ -204,3 +204,5 @@
 - [x] Add gallery mat treatment to Originals page images for uniformity
 - [x] Add 'Pre & Post' artwork (2 images carousel) to Upcycles page
 - [x] Add 'Do You Wanna Dance' artwork (3 images carousel) to Upcycles page
+- [x] Create side-by-side composite image for Pre & Post and add as final carousel slide
+- [x] Create side-by-side composite image for Do You Wanna Dance and add as final carousel slide

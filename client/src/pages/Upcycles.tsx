@@ -9,6 +9,7 @@ const upcycleArtworks = [
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BuDNLXqkpRNyTRgX.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/kozKpAhIvAcgYroL.jpeg",
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/VnUxZCPdLZRQUVSh.jpeg",
     ],
   },
   {
@@ -18,6 +19,7 @@ const upcycleArtworks = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/CuRLZscWwxTUWdoG.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xLMzCLgwUiGZIvZV.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jmzIfLdjoGYFyhxU.jpeg",
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wNVsYGGzuSsWWHQL.jpeg",
     ],
   },
 ];
