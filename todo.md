@@ -213,3 +213,4 @@
 - [x] Revert Upcycles grid gap back to gap-8 (undo last 3 reductions)
 - [x] Add 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"' to Pre & Post
 - [x] Add 'Upcycled vintage LP triptych, 3 x 12"x12"' to Do You Wanna Dance
+- [x] Update Upcycles subtitle with intro text about salvaged vinyl records
