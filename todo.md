@@ -219,3 +219,4 @@
 - [x] Update Upcycles intro text ending with 'original vinyl record included' and 'A treat for walls and record players alike'
 - [x] Reduce Upcycles intro text size by 20% (text-sm to 0.7rem)
 - [x] Reduce image size of 'I Saw the Whole Thing' on Originals page for more uniformity
+- [x] Replace Portmanteau print image with new uploaded image
