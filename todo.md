@@ -208,3 +208,4 @@
 - [x] Create side-by-side composite image for Do You Wanna Dance and add as final carousel slide
 - [x] Replace composites with organic gallery-wall-style installation photos
 - [x] Reduce gap between Upcycles artwork cards by 50%
+- [x] Reduce Upcycles artwork gap by a further 50% (gap-4 to gap-2)
