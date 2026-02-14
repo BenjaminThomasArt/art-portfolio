@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 import { UpcycleCarousel } from "@/components/UpcycleCarousel";
+import { ShoppingBag } from "lucide-react";
 
 const upcycleArtworks = [
   {
     id: 1,
     title: "Pre & Post",
     description: 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"',
+    price: 75,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BuDNLXqkpRNyTRgX.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/kozKpAhIvAcgYroL.jpeg",
@@ -17,6 +19,7 @@ const upcycleArtworks = [
     id: 2,
     title: "Do You Wanna Dance",
     description: 'Upcycled vintage LP triptych, 3 x 12"x12"',
+    price: 100,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/CuRLZscWwxTUWdoG.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xLMzCLgwUiGZIvZV.jpeg",
@@ -28,6 +31,16 @@ const upcycleArtworks = [
 
 export default function Upcycles() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
+
+  const handlePurchase = (artwork: typeof upcycleArtworks[0]) => {
+    const params = new URLSearchParams({
+      printTitle: artwork.title,
+      material: "Upcycled vinyl",
+      size: '12"x12"',
+      price: `£${artwork.price}`,
+    });
+    window.location.href = `/contact?${params.toString()}`;
+  };
 
   return (
     <div className="py-24">
@@ -45,8 +58,18 @@ export default function Upcycles() {
                 title={artwork.title}
                 onImageClick={(src, alt) => setZoomImage({ src, alt })}
               />
-              <h3 className="text-lg font-serif mb-2">'{artwork.title}'</h3>
-              <p className="text-sm text-muted-foreground">{artwork.description}</p>
+              <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
+              <p className="text-sm text-muted-foreground mb-3">{artwork.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-medium">£{artwork.price}</span>
+                <button
+                  onClick={() => handlePurchase(artwork)}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  <ShoppingBag size={18} />
+                  Order
+                </button>
+              </div>
             </div>
           ))}
         </div>
