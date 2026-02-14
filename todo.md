@@ -261,3 +261,10 @@
 - [x] Match Prints and Upcycles subtitle text size to Originals (text-sm)
 - [x] Update Upcycles page subtitle text to new copy
 - [x] Fix tRPC query error on Upcycles page (resolved by rollback to correct checkpoint)
+- [x] Update 'Interested in a print?' CTA to link to Prints page instead of Contact
+- [x] Rename 'View All Works' to 'View Originals' on homepage
+- [x] Restyle Contact page 'Send Message' button to match outline style used elsewhere
+- [x] Rework Contact page to better show artist photo with paintings
+- [x] Add footer navigation links (Originals, Prints, Upcycles, Contact)
+- [x] Add Open Graph meta tags for social sharing
+- [x] Add subtle scroll indicator on homepage hero

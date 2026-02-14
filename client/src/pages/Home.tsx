@@ -1,7 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Instagram } from "lucide-react";
+import { ArrowRight, ChevronDown, Instagram } from "lucide-react";
 
 export default function Home() {
   const { data: artistInfo } = trpc.artist.getInfo.useQuery();
@@ -62,6 +62,10 @@ export default function Home() {
             </a>
           </div>
         </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+          <ChevronDown size={24} className="text-muted-foreground/60" />
+        </div>
       </section>
 
       {/* Featured Works */}
@@ -108,7 +112,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link href="/gallery">
               <Button variant="outline" size="lg">
-                View All Works
+                View Originals
               </Button>
             </Link>
           </div>
@@ -124,8 +128,8 @@ export default function Home() {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             High-quality prints of selected works are available. Get in touch to enquire about sizes and pricing.
           </p>
-          <Link href="/contact">
-            <Button size="lg">Contact Me</Button>
+          <Link href="/shop">
+            <Button size="lg" variant="outline">Browse Prints</Button>
           </Link>
         </div>
       </section>

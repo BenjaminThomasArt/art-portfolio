@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { Link } from "wouter";
 
 export default function Footer() {
   const { data: artistInfo } = trpc.artist.getInfo.useQuery();
@@ -27,10 +28,31 @@ export default function Footer() {
     },
   ].filter(Boolean);
 
+  const navLinks = [
+    { label: "Originals", href: "/gallery" },
+    { label: "Prints", href: "/shop" },
+    { label: "Upcycles", href: "/upcycles" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="container py-12">
-        <div className="flex flex-col items-center gap-8">
+        <div className="flex flex-col items-center gap-6">
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
           {/* Social Links */}
           <div className="flex items-center gap-6">
             {socialLinks.map((link) => {
@@ -45,14 +67,14 @@ export default function Footer() {
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label={link.label}
                 >
-                  <Icon size={20} />
+                  <Icon size={18} />
                 </a>
               );
             })}
           </div>
 
           {/* Copyright */}
-          <div className="text-sm text-muted-foreground text-center">
+          <div className="text-xs text-muted-foreground text-center">
             <p>© {new Date().getFullYear()} {artistInfo?.name || "Benjamin Thomas"}. All rights reserved.</p>
           </div>
         </div>
