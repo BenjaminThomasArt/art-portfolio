@@ -257,3 +257,4 @@
 - [x] Wire Prints confirmation dialog to send notification on Pay with PayPal
 - [x] Wire Upcycles confirmation dialog to send notification on Pay with PayPal
 - [x] Change Originals page text to 'Original and unique artworks'
+- [x] Reduce Originals subtitle text size by a third
