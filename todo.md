@@ -236,3 +236,4 @@
 - [x] Remove excess colour bleed in extended background of Portmanteau and One way or another
 - [x] Fix beige colouring in top-left corner of 'One way or another' in Prints section
 - [x] Lighten shadow in top-left corner of Portmanteau in Prints section
+- [x] Remove white border (extended background) from Portmanteau and One way or another in Prints
