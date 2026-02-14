@@ -230,3 +230,5 @@
 - [x] Replace Featured Works images on homepage with single-painting images from Prints section
 - [x] Replace Portmanteau with Chrysalis (first single-painting image from Prints) in Featured Works
 - [x] Extend background of 'I Saw the Whole Thing' image in Originals by ~20%
+- [x] Extend background of 'Portmanteau' image in Prints by ~20%
+- [x] Extend background of 'One way or another' image in Prints by ~20%
