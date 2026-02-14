@@ -202,3 +202,5 @@
 - [x] Add new 'Upcycles' page with 'Coming soon' placeholder between Prints and About
 - [x] Update homepage tagline from 'Fine art & prints' to 'Fine art & more'
 - [x] Add gallery mat treatment to Originals page images for uniformity
+- [x] Add 'Pre & Post' artwork (2 images carousel) to Upcycles page
+- [x] Add 'Do You Wanna Dance' artwork (3 images carousel) to Upcycles page
