@@ -210,3 +210,4 @@
 - [x] Reduce gap between Upcycles artwork cards by 50%
 - [x] Reduce Upcycles artwork gap by a further 50% (gap-4 to gap-2)
 - [x] Reduce Upcycles artwork gap by a further 50% (gap-2 to gap-1)
+- [x] Revert Upcycles grid gap back to gap-8 (undo last 3 reductions)

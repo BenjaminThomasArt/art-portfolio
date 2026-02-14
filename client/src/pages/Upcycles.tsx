@@ -35,7 +35,7 @@ export default function Upcycles() {
           <p className="text-lg text-muted-foreground">Reimagined works</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {upcycleArtworks.map((artwork) => (
             <div key={artwork.id} className="group relative">
               <UpcycleCarousel
