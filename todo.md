@@ -260,3 +260,4 @@
 - [x] Reduce Originals subtitle text size by a third
 - [x] Match Prints and Upcycles subtitle text size to Originals (text-sm)
 - [x] Update Upcycles page subtitle text to new copy
+- [x] Fix tRPC query error on Upcycles page (resolved by rollback to correct checkpoint)
