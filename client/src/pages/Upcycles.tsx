@@ -34,7 +34,7 @@ export default function Upcycles() {
       <div className="container">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-serif tracking-tight text-[#003153] mb-4">Upcycles</h1>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">Salvaged vinyl records given new life. Each cover is reimagined as an original artwork, framed and available with the vinyl included.</p>
+          <p className="text-sm text-muted-foreground max-w-xl mx-auto">Salvaged vinyl records given new life.<br />Each cover is reimagined as an original artwork, framed and available with the vinyl included.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
