@@ -175,7 +175,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
     <div className="group">
       <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-[#f5f3f0] border border-gray-200 mb-4 relative group shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
         <div 
-          className="w-full h-full p-[8%] cursor-zoom-in"
+          className={`w-full h-full cursor-zoom-in ${print.title.toLowerCase().includes('one way') ? 'p-[15%]' : 'p-[8%]'}`}
           onClick={() => isZoomClick && !isDragging && onImageClick()}
           style={{
             transform: `translateX(${dragOffset}px)`,
