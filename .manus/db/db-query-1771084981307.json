@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, gallery_images FROM artworks WHERE title LIKE '%whole%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, gallery_images FROM artworks WHERE title LIKE '%whole%';",
+  "rows": [
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "gallery_images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tgallery_images\n2\tI saw the whole thing\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 181
+}

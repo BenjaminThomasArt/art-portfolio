@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, gallery_images IS NOT NULL as has_gallery FROM artworks ORDER BY display_order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, gallery_images IS NOT NULL as has_gallery FROM artworks ORDER BY display_order;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "has_gallery": "1"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "has_gallery": "1"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "has_gallery": "0"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "has_gallery": "1"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "has_gallery": "0"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "has_gallery": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\thas_gallery\n1\tThe Subject of Paint\t1\n4\tTiefenschwarz\t1\n999\tCandyflip\t0\n3\tChrysalis I & II\t1\n5\tDelphium\t0\n2\tI saw the whole thing\t0\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}
