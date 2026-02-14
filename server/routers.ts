@@ -78,6 +78,31 @@ export const appRouter = router({
     }),
   }),
 
+  // Order notification routes
+  orders: router({
+    notifyPayPalClick: publicProcedure
+      .input(
+        z.object({
+          title: z.string(),
+          price: z.string(),
+          material: z.string().optional(),
+          size: z.string().optional(),
+          section: z.enum(["prints", "upcycles"]),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { notifyOwner } = await import("./_core/notification");
+        const details = input.section === "prints"
+          ? `${input.material} \u00b7 ${input.size}`
+          : "Upcycled vinyl";
+        await notifyOwner({
+          title: `\ud83d\udcb0 PayPal order: '${input.title}'`,
+          content: `Someone clicked Pay with PayPal for '${input.title}'.\nDetails: ${details}\nPrice: ${input.price}\n\nCheck your PayPal for the incoming payment.`,
+        });
+        return { success: true };
+      }),
+  }),
+
   // Inquiry routes
   inquiries: router({
     submit: publicProcedure

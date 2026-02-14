@@ -16,6 +16,7 @@ export default function Shop() {
   const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [confirmOrder, setConfirmOrder] = useState<{ title: string; price: string; material: string; size: string } | null>(null);
+  const notifyMutation = trpc.orders.notifyPayPalClick.useMutation();
 
   return (
     <div>
@@ -99,6 +100,13 @@ export default function Shop() {
               <button
                 onClick={() => {
                   const amount = confirmOrder.price.replace('£', '');
+                  notifyMutation.mutate({
+                    title: confirmOrder.title,
+                    price: confirmOrder.price,
+                    material: confirmOrder.material,
+                    size: confirmOrder.size,
+                    section: "prints",
+                  });
                   window.open(`https://paypal.me/benjaminthomasg/${amount}GBP`, '_blank');
                   setConfirmOrder(null);
                 }}

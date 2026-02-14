@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
 import { ImageZoom } from "@/components/ImageZoom";
 import { UpcycleCarousel } from "@/components/UpcycleCarousel";
 import { ShoppingBag, X } from "lucide-react";
@@ -32,9 +33,15 @@ const upcycleArtworks = [
 export default function Upcycles() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [confirmArtwork, setConfirmArtwork] = useState<typeof upcycleArtworks[0] | null>(null);
+  const notifyMutation = trpc.orders.notifyPayPalClick.useMutation();
 
   const handleConfirmPurchase = () => {
     if (confirmArtwork) {
+      notifyMutation.mutate({
+        title: confirmArtwork.title,
+        price: `£${confirmArtwork.price}`,
+        section: "upcycles",
+      });
       window.open(`https://paypal.me/benjaminthomasg/${confirmArtwork.price}GBP`, '_blank');
       setConfirmArtwork(null);
     }

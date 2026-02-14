@@ -253,3 +253,6 @@
 - [x] Update Upcycles Order button to link to PayPal (paypal.me/benjaminthomasg)
 - [x] Add confirmation pop-up before PayPal redirect on Upcycles Order button
 - [x] Add confirmation pop-up before PayPal redirect on Prints Order button
+- [x] Add server-side tRPC procedure to notify owner on PayPal click
+- [x] Wire Prints confirmation dialog to send notification on Pay with PayPal
+- [x] Wire Upcycles confirmation dialog to send notification on Pay with PayPal
