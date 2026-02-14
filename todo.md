@@ -243,3 +243,4 @@
 - [x] Update 'What is your creative process?' FAQ to reflect new About section
 - [x] Switch About bio to first person to match FAQ tone
 - [x] Fix broken Upcycles page (was loading correctly - verified)
+- [x] Revert About bio back to third person
