@@ -234,3 +234,4 @@
 - [x] Extend background of 'One way or another' image in Prints by ~20%
 - [x] Reorder prints so 'I Saw the Whole Thing' is second in the Prints section
 - [x] Remove excess colour bleed in extended background of Portmanteau and One way or another
+- [x] Fix beige colouring in top-left corner of 'One way or another' in Prints section
