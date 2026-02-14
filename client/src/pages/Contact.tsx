@@ -33,6 +33,9 @@ export default function Contact() {
     const material = params.get('material');
     const size = params.get('size');
 
+    const artworkTitle = params.get('artworkTitle');
+    const type = params.get('type');
+
     if (printTitle && material && size) {
       const materialNames: Record<string, string> = {
         'giclee': 'Giclée',
@@ -51,6 +54,14 @@ export default function Contact() {
       setFormData(prev => ({
         ...prev,
         type: 'print',
+        message: message
+      }));
+    } else if (artworkTitle && type === 'original') {
+      const message = `I am interested in the original artwork "${artworkTitle}".\n\nPlease let me know about availability and pricing.`;
+
+      setFormData(prev => ({
+        ...prev,
+        type: 'contact',
         message: message
       }));
     }

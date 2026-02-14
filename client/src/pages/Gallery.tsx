@@ -5,7 +5,8 @@ import { ImageZoom } from "@/components/ImageZoom";
 import { ArtworkCarousel } from "@/components/ArtworkCarousel";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { GripVertical } from "lucide-react";
+import { GripVertical, Mail } from "lucide-react";
+import { useLocation } from "wouter";
 import {
   DndContext,
   closestCenter,
@@ -31,6 +32,7 @@ interface SortableArtworkProps {
 }
 
 function SortableArtwork({ artwork, isEditMode, onImageClick }: SortableArtworkProps) {
+  const [, navigate] = useLocation();
   const {
     attributes,
     listeners,
@@ -100,6 +102,22 @@ function SortableArtwork({ artwork, isEditMode, onImageClick }: SortableArtworkP
           </>
         )}
       </div>
+      {!isEditMode && (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-3 gap-1.5 text-xs"
+          onClick={() => {
+            const params = new URLSearchParams({
+              artworkTitle: artwork.title,
+              type: 'original',
+            });
+            navigate(`/contact?${params.toString()}`);
+          }}
+        >
+          <Mail size={13} /> Enquire
+        </Button>
+      )}
     </div>
   );
 }

@@ -269,3 +269,4 @@
 - [x] Add Open Graph meta tags for social sharing
 - [x] Add subtle scroll indicator on homepage hero
 - [x] Reduce footer nav text size on mobile so all five links fit on one line
+- [x] Add 'Enquire' button to each artwork on Originals page linking to Contact with details pre-filled
