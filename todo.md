@@ -248,3 +248,6 @@
 - [x] Make Upcycles Order button a third smaller, white outline with dark text
 - [x] Make Upcycles Order button another third smaller
 - [x] Apply same outline button style to Prints Order button
+- [x] Add 'How does payment work?' FAQ to About page
+- [x] Update Prints Order button to link to PayPal (paypal.me/benjaminthomasg)
+- [x] Update Upcycles Order button to link to PayPal (paypal.me/benjaminthomasg)

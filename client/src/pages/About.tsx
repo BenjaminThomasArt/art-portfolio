@@ -38,6 +38,10 @@ export default function About() {
     {
       question: "What is your creative process?",
       answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'upcycled' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
+    },
+    {
+      question: "How does payment work?",
+      answer: "Payment is handled via PayPal. Once you've placed your order and we've confirmed the details, you can pay securely through my PayPal profile at paypal.me/benjaminthomasg. PayPal accepts all major credit and debit cards as well as PayPal balances, so you don't need a PayPal account to pay. I'll confirm receipt and get your order underway."
     }
   ];
 

@@ -33,13 +33,7 @@ export default function Upcycles() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   const handlePurchase = (artwork: typeof upcycleArtworks[0]) => {
-    const params = new URLSearchParams({
-      printTitle: artwork.title,
-      material: "Upcycled vinyl",
-      size: '12"x12"',
-      price: `£${artwork.price}`,
-    });
-    window.location.href = `/contact?${params.toString()}`;
+    window.open(`https://paypal.me/benjaminthomasg/${artwork.price}GBP`, '_blank');
   };
 
   return (

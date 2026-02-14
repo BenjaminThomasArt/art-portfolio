@@ -161,14 +161,7 @@ function PrintCard({ print, onImageClick }: { print: any; onImageClick: () => vo
   }
 
   const handleOrder = () => {
-    // Build query params with selected options
-    const params = new URLSearchParams({
-      printTitle: print.title,
-      material: material,
-      size: size,
-      ...(isDiptych && { panels: panelSelection })
-    });
-    window.location.href = `/contact?${params.toString()}`;
+    window.open(`https://paypal.me/benjaminthomasg/${print.price}GBP`, '_blank');
   };
 
   return (
