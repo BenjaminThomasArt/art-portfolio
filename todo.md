@@ -270,3 +270,5 @@
 - [x] Add subtle scroll indicator on homepage hero
 - [x] Reduce footer nav text size on mobile so all five links fit on one line
 - [x] Add 'Enquire' button to each artwork on Originals page linking to Contact with details pre-filled
+- [x] Replace homepage hero buttons with four options: Originals, Prints, Upcycles, and Instagram icon button
+- [x] Add 5th email/mail icon button to homepage hero linking to Contact page

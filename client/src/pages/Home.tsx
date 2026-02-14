@@ -1,7 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronDown, Instagram } from "lucide-react";
+import { ChevronDown, Instagram, Mail } from "lucide-react";
 
 export default function Home() {
   const { data: artistInfo } = trpc.artist.getInfo.useQuery();
@@ -45,10 +45,20 @@ export default function Home() {
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#D87093] font-light tracking-wide">
             Fine art & more
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-3">
             <Link href="/gallery">
-              <Button size="lg" variant="outline" className="gap-2">
-                View Originals <ArrowRight size={18} />
+              <Button size="lg" variant="outline">
+                Originals
+              </Button>
+            </Link>
+            <Link href="/shop">
+              <Button size="lg" variant="outline">
+                Prints
+              </Button>
+            </Link>
+            <Link href="/upcycles">
+              <Button size="lg" variant="outline">
+                Upcycles
               </Button>
             </Link>
             <a
@@ -56,10 +66,15 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" variant="outline" className="gap-2">
-                <Instagram size={18} /> Follow on Instagram
+              <Button size="lg" variant="outline" className="px-3">
+                <Instagram size={18} />
               </Button>
             </a>
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="px-3">
+                <Mail size={18} />
+              </Button>
+            </Link>
           </div>
         </div>
         {/* Scroll indicator */}
