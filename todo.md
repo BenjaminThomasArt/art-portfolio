@@ -232,3 +232,4 @@
 - [x] Extend background of 'I Saw the Whole Thing' image in Originals by ~20%
 - [x] Extend background of 'Portmanteau' image in Prints by ~20%
 - [x] Extend background of 'One way or another' image in Prints by ~20%
+- [x] Reorder prints so 'I Saw the Whole Thing' is second in the Prints section

@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE prints SET display_order = 1 WHERE id = 1;\nUPDATE prints SET display_order = 2 WHERE id = 60001;\nUPDATE prints SET display_order = 3 WHERE id = 30001;\nUPDATE prints SET display_order = 4 WHERE id = 30002;\nUPDATE prints SET display_order = 5 WHERE id = 30003;\nUPDATE prints SET display_order = 6 WHERE id = 30004;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE prints SET display_order = 1 WHERE id = 1;\nUPDATE prints SET display_order = 2 WHERE id = 60001;\nUPDATE prints SET display_order = 3 WHERE id = 30001;\nUPDATE prints SET display_order = 4 WHERE id = 30002;\nUPDATE prints SET display_order = 5 WHERE id = 30003;\nUPDATE prints SET display_order = 6 WHERE id = 30004;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 103
+}
