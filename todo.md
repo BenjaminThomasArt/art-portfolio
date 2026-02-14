@@ -227,3 +227,4 @@
 - [x] Apply gallery mat treatment to Prints section to match Originals
 - [x] Make 'One way or another' print image smaller to match other prints in Prints section
 - [x] Remove description text underneath works on Prints section
+- [x] Replace Featured Works images on homepage with single-painting images from Prints section

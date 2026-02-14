@@ -6,21 +6,21 @@ import { ArrowRight, Instagram } from "lucide-react";
 export default function Home() {
   const { data: artistInfo } = trpc.artist.getInfo.useQuery();
   
-  // Hardcoded featured artworks for homepage
+  // Hardcoded featured artworks for homepage - using first single-painting images from Prints section
   const featuredArtworks = [
     {
       id: 1,
       title: 'The Subject of Paint',
       year: 2026,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg',
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg',
       medium: 'Mixed media on PVC board'
     },
     {
       id: 3,
-      title: 'Chrysalis',
+      title: 'Portmanteau',
       year: 2026,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XAbYnsfjzEAaaWmE.jpg',
-      medium: 'Mixed media diptych on canvas'
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FzuGrrPCmrknQgBR.jpg',
+      medium: 'Mixed media on canvas'
     }
   ];
   const isLoading = false;
@@ -85,7 +85,7 @@ export default function Home() {
                   <div className="group cursor-pointer">
                     <div className="aspect-square overflow-hidden bg-muted mb-4">
                       <img
-                        src={artwork.title === 'The Subject of Paint' ? 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/AIFzVznJcNdkQTyi.PNG' : artwork.imageUrl}
+                        src={artwork.imageUrl}
                         alt={artwork.title}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
