@@ -17,9 +17,9 @@ export default function Home() {
     },
     {
       id: 3,
-      title: 'Portmanteau',
+      title: 'Chrysalis',
       year: 2026,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FzuGrrPCmrknQgBR.jpg',
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg',
       medium: 'Mixed media on canvas'
     }
   ];
