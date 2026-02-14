@@ -241,3 +241,5 @@
 - [x] Draft alternative About section summary based on artist's statement
 - [x] Update About section bio with Option C, rename to 'upcycled' series
 - [x] Update 'What is your creative process?' FAQ to reflect new About section
+- [x] Switch About bio to first person to match FAQ tone
+- [x] Fix broken Upcycles page (was loading correctly - verified)

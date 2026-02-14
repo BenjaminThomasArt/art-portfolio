@@ -111,7 +111,7 @@ export default function About() {
               <div className="prose prose-lg max-w-none">
                 <p className="text-foreground leading-relaxed whitespace-pre-line">
                   {artistInfo?.bio ||
-                    "Benjamin is a contemporary artist based in east London, whose work takes cues from nature, and is expressed through a range of modern techniques. With a background in creative industry, the foundations of Benjamin's work are creativity, invention and craft. His work is created with meticulous attention to detail and a deep passion for artistic expression. Benjamin's work has been featured in galleries and private collections in the UK and beyond."}
+                    "I make art from art. Based in east London, my practice revolves around iteration — original acrylic paintings reworked through photography, printing and further layers of paint until they become something new. Every piece carries the trace of what came before it.\n\nMy 'upcycled' series applies the same thinking to found objects: second-hand vinyl records sourced around Hackney, their covers repainted, the records preserved, everything framed together. Wall art and music in one package, best displayed in pairs or threes."}
                 </p>
               </div>
             </div>
