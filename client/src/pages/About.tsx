@@ -90,7 +90,7 @@ export default function About() {
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-12 text-center text-[#003153]">
-            About the Artist
+            About the artist
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
