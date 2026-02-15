@@ -272,3 +272,4 @@
 - [x] Add 'Enquire' button to each artwork on Originals page linking to Contact with details pre-filled
 - [x] Replace homepage hero buttons with four options: Originals, Prints, Upcycles, and Instagram icon button
 - [x] Add 5th email/mail icon button to homepage hero linking to Contact page
+- [x] Fix hero buttons being cropped on mobile - make them wrap/resize responsively

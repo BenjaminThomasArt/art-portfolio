@@ -45,19 +45,19 @@ export default function Home() {
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#D87093] font-light tracking-wide">
             Fine art & more
           </p>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 px-4">
             <Link href="/gallery">
-              <Button size="lg" variant="outline">
+              <Button size="sm" variant="outline" className="sm:size-default text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5">
                 Originals
               </Button>
             </Link>
             <Link href="/shop">
-              <Button size="lg" variant="outline">
+              <Button size="sm" variant="outline" className="sm:size-default text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5">
                 Prints
               </Button>
             </Link>
             <Link href="/upcycles">
-              <Button size="lg" variant="outline">
+              <Button size="sm" variant="outline" className="sm:size-default text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5">
                 Upcycles
               </Button>
             </Link>
@@ -66,13 +66,13 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button size="lg" variant="outline" className="px-3">
-                <Instagram size={18} />
+              <Button size="sm" variant="outline" className="sm:size-default px-2.5 sm:px-3 py-2 sm:py-2.5">
+                <Instagram size={16} className="sm:w-[18px] sm:h-[18px]" />
               </Button>
             </a>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="px-3">
-                <Mail size={18} />
+              <Button size="sm" variant="outline" className="sm:size-default px-2.5 sm:px-3 py-2 sm:py-2.5">
+                <Mail size={16} className="sm:w-[18px] sm:h-[18px]" />
               </Button>
             </Link>
           </div>
