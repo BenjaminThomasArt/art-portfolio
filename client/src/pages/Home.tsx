@@ -88,7 +88,7 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4 text-[#003153]">Featured Works</h2>
-            <p className="text-muted-foreground">A selection of recent pieces</p>
+            <p className="text-muted-foreground">A selection of recent highlights</p>
           </div>
 
           {isLoading ? (

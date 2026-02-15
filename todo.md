@@ -277,3 +277,4 @@
 - [x] Update About section bio text with new copy from user
 - [x] Update About bio text with revised copy (second revision from user)
 - [x] Update About bio text with third revision from user
+- [x] Change Featured Works subtitle from "A selection of recent pieces" to "A selection of recent highlights"
