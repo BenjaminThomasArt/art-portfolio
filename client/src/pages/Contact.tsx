@@ -94,28 +94,20 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      {/* Two-column layout: photo left, form right */}
-      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
-        {/* Left: Artist photo — hidden on mobile, shown on desktop */}
-        <div className="relative lg:w-1/2 hidden lg:block overflow-hidden">
+      {/* Full-width layout with faded background image */}
+      <div className="relative min-h-[calc(100vh-4rem)]">
+        {/* Faded background photo covering the entire page */}
+        <div className="absolute inset-0 overflow-hidden">
           <img
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png"
             alt="Benjamin Thomas in the studio"
-            className="absolute inset-0 w-full h-full object-cover object-[75%_center]"
+            className="w-full h-full object-cover object-[75%_15%] opacity-[0.12]"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
         </div>
 
-        {/* Right: Form */}
-        <div className="relative lg:w-1/2 py-12 lg:py-24 px-6 lg:px-16 flex flex-col justify-center">
-          {/* Mobile: faded background photo covering the entire form area */}
-          <div className="lg:hidden absolute inset-0 overflow-hidden">
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png"
-              alt="Benjamin Thomas in the studio"
-              className="w-full h-full object-cover object-[75%_15%] opacity-[0.12]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-          </div>
+        {/* Centered form */}
+        <div className="relative py-12 lg:py-24 px-6 lg:px-16 flex flex-col justify-center items-center">
           <div className="relative z-10 max-w-lg mx-auto w-full">
             <div className="mb-10 text-center">
               <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4 text-[#003153]">Get in touch</h1>

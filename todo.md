@@ -299,3 +299,5 @@
 - [x] Change 'Frequently Asked Questions' heading to 'FAQs' on About page
 - [x] Move creative process question to first position in FAQs
 - [x] Reduce FAQ question text size by 25%
+- [x] Fix missing background/faded image on Contact page (live site)
+- [x] Redesign desktop Contact page to use faded background image (like mobile) instead of split two-column layout
