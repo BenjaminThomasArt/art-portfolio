@@ -133,7 +133,7 @@ export default function Shop() {
 function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: () => void; onOrder: (details: { title: string; price: string; material: string; size: string }) => void }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
-  const [panelSelection, setPanelSelection] = useState<string>("both"); // both, left, right
+  const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [isZoomClick, setIsZoomClick] = useState(false);
   
@@ -340,9 +340,9 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
                 <SelectValue placeholder="Select panels" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="both">Both panels (set)</SelectItem>
-                <SelectItem value="left">Left panel only</SelectItem>
-                <SelectItem value="right">Right panel only</SelectItem>
+                <SelectItem value="left">Left panel</SelectItem>
+                <SelectItem value="right">Right panel</SelectItem>
+                <SelectItem value="both">Both panels</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -352,7 +352,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
         <div className="pt-2 pb-1 border-t border-border">
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">
-              {isDiptych && panelSelection === "both" ? "Total price:" : "Price (per piece):"}
+              {isDiptych && panelSelection === "both" ? "Total price:" : "Price:"}
             </span>
             <span className="text-xl font-serif">{currentPrice}</span>
           </div>

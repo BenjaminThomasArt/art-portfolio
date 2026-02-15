@@ -293,3 +293,4 @@
 - [x] Remove line break between Contact page subtitle sentences (merge back to one line)
 - [x] Remove 'Benjamin Thomas' text below profile image on About page
 - [x] Update About bio text with revised copy (added 'but', changed 'step' to 'stop', changed upcycled series wording)
+- [x] Reorder diptych panel options: Left panel (default), Right panel, Both panels; drop 'only' from labels; default to £150
