@@ -306,3 +306,6 @@
 - [x] Change 'About the Artist' to 'About the artist' (lowercase a) on About page
 - [x] Replace 'originates' with 'begins' in About page bio
 - [x] Full sentence-case audit across all headings and buttons site-wide
+- [x] Clean up Delphinium artwork image background to be more consistent with other works
+- [x] Clean up Portmanteau artwork image background
+- [x] Clean up One Way or Another artwork image background

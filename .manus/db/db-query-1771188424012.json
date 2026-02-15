@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%Delph%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, gallery_images FROM artworks WHERE title LIKE '%Delph%';",
+  "rows": [
+    {
+      "id": "5",
+      "title": "Delphium",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg",
+      "gallery_images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tgallery_images\n5\tDelphium\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 360
+}

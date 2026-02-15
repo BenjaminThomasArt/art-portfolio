@@ -1,0 +1,19 @@
+{
+  "query": "SELECT id, title, image_url FROM artworks WHERE title LIKE '%Delph%' \\G;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url FROM artworks WHERE title LIKE '%Delph%' \\G;",
+  "rows": [
+    {
+      "*************************** 1. row ***************************": "       id: 5"
+    },
+    {
+      "*************************** 1. row ***************************": "    title: Delphium"
+    },
+    {
+      "*************************** 1. row ***************************": "image_url: https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg"
+    }
+  ],
+  "messages": [],
+  "stdout": "*************************** 1. row ***************************\n       id: 5\n    title: Delphium\nimage_url: https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/artworks/delphium-pygAZidPMH47Cc_HtnVFi.jpeg\n",
+  "stderr": "",
+  "execution_time_ms": 349
+}
