@@ -296,3 +296,5 @@
 - [x] Reorder diptych panel options: Left panel (default), Right panel, Both panels; drop 'only' from labels; default to £150
 - [x] Replace hero tagline 'Fine art & more' — previewed alternative, reverted back to 'Fine art & more' per user preference
 - [x] Change 'Featured Works' to 'Featured works' (lowercase w) on homepage
+- [x] Change 'Frequently Asked Questions' heading to 'FAQs' on About page
+- [x] Move creative process question to first position in FAQs

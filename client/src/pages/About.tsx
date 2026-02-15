@@ -12,6 +12,10 @@ export default function About() {
 
   const faqs = [
     {
+      question: "What is your creative process?",
+      answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'upcycled' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
+    },
+    {
       question: "What materials do you use for prints?",
       answer: "I offer three premium print options: Giclée prints on archival fine art paper for museum-quality reproductions, PVC board prints for a modern, rigid display option, and Canvas inkjet prints for a traditional textured finish. All materials are carefully selected for longevity and color accuracy."
     },
@@ -34,10 +38,6 @@ export default function About() {
     {
       question: "How do custom sizes work?",
       answer: "Select \"Custom size - contact for details\" when ordering, and I'll reach out to discuss your specific dimensions and pricing. Custom prints maintain the original artwork's proportions and are produced to your exact specifications. Lead time for custom orders is typically 3-4 weeks."
-    },
-    {
-      question: "What is your creative process?",
-      answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'upcycled' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
     },
     {
       question: "How does payment work?",
@@ -120,7 +120,7 @@ export default function About() {
 
           {/* FAQ Section */}
           <div className="border-t border-border pt-12 mb-12">
-            <h3 className="text-2xl font-serif mb-8 text-center text-[#003153]">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-serif mb-8 text-center text-[#003153]">FAQs</h3>
             <div className="space-y-3">
               {faqs.map((faq, index) => (
                 <div key={index} className="border border-border rounded-lg">
