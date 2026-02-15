@@ -115,7 +115,7 @@ export default function About() {
               <div className="prose prose-lg max-w-none">
                 <p className="text-foreground leading-relaxed whitespace-pre-line">
                   {artistInfo?.bio ||
-                    "Benjamin Thomas is a contemporary, mixed media artist based in East London. His practice revolves around experimental form and a process of iteration. Ben typically originates in acrylic painting, and then reworks and reimagines through photography, printing and further painting. The resulting works carry traces of what came before. Nothing is ever final; merely a further step in the creative journey.\n\nHis 'upcycled' series applies this process to found objects: vintage vinyl records sourced around Hackney; their covers repainted & the music preserved. Everything framed together. Visual and audio in one package, best displayed in pairs or threes."}
+                    "Benjamin Thomas is a contemporary, mixed media artist based in East London. His practice revolves around experimental form and a focus on iterative creation. Ben typically originates in acrylic painting, and then reworks and reimagines through photography, printing and further paint processes. The resulting works carry traces of what came before; nothing is ever final - merely a further step in the creative journey.\n\nHis 'upcycled' series applies this process to found objects: vintage vinyl records sourced around Hackney; their covers repainted & the music preserved. Everything framed together. Visual and audio in one artistic form."}
                 </p>
               </div>
             </div>

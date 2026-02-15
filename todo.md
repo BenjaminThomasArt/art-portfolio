@@ -276,3 +276,4 @@
 - [x] Make all 5 hero buttons fit on one line on mobile (no wrapping)
 - [x] Update About section bio text with new copy from user
 - [x] Update About bio text with revised copy (second revision from user)
+- [x] Update About bio text with third revision from user
