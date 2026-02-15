@@ -291,3 +291,4 @@
 - [x] Split Prints page subtitle into two separate sentences (matching Contact page treatment)
 - [x] Split homepage 'Printed reproductions' CTA subtitle into two separate lines
 - [x] Remove line break between Contact page subtitle sentences (merge back to one line)
+- [x] Remove 'Benjamin Thomas' text below profile image on About page

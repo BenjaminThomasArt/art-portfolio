@@ -109,9 +109,6 @@ export default function About() {
 
             {/* Bio */}
             <div className={artistInfo?.profileImageUrl ? "md:col-span-2" : "md:col-span-3"}>
-              <h2 className="text-2xl font-serif mb-4 text-[#003153]">
-                {artistInfo?.name || "Benjamin Thomas"}
-              </h2>
               <div className="prose prose-lg max-w-none">
                 <p className="text-foreground leading-relaxed whitespace-pre-line">
                   {artistInfo?.bio ||
