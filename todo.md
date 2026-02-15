@@ -281,3 +281,4 @@
 - [x] Change "Interested in a print?" to "Printed reproductions" on homepage
 - [x] Full quality/consistency audit: font sizes, heading hierarchy, spacing, and styling across all pages
 - [x] Update Upcycles subtitle text with new copy from user (salvaged vinyl 12" records)
+- [x] Review and improve consistency of pricing display and order buttons between Prints and Upcycles
