@@ -294,3 +294,5 @@
 - [x] Remove 'Benjamin Thomas' text below profile image on About page
 - [x] Update About bio text with revised copy (added 'but', changed 'step' to 'stop', changed upcycled series wording)
 - [x] Reorder diptych panel options: Left panel (default), Right panel, Both panels; drop 'only' from labels; default to £150
+- [x] Replace hero tagline 'Fine art & more' — previewed alternative, reverted back to 'Fine art & more' per user preference
+- [x] Change 'Featured Works' to 'Featured works' (lowercase w) on homepage

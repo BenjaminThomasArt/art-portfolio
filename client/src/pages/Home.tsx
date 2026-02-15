@@ -83,11 +83,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Works */}
+      {/* Featured works */}
       <section className="py-24">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4 text-[#003153]">Featured Works</h2>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4 text-[#003153]">Featured works</h2>
             <p className="text-sm md:text-base text-muted-foreground">A selection of recent highlights</p>
           </div>
 
