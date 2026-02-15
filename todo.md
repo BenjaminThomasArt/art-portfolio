@@ -288,3 +288,4 @@
 - [x] Center-align Contact page header and subtitle to match other pages
 - [x] Split Contact subtitle into two sentences: separate "I'd love to hear from you"
 - [x] Change "Get in Touch" to "Get in touch" (lowercase t)
+- [x] Split Prints page subtitle into two separate sentences (matching Contact page treatment)
