@@ -120,7 +120,7 @@ export default function Contact() {
             <div className="mb-10 text-center">
               <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4 text-[#003153]">Get in touch</h1>
               <p className="text-sm md:text-base text-muted-foreground">
-                Have a question or interested in commissioning a piece?<br />I'd love to hear from you.
+                Have a question or interested in commissioning a piece? I'd love to hear from you.
               </p>
             </div>
 
