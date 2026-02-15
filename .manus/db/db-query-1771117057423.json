@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artist_info SET bio = CONCAT('Benjamin Thomas is a contemporary, mixed media artist based in East London. His practice revolves around experimental form and iteration. He originates acrylic paintings which are reworked and reimagined through photography, printing and further layers of paint until they become something new. Each piece carries the trace of what came before. Nothing is ever final; merely a further step in a creative journey.', CHAR(10), CHAR(10), 'His ', CHAR(0x2018), 'upcycled', CHAR(0x2019), ' series applies this thinking to found objects: vintage vinyl records sourced around Hackney; their covers repainted ', CHAR(0x2014), ' the records preserved. Everything framed together. Wall art and music in one package, best displayed in pairs or threes.') WHERE id = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artist_info SET bio = CONCAT('Benjamin Thomas is a contemporary, mixed media artist based in East London. His practice revolves around experimental form and iteration. He originates acrylic paintings which are reworked and reimagined through photography, printing and further layers of paint until they become something new. Each piece carries the trace of what came before. Nothing is ever final; merely a further step in a creative journey.', CHAR(10), CHAR(10), 'His ', CHAR(0x2018), 'upcycled', CHAR(0x2019), ' series applies this thinking to found objects: vintage vinyl records sourced around Hackney; their covers repainted ', CHAR(0x2014), ' the records preserved. Everything framed together. Wall art and music in one package, best displayed in pairs or threes.') WHERE id = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 388
+}
