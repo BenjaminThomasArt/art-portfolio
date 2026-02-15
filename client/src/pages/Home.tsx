@@ -88,7 +88,7 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-4 text-[#003153]">Featured Works</h2>
-            <p className="text-muted-foreground">A selection of recent highlights</p>
+            <p className="text-sm text-muted-foreground">A selection of recent highlights</p>
           </div>
 
           {isLoading ? (
@@ -140,7 +140,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6 text-[#003153]">
             Printed reproductions
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-sm text-muted-foreground mb-8 max-w-2xl mx-auto">
             High-quality prints of selected works are available. Get in touch to enquire about sizes and pricing.
           </p>
           <Link href="/shop">

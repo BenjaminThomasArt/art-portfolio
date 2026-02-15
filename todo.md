@@ -279,3 +279,4 @@
 - [x] Update About bio text with third revision from user
 - [x] Change Featured Works subtitle from "A selection of recent pieces" to "A selection of recent highlights"
 - [x] Change "Interested in a print?" to "Printed reproductions" on homepage
+- [x] Full quality/consistency audit: font sizes, heading hierarchy, spacing, and styling across all pages

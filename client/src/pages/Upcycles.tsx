@@ -66,7 +66,7 @@ export default function Upcycles() {
               <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
               <p className="text-sm text-muted-foreground mb-3">{artwork.description}</p>
               <div className="flex items-center justify-between">
-                <span className="text-lg font-medium">£{artwork.price}</span>
+                <span className="text-xl font-serif">£{artwork.price}</span>
                 <button
                   onClick={() => setConfirmArtwork(artwork)}
                   className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"

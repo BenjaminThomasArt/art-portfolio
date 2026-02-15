@@ -123,7 +123,7 @@ export default function About() {
 
           {/* FAQ Section */}
           <div className="border-t border-border pt-12 mb-12">
-            <h3 className="text-2xl font-serif mb-8 text-center">Frequently Asked Questions</h3>
+            <h3 className="text-2xl font-serif mb-8 text-center text-[#003153]">Frequently Asked Questions</h3>
             <div className="space-y-3">
               {faqs.map((faq, index) => (
                 <div key={index} className="border border-border rounded-lg">
@@ -153,7 +153,7 @@ export default function About() {
 
           {/* Social Links */}
           <div className="border-t border-border pt-12">
-            <h3 className="text-xl font-serif mb-6 text-center">Connect</h3>
+            <h3 className="text-xl font-serif mb-6 text-center text-[#003153]">Connect</h3>
             <div className="flex items-center justify-center gap-6">
               {socialLinks.map((link) => {
                 if (!link) return null;
