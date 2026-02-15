@@ -302,3 +302,4 @@
 - [x] Fix missing background/faded image on Contact page (live site)
 - [x] Redesign desktop Contact page to use faded background image (like mobile) instead of split two-column layout
 - [x] Adjust Contact page mobile background image positioning so face is visible
+- [x] Add paragraph break before 'Ben typically originates' in About page bio
