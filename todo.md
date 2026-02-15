@@ -284,3 +284,4 @@
 - [x] Review and improve consistency of pricing display and order buttons between Prints and Upcycles
 - [x] Make subtitle text under page headers larger on desktop (responsive: text-sm on mobile, text-base on desktop)
 - [x] Redesign Contact page mobile layout so artist photo is not awkwardly cropped
+- [x] Extend faded background image further down on Contact page mobile to avoid awkward cropping
