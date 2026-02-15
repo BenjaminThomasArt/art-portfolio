@@ -96,25 +96,34 @@ export default function Contact() {
     <div className="min-h-screen">
       {/* Two-column layout: photo left, form right */}
       <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
-        {/* Left: Artist photo */}
-        <div className="relative lg:w-1/2 h-[40vh] lg:h-auto overflow-hidden">
+        {/* Left: Artist photo — hidden on mobile, shown on desktop */}
+        <div className="relative lg:w-1/2 hidden lg:block overflow-hidden">
           <img
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png"
             alt="Benjamin Thomas in the studio"
             className="absolute inset-0 w-full h-full object-cover object-[75%_center]"
           />
-          {/* Subtle gradient overlay at bottom for mobile transition */}
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent lg:hidden" />
         </div>
 
         {/* Right: Form */}
         <div className="lg:w-1/2 py-12 lg:py-24 px-6 lg:px-16 flex flex-col justify-center">
           <div className="max-w-lg mx-auto w-full">
-            <div className="mb-10">
-              <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4 text-[#003153]">Get in Touch</h1>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Have a question or interested in commissioning a piece? I'd love to hear from you.
-              </p>
+            {/* Mobile: photo as faded background behind heading */}
+            <div className="relative mb-10 lg:static">
+              {/* Background photo on mobile only */}
+              <div className="lg:hidden absolute inset-0 -mx-6 -mt-12 overflow-hidden rounded-b-2xl">
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png"
+                  alt="Benjamin Thomas in the studio"
+                  className="w-full h-full object-cover object-[75%_20%] opacity-15"
+                />
+              </div>
+              <div className="relative z-10">
+                <h1 className="text-4xl md:text-5xl font-serif tracking-tight mb-4 text-[#003153]">Get in Touch</h1>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  Have a question or interested in commissioning a piece? I'd love to hear from you.
+                </p>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">

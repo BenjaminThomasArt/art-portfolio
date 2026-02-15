@@ -283,3 +283,4 @@
 - [x] Update Upcycles subtitle text with new copy from user (salvaged vinyl 12" records)
 - [x] Review and improve consistency of pricing display and order buttons between Prints and Upcycles
 - [x] Make subtitle text under page headers larger on desktop (responsive: text-sm on mobile, text-base on desktop)
+- [x] Redesign Contact page mobile layout so artist photo is not awkwardly cropped
