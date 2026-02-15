@@ -141,7 +141,7 @@ export default function Home() {
             Printed reproductions
           </h2>
           <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-2xl mx-auto">
-            High-quality prints of selected works are available. Get in touch to enquire about sizes and pricing.
+            High-quality prints of selected works are available.<br />Get in touch to enquire about sizes and pricing.
           </p>
           <Link href="/shop">
             <Button size="lg" variant="outline">Browse Prints</Button>
