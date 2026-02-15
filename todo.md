@@ -287,3 +287,4 @@
 - [x] Extend faded background image further down on Contact page mobile to avoid awkward cropping
 - [x] Center-align Contact page header and subtitle to match other pages
 - [x] Split Contact subtitle into two sentences: separate "I'd love to hear from you"
+- [x] Change "Get in Touch" to "Get in touch" (lowercase t)
