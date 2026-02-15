@@ -298,3 +298,4 @@
 - [x] Change 'Featured Works' to 'Featured works' (lowercase w) on homepage
 - [x] Change 'Frequently Asked Questions' heading to 'FAQs' on About page
 - [x] Move creative process question to first position in FAQs
+- [x] Reduce FAQ question text size by 25%

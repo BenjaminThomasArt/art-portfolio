@@ -128,7 +128,7 @@ export default function About() {
                     onClick={() => toggleFaq(index)}
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-muted/50 transition-colors"
                   >
-                    <h4 className="text-lg font-serif pr-4">{faq.question}</h4>
+                    <h4 className="text-sm font-serif pr-4">{faq.question}</h4>
                     <ChevronDown
                       size={20}
                       className={`flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}
