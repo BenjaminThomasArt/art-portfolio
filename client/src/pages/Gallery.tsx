@@ -195,7 +195,7 @@ export default function Gallery() {
               </Button>
             )}
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm md:text-base text-muted-foreground">
             {isEditMode ? "Drag artworks to reorder them" : "Original and unique artworks"}
           </p>
         </div>
