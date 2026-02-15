@@ -101,7 +101,7 @@ export default function Contact() {
           <img
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/NQIUulwowISAxzFs.png"
             alt="Benjamin Thomas in the studio"
-            className="w-full h-full object-cover object-[75%_15%] opacity-[0.12]"
+            className="w-full h-full object-cover object-[30%_15%] lg:object-[75%_15%] opacity-[0.12]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
         </div>
