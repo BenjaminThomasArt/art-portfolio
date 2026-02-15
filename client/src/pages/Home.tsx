@@ -127,7 +127,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link href="/gallery">
               <Button variant="outline" size="lg">
-                View Originals
+                View originals
               </Button>
             </Link>
           </div>
@@ -144,7 +144,7 @@ export default function Home() {
             High-quality prints of selected works are available.<br />Get in touch to enquire about sizes and pricing.
           </p>
           <Link href="/shop">
-            <Button size="lg" variant="outline">Browse Prints</Button>
+            <Button size="lg" variant="outline">Browse prints</Button>
           </Link>
         </div>
       </section>

@@ -117,7 +117,7 @@ export default function ArtworkDetail() {
         <div className="container text-center">
           <h1 className="text-3xl font-serif mb-4">Artwork not found</h1>
           <Link href="/gallery">
-            <Button variant="outline">Back to Originals</Button>
+            <Button variant="outline">Back to originals</Button>
           </Link>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function ArtworkDetail() {
       <div className="container">
         <Link href="/gallery">
           <Button variant="ghost" className="mb-8 gap-2">
-            <ArrowLeft size={18} /> Back to Originals
+            <ArrowLeft size={18} /> Back to originals
           </Button>
         </Link>
 
@@ -229,7 +229,7 @@ export default function ArtworkDetail() {
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[500px]">
                     <DialogHeader>
-                      <DialogTitle>Print Enquiry</DialogTitle>
+                      <DialogTitle>Print enquiry</DialogTitle>
                       <DialogDescription>
                         Interested in a print of "{artwork.title}"? Fill out the form below and we'll get back to you with details.
                       </DialogDescription>
@@ -275,7 +275,7 @@ export default function ArtworkDetail() {
                         />
                       </div>
                       <Button type="submit" className="w-full" disabled={submitInquiry.isPending}>
-                        {submitInquiry.isPending ? "Sending..." : "Send Enquiry"}
+                        {submitInquiry.isPending ? "Sending..." : "Send enquiry"}
                       </Button>
                     </form>
                   </DialogContent>

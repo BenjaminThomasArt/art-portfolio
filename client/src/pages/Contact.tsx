@@ -118,7 +118,7 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <Label htmlFor="type">Enquiry Type *</Label>
+                <Label htmlFor="type">Enquiry type *</Label>
                 <Select
                   value={formData.type}
                   onValueChange={(value: "contact" | "print" | "commission") =>
@@ -129,9 +129,9 @@ export default function Contact() {
                     <SelectValue placeholder="Select enquiry type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="contact">General Enquiry</SelectItem>
-                    <SelectItem value="print">Print Request</SelectItem>
-                    <SelectItem value="commission">Commission Request</SelectItem>
+                    <SelectItem value="contact">General enquiry</SelectItem>
+                    <SelectItem value="print">Print request</SelectItem>
+                    <SelectItem value="commission">Commission request</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -180,7 +180,7 @@ export default function Contact() {
               </div>
 
               <Button type="submit" size="lg" variant="outline" className="w-full" disabled={submitInquiry.isPending}>
-                {submitInquiry.isPending ? "Sending..." : "Send Message"}
+                {submitInquiry.isPending ? "Sending..." : "Send message"}
               </Button>
             </form>
 

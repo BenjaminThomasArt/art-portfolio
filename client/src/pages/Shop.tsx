@@ -63,7 +63,7 @@ export default function Shop() {
               <p className="text-lg text-muted-foreground mb-8">No prints available at the moment</p>
               <Link href="/gallery">
                 <button className="px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                  Browse Originals
+                  Browse originals
                 </button>
               </Link>
             </div>
@@ -83,7 +83,7 @@ export default function Shop() {
             >
               <X size={18} />
             </button>
-            <h3 className="text-lg font-serif mb-1">Confirm Order</h3>
+            <h3 className="text-lg font-serif mb-1">Confirm order</h3>
             <p className="text-sm text-muted-foreground mb-4">You'll be redirected to PayPal to complete payment.</p>
             <div className="border border-border rounded-md p-4 mb-5">
               <p className="font-medium">'{confirmOrder.title}'</p>

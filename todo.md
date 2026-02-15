@@ -305,3 +305,4 @@
 - [x] Add paragraph break before 'Ben typically originates' in About page bio
 - [x] Change 'About the Artist' to 'About the artist' (lowercase a) on About page
 - [x] Replace 'originates' with 'begins' in About page bio
+- [x] Full sentence-case audit across all headings and buttons site-wide
