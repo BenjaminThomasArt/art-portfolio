@@ -228,8 +228,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     canvas: "Canvas Inkjet"
   };
   const sizeLabels: Record<string, string> = {
-    "80x60": "80×60cm",
-    "120x100": "120×100cm",
+    "80x60": "60×80cm",
+    "120x100": "100×120cm",
     custom: "Custom size"
   };
 
@@ -336,8 +336,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
               <SelectValue placeholder="Select size" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="80x60">80 x 60 cm</SelectItem>
-              <SelectItem value="120x100">120 x 100 cm</SelectItem>
+              <SelectItem value="80x60">60 x 80 cm</SelectItem>
+              <SelectItem value="120x100">100 x 120 cm</SelectItem>
               <SelectItem value="custom">Custom size - contact for details</SelectItem>
             </SelectContent>
           </Select>
