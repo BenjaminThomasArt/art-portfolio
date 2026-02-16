@@ -334,3 +334,4 @@
 - [x] Replace Portmanteau print image with new photo (wider crop with gallery wall)
 - [x] Add comma after 'works' in Prints section copy
 - [x] Reorder prints: I saw the whole thing first, The Subject of Paint second
+- [x] Add second image to 'I Saw the Whole Thing' print with multi-image support
