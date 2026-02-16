@@ -339,3 +339,4 @@
 - [x] Reduce vibrancy/saturation by 5% on first image of 'I Saw the Whole Thing'
 - [x] Replace first image on 'I Saw the Whole Thing' with new user photo
 - [x] Add left/right panel (diptych) functionality to 'The Subject of Paint' print
+- [x] Add PayPal buyer protection text near confirm order button in Prints section

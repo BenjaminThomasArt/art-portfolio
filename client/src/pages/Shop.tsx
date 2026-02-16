@@ -115,6 +115,9 @@ export default function Shop() {
                 Pay with PayPal
               </button>
             </div>
+            <p className="text-xs text-muted-foreground text-center mt-4 leading-relaxed">
+              All payments are processed securely through PayPal. Your purchase is covered by PayPal Buyer Protection — if there's any issue with your order, you're fully protected.
+            </p>
           </div>
         </div>
       )}
