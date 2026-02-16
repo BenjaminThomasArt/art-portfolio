@@ -358,3 +358,4 @@
 - [x] Remove header text from Gallery page (images only)
 - [x] Redesign Gallery with organic non-uniform collage layout with varied image sizes
 - [x] Fix Gallery images being cropped - show full uncropped images with varied sizes
+- [x] Make Gallery layout more irregular and less grid-like while keeping images uncropped

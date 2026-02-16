@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 
 const galleryImages = [
@@ -24,95 +24,137 @@ const galleryImages = [
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ" },
 ];
 
-// Scale factors to create non-uniform sizing
-// Values > 1 make the image wider (takes more visual weight)
-const scaleFactors: Record<number, number> = {
-  0: 1.6,   // larger
-  4: 1.4,   // wider
-  7: 1.3,   // slightly wider
-  10: 1.6,  // larger
-  13: 1.4,  // wider
-  17: 1.3,  // slightly wider
-};
+// Deliberately irregular width percentages for desktop (basis %)
+// Mix of small (~22%), medium (~30%), large (~42%), and extra-large (~55%)
+// These don't add up to 100% per row on purpose — flex-wrap handles the flow
+const desktopWidths = [
+  42,  // 0 - large hero
+  28,  // 1 - small
+  26,  // 2 - small
+  55,  // 3 - extra large
+  40,  // 4 - large
+  24,  // 5 - small
+  32,  // 6 - medium
+  38,  // 7 - medium-large
+  26,  // 8 - small
+  48,  // 9 - large
+  22,  // 10 - small
+  26,  // 11 - small
+  35,  // 12 - medium
+  58,  // 13 - extra large
+  30,  // 14 - medium
+  22,  // 15 - small
+  44,  // 16 - large
+  30,  // 17 - medium
+  38,  // 18 - medium-large
+  28,  // 19 - small
+];
+
+// Tablet widths (fewer columns, wider images)
+const tabletWidths = [
+  55,  // 0
+  42,  // 1
+  52,  // 2
+  45,  // 3
+  50,  // 4
+  46,  // 5
+  48,  // 6
+  55,  // 7
+  42,  // 8
+  52,  // 9
+  45,  // 10
+  50,  // 11
+  55,  // 12
+  42,  // 13
+  52,  // 14
+  45,  // 15
+  55,  // 16
+  42,  // 17
+  52,  // 18
+  45,  // 19
+];
+
+// Small random vertical offsets to break alignment (px)
+const verticalOffsets = [
+  0, 12, -8, 4, -14, 8, -4, 16, -10, 6,
+  -12, 10, -6, 14, -8, 4, -16, 8, -4, 12,
+];
 
 export default function InSituGallery() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
-  const [columns, setColumns] = useState(3);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Responsive column count
-  useEffect(() => {
-    const updateColumns = () => {
-      const w = window.innerWidth;
-      if (w < 640) setColumns(2);
-      else if (w < 1024) setColumns(3);
-      else setColumns(4);
-    };
-    updateColumns();
-    window.addEventListener("resize", updateColumns);
-    return () => window.removeEventListener("resize", updateColumns);
-  }, []);
-
-  // Distribute images into columns using a balanced approach
-  // Images with scale factors get placed in columns with least total height
-  const distributeImages = useCallback(() => {
-    const cols: { images: typeof galleryImages; totalWeight: number }[] = 
-      Array.from({ length: columns }, () => ({ images: [], totalWeight: 0 }));
-
-    galleryImages.forEach((image, index) => {
-      const scale = scaleFactors[index] || 1;
-      // Find the column with the least total weight
-      let minCol = 0;
-      let minWeight = Infinity;
-      for (let c = 0; c < cols.length; c++) {
-        if (cols[c].totalWeight < minWeight) {
-          minWeight = cols[c].totalWeight;
-          minCol = c;
-        }
-      }
-      cols[minCol].images.push({ ...image, _index: index } as any);
-      cols[minCol].totalWeight += scale;
-    });
-
-    return cols;
-  }, [columns]);
-
-  const distributedColumns = distributeImages();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Organic collage - images only, no cropping */}
       <section className="pt-20 pb-8 sm:pb-12">
-        <div className="px-2 sm:px-3 lg:px-4" ref={containerRef}>
-          <div className="flex gap-2 sm:gap-3">
-            {distributedColumns.map((col, colIndex) => (
-              <div key={colIndex} className="flex-1 flex flex-col gap-2 sm:gap-3">
-                {col.images.map((image: any) => {
-                  const index = image._index;
-                  const scale = scaleFactors[index] || 1;
-                  return (
-                    <div
-                      key={index}
-                      className="group cursor-pointer overflow-hidden rounded-sm"
-                      onClick={() => setZoomImage(image)}
-                      style={{
-                        // Larger scale = more padding around image for visual weight variation
-                        padding: scale > 1 ? `${(scale - 1) * 4}px` : undefined,
-                      }}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-auto object-contain transition-all duration-700 group-hover:scale-[1.03] group-hover:brightness-105"
-                        loading="lazy"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
+        <div className="px-3 sm:px-4 lg:px-6">
+          <div className="flex flex-wrap items-start" style={{ gap: "8px", margin: "0 -4px" }}>
+            {galleryImages.map((image, index) => {
+              const dw = desktopWidths[index];
+              const tw = tabletWidths[index];
+              const vOffset = verticalOffsets[index];
+
+              return (
+                <div
+                  key={index}
+                  className="group cursor-pointer overflow-hidden transition-all duration-500"
+                  onClick={() => setZoomImage(image)}
+                  style={{
+                    flexBasis: `${dw}%`,
+                    flexGrow: 0,
+                    flexShrink: 0,
+                    maxWidth: `${dw}%`,
+                    marginTop: `${vOffset}px`,
+                    padding: "4px",
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-auto rounded-sm transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105"
+                    loading="lazy"
+                    style={{ display: "block" }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
+
+        {/* Responsive overrides for tablet and mobile */}
+        <style>{`
+          @media (max-width: 1023px) and (min-width: 640px) {
+            ${galleryImages.map((_, i) => {
+              const tw = tabletWidths[i];
+              return `.gallery-item-${i} { flex-basis: ${tw}% !important; max-width: ${tw}% !important; }`;
+            }).join("\n")}
+          }
+          @media (max-width: 639px) {
+            .flex-wrap > div {
+              flex-basis: 90% !important;
+              max-width: 90% !important;
+              margin-top: 0 !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
+            .flex-wrap > div:nth-child(odd) {
+              flex-basis: 75% !important;
+              max-width: 75% !important;
+              margin-left: 4% !important;
+              margin-right: auto !important;
+            }
+            .flex-wrap > div:nth-child(even) {
+              flex-basis: 85% !important;
+              max-width: 85% !important;
+              margin-left: auto !important;
+              margin-right: 2% !important;
+            }
+            .flex-wrap > div:nth-child(3n) {
+              flex-basis: 65% !important;
+              max-width: 65% !important;
+              margin-left: 15% !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Image Zoom */}
