@@ -24,53 +24,77 @@ const galleryImages = [
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ" },
 ];
 
-// Define which images should be "featured" (larger) in the collage
-// Indices: 0, 4, 9, 14 will span 2 columns for visual variety
-const featuredIndices = new Set([0, 4, 9, 14]);
+// Each image gets a size class for the organic collage feel
+// "lg" = spans 2 cols + 2 rows, "md" = spans 2 cols or 2 rows, "sm" = 1x1
+type ImageSize = "lg" | "wide" | "tall" | "sm";
+
+const sizeMap: ImageSize[] = [
+  "lg",    // 0 - hero, large
+  "sm",    // 1
+  "tall",  // 2
+  "sm",    // 3
+  "wide",  // 4
+  "sm",    // 5
+  "sm",    // 6
+  "tall",  // 7
+  "wide",  // 8
+  "sm",    // 9
+  "lg",    // 10 - second hero
+  "sm",    // 11
+  "sm",    // 12
+  "wide",  // 13
+  "tall",  // 14
+  "sm",    // 15
+  "sm",    // 16
+  "wide",  // 17
+  "sm",    // 18
+  "tall",  // 19
+];
+
+function getSizeClasses(size: ImageSize): string {
+  switch (size) {
+    case "lg":
+      return "col-span-2 row-span-2";
+    case "wide":
+      return "col-span-2 row-span-1";
+    case "tall":
+      return "col-span-1 row-span-2";
+    case "sm":
+    default:
+      return "col-span-1 row-span-1";
+  }
+}
 
 export default function InSituGallery() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <section className="py-16 sm:py-20">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl font-serif text-[#003153] mb-4">
-              Gallery
-            </h1>
-            <p className="text-muted-foreground leading-relaxed">
-              Original works finding their place in homes, studios, and living spaces.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Masonry Collage */}
-      <section className="pb-20 sm:pb-28">
-        <div className="container">
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4">
+      {/* Organic collage - no text, images only */}
+      <section className="pt-20 pb-8 sm:pb-12">
+        <div className="px-2 sm:px-4 lg:px-6">
+          <div
+            className="grid gap-1.5 sm:gap-2"
+            style={{
+              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              gridAutoRows: "200px",
+              gridAutoFlow: "dense",
+            }}
+          >
             {galleryImages.map((image, index) => {
-              const isFeatured = featuredIndices.has(index);
+              const size = sizeMap[index] || "sm";
               return (
                 <div
                   key={index}
-                  className={`mb-3 sm:mb-4 break-inside-avoid group cursor-pointer ${
-                    isFeatured ? "lg:col-span-2" : ""
-                  }`}
+                  className={`${getSizeClasses(size)} group cursor-pointer overflow-hidden`}
                   onClick={() => setZoomImage(image)}
                 >
-                  <div className="relative overflow-hidden rounded-sm">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                      loading="lazy"
-                    />
-                    {/* Subtle hover overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                  </div>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.05] group-hover:brightness-110"
+                    loading="lazy"
+                  />
                 </div>
               );
             })}

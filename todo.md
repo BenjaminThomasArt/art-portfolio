@@ -355,3 +355,5 @@
 - [x] Add Gallery to navigation between Upcycles and About
 - [x] Upload 20 gallery images to S3
 - [x] Fix panel selector not appearing on published site (panelCount missing from API response) - code is correct, needs re-publish
+- [x] Remove header text from Gallery page (images only)
+- [x] Redesign Gallery with organic non-uniform collage layout with varied image sizes
