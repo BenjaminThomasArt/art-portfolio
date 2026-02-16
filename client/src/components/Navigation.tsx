@@ -11,6 +11,7 @@ export default function Navigation() {
     { href: "/gallery", label: "Originals" },
     { href: "/shop", label: "Prints" },
     { href: "/upcycles", label: "Upcycles" },
+    { href: "/in-situ", label: "Gallery" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];

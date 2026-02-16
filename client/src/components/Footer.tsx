@@ -32,6 +32,7 @@ export default function Footer() {
     { label: "Originals", href: "/gallery" },
     { label: "Prints", href: "/shop" },
     { label: "Upcycles", href: "/upcycles" },
+    { label: "Gallery", href: "/in-situ" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

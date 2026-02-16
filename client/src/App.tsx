@@ -14,6 +14,7 @@ import ArtworkDetail from "./pages/ArtworkDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Upcycles from "./pages/Upcycles";
+import InSituGallery from "./pages/InSituGallery";
 
 function Router() {
   const [location] = useLocation();
@@ -31,6 +32,7 @@ function Router() {
           <Route path="/gallery" component={Gallery} />
           <Route path="/shop" component={Shop} />
           <Route path="/upcycles" component={Upcycles} />
+          <Route path="/in-situ" component={InSituGallery} />
           <Route path="/artwork/:id" component={ArtworkDetail} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
