@@ -330,7 +330,7 @@
 - [x] Update PVC board and canvas inkjet 100x120cm prices from £225 to £200
 - [x] Update an Originals painting image with user's new Green2.jpg, keeping wooden frame and gallery wall
 - [x] Upload approved Delphium v2 image and update database
-- [ ] Add fullscreen lightbox for artwork images (click/tap to open, close button top-right)
+- [x] Add fullscreen lightbox for artwork images (click/tap to open, close button top-right)
 - [x] Replace Portmanteau print image with new photo (wider crop with gallery wall)
 - [x] Add comma after 'works' in Prints section copy
 - [x] Reorder prints: I saw the whole thing first, The Subject of Paint second
@@ -340,3 +340,4 @@
 - [x] Replace first image on 'I Saw the Whole Thing' with new user photo
 - [x] Add left/right panel (diptych) functionality to 'The Subject of Paint' print
 - [x] Add PayPal buyer protection text near confirm order button in Prints section
+- [x] Fix fullscreen image zoom on tap/click across all sections (Originals, Prints, Upcycles)

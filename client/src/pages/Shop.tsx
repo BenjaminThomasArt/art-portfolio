@@ -54,7 +54,7 @@ export default function Shop() {
           ) : prints && prints.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {prints.map((print) => (
-                <PrintCard key={print.id} print={print} onImageClick={() => setZoomImage({ src: print.imageUrl, alt: print.title })} onOrder={(details) => setConfirmOrder(details)} />
+                <PrintCard key={print.id} print={print} onImageClick={(src: string) => setZoomImage({ src, alt: print.title })} onOrder={(details) => setConfirmOrder(details)} />
               ))}
             </div>
           ) : (
@@ -133,12 +133,11 @@ export default function Shop() {
   );
 }
 
-function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: () => void; onOrder: (details: { title: string; price: string; material: string; size: string }) => void }) {
+function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; material: string; size: string }) => void }) {
   const [material, setMaterial] = useState<string>("giclee");
   const [size, setSize] = useState<string>("80x60");
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const [isZoomClick, setIsZoomClick] = useState(false);
   
   const isDiptych = print.isDiptych === 1;
   
@@ -194,9 +193,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       if (currentImageIndex > 0) {
         prevImage();
       }
-    },
-    onSwipeStart: () => setIsZoomClick(false),
-    onSwipeEnd: () => setTimeout(() => setIsZoomClick(true), 100)
+    }
   });
 
   // Price mapping based on material and size
@@ -250,7 +247,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       <div ref={swipeRef} className="aspect-[3/4] overflow-hidden bg-[#f5f3f0] border border-gray-200 mb-4 relative group shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
         <div 
           className="w-full h-full cursor-zoom-in p-[8%]"
-          onClick={() => isZoomClick && !isDragging && onImageClick()}
+          onClick={() => !isDragging && onImageClick(currentImage)}
           style={{
             transform: `translateX(${dragOffset}px)`,
             transition: isDragging ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
