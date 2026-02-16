@@ -52,7 +52,7 @@ export default function Upcycles() {
       <div className="container">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-serif tracking-tight text-[#003153] mb-4">Upcycles</h1>
-          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">Salvaged vinyl 12" records given new life; each reimagined as an original artwork, framed with the original vinyl record included.<br />A treat for walls & record players alike.</p>
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto">Salvaged vinyl 12" records given a new life; each reimagined as a new, original artwork, framed with the original vinyl record included. Perfect for walls & record players alike.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
