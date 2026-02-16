@@ -324,3 +324,4 @@
 - [x] Clean up Portmanteau image: remove gallery wall, keep painting + mat + frame + code padding
 - [x] Replace Portmanteau with user's new photograph (used as-is, no cropping)
 - [x] Update Prints section copy to new text
+- [x] Remove line break in Prints copy, make it one paragraph
