@@ -336,3 +336,4 @@
 - [x] Reorder prints: I saw the whole thing first, The Subject of Paint second
 - [x] Add second image to 'I Saw the Whole Thing' print with multi-image support
 - [x] Remove duplicate image from 'I Saw the Whole Thing' gallery
+- [x] Reduce vibrancy/saturation by 5% on first image of 'I Saw the Whole Thing'
