@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, image_url FROM prints WHERE LOWER(title) LIKE '%one way%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url FROM prints WHERE LOWER(title) LIKE '%one way%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/uJwoalmBjyQXDUOP.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\n30002\tOne way or another\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/uJwoalmBjyQXDUOP.png\n",
+  "stderr": "",
+  "execution_time_ms": 514
+}

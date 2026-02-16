@@ -1,0 +1,28 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "artist_info"
+    },
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "artworks"
+    },
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "inquiries"
+    },
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "prints"
+    },
+    {
+      "Tables_in_TGNsMbsGdWXQhRmCtYbG6q": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_TGNsMbsGdWXQhRmCtYbG6q\n__drizzle_migrations\nartist_info\nartworks\ninquiries\nprints\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 348
+}

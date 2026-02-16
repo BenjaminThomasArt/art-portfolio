@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, medium FROM artworks WHERE title LIKE '%hrysalis%' OR title LIKE '%HRYSALIS%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, medium FROM artworks WHERE title LIKE '%hrysalis%' OR title LIKE '%HRYSALIS%';",
+  "rows": [
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "medium": "Mixed media diptych on PVC board"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tmedium\n3\tChrysalis I & II\tMixed media diptych on PVC board\n",
+  "stderr": "",
+  "execution_time_ms": 360
+}

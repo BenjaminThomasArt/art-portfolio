@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, image_url FROM prints;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url FROM prints;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop-hero/shop-hero-image.jpg"
+    },
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KLhZXEmybTFtUpBB.png"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/smOHEGKSKzsBQDFq.jpg"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/tiefenschwartz-diptych.jpg"
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop/candyflip.png"
+    },
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tvdogwvfZMwOTbYp.jpeg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\n1\tThe Subject of Paint\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop-hero/shop-hero-image.jpg\n30001\tPortmanteau\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KLhZXEmybTFtUpBB.png\n30002\tOne way or another\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/smOHEGKSKzsBQDFq.jpg\n30003\tTiefenschwarz\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/prints/tiefenschwartz-diptych.jpg\n30004\tCandyflip\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/shop/candyflip.png\n60001\tI Saw the Whole Thing\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tvdogwvfZMwOTbYp.jpeg\n",
+  "stderr": "",
+  "execution_time_ms": 349
+}

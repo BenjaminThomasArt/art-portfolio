@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, medium FROM artworks;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, medium FROM artworks;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "medium": "Mixed Media on PVC board"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "medium": "Mixed media on canvas"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "medium": "Mixed media diptych on PVC board"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "medium": "Mixed media diptych on canvas"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "medium": "Mixed media on canvas"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "medium": "Mixed media diptych on canvas"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tmedium\n1\tThe Subject of Paint\tMixed Media on PVC board\n2\tI saw the whole thing\tMixed media on canvas\n3\tChrysalis I & II\tMixed media diptych on PVC board\n4\tTiefenschwarz\tMixed media diptych on canvas\n5\tDelphium\tMixed media on canvas\n999\tCandyflip\tMixed media diptych on canvas\n",
+  "stderr": "",
+  "execution_time_ms": 340
+}

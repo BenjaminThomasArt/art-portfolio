@@ -309,3 +309,15 @@
 - [x] Clean up Delphinium artwork image background to be more consistent with other works
 - [x] Clean up Portmanteau artwork image background
 - [x] Clean up One Way or Another artwork image background
+- [x] Clean up 'I saw the whole thing' artwork image background
+- [x] Crop Portmanteau, One Way or Another, and I saw the whole thing images to reduce excess wall space (~25% larger paintings)
+- [x] Resize One Way or Another image to match Portmanteau dimensions
+- [x] Add ~15% more gallery wall background around One Way or Another image
+- [x] Add ~15% more gallery wall background around Portmanteau image
+- [x] Blend gallery wall backgrounds on Portmanteau and One Way or Another to look like single seamless wall
+- [x] Replace One Way or Another with new centred photo, trimmed 15% top and bottom
+- [x] Update Chrysalis I & II medium to 'Mixed media diptych on PVC board'
+- [x] Fix Portmanteau and One Way or Another images not showing in Prints section (URLs were fine, browser cache)
+- [x] Reduce gallery mat border on One Way or Another in Prints by 50%
+- [ ] Match One Way or Another border/wall size to Portmanteau border size
+- [ ] Match outer border size on 'One way or another' to 'Portmanteau' in Prints section
