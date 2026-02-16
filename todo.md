@@ -348,3 +348,4 @@
 - [x] Move triptych composite image to last position in Revolver Editions carousel
 - [x] Rework Revolver Editions composite: place all three artworks on a single unified wall background (AI-generated)
 - [x] Remove errant blue spot near top right of Revolver Editions centre panel image
+- [x] Regenerate triptych composite image using the fixed centre panel (blue spot still visible in composite)
