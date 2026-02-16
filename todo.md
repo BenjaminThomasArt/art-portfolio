@@ -332,3 +332,4 @@
 - [x] Upload approved Delphium v2 image and update database
 - [ ] Add fullscreen lightbox for artwork images (click/tap to open, close button top-right)
 - [x] Replace Portmanteau print image with new photo (wider crop with gallery wall)
+- [x] Add comma after 'works' in Prints section copy
