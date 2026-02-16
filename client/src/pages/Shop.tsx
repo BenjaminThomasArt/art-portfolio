@@ -61,7 +61,7 @@ export default function Shop() {
             <div className="text-center py-24">
               <ShoppingBag size={48} className="mx-auto mb-4 text-muted-foreground" />
               <p className="text-lg text-muted-foreground mb-8">No prints available at the moment</p>
-              <Link href="/gallery">
+              <Link href="/originals">
                 <button className="px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
                   Browse originals
                 </button>
@@ -139,7 +139,16 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   
-  const panelCount = print.panelCount || (print.isDiptych === 1 ? 2 : 1);
+  // Robust fallback: check panelCount, then isDiptych flag, then description text
+  const panelCount = print.panelCount && print.panelCount > 1
+    ? print.panelCount
+    : print.isDiptych === 1
+      ? 2
+      : print.description?.toLowerCase().includes('triptych')
+        ? 3
+        : print.description?.toLowerCase().includes('diptych')
+          ? 2
+          : 1;
   const isMultiPanel = panelCount > 1;
   const isDiptych = panelCount === 2;
   const isTriptych = panelCount === 3;

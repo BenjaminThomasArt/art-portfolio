@@ -8,10 +8,10 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/gallery", label: "Originals" },
-    { href: "/shop", label: "Prints" },
+    { href: "/originals", label: "Originals" },
+    { href: "/prints", label: "Prints" },
     { href: "/upcycles", label: "Upcycles" },
-    { href: "/in-situ", label: "Gallery" },
+    { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];

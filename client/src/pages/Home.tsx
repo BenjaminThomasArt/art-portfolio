@@ -46,12 +46,12 @@ export default function Home() {
             Fine art & more
           </p>
           <div className="flex items-center justify-center gap-1.5 sm:gap-3">
-            <Link href="/gallery">
+            <Link href="/originals">
               <Button variant="outline" className="text-[11px] sm:text-sm px-2 sm:px-4 h-8 sm:h-10">
                 Originals
               </Button>
             </Link>
-            <Link href="/shop">
+            <Link href="/prints">
               <Button variant="outline" className="text-[11px] sm:text-sm px-2 sm:px-4 h-8 sm:h-10">
                 Prints
               </Button>
@@ -125,7 +125,7 @@ export default function Home() {
           )}
 
           <div className="text-center mt-12">
-            <Link href="/gallery">
+            <Link href="/originals">
               <Button variant="outline" size="lg">
                 View originals
               </Button>
@@ -143,7 +143,7 @@ export default function Home() {
           <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-2xl mx-auto">
             High-quality prints of selected works are available.<br />Get in touch to enquire about sizes and pricing.
           </p>
-          <Link href="/shop">
+          <Link href="/prints">
             <Button size="lg" variant="outline">Browse prints</Button>
           </Link>
         </div>

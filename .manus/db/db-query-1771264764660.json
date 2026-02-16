@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, is_diptych, panel_count FROM prints WHERE title LIKE '%Revolver%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, is_diptych, panel_count FROM prints WHERE title LIKE '%Revolver%';",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "is_diptych": "0",
+      "panel_count": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tis_diptych\tpanel_count\n90001\tThe Revolver Editions\t0\t3\n",
+  "stderr": "",
+  "execution_time_ms": 384
+}

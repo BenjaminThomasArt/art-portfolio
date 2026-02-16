@@ -29,10 +29,10 @@ function Router() {
       <main className="flex-1 pt-16">
         <Switch>
           <Route path={"/"} component={Home} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/shop" component={Shop} />
+          <Route path="/originals" component={Gallery} />
+          <Route path="/prints" component={Shop} />
           <Route path="/upcycles" component={Upcycles} />
-          <Route path="/in-situ" component={InSituGallery} />
+          <Route path="/gallery" component={InSituGallery} />
           <Route path="/artwork/:id" component={ArtworkDetail} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />

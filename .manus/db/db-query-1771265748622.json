@@ -1,0 +1,38 @@
+{
+  "query": "SELECT id, title, is_diptych, panel_count, description FROM prints WHERE is_diptych = 1 OR panel_count > 1 OR description LIKE '%triptych%' OR description LIKE '%diptych%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, is_diptych, panel_count, description FROM prints WHERE is_diptych = 1 OR panel_count > 1 OR description LIKE '%triptych%' OR description LIKE '%diptych%'",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "is_diptych": "1",
+      "panel_count": "2",
+      "description": "Abstract artwork featuring soft pinks, corals, and greens with organic forms"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "is_diptych": "1",
+      "panel_count": "2",
+      "description": "Striking diptych featuring fragmented abstract forms with blues, yellows, purples, and pinks on black. Sold as a two-piece set."
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "is_diptych": "1",
+      "panel_count": "2",
+      "description": "A striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels."
+    },
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "is_diptych": "0",
+      "panel_count": "3",
+      "description": "Triptych, mixed media on paper"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tis_diptych\tpanel_count\tdescription\n1\tThe Subject of Paint\t1\t2\tAbstract artwork featuring soft pinks, corals, and greens with organic forms\n30003\tTiefenschwarz\t1\t2\tStriking diptych featuring fragmented abstract forms with blues, yellows, purples, and pinks on black. Sold as a two-piece set.\n30004\tCandyflip\t1\t2\tA striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels.\n90001\tThe Revolver Editions\t0\t3\tTriptych, mixed media on paper\n",
+  "stderr": "",
+  "execution_time_ms": 405
+}

@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, panel_count, is_diptych FROM prints WHERE panel_count = 3",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, panel_count, is_diptych FROM prints WHERE panel_count = 3",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "panel_count": "3",
+      "is_diptych": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tpanel_count\tis_diptych\n90001\tThe Revolver Editions\t3\t0\n",
+  "stderr": "",
+  "execution_time_ms": 350
+}

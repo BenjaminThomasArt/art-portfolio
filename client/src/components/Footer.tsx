@@ -29,10 +29,10 @@ export default function Footer() {
   ].filter(Boolean);
 
   const navLinks = [
-    { label: "Originals", href: "/gallery" },
-    { label: "Prints", href: "/shop" },
+    { label: "Originals", href: "/originals" },
+    { label: "Prints", href: "/prints" },
     { label: "Upcycles", href: "/upcycles" },
-    { label: "Gallery", href: "/in-situ" },
+    { label: "Gallery", href: "/gallery" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

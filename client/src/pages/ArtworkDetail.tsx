@@ -116,7 +116,7 @@ export default function ArtworkDetail() {
       <div className="py-24">
         <div className="container text-center">
           <h1 className="text-3xl font-serif mb-4">Artwork not found</h1>
-          <Link href="/gallery">
+          <Link href="/originals">
             <Button variant="outline">Back to originals</Button>
           </Link>
         </div>
@@ -127,7 +127,7 @@ export default function ArtworkDetail() {
   return (
     <div className="py-24">
       <div className="container">
-        <Link href="/gallery">
+        <Link href="/originals">
           <Button variant="ghost" className="mb-8 gap-2">
             <ArrowLeft size={18} /> Back to originals
           </Button>

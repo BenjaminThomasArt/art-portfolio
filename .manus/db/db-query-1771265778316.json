@@ -1,0 +1,59 @@
+{
+  "query": "SELECT id, title, panel_count, is_diptych, description FROM prints",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, panel_count, is_diptych, description FROM prints",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "panel_count": "2",
+      "is_diptych": "1",
+      "description": "Abstract artwork featuring soft pinks, corals, and greens with organic forms"
+    },
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "panel_count": "1",
+      "is_diptych": "0",
+      "description": "Vibrant abstract artwork featuring bold pinks, blues, and yellows on black background"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "panel_count": "1",
+      "is_diptych": "0",
+      "description": "Stunning abstract featuring white floral forms against vibrant pink and purple gradient background"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "panel_count": "2",
+      "is_diptych": "1",
+      "description": "Striking diptych featuring fragmented abstract forms with blues, yellows, purples, and pinks on black. Sold as a two-piece set."
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "panel_count": "2",
+      "is_diptych": "1",
+      "description": "A striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels."
+    },
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "panel_count": "1",
+      "is_diptych": "0",
+      "description": "High-quality giclée print on archival paper"
+    },
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "panel_count": "3",
+      "is_diptych": "0",
+      "description": "Triptych, mixed media on paper"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tpanel_count\tis_diptych\tdescription\n1\tThe Subject of Paint\t2\t1\tAbstract artwork featuring soft pinks, corals, and greens with organic forms\n30001\tPortmanteau\t1\t0\tVibrant abstract artwork featuring bold pinks, blues, and yellows on black background\n30002\tOne way or another\t1\t0\tStunning abstract featuring white floral forms against vibrant pink and purple gradient background\n30003\tTiefenschwarz\t2\t1\tStriking diptych featuring fragmented abstract forms with blues, yellows, purples, and pinks on black. Sold as a two-piece set.\n30004\tCandyflip\t2\t1\tA striking diptych featuring deep navy blue with scattered pink, white, and purple splatter patterns creating a cosmic, ethereal effect across two panels.\n60001\tI Saw the Whole Thing\t1\t0\tHigh-quality giclée print on archival paper\n90001\tThe Revolver Editions\t3\t0\tTriptych, mixed media on paper\n",
+  "stderr": "",
+  "execution_time_ms": 343
+}

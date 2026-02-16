@@ -360,3 +360,7 @@
 - [x] Fix Gallery images being cropped - show full uncropped images with varied sizes
 - [x] Make Gallery layout more irregular and less grid-like while keeping images uncropped
 - [x] Reduce white/unused space in Gallery collage while keeping irregular feel
+- [x] Fix triptych panel selector not showing on published site for Revolver Editions (description-based fallback)
+- [x] Update all page URLs to match current nav labels (/gallery -> /originals, /shop -> /prints, /in-situ -> /gallery)
+- [x] Add 6 new images to Gallery page (artist portraits, studio shots, in-situ artwork photos)
+- [x] Refine Gallery collage layout with new images to fill gaps and improve composition
