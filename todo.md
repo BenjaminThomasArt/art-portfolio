@@ -337,3 +337,4 @@
 - [x] Add second image to 'I Saw the Whole Thing' print with multi-image support
 - [x] Remove duplicate image from 'I Saw the Whole Thing' gallery
 - [x] Reduce vibrancy/saturation by 5% on first image of 'I Saw the Whole Thing'
+- [x] Replace first image on 'I Saw the Whole Thing' with new user photo
