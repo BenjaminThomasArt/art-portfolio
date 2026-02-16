@@ -205,12 +205,12 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     },
     pvc: {
       "80x60": "£125",
-      "120x100": "£225",
+      "120x100": "£200",
       "custom": "Contact for pricing"
     },
     canvas: {
       "80x60": "£125",
-      "120x100": "£225",
+      "120x100": "£200",
       "custom": "Contact for pricing"
     }
   };
