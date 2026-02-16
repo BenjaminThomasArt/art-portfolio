@@ -322,3 +322,4 @@
 - [ ] Match One Way or Another border/wall size to Portmanteau border size
 - [x] Match outer border size on 'One way or another' to 'Portmanteau' in Prints section
 - [x] Clean up Portmanteau image: remove gallery wall, keep painting + mat + frame + code padding
+- [x] Replace Portmanteau with user's new photograph (used as-is, no cropping)
