@@ -357,3 +357,4 @@
 - [x] Fix panel selector not appearing on published site (panelCount missing from API response) - code is correct, needs re-publish
 - [x] Remove header text from Gallery page (images only)
 - [x] Redesign Gallery with organic non-uniform collage layout with varied image sizes
+- [x] Fix Gallery images being cropped - show full uncropped images with varied sizes

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 
 const galleryImages = [
@@ -24,80 +24,93 @@ const galleryImages = [
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ" },
 ];
 
-// Each image gets a size class for the organic collage feel
-// "lg" = spans 2 cols + 2 rows, "md" = spans 2 cols or 2 rows, "sm" = 1x1
-type ImageSize = "lg" | "wide" | "tall" | "sm";
-
-const sizeMap: ImageSize[] = [
-  "lg",    // 0 - hero, large
-  "sm",    // 1
-  "tall",  // 2
-  "sm",    // 3
-  "wide",  // 4
-  "sm",    // 5
-  "sm",    // 6
-  "tall",  // 7
-  "wide",  // 8
-  "sm",    // 9
-  "lg",    // 10 - second hero
-  "sm",    // 11
-  "sm",    // 12
-  "wide",  // 13
-  "tall",  // 14
-  "sm",    // 15
-  "sm",    // 16
-  "wide",  // 17
-  "sm",    // 18
-  "tall",  // 19
-];
-
-function getSizeClasses(size: ImageSize): string {
-  switch (size) {
-    case "lg":
-      return "col-span-2 row-span-2";
-    case "wide":
-      return "col-span-2 row-span-1";
-    case "tall":
-      return "col-span-1 row-span-2";
-    case "sm":
-    default:
-      return "col-span-1 row-span-1";
-  }
-}
+// Scale factors to create non-uniform sizing
+// Values > 1 make the image wider (takes more visual weight)
+const scaleFactors: Record<number, number> = {
+  0: 1.6,   // larger
+  4: 1.4,   // wider
+  7: 1.3,   // slightly wider
+  10: 1.6,  // larger
+  13: 1.4,  // wider
+  17: 1.3,  // slightly wider
+};
 
 export default function InSituGallery() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
+  const [columns, setColumns] = useState(3);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Responsive column count
+  useEffect(() => {
+    const updateColumns = () => {
+      const w = window.innerWidth;
+      if (w < 640) setColumns(2);
+      else if (w < 1024) setColumns(3);
+      else setColumns(4);
+    };
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
+  }, []);
+
+  // Distribute images into columns using a balanced approach
+  // Images with scale factors get placed in columns with least total height
+  const distributeImages = useCallback(() => {
+    const cols: { images: typeof galleryImages; totalWeight: number }[] = 
+      Array.from({ length: columns }, () => ({ images: [], totalWeight: 0 }));
+
+    galleryImages.forEach((image, index) => {
+      const scale = scaleFactors[index] || 1;
+      // Find the column with the least total weight
+      let minCol = 0;
+      let minWeight = Infinity;
+      for (let c = 0; c < cols.length; c++) {
+        if (cols[c].totalWeight < minWeight) {
+          minWeight = cols[c].totalWeight;
+          minCol = c;
+        }
+      }
+      cols[minCol].images.push({ ...image, _index: index } as any);
+      cols[minCol].totalWeight += scale;
+    });
+
+    return cols;
+  }, [columns]);
+
+  const distributedColumns = distributeImages();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Organic collage - no text, images only */}
+      {/* Organic collage - images only, no cropping */}
       <section className="pt-20 pb-8 sm:pb-12">
-        <div className="px-2 sm:px-4 lg:px-6">
-          <div
-            className="grid gap-1.5 sm:gap-2"
-            style={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-              gridAutoRows: "200px",
-              gridAutoFlow: "dense",
-            }}
-          >
-            {galleryImages.map((image, index) => {
-              const size = sizeMap[index] || "sm";
-              return (
-                <div
-                  key={index}
-                  className={`${getSizeClasses(size)} group cursor-pointer overflow-hidden`}
-                  onClick={() => setZoomImage(image)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.05] group-hover:brightness-110"
-                    loading="lazy"
-                  />
-                </div>
-              );
-            })}
+        <div className="px-2 sm:px-3 lg:px-4" ref={containerRef}>
+          <div className="flex gap-2 sm:gap-3">
+            {distributedColumns.map((col, colIndex) => (
+              <div key={colIndex} className="flex-1 flex flex-col gap-2 sm:gap-3">
+                {col.images.map((image: any) => {
+                  const index = image._index;
+                  const scale = scaleFactors[index] || 1;
+                  return (
+                    <div
+                      key={index}
+                      className="group cursor-pointer overflow-hidden rounded-sm"
+                      onClick={() => setZoomImage(image)}
+                      style={{
+                        // Larger scale = more padding around image for visual weight variation
+                        padding: scale > 1 ? `${(scale - 1) * 4}px` : undefined,
+                      }}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-auto object-contain transition-all duration-700 group-hover:scale-[1.03] group-hover:brightness-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
