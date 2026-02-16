@@ -320,4 +320,5 @@
 - [x] Fix Portmanteau and One Way or Another images not showing in Prints section (URLs were fine, browser cache)
 - [x] Reduce gallery mat border on One Way or Another in Prints by 50%
 - [ ] Match One Way or Another border/wall size to Portmanteau border size
-- [ ] Match outer border size on 'One way or another' to 'Portmanteau' in Prints section
+- [x] Match outer border size on 'One way or another' to 'Portmanteau' in Prints section
+- [x] Clean up Portmanteau image: remove gallery wall, keep painting + mat + frame + code padding
