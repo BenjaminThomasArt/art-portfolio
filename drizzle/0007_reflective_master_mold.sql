@@ -1,0 +1,1 @@
+ALTER TABLE `prints` ADD `panel_count` int DEFAULT 1 NOT NULL;

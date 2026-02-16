@@ -139,7 +139,10 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   
-  const isDiptych = print.isDiptych === 1;
+  const panelCount = print.panelCount || (print.isDiptych === 1 ? 2 : 1);
+  const isMultiPanel = panelCount > 1;
+  const isDiptych = panelCount === 2;
+  const isTriptych = panelCount === 3;
   
   // Build array of all images
   // Prioritize artwork gallery images from Gallery section (which already include the main image)
@@ -215,11 +218,11 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     }
   };
 
-  // Calculate price based on panel selection for diptychs
+  // Calculate price based on panel selection for multi-panel works
   let currentPrice = priceMap[material]?.[size] || "Contact for pricing";
-  if (isDiptych && panelSelection === "both" && currentPrice.startsWith("£")) {
+  if (isMultiPanel && panelSelection === "all" && currentPrice.startsWith("£")) {
     const singlePrice = parseInt(currentPrice.replace("£", ""));
-    currentPrice = `£${singlePrice * 2}`;
+    currentPrice = `£${singlePrice * panelCount}`;
   }
 
   const materialLabels: Record<string, string> = {
@@ -343,8 +346,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
           </Select>
         </div>
 
-        {/* Diptych Panel Selector - only show for diptychs */}
-        {isDiptych && (
+        {/* Panel Selector - show for diptychs and triptychs */}
+        {isMultiPanel && (
           <div className="space-y-1">
             <label className="text-sm font-medium">Panels</label>
             <Select value={panelSelection} onValueChange={setPanelSelection}>
@@ -353,8 +356,9 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="left">Left panel</SelectItem>
+                {isTriptych && <SelectItem value="centre">Centre panel</SelectItem>}
                 <SelectItem value="right">Right panel</SelectItem>
-                <SelectItem value="both">Both panels</SelectItem>
+                <SelectItem value="all">{isDiptych ? 'Both panels' : `All ${panelCount} panels`}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -364,7 +368,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
         <div className="pt-2 pb-1 border-t border-border">
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">
-              {isDiptych && panelSelection === "both" ? "Total price:" : "Price:"}
+              {isMultiPanel && panelSelection === "all" ? "Total price:" : "Price:"}
             </span>
             <span className="text-xl font-serif">{currentPrice}</span>
           </div>

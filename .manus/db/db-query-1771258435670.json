@@ -1,0 +1,46 @@
+{
+  "query": "SELECT id, title, is_diptych, display_order FROM prints ORDER BY display_order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, is_diptych, display_order FROM prints ORDER BY display_order;",
+  "rows": [
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "is_diptych": "0",
+      "display_order": "1"
+    },
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "is_diptych": "1",
+      "display_order": "2"
+    },
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "is_diptych": "0",
+      "display_order": "3"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "is_diptych": "0",
+      "display_order": "4"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "is_diptych": "1",
+      "display_order": "5"
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "is_diptych": "1",
+      "display_order": "6"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tis_diptych\tdisplay_order\n60001\tI Saw the Whole Thing\t0\t1\n1\tThe Subject of Paint\t1\t2\n30001\tPortmanteau\t0\t3\n30002\tOne way or another\t0\t4\n30003\tTiefenschwarz\t1\t5\n30004\tCandyflip\t1\t6\n",
+  "stderr": "",
+  "execution_time_ms": 412
+}

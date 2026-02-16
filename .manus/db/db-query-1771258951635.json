@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO prints (title, description, image_url, image_key, gallery_images, available, is_diptych, panel_count, display_order) VALUES ('The Revolver Editions', 'Triptych, mixed media on paper', 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg', 'revolver-editions-triptych', '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HxcQQxQaYjTeFMeZ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wlwiSPzbwCJGNHmF.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KwPzwQAxhhejBNzU.jpeg\"]', 1, 0, 3, 7);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO prints (title, description, image_url, image_key, gallery_images, available, is_diptych, panel_count, display_order) VALUES ('The Revolver Editions', 'Triptych, mixed media on paper', 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg', 'revolver-editions-triptych', '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HxcQQxQaYjTeFMeZ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wlwiSPzbwCJGNHmF.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KwPzwQAxhhejBNzU.jpeg\"]', 1, 0, 3, 7);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 379
+}

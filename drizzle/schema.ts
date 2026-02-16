@@ -105,6 +105,7 @@ export const prints = mysqlTable("prints", {
   price: varchar("price", { length: 50 }), // Optional - can be null if custom pricing
   available: int("available").default(1).notNull(), // 0 = unavailable, 1 = available
   isDiptych: int("is_diptych").default(0).notNull(), // 0 = single piece, 1 = diptych (two panels)
+  panelCount: int("panel_count").default(1).notNull(), // 1 = single, 2 = diptych, 3 = triptych
   displayOrder: int("display_order").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
