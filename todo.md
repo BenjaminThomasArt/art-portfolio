@@ -345,3 +345,4 @@
 - [x] Revert Delphium artwork image to its previous version (before AI-generated replacement)
 - [x] Fix click-to-zoom/fullscreen not working on any images across the site
 - [x] Add 'The Revolver Editions' triptych as a new print with 4 carousel images + triptych panel selector
+- [x] Move triptych composite image to last position in Revolver Editions carousel
