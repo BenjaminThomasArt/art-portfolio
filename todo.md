@@ -325,3 +325,4 @@
 - [x] Replace Portmanteau with user's new photograph (used as-is, no cropping)
 - [x] Update Prints section copy to new text
 - [x] Remove line break in Prints copy, make it one paragraph
+- [x] Update PVC board and canvas inkjet 80x60cm prices from £150 to £125

@@ -1,0 +1,28 @@
+{
+  "query": "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE();",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE();",
+  "rows": [
+    {
+      "TABLE_NAME": "artworks"
+    },
+    {
+      "TABLE_NAME": "inquiries"
+    },
+    {
+      "TABLE_NAME": "prints"
+    },
+    {
+      "TABLE_NAME": "__drizzle_migrations"
+    },
+    {
+      "TABLE_NAME": "users"
+    },
+    {
+      "TABLE_NAME": "artist_info"
+    }
+  ],
+  "messages": [],
+  "stdout": "TABLE_NAME\nartworks\ninquiries\nprints\n__drizzle_migrations\nusers\nartist_info\n",
+  "stderr": "",
+  "execution_time_ms": 348
+}

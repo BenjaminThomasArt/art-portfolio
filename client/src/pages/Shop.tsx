@@ -196,15 +196,27 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     onSwipeEnd: () => setTimeout(() => setIsZoomClick(true), 100)
   });
 
-  // Price mapping based on size
-  const priceMap: Record<string, string> = {
-    "80x60": "£150",
-    "120x100": "£225",
-    "custom": "Contact for pricing"
+  // Price mapping based on material and size
+  const priceMap: Record<string, Record<string, string>> = {
+    giclee: {
+      "80x60": "£150",
+      "120x100": "£225",
+      "custom": "Contact for pricing"
+    },
+    pvc: {
+      "80x60": "£125",
+      "120x100": "£225",
+      "custom": "Contact for pricing"
+    },
+    canvas: {
+      "80x60": "£125",
+      "120x100": "£225",
+      "custom": "Contact for pricing"
+    }
   };
 
   // Calculate price based on panel selection for diptychs
-  let currentPrice = priceMap[size] || "Contact for pricing";
+  let currentPrice = priceMap[material]?.[size] || "Contact for pricing";
   if (isDiptych && panelSelection === "both" && currentPrice.startsWith("£")) {
     const singlePrice = parseInt(currentPrice.replace("£", ""));
     currentPrice = `£${singlePrice * 2}`;
