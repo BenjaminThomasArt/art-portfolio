@@ -342,3 +342,4 @@
 - [x] Add PayPal buyer protection text near confirm order button in Prints section
 - [x] Fix fullscreen image zoom on tap/click across all sections (Originals, Prints, Upcycles)
 - [x] Update Upcycles section copy to new text about salvaged vinyl records
+- [x] Revert Delphium artwork image to its previous version (before AI-generated replacement)

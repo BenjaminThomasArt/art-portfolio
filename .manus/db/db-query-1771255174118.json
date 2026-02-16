@@ -1,0 +1,61 @@
+{
+  "query": "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'artworks';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'artworks';",
+  "rows": [
+    {
+      "COLUMN_NAME": "id"
+    },
+    {
+      "COLUMN_NAME": "title"
+    },
+    {
+      "COLUMN_NAME": "description"
+    },
+    {
+      "COLUMN_NAME": "image_url"
+    },
+    {
+      "COLUMN_NAME": "image_key"
+    },
+    {
+      "COLUMN_NAME": "year"
+    },
+    {
+      "COLUMN_NAME": "medium"
+    },
+    {
+      "COLUMN_NAME": "dimensions"
+    },
+    {
+      "COLUMN_NAME": "available"
+    },
+    {
+      "COLUMN_NAME": "featured"
+    },
+    {
+      "COLUMN_NAME": "display_order"
+    },
+    {
+      "COLUMN_NAME": "created_at"
+    },
+    {
+      "COLUMN_NAME": "updated_at"
+    },
+    {
+      "COLUMN_NAME": "for_sale"
+    },
+    {
+      "COLUMN_NAME": "price"
+    },
+    {
+      "COLUMN_NAME": "paypal_button_id"
+    },
+    {
+      "COLUMN_NAME": "gallery_images"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\nid\ntitle\ndescription\nimage_url\nimage_key\nyear\nmedium\ndimensions\navailable\nfeatured\ndisplay_order\ncreated_at\nupdated_at\nfor_sale\nprice\npaypal_button_id\ngallery_images\n",
+  "stderr": "",
+  "execution_time_ms": 340
+}

@@ -1,0 +1,64 @@
+{
+  "query": "SELECT id, title, image_url, gallery_images, medium, year, available FROM artworks ORDER BY display_order ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, gallery_images, medium, year, available FROM artworks ORDER BY display_order ASC;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg\"]",
+      "medium": "Mixed Media on PVC board",
+      "year": "2026",
+      "available": "yes"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ykMgjlFOTgWVvDvJ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iFwzTINRPHkqFBuZ.jpeg\"]",
+      "medium": "Mixed media diptych on canvas",
+      "year": "2025",
+      "available": "yes"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/TguDoOqXCEWBONTn.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xEComNQSKHGVoqHF.jpeg\"]",
+      "medium": "Mixed media diptych on canvas",
+      "year": "2025",
+      "available": "sold"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/WswUWabangbWnaxe.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/mKNkASFCAzaKsOCG.jpeg\"]",
+      "medium": "Mixed media diptych on PVC board",
+      "year": "2026",
+      "available": "sold"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tMXhjNZtQxWfEYBM.png",
+      "gallery_images": "NULL",
+      "medium": "Mixed media on canvas",
+      "year": "2025",
+      "available": "yes"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png",
+      "gallery_images": "NULL",
+      "medium": "Mixed media on canvas",
+      "year": "2024",
+      "available": "sold"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tgallery_images\tmedium\tyear\tavailable\n1\tThe Subject of Paint\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg\"]\tMixed Media on PVC board\t2026\tyes\n4\tTiefenschwarz\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ykMgjlFOTgWVvDvJ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iFwzTINRPHkqFBuZ.jpeg\"]\tMixed media diptych on canvas\t2025\tyes\n999\tCandyflip\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/TguDoOqXCEWBONTn.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xEComNQSKHGVoqHF.jpeg\"]\tMixed media diptych on canvas\t2025\tsold\n3\tChrysalis I & II\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/WswUWabangbWnaxe.jpeg\", \"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/mKNkASFCAzaKsOCG.jpeg\"]\tMixed media diptych on PVC board\t2026\tsold\n5\tDelphium\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tMXhjNZtQxWfEYBM.png\tNULL\tMixed media on canvas\t2025\tyes\n2\tI saw the whole thing\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png\tNULL\tMixed media on canvas\t2024\tsold\n",
+  "stderr": "",
+  "execution_time_ms": 344
+}
