@@ -328,3 +328,7 @@
 - [x] Update PVC board and canvas inkjet 80x60cm prices from £150 to £125
 - [x] Update print size labels to width x height: 60 x 80 cm and 100 x 120 cm
 - [x] Update PVC board and canvas inkjet 100x120cm prices from £225 to £200
+- [x] Update an Originals painting image with user's new Green2.jpg, keeping wooden frame and gallery wall
+- [x] Upload approved Delphium v2 image and update database
+- [ ] Add fullscreen lightbox for artwork images (click/tap to open, close button top-right)
+- [x] Replace Portmanteau print image with new photo (wider crop with gallery wall)
