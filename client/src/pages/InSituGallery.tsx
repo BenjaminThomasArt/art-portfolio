@@ -24,60 +24,25 @@ const galleryImages = [
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ" },
 ];
 
-// Deliberately irregular width percentages for desktop (basis %)
-// Mix of small (~22%), medium (~30%), large (~42%), and extra-large (~55%)
-// These don't add up to 100% per row on purpose — flex-wrap handles the flow
-const desktopWidths = [
-  42,  // 0 - large hero
-  28,  // 1 - small
-  26,  // 2 - small
-  55,  // 3 - extra large
-  40,  // 4 - large
-  24,  // 5 - small
-  32,  // 6 - medium
-  38,  // 7 - medium-large
-  26,  // 8 - small
-  48,  // 9 - large
-  22,  // 10 - small
-  26,  // 11 - small
-  35,  // 12 - medium
-  58,  // 13 - extra large
-  30,  // 14 - medium
-  22,  // 15 - small
-  44,  // 16 - large
-  30,  // 17 - medium
-  38,  // 18 - medium-large
-  28,  // 19 - small
-];
-
-// Tablet widths (fewer columns, wider images)
-const tabletWidths = [
-  55,  // 0
-  42,  // 1
-  52,  // 2
-  45,  // 3
-  50,  // 4
-  46,  // 5
-  48,  // 6
-  55,  // 7
-  42,  // 8
-  52,  // 9
-  45,  // 10
-  50,  // 11
-  55,  // 12
-  42,  // 13
-  52,  // 14
-  45,  // 15
-  55,  // 16
-  42,  // 17
-  52,  // 18
-  45,  // 19
-];
-
-// Small random vertical offsets to break alignment (px)
-const verticalOffsets = [
-  0, 12, -8, 4, -14, 8, -4, 16, -10, 6,
-  -12, 10, -6, 14, -8, 4, -16, 8, -4, 12,
+// Organised into visual rows that sum to ~100% each
+// Each row has 2-4 images with varied proportions
+const layoutRows = [
+  // Row 1: 2 images — one dominant, one smaller
+  [{ idx: 0, basis: 58 }, { idx: 1, basis: 40 }],
+  // Row 2: 3 images — uneven thirds
+  [{ idx: 2, basis: 28 }, { idx: 3, basis: 44 }, { idx: 4, basis: 26 }],
+  // Row 3: 2 images — roughly equal but not exact
+  [{ idx: 5, basis: 53 }, { idx: 6, basis: 45 }],
+  // Row 4: 3 images — wide centre
+  [{ idx: 7, basis: 24 }, { idx: 8, basis: 50 }, { idx: 9, basis: 24 }],
+  // Row 5: 2 images — reversed dominance
+  [{ idx: 10, basis: 38 }, { idx: 11, basis: 60 }],
+  // Row 6: 3 images — heavy left
+  [{ idx: 12, basis: 48 }, { idx: 13, basis: 30 }, { idx: 14, basis: 20 }],
+  // Row 7: 2 images — nearly equal
+  [{ idx: 15, basis: 44 }, { idx: 16, basis: 54 }],
+  // Row 8: 3 images — heavy right
+  [{ idx: 17, basis: 22 }, { idx: 18, basis: 30 }, { idx: 19, basis: 46 }],
 ];
 
 export default function InSituGallery() {
@@ -85,77 +50,65 @@ export default function InSituGallery() {
 
   return (
     <div className="min-h-screen bg-background">
-      <section className="pt-20 pb-8 sm:pb-12">
-        <div className="px-3 sm:px-4 lg:px-6">
-          <div className="flex flex-wrap items-start" style={{ gap: "8px", margin: "0 -4px" }}>
-            {galleryImages.map((image, index) => {
-              const dw = desktopWidths[index];
-              const tw = tabletWidths[index];
-              const vOffset = verticalOffsets[index];
-
-              return (
-                <div
-                  key={index}
-                  className="group cursor-pointer overflow-hidden transition-all duration-500"
-                  onClick={() => setZoomImage(image)}
-                  style={{
-                    flexBasis: `${dw}%`,
-                    flexGrow: 0,
-                    flexShrink: 0,
-                    maxWidth: `${dw}%`,
-                    marginTop: `${vOffset}px`,
-                    padding: "4px",
-                  }}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-auto rounded-sm transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105"
-                    loading="lazy"
-                    style={{ display: "block" }}
-                  />
-                </div>
-              );
-            })}
-          </div>
+      <section className="pt-16 pb-8">
+        <div className="px-2 sm:px-3 lg:px-4 max-w-[1600px] mx-auto">
+          {layoutRows.map((row, rowIndex) => (
+            <div
+              key={rowIndex}
+              className="flex items-start"
+              style={{
+                gap: "4px",
+                marginBottom: "4px",
+              }}
+            >
+              {row.map(({ idx, basis }) => {
+                const image = galleryImages[idx];
+                return (
+                  <div
+                    key={idx}
+                    className="group cursor-pointer overflow-hidden"
+                    onClick={() => setZoomImage(image)}
+                    style={{
+                      flexBasis: `${basis}%`,
+                      flexGrow: 1,
+                      flexShrink: 1,
+                    }}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-auto block transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105"
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
-
-        {/* Responsive overrides for tablet and mobile */}
-        <style>{`
-          @media (max-width: 1023px) and (min-width: 640px) {
-            ${galleryImages.map((_, i) => {
-              const tw = tabletWidths[i];
-              return `.gallery-item-${i} { flex-basis: ${tw}% !important; max-width: ${tw}% !important; }`;
-            }).join("\n")}
-          }
-          @media (max-width: 639px) {
-            .flex-wrap > div {
-              flex-basis: 90% !important;
-              max-width: 90% !important;
-              margin-top: 0 !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-            }
-            .flex-wrap > div:nth-child(odd) {
-              flex-basis: 75% !important;
-              max-width: 75% !important;
-              margin-left: 4% !important;
-              margin-right: auto !important;
-            }
-            .flex-wrap > div:nth-child(even) {
-              flex-basis: 85% !important;
-              max-width: 85% !important;
-              margin-left: auto !important;
-              margin-right: 2% !important;
-            }
-            .flex-wrap > div:nth-child(3n) {
-              flex-basis: 65% !important;
-              max-width: 65% !important;
-              margin-left: 15% !important;
-            }
-          }
-        `}</style>
       </section>
+
+      {/* Mobile override: stack with alternating widths */}
+      <style>{`
+        @media (max-width: 639px) {
+          .flex.items-start {
+            flex-direction: column !important;
+            gap: 4px !important;
+          }
+          .flex.items-start > div {
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+          }
+          .flex.items-start > div:nth-child(odd) {
+            width: 88% !important;
+            margin-left: 0 !important;
+          }
+          .flex.items-start > div:nth-child(even) {
+            width: 78% !important;
+            margin-left: auto !important;
+          }
+        }
+      `}</style>
 
       {/* Image Zoom */}
       <ImageZoom
