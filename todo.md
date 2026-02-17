@@ -366,3 +366,4 @@
 - [x] Refine Gallery collage layout with new images to fill gaps and improve composition
 - [x] Add second carousel image to Portmanteau print (in-situ photo on wall)
 - [x] Add second carousel image to 'One way or another' print (in-situ photo with dining table)
+- [x] Replace second carousel image on 'One way or another' with new in-situ photo (armchair scene)
