@@ -173,7 +173,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
   if (allImages.length === 0 && print.galleryImages) {
     try {
       const galleryArray = JSON.parse(print.galleryImages);
-      allImages = galleryArray;
+      // Include main image as first, then additional gallery images
+      allImages = [print.imageUrl, ...galleryArray];
     } catch (e) {
       console.error('Failed to parse print gallery images:', e);
     }

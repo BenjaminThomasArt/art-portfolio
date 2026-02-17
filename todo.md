@@ -364,3 +364,5 @@
 - [x] Update all page URLs to match current nav labels (/gallery -> /originals, /shop -> /prints, /in-situ -> /gallery)
 - [x] Add 6 new images to Gallery page (artist portraits, studio shots, in-situ artwork photos)
 - [x] Refine Gallery collage layout with new images to fill gaps and improve composition
+- [x] Add second carousel image to Portmanteau print (in-situ photo on wall)
+- [x] Add second carousel image to 'One way or another' print (in-situ photo with dining table)

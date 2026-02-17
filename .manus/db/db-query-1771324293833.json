@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, title, gallery_images FROM prints WHERE title LIKE '%Portmanteau%' OR title LIKE '%One way%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, gallery_images FROM prints WHERE title LIKE '%Portmanteau%' OR title LIKE '%One way%'",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "gallery_images": "NULL"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "gallery_images": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tgallery_images\n30001\tPortmanteau\tNULL\n30002\tOne way or another\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 482
+}
