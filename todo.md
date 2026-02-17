@@ -369,3 +369,5 @@
 - [x] Replace second carousel image on 'One way or another' with new in-situ photo (armchair scene)
 - [x] Reorder material options: Canvas Inkjet (default, £125), PVC Board, Giclée — across all prints
 - [x] Remove first (redundant) carousel image from 'I Saw the Whole Thing' print, keep only images 2 and 3
+- [x] Add third carousel image to 'I Saw the Whole Thing' print (detail close-up)
+- [x] Add additional carousel image to 'The Subject of Paint' print (detail close-up)

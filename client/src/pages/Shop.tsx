@@ -154,33 +154,40 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
   const isTriptych = panelCount === 3;
   
   // Build array of all images
-  // Prioritize artwork gallery images from Gallery section (which already include the main image)
+  // Build carousel from artwork gallery images + print-specific gallery images
   let allImages: string[] = [];
   
-  // First try to use artwork gallery images (from Gallery section)
+  // Start with artwork gallery images (from Gallery/Originals section)
   if (print.artworkGalleryImages) {
     try {
       const artworkGalleryArray = JSON.parse(print.artworkGalleryImages);
       if (artworkGalleryArray && artworkGalleryArray.length > 0) {
-        allImages = artworkGalleryArray;
+        allImages = [...artworkGalleryArray];
       }
     } catch (e) {
       console.error('Failed to parse artwork gallery images:', e);
     }
   }
   
-  // If no artwork gallery images, use print-specific gallery images
-  if (allImages.length === 0 && print.galleryImages) {
+  // Then append print-specific gallery images (detail shots, in-situ photos, etc.)
+  if (print.galleryImages) {
     try {
-      const galleryArray = JSON.parse(print.galleryImages);
-      // Include main image as first, then additional gallery images
-      allImages = [print.imageUrl, ...galleryArray];
+      const printGalleryArray = JSON.parse(print.galleryImages);
+      if (printGalleryArray && printGalleryArray.length > 0) {
+        if (allImages.length === 0) {
+          // No artwork gallery — use main image as first, then print gallery
+          allImages = [print.imageUrl, ...printGalleryArray];
+        } else {
+          // Append print gallery images after artwork gallery images
+          allImages = [...allImages, ...printGalleryArray];
+        }
+      }
     } catch (e) {
       console.error('Failed to parse print gallery images:', e);
     }
   }
   
-  // Fallback to main image if no gallery images
+  // Fallback to main image if no gallery images at all
   if (allImages.length === 0) {
     allImages = [print.imageUrl];
   }
