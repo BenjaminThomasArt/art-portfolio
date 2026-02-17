@@ -373,3 +373,4 @@
 - [x] Add additional carousel image to 'The Subject of Paint' print (detail close-up)
 - [x] Add additional detail close-up image to 'One way or another' print carousel
 - [x] Add detail close-up image to end of Portmanteau print carousel
+- [x] Replace last Portmanteau carousel image with updated detail close-up (IMG_7736)
