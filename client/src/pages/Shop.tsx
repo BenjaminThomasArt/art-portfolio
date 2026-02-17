@@ -134,7 +134,7 @@ export default function Shop() {
 }
 
 function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; material: string; size: string }) => void }) {
-  const [material, setMaterial] = useState<string>("giclee");
+  const [material, setMaterial] = useState<string>("canvas");
   const [size, setSize] = useState<string>("80x60");
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -211,9 +211,9 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
 
   // Price mapping based on material and size
   const priceMap: Record<string, Record<string, string>> = {
-    giclee: {
-      "80x60": "£150",
-      "120x100": "£225",
+    canvas: {
+      "80x60": "£125",
+      "120x100": "£200",
       "custom": "Contact for pricing"
     },
     pvc: {
@@ -221,9 +221,9 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       "120x100": "£200",
       "custom": "Contact for pricing"
     },
-    canvas: {
-      "80x60": "£125",
-      "120x100": "£200",
+    giclee: {
+      "80x60": "£150",
+      "120x100": "£225",
       "custom": "Contact for pricing"
     }
   };
@@ -334,9 +334,9 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
               <SelectValue placeholder="Select material" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="canvas">Canvas Inkjet</SelectItem>
+              <SelectItem value="pvc">PVC Board</SelectItem>
               <SelectItem value="giclee">Giclée</SelectItem>
-              <SelectItem value="pvc">PVC board</SelectItem>
-              <SelectItem value="canvas">Canvas inkjet</SelectItem>
             </SelectContent>
           </Select>
         </div>
