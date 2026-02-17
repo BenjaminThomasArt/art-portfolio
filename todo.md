@@ -371,3 +371,4 @@
 - [x] Remove first (redundant) carousel image from 'I Saw the Whole Thing' print, keep only images 2 and 3
 - [x] Add third carousel image to 'I Saw the Whole Thing' print (detail close-up)
 - [x] Add additional carousel image to 'The Subject of Paint' print (detail close-up)
+- [x] Add additional detail close-up image to 'One way or another' print carousel
