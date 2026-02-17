@@ -372,3 +372,4 @@
 - [x] Add third carousel image to 'I Saw the Whole Thing' print (detail close-up)
 - [x] Add additional carousel image to 'The Subject of Paint' print (detail close-up)
 - [x] Add additional detail close-up image to 'One way or another' print carousel
+- [x] Add detail close-up image to end of Portmanteau print carousel
