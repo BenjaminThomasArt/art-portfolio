@@ -10,7 +10,9 @@ import {
   artistInfo,
   InsertArtistInfo,
   prints,
-  InsertPrint
+  InsertPrint,
+  orders,
+  InsertOrder
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -228,4 +230,42 @@ export async function createPrint(print: InsertPrint) {
   if (!db) throw new Error("Database not available");
   const result = await db.insert(prints).values(print);
   return result;
+}
+
+// Order queries
+function generateOrderRef(): string {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no I, O, 0, 1 to avoid confusion
+  const prefix = 'BT';
+  let ref = '';
+  for (let i = 0; i < 6; i++) {
+    ref += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return `${prefix}-${ref}`;
+}
+
+export async function createOrder(order: Omit<InsertOrder, 'orderRef'>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const orderRef = generateOrderRef();
+  await db.insert(orders).values({ ...order, orderRef });
+  return { orderRef };
+}
+
+export async function getOrderByRef(orderRef: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(orders).where(eq(orders.orderRef, orderRef)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getAllOrders() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(orders).orderBy(orders.createdAt);
+}
+
+export async function updateOrderStatus(id: number, status: "pending" | "paid" | "shipped" | "delivered" | "cancelled") {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(orders).set({ status }).where(eq(orders.id, id));
 }

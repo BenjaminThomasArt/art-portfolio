@@ -374,3 +374,10 @@
 - [x] Add additional detail close-up image to 'One way or another' print carousel
 - [x] Add detail close-up image to end of Portmanteau print carousel
 - [x] Replace last Portmanteau carousel image with updated detail close-up (IMG_7736)
+- [x] Create orders table in database schema (order ref, buyer name, email, address, phone, item details, price, status)
+- [x] Add server-side order creation procedure (generates ref, saves to DB, notifies owner)
+- [x] Build multi-step order dialog for Prints (step 1: summary, step 2: delivery details, step 3: confirm & pay)
+- [x] Build multi-step order dialog for Upcycles (same flow)
+- [x] Write vitest tests for order creation procedure
+- [ ] Handle "Custom size" by routing to Contact form instead of PayPal
+- [ ] Add Buyer Protection text to Upcycles confirmation dialog

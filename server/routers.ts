@@ -78,8 +78,73 @@ export const appRouter = router({
     }),
   }),
 
-  // Order notification routes
+  // Order routes
   orders: router({
+    create: publicProcedure
+      .input(
+        z.object({
+          // Buyer details
+          buyerName: z.string().min(1),
+          buyerEmail: z.string().email(),
+          buyerPhone: z.string().optional(),
+          // Shipping address
+          addressLine1: z.string().min(1),
+          addressLine2: z.string().optional(),
+          city: z.string().min(1),
+          county: z.string().optional(),
+          postcode: z.string().min(1),
+          country: z.string().min(1),
+          // Item details
+          section: z.enum(["prints", "upcycles"]),
+          itemTitle: z.string(),
+          itemDetails: z.string().optional(),
+          price: z.string(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { createOrder } = await import("./db");
+        const { notifyOwner } = await import("./_core/notification");
+
+        const { orderRef } = await createOrder({
+          buyerName: input.buyerName,
+          buyerEmail: input.buyerEmail,
+          buyerPhone: input.buyerPhone || null,
+          addressLine1: input.addressLine1,
+          addressLine2: input.addressLine2 || null,
+          city: input.city,
+          county: input.county || null,
+          postcode: input.postcode,
+          country: input.country,
+          section: input.section,
+          itemTitle: input.itemTitle,
+          itemDetails: input.itemDetails || null,
+          price: input.price,
+        });
+
+        const addressParts = [input.addressLine1, input.addressLine2, input.city, input.county, input.postcode, input.country].filter(Boolean);
+        await notifyOwner({
+          title: `\ud83d\udcb0 New order ${orderRef}: '${input.itemTitle}'`,
+          content: [
+            `Order ref: ${orderRef}`,
+            `Item: '${input.itemTitle}'`,
+            `Details: ${input.itemDetails || 'N/A'}`,
+            `Price: ${input.price}`,
+            ``,
+            `Buyer: ${input.buyerName}`,
+            `Email: ${input.buyerEmail}`,
+            input.buyerPhone ? `Phone: ${input.buyerPhone}` : null,
+            ``,
+            `Ship to:`,
+            addressParts.join(', '),
+            ``,
+            `Check your PayPal for the incoming payment.`,
+          ].filter(Boolean).join('\n'),
+        });
+
+        return { success: true, orderRef };
+      }),
+
+    // Keep legacy notification for backwards compatibility
     notifyPayPalClick: publicProcedure
       .input(
         z.object({

@@ -113,3 +113,35 @@ export const prints = mysqlTable("prints", {
 
 export type Print = typeof prints.$inferSelect;
 export type InsertPrint = typeof prints.$inferInsert;
+
+/**
+ * Orders table - stores purchase orders with buyer delivery details
+ */
+export const orders = mysqlTable("orders", {
+  id: int("id").autoincrement().primaryKey(),
+  orderRef: varchar("order_ref", { length: 20 }).notNull().unique(),
+  /** Buyer details */
+  buyerName: varchar("buyer_name", { length: 255 }).notNull(),
+  buyerEmail: varchar("buyer_email", { length: 320 }).notNull(),
+  buyerPhone: varchar("buyer_phone", { length: 50 }),
+  /** Shipping address */
+  addressLine1: varchar("address_line1", { length: 255 }).notNull(),
+  addressLine2: varchar("address_line2", { length: 255 }),
+  city: varchar("city", { length: 100 }).notNull(),
+  county: varchar("county", { length: 100 }),
+  postcode: varchar("postcode", { length: 20 }).notNull(),
+  country: varchar("country", { length: 100 }).notNull(),
+  /** Item details */
+  section: mysqlEnum("section", ["prints", "upcycles"]).notNull(),
+  itemTitle: varchar("item_title", { length: 255 }).notNull(),
+  itemDetails: text("item_details"), // material, size, panel selection etc.
+  price: varchar("price", { length: 50 }).notNull(),
+  /** Order status */
+  status: mysqlEnum("status", ["pending", "paid", "shipped", "delivered", "cancelled"]).default("pending").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Order = typeof orders.$inferSelect;
+export type InsertOrder = typeof orders.$inferInsert;

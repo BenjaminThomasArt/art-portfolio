@@ -1,0 +1,23 @@
+CREATE TABLE `orders` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`order_ref` varchar(20) NOT NULL,
+	`buyer_name` varchar(255) NOT NULL,
+	`buyer_email` varchar(320) NOT NULL,
+	`buyer_phone` varchar(50),
+	`address_line1` varchar(255) NOT NULL,
+	`address_line2` varchar(255),
+	`city` varchar(100) NOT NULL,
+	`county` varchar(100),
+	`postcode` varchar(20) NOT NULL,
+	`country` varchar(100) NOT NULL,
+	`section` enum('prints','upcycles') NOT NULL,
+	`item_title` varchar(255) NOT NULL,
+	`item_details` text,
+	`price` varchar(50) NOT NULL,
+	`status` enum('pending','paid','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
+	`notes` text,
+	`created_at` timestamp NOT NULL DEFAULT (now()),
+	`updated_at` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `orders_id` PRIMARY KEY(`id`),
+	CONSTRAINT `orders_order_ref_unique` UNIQUE(`order_ref`)
+);

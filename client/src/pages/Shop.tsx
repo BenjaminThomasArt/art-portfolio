@@ -1,8 +1,9 @@
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
-import { ShoppingBag, X } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
+import { OrderDialog } from "@/components/OrderDialog";
 import { useSwipe } from "@/hooks/useSwipe";
 import {
   Select,
@@ -15,8 +16,7 @@ import {
 export default function Shop() {
   const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
-  const [confirmOrder, setConfirmOrder] = useState<{ title: string; price: string; material: string; size: string } | null>(null);
-  const notifyMutation = trpc.orders.notifyPayPalClick.useMutation();
+  const [orderItem, setOrderItem] = useState<{ title: string; price: string; details: string; section: "prints" | "upcycles" } | null>(null);
 
   return (
     <div>
@@ -54,7 +54,7 @@ export default function Shop() {
           ) : prints && prints.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {prints.map((print) => (
-                <PrintCard key={print.id} print={print} onImageClick={(src: string) => setZoomImage({ src, alt: print.title })} onOrder={(details) => setConfirmOrder(details)} />
+                <PrintCard key={print.id} print={print} onImageClick={(src: string) => setZoomImage({ src, alt: print.title })} onOrder={(details) => setOrderItem(details)} />
               ))}
             </div>
           ) : (
@@ -71,55 +71,13 @@ export default function Shop() {
         </div>
       </div>
 
-      {/* Confirmation Dialog */}
-      {confirmOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setConfirmOrder(null)} />
-          <div className="relative bg-background border border-border rounded-lg shadow-xl max-w-sm w-full mx-4 p-6">
-            <button
-              onClick={() => setConfirmOrder(null)}
-              className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Close"
-            >
-              <X size={18} />
-            </button>
-            <h3 className="text-lg font-serif mb-1">Confirm order</h3>
-            <p className="text-sm text-muted-foreground mb-4">You'll be redirected to PayPal to complete payment.</p>
-            <div className="border border-border rounded-md p-4 mb-5">
-              <p className="font-medium">'{confirmOrder.title}'</p>
-              <p className="text-sm text-muted-foreground">{confirmOrder.material} &middot; {confirmOrder.size}</p>
-              <p className="text-lg font-medium mt-2">{confirmOrder.price}</p>
-            </div>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setConfirmOrder(null)}
-                className="flex-1 px-4 py-2 text-sm border border-border text-foreground bg-transparent hover:bg-muted transition-colors rounded-md"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  const amount = confirmOrder.price.replace('£', '');
-                  notifyMutation.mutate({
-                    title: confirmOrder.title,
-                    price: confirmOrder.price,
-                    material: confirmOrder.material,
-                    size: confirmOrder.size,
-                    section: "prints",
-                  });
-                  window.open(`https://paypal.me/benjaminthomasg/${amount}GBP`, '_blank');
-                  setConfirmOrder(null);
-                }}
-                className="flex-1 px-4 py-2 text-sm bg-foreground text-background hover:bg-foreground/90 transition-colors rounded-md"
-              >
-                Pay with PayPal
-              </button>
-            </div>
-            <p className="text-xs text-muted-foreground text-center mt-4 leading-relaxed">
-              All payments are processed securely through PayPal. Your purchase is covered by PayPal Buyer Protection — if there's any issue with your order, you're fully protected.
-            </p>
-          </div>
-        </div>
+      {/* Order Dialog */}
+      {orderItem && (
+        <OrderDialog
+          item={orderItem}
+          onClose={() => setOrderItem(null)}
+          paypalUsername="benjaminthomasg"
+        />
       )}
 
       {/* Image Zoom Modal */}
@@ -133,7 +91,7 @@ export default function Shop() {
   );
 }
 
-function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; material: string; size: string }) => void }) {
+function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; details: string; section: "prints" | "upcycles" }) => void }) {
   const [material, setMaterial] = useState<string>("canvas");
   const [size, setSize] = useState<string>("80x60");
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
@@ -253,12 +211,31 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     custom: "Custom size"
   };
 
+  const panelLabels: Record<string, string> = {
+    left: "Left panel",
+    centre: "Centre panel",
+    right: "Right panel",
+    all: isDiptych ? "Both panels" : `All ${panelCount} panels`,
+  };
+
   const handleOrder = () => {
+    if (size === "custom") {
+      // Route to contact page for custom sizes
+      window.location.href = "/contact";
+      return;
+    }
+    const detailParts = [
+      materialLabels[material] || material,
+      sizeLabels[size] || size,
+    ];
+    if (isMultiPanel) {
+      detailParts.push(panelLabels[panelSelection] || panelSelection);
+    }
     onOrder({
       title: print.title,
       price: currentPrice,
-      material: materialLabels[material] || material,
-      size: sizeLabels[size] || size
+      details: detailParts.join(" \u00b7 "),
+      section: "prints",
     });
   };
 
