@@ -392,3 +392,5 @@
 - [x] Add Buyer Protection reassurance text to Upcycles order dialog (matching Prints) — already present in shared OrderDialog
 - [x] Add order status email notifications to buyer when order marked as shipped or delivered
 - [x] Build Thank You confirmation page after PayPal redirect so buyers land back on site
+- [x] Reduce white space gaps between images on desktop Gallery by cropping non-artwork photos
+- [x] Redesign mobile Gallery layout to be more sophisticated than simple left/right stacking

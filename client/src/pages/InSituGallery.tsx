@@ -3,133 +3,315 @@ import { ImageZoom } from "@/components/ImageZoom";
 
 const galleryImages = [
   // Original 20 images
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/JKwQAykUCThNKCxu.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FHEwZWeRJRwGxGCK.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/mgttPgXnFISMOLjO.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/UUuEbRqwUpVdJEQQ.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HleJjzwzYxurfbre.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gucPaVCcWmrOOpUJ.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/LYurnpsgrfamnnoW.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/DnWizxZCjkShtGHo.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/stbPskkKpFBCvOfr.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jgGssKdGyRgtxxHA.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cwCyhzfCzuwxjprO.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ltHBdAOAzKMbSdkk.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/aOqkPnbBeEbXMmLA.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/VQWZIPnRkKyYxgsb.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RiHBCpnixkhIumTw.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lzBGUnJoWdAYerAa.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/VdWXqEGWTNxMiUXF.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/sHeUJVSObcCQvZuq.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wythBZmbxgvjNKVL.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ" },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/JKwQAykUCThNKCxu.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FHEwZWeRJRwGxGCK.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/mgttPgXnFISMOLjO.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/UUuEbRqwUpVdJEQQ.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HleJjzwzYxurfbre.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gucPaVCcWmrOOpUJ.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/LYurnpsgrfamnnoW.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/DnWizxZCjkShtGHo.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/stbPskkKpFBCvOfr.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jgGssKdGyRgtxxHA.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/cwCyhzfCzuwxjprO.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ltHBdAOAzKMbSdkk.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/aOqkPnbBeEbXMmLA.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/VQWZIPnRkKyYxgsb.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RiHBCpnixkhIumTw.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lzBGUnJoWdAYerAa.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/VdWXqEGWTNxMiUXF.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/sHeUJVSObcCQvZuq.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/wythBZmbxgvjNKVL.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/YnjfBZPLWPslwNZa.jpeg", alt: "Artwork in situ", isArtwork: false },
   // 6 new images (indices 20-25)
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XwmXodDiFZAUXvDM.jpeg", alt: "Artist with artwork" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/vrSnBTBjJXHieUhU.jpeg", alt: "Artist with artwork" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/aBbCVLqPDnLzOcMl.jpeg", alt: "Artist in studio" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KJVTYMbUZmDXWCxu.jpeg", alt: "Artwork in situ" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/UaAYekILMuUTxyQA.jpeg", alt: "Cat with artwork" },
-  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/miZYbLXUpCJCPvAd.jpeg", alt: "Artist in studio" },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XwmXodDiFZAUXvDM.jpeg", alt: "Artist with artwork", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/vrSnBTBjJXHieUhU.jpeg", alt: "Artist with artwork", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/aBbCVLqPDnLzOcMl.jpeg", alt: "Artist in studio", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KJVTYMbUZmDXWCxu.jpeg", alt: "Artwork in situ", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/UaAYekILMuUTxyQA.jpeg", alt: "Cat with artwork", isArtwork: false },
+  { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/miZYbLXUpCJCPvAd.jpeg", alt: "Artist in studio", isArtwork: false },
 ];
 
-// Layout rows with mixed in-situ + artist/studio shots
-// Each row sums to ~98% to allow flex-grow to fill naturally
-// Some images use object-cover for tighter cropping where it helps composition
-const layoutRows: { idx: number; basis: number; aspectRatio?: string; cover?: boolean }[][] = [
-  // Row 1: 2 images — large in-situ + artist reflection shot
-  [{ idx: 0, basis: 55 }, { idx: 11, basis: 43 }],
-  // Row 2: 3 images — framed art + diptych in-situ (new) + triptych room
-  [{ idx: 2, basis: 26 }, { idx: 23, basis: 46 }, { idx: 1, basis: 26 }],
-  // Row 3: 3 images — artist selfie pink + pink diptych + cat with artwork
-  [{ idx: 21, basis: 28, aspectRatio: "4/3", cover: true }, { idx: 5, basis: 44 }, { idx: 24, basis: 26, aspectRatio: "4/3", cover: true }],
-  // Row 4: 2 images — blue diptych living room + artist portrait close-up
-  [{ idx: 6, basis: 56 }, { idx: 22, basis: 42, aspectRatio: "3/4", cover: true }],
-  // Row 5: 3 images — small items + blue sofa + small items
-  [{ idx: 7, basis: 24 }, { idx: 8, basis: 50 }, { idx: 9, basis: 24 }],
-  // Row 6: 2 images — grey armchair + blue artwork bedroom
-  [{ idx: 10, basis: 38 }, { idx: 3, basis: 60 }],
-  // Row 7: 3 images — yellow flowers + diptych + artist reflection red painting
-  [{ idx: 12, basis: 44 }, { idx: 13, basis: 28 }, { idx: 20, basis: 26, aspectRatio: "4/3", cover: true }],
-  // Row 8: 2 images — green triptych + purple flower
-  [{ idx: 15, basis: 44 }, { idx: 16, basis: 54 }],
-  // Row 9: 3 images — kitchenware + artist painting through glass + dark kitchen
-  [{ idx: 17, basis: 28 }, { idx: 25, basis: 36, aspectRatio: "3/4", cover: true }, { idx: 14, basis: 34 }],
-  // Row 10: 3 images — living room + concrete wall + green artwork
-  [{ idx: 18, basis: 30 }, { idx: 19, basis: 46 }, { idx: 4, basis: 22 }],
+// Desktop layout: each row has a fixed height via aspect ratio, all images use object-cover
+// to eliminate white space. Non-artwork photos are safe to crop.
+interface RowConfig {
+  images: { idx: number; basis: number; objectPosition?: string }[];
+  rowAspect: string;
+}
+
+const desktopRows: RowConfig[] = [
+  // Row 1: hero — green sofa + blue triptych room
+  {
+    rowAspect: "3.2/1",
+    images: [
+      { idx: 0, basis: 52, objectPosition: "center 80%" },
+      { idx: 11, basis: 48, objectPosition: "center 45%" },
+    ],
+  },
+  // Row 2: framed art + diptych in-situ + triptych room
+  {
+    rowAspect: "2.8/1",
+    images: [
+      { idx: 2, basis: 28 },
+      { idx: 23, basis: 44 },
+      { idx: 1, basis: 28 },
+    ],
+  },
+  // Row 3: artist selfie + pink diptych + cat
+  {
+    rowAspect: "2.6/1",
+    images: [
+      { idx: 21, basis: 26, objectPosition: "center 20%" },
+      { idx: 5, basis: 48 },
+      { idx: 24, basis: 26, objectPosition: "center 30%" },
+    ],
+  },
+  // Row 4: blue diptych living room + artist portrait
+  {
+    rowAspect: "2.4/1",
+    images: [
+      { idx: 6, basis: 55 },
+      { idx: 22, basis: 45, objectPosition: "center 15%" },
+    ],
+  },
+  // Row 5: small items + blue sofa + small items
+  {
+    rowAspect: "3/1",
+    images: [
+      { idx: 7, basis: 26 },
+      { idx: 8, basis: 48 },
+      { idx: 9, basis: 26 },
+    ],
+  },
+  // Row 6: grey armchair + blue artwork bedroom
+  {
+    rowAspect: "2.4/1",
+    images: [
+      { idx: 10, basis: 40 },
+      { idx: 3, basis: 60 },
+    ],
+  },
+  // Row 7: yellow flowers + diptych + artist reflection
+  {
+    rowAspect: "2.8/1",
+    images: [
+      { idx: 12, basis: 42 },
+      { idx: 13, basis: 30 },
+      { idx: 20, basis: 28, objectPosition: "center 25%" },
+    ],
+  },
+  // Row 8: green triptych + purple flower
+  {
+    rowAspect: "2.6/1",
+    images: [
+      { idx: 15, basis: 42 },
+      { idx: 16, basis: 58 },
+    ],
+  },
+  // Row 9: kitchenware + artist painting through glass + dark kitchen
+  {
+    rowAspect: "2.8/1",
+    images: [
+      { idx: 17, basis: 30 },
+      { idx: 25, basis: 34, objectPosition: "center 20%" },
+      { idx: 14, basis: 36 },
+    ],
+  },
+  // Row 10: living room + concrete wall + green artwork
+  {
+    rowAspect: "3/1",
+    images: [
+      { idx: 18, basis: 32 },
+      { idx: 19, basis: 42 },
+      { idx: 4, basis: 26 },
+    ],
+  },
+];
+
+// Mobile layout: sophisticated masonry using rows with varied aspect ratios
+// Each row defines images and a row aspect ratio, similar to desktop but optimized for narrow screens
+interface MobileRowConfig {
+  images: { idx: number; basis: number; objectPosition?: string }[];
+  rowAspect: string;
+}
+
+const mobileRows: MobileRowConfig[] = [
+  // Hero: green sofa full width
+  {
+    rowAspect: "4/3",
+    images: [
+      { idx: 0, basis: 100, objectPosition: "center 75%" },
+    ],
+  },
+  // Two side by side: blue triptych + framed art
+  {
+    rowAspect: "5/3",
+    images: [
+      { idx: 11, basis: 55, objectPosition: "center 40%" },
+      { idx: 2, basis: 45 },
+    ],
+  },
+  // Full width: diptych in-situ
+  {
+    rowAspect: "16/9",
+    images: [
+      { idx: 23, basis: 100 },
+    ],
+  },
+  // Three across: artist selfie + cat + triptych room
+  {
+    rowAspect: "5/3",
+    images: [
+      { idx: 21, basis: 35, objectPosition: "center 20%" },
+      { idx: 24, basis: 30, objectPosition: "center 30%" },
+      { idx: 1, basis: 35 },
+    ],
+  },
+  // Full width: pink diptych
+  {
+    rowAspect: "16/9",
+    images: [
+      { idx: 5, basis: 100 },
+    ],
+  },
+  // Two: blue diptych + artist portrait
+  {
+    rowAspect: "3/2",
+    images: [
+      { idx: 6, basis: 55 },
+      { idx: 22, basis: 45, objectPosition: "center 15%" },
+    ],
+  },
+  // Full width: blue sofa
+  {
+    rowAspect: "16/9",
+    images: [
+      { idx: 8, basis: 100 },
+    ],
+  },
+  // Two side by side: small items
+  {
+    rowAspect: "5/3",
+    images: [
+      { idx: 7, basis: 50 },
+      { idx: 9, basis: 50 },
+    ],
+  },
+  // Full width: blue artwork bedroom
+  {
+    rowAspect: "4/3",
+    images: [
+      { idx: 3, basis: 100 },
+    ],
+  },
+  // Two: grey armchair + artist reflection
+  {
+    rowAspect: "3/2",
+    images: [
+      { idx: 10, basis: 50 },
+      { idx: 20, basis: 50, objectPosition: "center 25%" },
+    ],
+  },
+  // Full width: yellow flowers
+  {
+    rowAspect: "16/9",
+    images: [
+      { idx: 12, basis: 100 },
+    ],
+  },
+  // Two: diptych + green triptych
+  {
+    rowAspect: "5/3",
+    images: [
+      { idx: 13, basis: 45 },
+      { idx: 15, basis: 55 },
+    ],
+  },
+  // Full width: purple flower
+  {
+    rowAspect: "4/3",
+    images: [
+      { idx: 16, basis: 100 },
+    ],
+  },
+  // Three across: kitchenware + artist painting + dark kitchen
+  {
+    rowAspect: "5/3",
+    images: [
+      { idx: 17, basis: 30 },
+      { idx: 25, basis: 38, objectPosition: "center 20%" },
+      { idx: 14, basis: 32 },
+    ],
+  },
+  // Full width: concrete wall
+  {
+    rowAspect: "16/9",
+    images: [
+      { idx: 19, basis: 100 },
+    ],
+  },
+  // Final two: living room + green artwork
+  {
+    rowAspect: "3/2",
+    images: [
+      { idx: 18, basis: 55 },
+      { idx: 4, basis: 45 },
+    ],
+  },
 ];
 
 export default function InSituGallery() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
+  const renderRow = (row: RowConfig | MobileRowConfig, rowIndex: number, gap: string, mb: string) => (
+    <div
+      key={rowIndex}
+      className="flex"
+      style={{
+        gap,
+        marginBottom: mb,
+        aspectRatio: row.rowAspect,
+      }}
+    >
+      {row.images.map(({ idx, basis, objectPosition }) => {
+        const image = galleryImages[idx];
+        return (
+          <div
+            key={idx}
+            className="group cursor-pointer overflow-hidden h-full"
+            onClick={() => setZoomImage(image)}
+            style={{
+              flexBasis: `${basis}%`,
+              flexGrow: 1,
+              flexShrink: 1,
+            }}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105"
+              style={{ objectPosition: objectPosition || "center center" }}
+              loading="lazy"
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <section className="pt-16 pb-8">
-        <div className="px-2 sm:px-3 lg:px-4 max-w-[1600px] mx-auto">
-          {layoutRows.map((row, rowIndex) => (
-            <div
-              key={rowIndex}
-              className="flex items-stretch"
-              style={{
-                gap: "4px",
-                marginBottom: "4px",
-              }}
-            >
-              {row.map(({ idx, basis, aspectRatio, cover }) => {
-                const image = galleryImages[idx];
-                return (
-                  <div
-                    key={idx}
-                    className="group cursor-pointer overflow-hidden"
-                    onClick={() => setZoomImage(image)}
-                    style={{
-                      flexBasis: `${basis}%`,
-                      flexGrow: 1,
-                      flexShrink: 1,
-                      ...(aspectRatio ? { aspectRatio } : {}),
-                    }}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className={`w-full block transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105 ${
-                        cover ? "h-full object-cover" : "h-auto"
-                      }`}
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
+        {/* Desktop layout */}
+        <div className="hidden sm:block px-1 lg:px-2 max-w-[1600px] mx-auto">
+          {desktopRows.map((row, i) => renderRow(row, i, "3px", "3px"))}
+        </div>
+
+        {/* Mobile layout: row-based masonry with varied rhythms */}
+        <div className="sm:hidden px-[2px]">
+          {mobileRows.map((row, i) => renderRow(row, i, "2px", "2px"))}
         </div>
       </section>
-
-      {/* Mobile override: stack with alternating widths */}
-      <style>{`
-        @media (max-width: 639px) {
-          .flex.items-stretch {
-            flex-direction: column !important;
-            gap: 4px !important;
-          }
-          .flex.items-stretch > div {
-            flex-basis: 100% !important;
-            max-width: 100% !important;
-            aspect-ratio: unset !important;
-          }
-          .flex.items-stretch > div:nth-child(odd) {
-            width: 88% !important;
-            margin-left: 0 !important;
-          }
-          .flex.items-stretch > div:nth-child(even) {
-            width: 78% !important;
-            margin-left: auto !important;
-          }
-          .flex.items-stretch > div img {
-            height: auto !important;
-            object-fit: contain !important;
-          }
-        }
-      `}</style>
 
       {/* Image Zoom */}
       <ImageZoom
