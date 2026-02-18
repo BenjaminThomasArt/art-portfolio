@@ -28,6 +28,117 @@ interface OrderConfirmationData {
   country: string;
 }
 
+interface OrderStatusUpdateData {
+  orderRef: string;
+  buyerName: string;
+  buyerEmail: string;
+  itemTitle: string;
+  newStatus: "shipped" | "delivered";
+  trackingNumber?: string;
+}
+
+export async function sendOrderStatusUpdate(data: OrderStatusUpdateData): Promise<boolean> {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+
+  const isShipped = data.newStatus === "shipped";
+  const subject = isShipped
+    ? `Your order ${data.orderRef} has been shipped`
+    : `Your order ${data.orderRef} has been delivered`;
+  const heading = isShipped ? "Your artwork is on its way" : "Your artwork has been delivered";
+  const bodyText = isShipped
+    ? `Great news! Your order <strong style="color:#003153;">${data.orderRef}</strong> for '${data.itemTitle}' has been shipped and is on its way to you.${data.trackingNumber ? ` Your tracking number is <strong>${data.trackingNumber}</strong>.` : ''}`
+    : `Your order <strong style="color:#003153;">${data.orderRef}</strong> for '${data.itemTitle}' has been marked as delivered. We hope you love your new artwork!`;
+  const plainBody = isShipped
+    ? `Great news! Your order ${data.orderRef} for '${data.itemTitle}' has been shipped and is on its way to you.${data.trackingNumber ? ` Your tracking number is ${data.trackingNumber}.` : ''}`
+    : `Your order ${data.orderRef} for '${data.itemTitle}' has been marked as delivered. We hope you love your new artwork!`;
+
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Fine art &amp; more</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <div style="text-align:center;margin-bottom:24px;">
+                <div style="display:inline-block;width:48px;height:48px;border-radius:50%;background-color:${isShipped ? '#f0e6ff' : '#e6f7e6'};line-height:48px;font-size:24px;">${isShipped ? '\u{1F4E6}' : '\u{2705}'}</div>
+              </div>
+              <h2 style="margin:0 0 12px;font-size:20px;font-weight:normal;color:#003153;text-align:center;">${heading}</h2>
+              <p style="margin:0;font-size:14px;color:#666;line-height:1.6;text-align:center;">
+                Dear ${data.buyerName},
+              </p>
+              <p style="margin:12px 0 0;font-size:14px;color:#666;line-height:1.6;text-align:center;">
+                ${bodyText}
+              </p>
+            </td>
+          </tr>
+          ${!isShipped ? `
+          <tr>
+            <td style="padding:0 40px 32px;">
+              <div style="padding:16px;background-color:#f0f7ff;border:1px solid #d0e3f0;border-radius:4px;text-align:center;">
+                <p style="margin:0;font-size:13px;color:#003153;line-height:1.6;">
+                  If you love your artwork, we'd really appreciate it if you shared a photo of it in your space. Tag us on Instagram!
+                </p>
+              </div>
+            </td>
+          </tr>` : ''}
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#888;line-height:1.6;">
+                If you have any questions about your order, please reply to this email or get in touch via WhatsApp at +44 7597 765530.
+              </p>
+              <p style="margin:12px 0 0;font-size:12px;color:#aaa;">
+                &copy; Benjamin Thomas Art
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  const textContent = `
+${heading}
+
+Dear ${data.buyerName},
+
+${plainBody}
+
+If you have any questions, reply to this email or contact via WhatsApp at +44 7597 765530.
+
+Benjamin Thomas Art
+`;
+
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: data.buyerEmail,
+      subject,
+      text: textContent.trim(),
+      html: htmlContent,
+    });
+    console.log(`[Email] Status update (${data.newStatus}) sent to ${data.buyerEmail} for ${data.orderRef}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send status update:", error);
+    return false;
+  }
+}
+
 export async function sendOrderConfirmation(data: OrderConfirmationData): Promise<boolean> {
   const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
   

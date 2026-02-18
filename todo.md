@@ -380,7 +380,7 @@
 - [x] Build multi-step order dialog for Upcycles (same flow)
 - [x] Write vitest tests for order creation procedure
 - [x] Handle "Custom size" by routing to Contact form instead of PayPal
-- [ ] Add Buyer Protection text to Upcycles confirmation dialog
+- [x] Add Buyer Protection text to Upcycles confirmation dialog — already present in shared OrderDialog
 - [x] Add zone-based delivery costs to OrderDialog (UK £12/£18, Europe £30/£40, RoW £50/£65 for prints; UK £8, Europe £20, RoW £35 for upcycles)
 - [x] Auto-detect shipping zone from country field in delivery details form
 - [x] Show delivery cost + total on confirmation step before PayPal redirect
@@ -389,3 +389,6 @@
 - [x] Route 'Custom size' option to Contact form instead of PayPal (pre-fill artwork name)
 - [x] Send buyer confirmation email after order submission with order reference and summary
 - [x] Build admin orders dashboard (order list, delivery details, payment status, accessible to owner only)
+- [x] Add Buyer Protection reassurance text to Upcycles order dialog (matching Prints) — already present in shared OrderDialog
+- [x] Add order status email notifications to buyer when order marked as shipped or delivered
+- [x] Build Thank You confirmation page after PayPal redirect so buyers land back on site

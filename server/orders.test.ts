@@ -15,10 +15,7 @@ function createPublicContext(): TrpcContext {
   };
 }
 
-// Mock the db module
-vi.mock("./db", () => ({
-  createOrder: vi.fn().mockResolvedValue({ orderRef: "BT-TEST01" }),
-}));
+
 
 // Mock the notification module
 vi.mock("./_core/notification", () => ({
@@ -28,7 +25,26 @@ vi.mock("./_core/notification", () => ({
 // Mock the email module
 vi.mock("./email", () => ({
   sendOrderConfirmation: vi.fn().mockResolvedValue(true),
+  sendOrderStatusUpdate: vi.fn().mockResolvedValue(true),
 }));
+
+// Mock getOrderById for status update email tests
+vi.mock("./db", async () => {
+  const original = await vi.importActual("./db");
+  return {
+    ...original as any,
+    createOrder: vi.fn().mockResolvedValue({ orderRef: "BT-TEST01" }),
+    getAllOrders: vi.fn().mockResolvedValue([]),
+    getOrderById: vi.fn().mockResolvedValue({
+      id: 1,
+      orderRef: "BT-TEST01",
+      buyerName: "Jane Smith",
+      buyerEmail: "jane@example.com",
+      itemTitle: "Portmanteau",
+    }),
+    updateOrderStatus: vi.fn().mockResolvedValue(undefined),
+  };
+});
 
 function createAdminContext(): TrpcContext {
   return {
@@ -224,5 +240,50 @@ describe("orders.updateStatus (admin)", () => {
     await expect(
       caller.orders.updateStatus({ id: 1, status: "paid" })
     ).rejects.toThrow();
+  });
+
+  it("sends email when status changes to shipped", async () => {
+    const ctx = createAdminContext();
+    const caller = appRouter.createCaller(ctx);
+    const { sendOrderStatusUpdate } = await import("./email");
+
+    await caller.orders.updateStatus({ id: 1, status: "shipped" });
+
+    // Allow async email call to resolve
+    await new Promise(r => setTimeout(r, 50));
+    expect(sendOrderStatusUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        orderRef: "BT-TEST01",
+        buyerEmail: "jane@example.com",
+        newStatus: "shipped",
+      })
+    );
+  });
+
+  it("sends email when status changes to delivered", async () => {
+    const ctx = createAdminContext();
+    const caller = appRouter.createCaller(ctx);
+    const { sendOrderStatusUpdate } = await import("./email");
+
+    await caller.orders.updateStatus({ id: 1, status: "delivered" });
+
+    await new Promise(r => setTimeout(r, 50));
+    expect(sendOrderStatusUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        newStatus: "delivered",
+      })
+    );
+  });
+
+  it("does NOT send email for paid status", async () => {
+    const ctx = createAdminContext();
+    const caller = appRouter.createCaller(ctx);
+    const { sendOrderStatusUpdate } = await import("./email");
+    (sendOrderStatusUpdate as any).mockClear();
+
+    await caller.orders.updateStatus({ id: 1, status: "paid" });
+
+    await new Promise(r => setTimeout(r, 50));
+    expect(sendOrderStatusUpdate).not.toHaveBeenCalled();
   });
 });

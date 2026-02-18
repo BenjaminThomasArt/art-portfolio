@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { X, ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
+import { useLocation } from "wouter";
 
 interface OrderItem {
   title: string;
@@ -99,6 +100,7 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
   const [form, setForm] = useState<DeliveryForm>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof DeliveryForm, string>>>({});
   const [orderRef, setOrderRef] = useState<string | null>(null);
+  const [, navigate] = useLocation();
 
   const createOrderMutation = trpc.orders.create.useMutation();
 
@@ -262,7 +264,10 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
           </button>
 
           <button
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              navigate(`/thank-you?ref=${orderRef}`);
+            }}
             className="w-full px-4 py-2 text-sm border border-border text-foreground bg-transparent hover:bg-muted transition-colors rounded-md"
           >
             Done

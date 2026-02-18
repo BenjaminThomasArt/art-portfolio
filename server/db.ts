@@ -264,6 +264,13 @@ export async function getAllOrders() {
   return db.select().from(orders).orderBy(orders.createdAt);
 }
 
+export async function getOrderById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const [order] = await db.select().from(orders).where(eq(orders.id, id));
+  return order || null;
+}
+
 export async function updateOrderStatus(id: number, status: "pending" | "paid" | "shipped" | "delivered" | "cancelled") {
   const db = await getDb();
   if (!db) throw new Error("Database not available");

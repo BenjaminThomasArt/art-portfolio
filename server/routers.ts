@@ -184,8 +184,24 @@ export const appRouter = router({
       }))
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== 'admin') throw new Error('Unauthorized');
-        const { updateOrderStatus } = await import("./db");
+        const { updateOrderStatus, getOrderById } = await import("./db");
         await updateOrderStatus(input.id, input.status);
+
+        // Send email notification for shipped/delivered status changes
+        if (input.status === "shipped" || input.status === "delivered") {
+          const order = await getOrderById(input.id);
+          if (order) {
+            const { sendOrderStatusUpdate } = await import("./email");
+            sendOrderStatusUpdate({
+              orderRef: order.orderRef,
+              buyerName: order.buyerName,
+              buyerEmail: order.buyerEmail,
+              itemTitle: order.itemTitle,
+              newStatus: input.status,
+            }).catch(err => console.error('[Orders] Failed to send status email:', err));
+          }
+        }
+
         return { success: true };
       }),
 
