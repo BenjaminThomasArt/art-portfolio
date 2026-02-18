@@ -25,6 +25,34 @@ vi.mock("./_core/notification", () => ({
   notifyOwner: vi.fn().mockResolvedValue(true),
 }));
 
+// Mock the email module
+vi.mock("./email", () => ({
+  sendOrderConfirmation: vi.fn().mockResolvedValue(true),
+}));
+
+function createAdminContext(): TrpcContext {
+  return {
+    user: {
+      id: 1,
+      openId: "admin-open-id",
+      name: "Admin",
+      email: "admin@example.com",
+      loginMethod: "email",
+      role: "admin" as const,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      lastSignedIn: new Date(),
+    },
+    req: {
+      protocol: "https",
+      headers: {},
+    } as TrpcContext["req"],
+    res: {
+      clearCookie: vi.fn(),
+    } as unknown as TrpcContext["res"],
+  };
+}
+
 describe("orders.create", () => {
   it("creates an order and returns an order reference", async () => {
     const ctx = createPublicContext();
@@ -122,6 +150,38 @@ describe("orders.create", () => {
     expect(result).toHaveProperty("orderRef");
   });
 
+  it("sends confirmation email after order creation", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    const { sendOrderConfirmation } = await import("./email");
+
+    await caller.orders.create({
+      buyerName: "Email Test",
+      buyerEmail: "test@example.com",
+      addressLine1: "1 Test Lane",
+      city: "London",
+      postcode: "E1 1AA",
+      country: "United Kingdom",
+      section: "prints",
+      itemTitle: "Portmanteau",
+      itemDetails: "Canvas Inkjet · 60×80cm",
+      price: "£137",
+      shippingZone: "uk",
+      shippingCost: "£12",
+      itemPrice: "£125",
+    });
+
+    // Allow async email call to resolve
+    await new Promise(r => setTimeout(r, 50));
+    expect(sendOrderConfirmation).toHaveBeenCalledWith(
+      expect.objectContaining({
+        buyerEmail: "test@example.com",
+        orderRef: "BT-TEST01",
+        itemTitle: "Portmanteau",
+      })
+    );
+  });
+
   it("accepts rest of world shipping zone", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
@@ -144,5 +204,25 @@ describe("orders.create", () => {
 
     expect(result).toHaveProperty("success", true);
     expect(result).toHaveProperty("orderRef");
+  });
+});
+
+describe("orders.getAll (admin)", () => {
+  it("requires admin role", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(caller.orders.getAll()).rejects.toThrow();
+  });
+});
+
+describe("orders.updateStatus (admin)", () => {
+  it("requires admin role", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.orders.updateStatus({ id: 1, status: "paid" })
+    ).rejects.toThrow();
   });
 });

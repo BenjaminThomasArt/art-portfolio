@@ -64,6 +64,17 @@ export default function Contact() {
         type: 'contact',
         message: message
       }));
+    } else {
+      // Generic subject/message pre-fill (used by Custom size routing)
+      const subject = params.get('subject');
+      const messageParam = params.get('message');
+      if (subject || messageParam) {
+        setFormData(prev => ({
+          ...prev,
+          type: 'print',
+          message: messageParam || subject || '',
+        }));
+      }
     }
   }, []);
 

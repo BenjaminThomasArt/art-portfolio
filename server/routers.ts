@@ -107,6 +107,7 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         const { createOrder } = await import("./db");
         const { notifyOwner } = await import("./_core/notification");
+        const { sendOrderConfirmation } = await import("./email");
 
         const { orderRef } = await createOrder({
           buyerName: input.buyerName,
@@ -146,7 +147,46 @@ export const appRouter = router({
           ].filter(Boolean).join('\n'),
         });
 
+        // Send buyer confirmation email (non-blocking)
+        sendOrderConfirmation({
+          orderRef,
+          buyerName: input.buyerName,
+          buyerEmail: input.buyerEmail,
+          itemTitle: input.itemTitle,
+          itemDetails: input.itemDetails || '',
+          itemPrice: input.itemPrice,
+          shippingZone: input.shippingZone,
+          shippingCost: input.shippingCost,
+          totalPrice: input.price,
+          addressLine1: input.addressLine1,
+          addressLine2: input.addressLine2,
+          city: input.city,
+          county: input.county,
+          postcode: input.postcode,
+          country: input.country,
+        }).catch(err => console.error('[Orders] Failed to send confirmation email:', err));
+
         return { success: true, orderRef };
+      }),
+
+    // Admin: get all orders
+    getAll: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user?.role !== 'admin') throw new Error('Unauthorized');
+      const { getAllOrders } = await import("./db");
+      return getAllOrders();
+    }),
+
+    // Admin: update order status
+    updateStatus: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        status: z.enum(["pending", "paid", "shipped", "delivered", "cancelled"]),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') throw new Error('Unauthorized');
+        const { updateOrderStatus } = await import("./db");
+        await updateOrderStatus(input.id, input.status);
+        return { success: true };
       }),
 
     // Keep legacy notification for backwards compatibility

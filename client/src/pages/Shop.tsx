@@ -220,8 +220,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
 
   const handleOrder = () => {
     if (size === "custom") {
-      // Route to contact page for custom sizes
-      window.location.href = "/contact";
+      // Route to contact page for custom sizes with pre-filled artwork name
+      window.location.href = `/contact?subject=${encodeURIComponent(`Custom size enquiry: '${print.title}'`)}&message=${encodeURIComponent(`Hi, I'm interested in a custom size print of '${print.title}' in ${materialLabels[material] || material}. Could you provide pricing and availability?`)}`;
       return;
     }
     const detailParts = [
