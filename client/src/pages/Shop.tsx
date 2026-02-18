@@ -16,7 +16,7 @@ import {
 export default function Shop() {
   const { data: prints, isLoading } = trpc.prints.getAll.useQuery();
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
-  const [orderItem, setOrderItem] = useState<{ title: string; price: string; details: string; section: "prints" | "upcycles" } | null>(null);
+  const [orderItem, setOrderItem] = useState<{ title: string; price: string; details: string; section: "prints" | "upcycles"; size?: string } | null>(null);
 
   return (
     <div>
@@ -91,7 +91,7 @@ export default function Shop() {
   );
 }
 
-function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; details: string; section: "prints" | "upcycles" }) => void }) {
+function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; details: string; section: "prints" | "upcycles"; size?: string }) => void }) {
   const [material, setMaterial] = useState<string>("canvas");
   const [size, setSize] = useState<string>("80x60");
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
@@ -236,6 +236,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       price: currentPrice,
       details: detailParts.join(" \u00b7 "),
       section: "prints",
+      size: size,
     });
   };
 

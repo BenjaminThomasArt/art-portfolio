@@ -43,7 +43,10 @@ describe("orders.create", () => {
       section: "prints",
       itemTitle: "Portmanteau",
       itemDetails: "Canvas Inkjet · 60×80cm",
-      price: "£125",
+      price: "£137",
+      shippingZone: "uk",
+      shippingCost: "£12",
+      itemPrice: "£125",
     });
 
     expect(result).toHaveProperty("success", true);
@@ -65,7 +68,10 @@ describe("orders.create", () => {
         country: "United Kingdom",
         section: "prints",
         itemTitle: "Portmanteau",
-        price: "£125",
+        price: "£137",
+        shippingZone: "uk",
+        shippingCost: "£12",
+        itemPrice: "£125",
       })
     ).rejects.toThrow();
   });
@@ -84,12 +90,15 @@ describe("orders.create", () => {
         country: "United Kingdom",
         section: "prints",
         itemTitle: "Portmanteau",
-        price: "£125",
+        price: "£137",
+        shippingZone: "uk",
+        shippingCost: "£12",
+        itemPrice: "£125",
       })
     ).rejects.toThrow();
   });
 
-  it("accepts upcycles section", async () => {
+  it("accepts upcycles section with europe shipping", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
@@ -97,13 +106,40 @@ describe("orders.create", () => {
       buyerName: "John Doe",
       buyerEmail: "john@example.com",
       addressLine1: "456 Vinyl Lane",
-      city: "Manchester",
-      postcode: "M1 1AA",
-      country: "United Kingdom",
+      city: "Berlin",
+      postcode: "10115",
+      country: "Germany",
       section: "upcycles",
       itemTitle: "Pre & Post",
       itemDetails: 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"',
-      price: "£75",
+      price: "£95",
+      shippingZone: "europe",
+      shippingCost: "£20",
+      itemPrice: "£75",
+    });
+
+    expect(result).toHaveProperty("success", true);
+    expect(result).toHaveProperty("orderRef");
+  });
+
+  it("accepts rest of world shipping zone", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.orders.create({
+      buyerName: "Alice Wong",
+      buyerEmail: "alice@example.com",
+      addressLine1: "789 Gallery Road",
+      city: "Sydney",
+      postcode: "2000",
+      country: "Australia",
+      section: "prints",
+      itemTitle: "I Saw the Whole Thing",
+      itemDetails: "Canvas Inkjet · 100×120cm",
+      price: "£265",
+      shippingZone: "row",
+      shippingCost: "£65",
+      itemPrice: "£200",
     });
 
     expect(result).toHaveProperty("success", true);

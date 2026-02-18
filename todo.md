@@ -381,3 +381,8 @@
 - [x] Write vitest tests for order creation procedure
 - [ ] Handle "Custom size" by routing to Contact form instead of PayPal
 - [ ] Add Buyer Protection text to Upcycles confirmation dialog
+- [x] Add zone-based delivery costs to OrderDialog (UK £12/£18, Europe £30/£40, RoW £50/£65 for prints; UK £8, Europe £20, RoW £35 for upcycles)
+- [x] Auto-detect shipping zone from country field in delivery details form
+- [x] Show delivery cost + total on confirmation step before PayPal redirect
+- [x] Include delivery cost in PayPal amount and order database record
+- [x] Update vitest tests for delivery cost calculation

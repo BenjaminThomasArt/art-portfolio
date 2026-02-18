@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { X, ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 
@@ -7,6 +7,7 @@ interface OrderItem {
   price: string;
   details?: string; // e.g. "Canvas Inkjet · 60×80cm"
   section: "prints" | "upcycles";
+  size?: string; // e.g. "80x60", "120x100" — used for delivery cost lookup
 }
 
 interface OrderDialogProps {
@@ -16,6 +17,8 @@ interface OrderDialogProps {
 }
 
 type Step = "summary" | "delivery" | "confirm";
+
+type ShippingZone = "uk" | "europe" | "row";
 
 interface DeliveryForm {
   buyerName: string;
@@ -41,6 +44,56 @@ const INITIAL_FORM: DeliveryForm = {
   country: "United Kingdom",
 };
 
+// Shipping cost matrix: zone → size → cost in GBP
+const PRINT_SHIPPING: Record<ShippingZone, Record<string, number>> = {
+  uk:     { "80x60": 12, "120x100": 18 },
+  europe: { "80x60": 30, "120x100": 40 },
+  row:    { "80x60": 50, "120x100": 65 },
+};
+
+const UPCYCLE_SHIPPING: Record<ShippingZone, number> = {
+  uk: 8,
+  europe: 20,
+  row: 35,
+};
+
+// European countries for zone detection
+const EUROPEAN_COUNTRIES = new Set([
+  "austria", "belgium", "bulgaria", "croatia", "cyprus", "czech republic", "czechia",
+  "denmark", "estonia", "finland", "france", "germany", "greece", "hungary",
+  "iceland", "ireland", "italy", "latvia", "liechtenstein", "lithuania",
+  "luxembourg", "malta", "monaco", "netherlands", "norway", "poland", "portugal",
+  "romania", "slovakia", "slovenia", "spain", "sweden", "switzerland",
+  "republic of ireland", "eire",
+]);
+
+const UK_COUNTRIES = new Set([
+  "united kingdom", "uk", "england", "scotland", "wales", "northern ireland",
+  "great britain", "gb", "britain",
+]);
+
+function detectShippingZone(country: string): ShippingZone {
+  const normalized = country.trim().toLowerCase();
+  if (UK_COUNTRIES.has(normalized)) return "uk";
+  if (EUROPEAN_COUNTRIES.has(normalized)) return "europe";
+  return "row";
+}
+
+function getShippingCost(section: "prints" | "upcycles", zone: ShippingZone, size?: string): number {
+  if (section === "upcycles") {
+    return UPCYCLE_SHIPPING[zone];
+  }
+  // For prints, look up by size; default to the smaller size if unknown
+  const sizeKey = size || "80x60";
+  return PRINT_SHIPPING[zone]?.[sizeKey] ?? PRINT_SHIPPING[zone]?.["80x60"] ?? 12;
+}
+
+const ZONE_LABELS: Record<ShippingZone, string> = {
+  uk: "UK",
+  europe: "Europe",
+  row: "Rest of World",
+};
+
 export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps) {
   const [step, setStep] = useState<Step>("summary");
   const [form, setForm] = useState<DeliveryForm>(INITIAL_FORM);
@@ -48,6 +101,21 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
   const [orderRef, setOrderRef] = useState<string | null>(null);
 
   const createOrderMutation = trpc.orders.create.useMutation();
+
+  // Detect shipping zone from country field
+  const shippingZone = useMemo(() => detectShippingZone(form.country), [form.country]);
+  const shippingCost = useMemo(
+    () => getShippingCost(item.section, shippingZone, item.size),
+    [item.section, shippingZone, item.size]
+  );
+
+  // Parse item price to number
+  const itemPriceNum = useMemo(() => {
+    const match = item.price.match(/£(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+  }, [item.price]);
+
+  const totalPrice = itemPriceNum + shippingCost;
 
   const updateField = (field: keyof DeliveryForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -108,15 +176,17 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
         section: item.section,
         itemTitle: item.title,
         itemDetails: item.details,
-        price: item.price,
+        price: `£${totalPrice}`,
+        shippingZone: shippingZone,
+        shippingCost: `£${shippingCost}`,
+        itemPrice: item.price,
       });
 
       setOrderRef(result.orderRef);
 
-      // Open PayPal with order ref in the note
-      const amount = item.price.replace("£", "");
+      // Open PayPal with total amount (item + delivery)
       window.open(
-        `https://paypal.me/${paypalUsername}/${amount}GBP`,
+        `https://paypal.me/${paypalUsername}/${totalPrice}GBP`,
         "_blank"
       );
     } catch (err) {
@@ -163,9 +233,18 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
                 <span className="text-sm text-right">{item.details}</span>
               </div>
             )}
+            <div className="flex justify-between items-start mb-2">
+              <span className="text-xs text-muted-foreground uppercase tracking-wider">Item price</span>
+              <span className="text-sm">{item.price}</span>
+            </div>
+            <div className="flex justify-between items-start mb-2">
+              <span className="text-xs text-muted-foreground uppercase tracking-wider">Delivery ({ZONE_LABELS[shippingZone]})</span>
+              <span className="text-sm">£{shippingCost}</span>
+            </div>
+            <hr className="border-border my-2" />
             <div className="flex justify-between items-start">
               <span className="text-xs text-muted-foreground uppercase tracking-wider">Total</span>
-              <span className="text-lg font-serif">{item.price}</span>
+              <span className="text-lg font-serif">£{totalPrice}</span>
             </div>
           </div>
 
@@ -175,8 +254,7 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
 
           <button
             onClick={() => {
-              const amount = item.price.replace("£", "");
-              window.open(`https://paypal.me/${paypalUsername}/${amount}GBP`, "_blank");
+              window.open(`https://paypal.me/${paypalUsername}/${totalPrice}GBP`, "_blank");
             }}
             className="w-full px-4 py-2 text-sm bg-foreground text-background hover:bg-foreground/90 transition-colors rounded-md mb-2"
           >
@@ -239,6 +317,7 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
               <p className="font-medium">'{item.title}'</p>
               {item.details && <p className="text-sm text-muted-foreground">{item.details}</p>}
               <p className="text-lg font-medium mt-2">{item.price}</p>
+              <p className="text-xs text-muted-foreground mt-1">Delivery costs calculated at checkout based on your location.</p>
             </div>
             <div className="flex gap-3">
               <button
@@ -410,6 +489,20 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
                   {errors.country && <p className="text-xs text-red-500 mt-0.5">{errors.country}</p>}
                 </div>
               </div>
+
+              {/* Shipping cost preview */}
+              <div className="bg-muted/50 border border-border rounded-md p-3 mt-2">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-muted-foreground">
+                    Delivery to {ZONE_LABELS[shippingZone]}
+                  </span>
+                  <span className="font-medium">£{shippingCost}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm mt-1">
+                  <span className="text-muted-foreground">Estimated total</span>
+                  <span className="font-serif font-medium">£{totalPrice}</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex gap-3">
@@ -443,7 +536,21 @@ export function OrderDialog({ item, onClose, paypalUsername }: OrderDialogProps)
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Item</p>
               <p className="font-medium">'{item.title}'</p>
               {item.details && <p className="text-sm text-muted-foreground">{item.details}</p>}
-              <p className="text-lg font-serif mt-1">{item.price}</p>
+              <div className="mt-3 space-y-1">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Item price</span>
+                  <span>{item.price}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Delivery ({ZONE_LABELS[shippingZone]})</span>
+                  <span>£{shippingCost}</span>
+                </div>
+                <hr className="border-border my-1" />
+                <div className="flex justify-between">
+                  <span className="text-sm font-medium">Total</span>
+                  <span className="text-lg font-serif">£{totalPrice}</span>
+                </div>
+              </div>
             </div>
 
             <div className="border border-border rounded-md p-4 mb-5">

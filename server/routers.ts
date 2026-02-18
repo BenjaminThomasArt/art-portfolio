@@ -99,6 +99,9 @@ export const appRouter = router({
           itemTitle: z.string(),
           itemDetails: z.string().optional(),
           price: z.string(),
+          shippingZone: z.enum(["uk", "europe", "row"]),
+          shippingCost: z.string(),
+          itemPrice: z.string(),
         })
       )
       .mutation(async ({ input }) => {
@@ -128,7 +131,9 @@ export const appRouter = router({
             `Order ref: ${orderRef}`,
             `Item: '${input.itemTitle}'`,
             `Details: ${input.itemDetails || 'N/A'}`,
-            `Price: ${input.price}`,
+            `Item price: ${input.itemPrice}`,
+            `Delivery (${input.shippingZone.toUpperCase()}): ${input.shippingCost}`,
+            `Total: ${input.price}`,
             ``,
             `Buyer: ${input.buyerName}`,
             `Email: ${input.buyerEmail}`,
