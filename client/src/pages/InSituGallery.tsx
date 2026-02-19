@@ -33,16 +33,12 @@ const galleryImages = [
 ];
 
 // Desktop layout: rows use aspect ratios tuned to avoid cropping artworks in photos.
-// Taller rows (lower ratio) = less vertical crop. Wider basis = less horizontal crop.
-// objectPosition focuses on the artwork area within each photo.
 interface RowConfig {
   images: { idx: number; basis: number; objectPosition?: string }[];
   rowAspect: string;
 }
 
 const desktopRows: RowConfig[] = [
-  // Row 1: green sofa (artwork at top) + blue triptych room
-  // Made taller (2.4/1 from 3.2/1) so the painting above the sofa isn't cropped
   {
     rowAspect: "2.4/1",
     images: [
@@ -50,8 +46,6 @@ const desktopRows: RowConfig[] = [
       { idx: 11, basis: 50, objectPosition: "center 40%" },
     ],
   },
-  // Row 2: framed art + diptych in-situ + triptych room
-  // Wider basis for side images to avoid horizontal crop of framed artworks
   {
     rowAspect: "2.6/1",
     images: [
@@ -60,8 +54,6 @@ const desktopRows: RowConfig[] = [
       { idx: 1, basis: 30, objectPosition: "center 35%" },
     ],
   },
-  // Row 3: artist selfie + pink diptych + cat
-  // Pink diptych gets more space; person/cat photos can be cropped more freely
   {
     rowAspect: "2.4/1",
     images: [
@@ -70,8 +62,6 @@ const desktopRows: RowConfig[] = [
       { idx: 24, basis: 24, objectPosition: "center 30%" },
     ],
   },
-  // Row 4: blue diptych living room + artist portrait
-  // Blue diptych artworks are well-framed at this ratio
   {
     rowAspect: "2.2/1",
     images: [
@@ -79,9 +69,6 @@ const desktopRows: RowConfig[] = [
       { idx: 22, basis: 45, objectPosition: "center 15%" },
     ],
   },
-  // Row 5: small items + blue sofa + small items
-  // Made taller (2.4/1 from 3/1) so artwork above blue sofa isn't cropped at top
-  // Wider side columns (30% from 26%) to show framed artworks better
   {
     rowAspect: "2.4/1",
     images: [
@@ -90,8 +77,6 @@ const desktopRows: RowConfig[] = [
       { idx: 9, basis: 30, objectPosition: "center 40%" },
     ],
   },
-  // Row 6: grey armchair (cloud artworks) + blue artwork bedroom
-  // Made taller (2/1 from 2.4/1) so cloud artworks above armchair aren't cropped
   {
     rowAspect: "2/1",
     images: [
@@ -99,8 +84,6 @@ const desktopRows: RowConfig[] = [
       { idx: 3, basis: 58, objectPosition: "center 40%" },
     ],
   },
-  // Row 7: yellow flowers + diptych + artist reflection
-  // Yellow flowers artwork is well-framed; diptych gets wider basis
   {
     rowAspect: "2.4/1",
     images: [
@@ -109,8 +92,6 @@ const desktopRows: RowConfig[] = [
       { idx: 20, basis: 28, objectPosition: "center 25%" },
     ],
   },
-  // Row 8: green botanical pair + purple flower
-  // Both contain prominent artworks, keep ratio moderate
   {
     rowAspect: "2.4/1",
     images: [
@@ -118,8 +99,6 @@ const desktopRows: RowConfig[] = [
       { idx: 16, basis: 58, objectPosition: "center 45%" },
     ],
   },
-  // Row 9: green artwork with bench + artist painting + kitchen with art
-  // Wider basis for artwork images, artist photo can crop more
   {
     rowAspect: "2.4/1",
     images: [
@@ -128,9 +107,6 @@ const desktopRows: RowConfig[] = [
       { idx: 14, basis: 36, objectPosition: "center 35%" },
     ],
   },
-  // Row 10: living room (two artworks) + concrete wall + framed artworks
-  // Made taller (2.4/1 from 3/1) to avoid cropping artworks on wall
-  // Wider side columns to show framed artworks
   {
     rowAspect: "2.4/1",
     images: [
@@ -141,157 +117,127 @@ const desktopRows: RowConfig[] = [
   },
 ];
 
-// Mobile layout: taller aspect ratios to preserve artwork visibility on narrow screens.
-// Full-width images use 4/3 or 3/2 (not 16/9) to avoid heavy vertical cropping.
-// Two-image rows use 1/1 or 4/3 to keep images tall enough.
-// Three-across rows avoided where possible; when used, aspect ratio is taller.
-const mobileRows: RowConfig[] = [
-  // Hero: green sofa full width — artwork above sofa needs to be visible
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 0, basis: 100, objectPosition: "center 55%" },
-    ],
-  },
-  // Two side by side: blue triptych + framed art
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 11, basis: 55, objectPosition: "center 35%" },
-      { idx: 2, basis: 45, objectPosition: "center 40%" },
-    ],
-  },
-  // Full width: diptych in-situ — artworks on wall
-  {
-    rowAspect: "4/3",
-    images: [
-      { idx: 23, basis: 100, objectPosition: "center 40%" },
-    ],
-  },
-  // Two: artist selfie + triptych room (cat moved to own row to avoid 3-across crop)
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 21, basis: 40, objectPosition: "center 20%" },
-      { idx: 1, basis: 60, objectPosition: "center 35%" },
-    ],
-  },
-  // Full width: cat with artwork
-  {
-    rowAspect: "4/3",
-    images: [
-      { idx: 24, basis: 100, objectPosition: "center 30%" },
-    ],
-  },
-  // Full width: pink diptych — prominent artworks
-  {
-    rowAspect: "4/3",
-    images: [
-      { idx: 5, basis: 100, objectPosition: "center 45%" },
-    ],
-  },
-  // Two: blue diptych + artist portrait
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 6, basis: 55, objectPosition: "center 35%" },
-      { idx: 22, basis: 45, objectPosition: "center 15%" },
-    ],
-  },
-  // Full width: blue sofa with artwork above
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 8, basis: 100, objectPosition: "center 35%" },
-    ],
-  },
-  // Two side by side: framed artworks
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 7, basis: 50, objectPosition: "center 35%" },
-      { idx: 9, basis: 50, objectPosition: "center 40%" },
-    ],
-  },
-  // Full width: blue artwork bedroom
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 3, basis: 100, objectPosition: "center 40%" },
-    ],
-  },
-  // Two: grey armchair (cloud artworks) + artist reflection
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 10, basis: 55, objectPosition: "center 30%" },
-      { idx: 20, basis: 45, objectPosition: "center 25%" },
-    ],
-  },
-  // Full width: yellow flowers artwork
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 12, basis: 100, objectPosition: "center 40%" },
-    ],
-  },
-  // Two: dark diptych + green botanical pair
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 13, basis: 45, objectPosition: "center 45%" },
-      { idx: 15, basis: 55, objectPosition: "center 40%" },
-    ],
-  },
-  // Full width: purple flower artwork
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 16, basis: 100, objectPosition: "center 45%" },
-    ],
-  },
-  // Two: green artwork with bench + kitchen with art (artist painting moved to own row)
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 17, basis: 50, objectPosition: "center 40%" },
-      { idx: 14, basis: 50, objectPosition: "center 35%" },
-    ],
-  },
-  // Full width: artist painting through glass
-  {
-    rowAspect: "4/3",
-    images: [
-      { idx: 25, basis: 100, objectPosition: "center 20%" },
-    ],
-  },
-  // Full width: concrete wall artwork
-  {
-    rowAspect: "3/2",
-    images: [
-      { idx: 19, basis: 100, objectPosition: "center 45%" },
-    ],
-  },
-  // Final two: living room artworks + framed artworks
-  {
-    rowAspect: "1/1",
-    images: [
-      { idx: 18, basis: 55, objectPosition: "center 35%" },
-      { idx: 4, basis: 45, objectPosition: "center 40%" },
-    ],
-  },
+// ─── Mobile layout ───────────────────────────────────────────────────
+// Nearly all source images are 1:1 (square). The previous layout forced
+// them into wide containers (16/9, 3/2) which cropped artworks heavily.
+//
+// New approach: each image gets a container matching its NATURAL aspect
+// ratio. Square images → 1/1. The one landscape (idx18) → 3/2.
+// Portrait images (idx19, idx22, idx25) → 4/5 or 3/4.
+//
+// Layout rhythm varies: full-width heroes, asymmetric pairs (60/40,
+// 65/35), and occasional tight pairs — never a uniform grid.
+//
+// For pairs of square images side by side, the ROW aspect is 2/1
+// (two squares next to each other). For a square + portrait pair,
+// we let each image keep its own aspect ratio via the flex approach.
+
+// Mobile uses a different rendering approach: instead of a fixed row
+// aspect ratio that forces all images to the same height (causing crop),
+// each image declares its own aspect ratio and the row flexes to fit.
+interface MobileItem {
+  idx: number;
+  aspect: string;    // natural aspect ratio of this image
+  basis: number;     // flex-basis percentage within the row
+  objectPosition?: string;
+}
+
+interface MobileRowConfig {
+  items: MobileItem[];
+  gap?: string;
+}
+
+const mobileLayout: MobileRowConfig[] = [
+  // 1. Hero: green sofa — square image, full width
+  { items: [{ idx: 0, aspect: "1/1", basis: 100 }] },
+
+  // 2. Pair: blue triptych room (sq) + framed art (sq) — asymmetric
+  { items: [
+    { idx: 11, aspect: "1/1", basis: 58 },
+    { idx: 2, aspect: "1/1", basis: 42 },
+  ]},
+
+  // 3. Full width: diptych in-situ (near-square 1.06:1)
+  { items: [{ idx: 23, aspect: "1/1", basis: 100 }] },
+
+  // 4. Pair: artist selfie (sq) + triptych room (sq) — asymmetric
+  { items: [
+    { idx: 21, aspect: "1/1", basis: 38, objectPosition: "center 20%" },
+    { idx: 1, aspect: "1/1", basis: 62 },
+  ]},
+
+  // 5. Full width: pink diptych (sq)
+  { items: [{ idx: 5, aspect: "1/1", basis: 100 }] },
+
+  // 6. Pair: cat with artwork (sq) + blue diptych living room (sq)
+  { items: [
+    { idx: 24, aspect: "1/1", basis: 45 },
+    { idx: 6, aspect: "1/1", basis: 55 },
+  ]},
+
+  // 7. Full width: artist portrait (portrait 0.77:1) — taller container
+  { items: [{ idx: 22, aspect: "3/4", basis: 100, objectPosition: "center 15%" }] },
+
+  // 8. Pair: blue sofa (sq) + small framed artwork (sq)
+  { items: [
+    { idx: 8, aspect: "1/1", basis: 60 },
+    { idx: 7, aspect: "1/1", basis: 40 },
+  ]},
+
+  // 9. Full width: sideboard with artworks (sq)
+  { items: [{ idx: 9, aspect: "1/1", basis: 100 }] },
+
+  // 10. Pair: grey armchair clouds (~sq) + blue artwork bedroom (sq)
+  { items: [
+    { idx: 10, aspect: "1/1", basis: 45 },
+    { idx: 3, aspect: "1/1", basis: 55 },
+  ]},
+
+  // 11. Full width: yellow flowers (sq)
+  { items: [{ idx: 12, aspect: "1/1", basis: 100 }] },
+
+  // 12. Pair: dark diptych (sq) + artist reflection (~sq)
+  { items: [
+    { idx: 13, aspect: "1/1", basis: 55 },
+    { idx: 20, aspect: "1/1", basis: 45, objectPosition: "center 25%" },
+  ]},
+
+  // 13. Full width: green botanical pair (sq)
+  { items: [{ idx: 15, aspect: "1/1", basis: 100 }] },
+
+  // 14. Pair: purple flower (sq) + green artwork bench (~sq 1.09:1)
+  { items: [
+    { idx: 16, aspect: "1/1", basis: 55 },
+    { idx: 17, aspect: "1/1", basis: 45 },
+  ]},
+
+  // 15. Full width: artist painting through glass (portrait 0.64:1)
+  { items: [{ idx: 25, aspect: "2/3", basis: 100, objectPosition: "center 20%" }] },
+
+  // 16. Pair: kitchen with art (sq) + living room two artworks (landscape 1.45:1)
+  { items: [
+    { idx: 14, aspect: "1/1", basis: 48 },
+    { idx: 18, aspect: "3/2", basis: 52 },
+  ]},
+
+  // 17. Full width: concrete wall artwork (portrait 0.8:1)
+  { items: [{ idx: 19, aspect: "4/5", basis: 100 }] },
+
+  // 18. Final: two framed dark artworks (sq)
+  { items: [{ idx: 4, aspect: "1/1", basis: 100 }] },
 ];
 
 export default function InSituGallery() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
-  const renderRow = (row: RowConfig, rowIndex: number, gap: string, mb: string) => (
+  // Desktop renderer: fixed row aspect ratio, all images same height
+  const renderDesktopRow = (row: RowConfig, rowIndex: number) => (
     <div
       key={rowIndex}
       className="flex"
       style={{
-        gap,
-        marginBottom: mb,
+        gap: "3px",
+        marginBottom: "3px",
         aspectRatio: row.rowAspect,
       }}
     >
@@ -321,17 +267,54 @@ export default function InSituGallery() {
     </div>
   );
 
+  // Mobile renderer: each image has its OWN aspect ratio so nothing gets cropped
+  const renderMobileRow = (row: MobileRowConfig, rowIndex: number) => (
+    <div
+      key={rowIndex}
+      className="flex items-start"
+      style={{
+        gap: "2px",
+        marginBottom: "2px",
+      }}
+    >
+      {row.items.map(({ idx, aspect, basis, objectPosition }) => {
+        const image = galleryImages[idx];
+        return (
+          <div
+            key={idx}
+            className="group cursor-pointer overflow-hidden"
+            onClick={() => setZoomImage(image)}
+            style={{
+              flexBasis: `${basis}%`,
+              flexGrow: 0,
+              flexShrink: 0,
+              aspectRatio: aspect,
+            }}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-105"
+              style={{ objectPosition: objectPosition || "center center" }}
+              loading="lazy"
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <section className="pt-16 pb-8">
         {/* Desktop layout */}
         <div className="hidden sm:block px-1 lg:px-2 max-w-[1600px] mx-auto">
-          {desktopRows.map((row, i) => renderRow(row, i, "3px", "3px"))}
+          {desktopRows.map((row, i) => renderDesktopRow(row, i))}
         </div>
 
-        {/* Mobile layout: row-based with taller aspect ratios to preserve artwork visibility */}
+        {/* Mobile layout: each image keeps its natural aspect ratio */}
         <div className="sm:hidden px-[2px]">
-          {mobileRows.map((row, i) => renderRow(row, i, "2px", "2px"))}
+          {mobileLayout.map((row, i) => renderMobileRow(row, i))}
         </div>
       </section>
 

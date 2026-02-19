@@ -400,3 +400,4 @@
 - [x] Add Meta Pixel base tracking code (ID: 1712949248976559)
 - [x] Add Meta Pixel enhanced events (ViewContent, InitiateCheckout)
 - [x] Review and fix gallery cropping on desktop and mobile to avoid cropping artworks in photographs
+- [x] Redesign mobile gallery to completely avoid cropping artworks - use natural image aspect ratios
