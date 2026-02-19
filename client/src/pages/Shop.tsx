@@ -93,7 +93,7 @@ export default function Shop() {
 
 function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick: (src: string) => void; onOrder: (details: { title: string; price: string; details: string; section: "prints" | "upcycles"; size?: string }) => void }) {
   const [material, setMaterial] = useState<string>("canvas");
-  const [size, setSize] = useState<string>("80x60");
+  const [size, setSize] = useState<string>("30x40");
   const [panelSelection, setPanelSelection] = useState<string>("left"); // left, right, both
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   
@@ -177,16 +177,19 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
   // Price mapping based on material and size
   const priceMap: Record<string, Record<string, string>> = {
     canvas: {
+      "30x40": "£75",
       "80x60": "£125",
       "120x100": "£200",
       "custom": "Contact for pricing"
     },
     pvc: {
+      "30x40": "£75",
       "80x60": "£125",
       "120x100": "£200",
       "custom": "Contact for pricing"
     },
     giclee: {
+      "30x40": "£90",
       "80x60": "£150",
       "120x100": "£225",
       "custom": "Contact for pricing"
@@ -206,6 +209,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     canvas: "Canvas Inkjet"
   };
   const sizeLabels: Record<string, string> = {
+    "30x40": "30×40cm",
     "80x60": "60×80cm",
     "120x100": "100×120cm",
     custom: "Custom size"
@@ -334,6 +338,7 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
               <SelectValue placeholder="Select size" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="30x40">30 x 40 cm</SelectItem>
               <SelectItem value="80x60">60 x 80 cm</SelectItem>
               <SelectItem value="120x100">100 x 120 cm</SelectItem>
               <SelectItem value="custom">Custom size - contact for details</SelectItem>

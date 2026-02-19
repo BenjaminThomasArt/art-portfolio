@@ -394,3 +394,4 @@
 - [x] Build Thank You confirmation page after PayPal redirect so buyers land back on site
 - [x] Reduce white space gaps between images on desktop Gallery by cropping non-artwork photos
 - [x] Redesign mobile Gallery layout to be more sophisticated than simple left/right stacking
+- [x] Add 30 x 40 cm size option to all prints (Canvas Inkjet & PVC Board £75, Giclée £90)

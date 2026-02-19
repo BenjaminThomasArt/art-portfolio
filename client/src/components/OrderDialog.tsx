@@ -47,9 +47,9 @@ const INITIAL_FORM: DeliveryForm = {
 
 // Shipping cost matrix: zone → size → cost in GBP
 const PRINT_SHIPPING: Record<ShippingZone, Record<string, number>> = {
-  uk:     { "80x60": 12, "120x100": 18 },
-  europe: { "80x60": 30, "120x100": 40 },
-  row:    { "80x60": 50, "120x100": 65 },
+  uk:     { "30x40": 8, "80x60": 12, "120x100": 18 },
+  europe: { "30x40": 20, "80x60": 30, "120x100": 40 },
+  row:    { "30x40": 35, "80x60": 50, "120x100": 65 },
 };
 
 const UPCYCLE_SHIPPING: Record<ShippingZone, number> = {
@@ -84,9 +84,9 @@ function getShippingCost(section: "prints" | "upcycles", zone: ShippingZone, siz
   if (section === "upcycles") {
     return UPCYCLE_SHIPPING[zone];
   }
-  // For prints, look up by size; default to the smaller size if unknown
-  const sizeKey = size || "80x60";
-  return PRINT_SHIPPING[zone]?.[sizeKey] ?? PRINT_SHIPPING[zone]?.["80x60"] ?? 12;
+  // For prints, look up by size; default to the smallest size if unknown
+  const sizeKey = size || "30x40";
+  return PRINT_SHIPPING[zone]?.[sizeKey] ?? PRINT_SHIPPING[zone]?.["30x40"] ?? 8;
 }
 
 const ZONE_LABELS: Record<ShippingZone, string> = {
