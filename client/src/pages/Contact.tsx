@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import { Mail, MessageCircle } from "lucide-react";
+import { trackContact } from "@/lib/metaPixel";
 import {
   Select,
   SelectContent,
@@ -90,6 +91,7 @@ export default function Contact() {
         message: formData.message,
       });
 
+      trackContact();
       toast.success("Message sent successfully! I'll be in touch soon.");
       setFormData({
         type: "contact",

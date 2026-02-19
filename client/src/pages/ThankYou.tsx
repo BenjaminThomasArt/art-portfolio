@@ -1,10 +1,18 @@
 import { Link, useSearch } from "wouter";
 import { Check, ArrowLeft, Mail } from "lucide-react";
+import { useEffect } from "react";
+import { trackPurchase } from "@/lib/metaPixel";
 
 export default function ThankYou() {
   const searchString = useSearch();
   const params = new URLSearchParams(searchString);
   const orderRef = params.get("ref");
+  const amount = params.get("amount");
+
+  useEffect(() => {
+    const value = amount ? parseFloat(amount) : 0;
+    trackPurchase({ value: isNaN(value) ? 0 : value, contentName: orderRef ?? undefined });
+  }, []);
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">

@@ -3,6 +3,7 @@ import { ImageZoom } from "@/components/ImageZoom";
 import { UpcycleCarousel } from "@/components/UpcycleCarousel";
 import { OrderDialog } from "@/components/OrderDialog";
 import { ShoppingBag } from "lucide-react";
+import { trackInitiateCheckout } from "@/lib/metaPixel";
 
 const upcycleArtworks = [
   {
@@ -57,12 +58,15 @@ export default function Upcycles() {
                 <span className="text-xl font-serif">£{artwork.price}</span>
               </div>
               <button
-                onClick={() => setOrderItem({
-                  title: artwork.title,
-                  price: `£${artwork.price}`,
-                  details: artwork.description,
-                  section: "upcycles",
-                })}
+                onClick={() => {
+                  trackInitiateCheckout({ contentName: artwork.title, value: artwork.price });
+                  setOrderItem({
+                    title: artwork.title,
+                    price: `£${artwork.price}`,
+                    details: artwork.description,
+                    section: "upcycles",
+                  });
+                }}
                 className="w-full inline-flex items-center justify-center gap-1.5 py-2 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
               >
                 <ShoppingBag size={13} />

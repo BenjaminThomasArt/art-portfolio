@@ -397,3 +397,5 @@
 - [x] Add 30 x 40 cm size option to all prints (Canvas Inkjet & PVC Board £75, Giclée £90)
 - [x] Remove composite/multi-artwork first image from Revolver Editions print carousel (keep only 4 images)
 - [x] Restore first carousel image for Portmanteau and One Way or Another (lost during Revolver Editions fix)
+- [x] Add Meta Pixel base tracking code (ID: 1712949248976559)
+- [x] Add Meta Pixel enhanced events (ViewContent, InitiateCheckout)

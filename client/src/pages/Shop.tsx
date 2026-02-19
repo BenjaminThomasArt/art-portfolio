@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
 import { OrderDialog } from "@/components/OrderDialog";
 import { useSwipe } from "@/hooks/useSwipe";
+import { trackInitiateCheckout } from "@/lib/metaPixel";
 import {
   Select,
   SelectContent,
@@ -240,6 +241,11 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
     ];
     if (isMultiPanel) {
       detailParts.push(panelLabels[panelSelection] || panelSelection);
+    }
+    // Fire Meta Pixel InitiateCheckout event
+    const priceNum = parseFloat(currentPrice.replace(/[^0-9.]/g, ""));
+    if (!isNaN(priceNum)) {
+      trackInitiateCheckout({ contentName: print.title, value: priceNum });
     }
     onOrder({
       title: print.title,
