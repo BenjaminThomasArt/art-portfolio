@@ -40,9 +40,9 @@ interface RowConfig {
 
 const desktopRows: RowConfig[] = [
   {
-    rowAspect: "2.4/1",
+    rowAspect: "1.6/1",
     images: [
-      { idx: 0, basis: 50, objectPosition: "center 60%" },
+      { idx: 0, basis: 50, objectPosition: "center 30%" },
       { idx: 11, basis: 50, objectPosition: "center 40%" },
     ],
   },
