@@ -133,8 +133,8 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       const printGalleryArray = JSON.parse(print.galleryImages);
       if (printGalleryArray && printGalleryArray.length > 0) {
         if (allImages.length === 0) {
-          // No artwork gallery — use main image as first, then print gallery
-          allImages = [print.imageUrl, ...printGalleryArray];
+          // No artwork gallery — use print gallery images directly
+          allImages = [...printGalleryArray];
         } else {
           // Append print gallery images after artwork gallery images
           allImages = [...allImages, ...printGalleryArray];

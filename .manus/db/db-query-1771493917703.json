@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, image_url, gallery_images FROM prints WHERE title LIKE '%Revolver%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, gallery_images FROM prints WHERE title LIKE '%Revolver%';",
+  "rows": [
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg",
+      "gallery_images": "[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HxcQQxQaYjTeFMeZ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QAfFAxRpjoYNfdNc.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KwPzwQAxhhejBNzU.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iWrpfozOMgsTGlyw.jpg\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tgallery_images\n90001\tThe Revolver Editions\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/lFnjKuBQTJbINZHS.jpg\t[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HxcQQxQaYjTeFMeZ.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QAfFAxRpjoYNfdNc.jpg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KwPzwQAxhhejBNzU.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/iWrpfozOMgsTGlyw.jpg\"]\n",
+  "stderr": "",
+  "execution_time_ms": 349
+}

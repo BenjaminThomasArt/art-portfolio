@@ -1,0 +1,52 @@
+{
+  "query": "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'prints' ORDER BY ORDINAL_POSITION;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'prints' ORDER BY ORDINAL_POSITION;",
+  "rows": [
+    {
+      "COLUMN_NAME": "id"
+    },
+    {
+      "COLUMN_NAME": "title"
+    },
+    {
+      "COLUMN_NAME": "description"
+    },
+    {
+      "COLUMN_NAME": "image_url"
+    },
+    {
+      "COLUMN_NAME": "image_key"
+    },
+    {
+      "COLUMN_NAME": "size_info"
+    },
+    {
+      "COLUMN_NAME": "price"
+    },
+    {
+      "COLUMN_NAME": "available"
+    },
+    {
+      "COLUMN_NAME": "display_order"
+    },
+    {
+      "COLUMN_NAME": "created_at"
+    },
+    {
+      "COLUMN_NAME": "updated_at"
+    },
+    {
+      "COLUMN_NAME": "gallery_images"
+    },
+    {
+      "COLUMN_NAME": "is_diptych"
+    },
+    {
+      "COLUMN_NAME": "panel_count"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\nid\ntitle\ndescription\nimage_url\nimage_key\nsize_info\nprice\navailable\ndisplay_order\ncreated_at\nupdated_at\ngallery_images\nis_diptych\npanel_count\n",
+  "stderr": "",
+  "execution_time_ms": 362
+}
