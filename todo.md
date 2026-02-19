@@ -396,3 +396,4 @@
 - [x] Redesign mobile Gallery layout to be more sophisticated than simple left/right stacking
 - [x] Add 30 x 40 cm size option to all prints (Canvas Inkjet & PVC Board £75, Giclée £90)
 - [x] Remove composite/multi-artwork first image from Revolver Editions print carousel (keep only 4 images)
+- [x] Restore first carousel image for Portmanteau and One Way or Another (lost during Revolver Editions fix)

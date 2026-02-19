@@ -133,8 +133,14 @@ function PrintCard({ print, onImageClick, onOrder }: { print: any; onImageClick:
       const printGalleryArray = JSON.parse(print.galleryImages);
       if (printGalleryArray && printGalleryArray.length > 0) {
         if (allImages.length === 0) {
-          // No artwork gallery — use print gallery images directly
-          allImages = [...printGalleryArray];
+          // No artwork gallery — for multi-panel works, use gallery images directly
+          // (avoids showing composite overview as first slide);
+          // for single works, prepend the main image as the hero shot
+          if (isMultiPanel) {
+            allImages = [...printGalleryArray];
+          } else {
+            allImages = [print.imageUrl, ...printGalleryArray];
+          }
         } else {
           // Append print gallery images after artwork gallery images
           allImages = [...allImages, ...printGalleryArray];
