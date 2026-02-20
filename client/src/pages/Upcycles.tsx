@@ -29,6 +29,15 @@ const upcycleArtworks = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/rHPDXGPIfKvuAQPR.jpg",
     ],
   },
+  {
+    id: 3,
+    title: "Goodbye Horses",
+    description: 'Upcycled vintage LP, 12"x12"',
+    price: 50,
+    images: [
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jxQddmkdhYqUZLKK.PNG",
+    ],
+  },
 ];
 
 export default function Upcycles() {
