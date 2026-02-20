@@ -402,3 +402,4 @@
 - [x] Review and fix gallery cropping on desktop and mobile to avoid cropping artworks in photographs
 - [x] Redesign mobile gallery to completely avoid cropping artworks - use natural image aspect ratios
 - [x] Fix first gallery image (green botanical on green sofa) still cropped at top on desktop and mobile
+- [x] Change homepage tagline from 'Fine art & more' to 'Contemporary mixed media artist, London UK'
