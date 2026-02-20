@@ -406,3 +406,4 @@
 - [x] Remove 'London UK' from homepage tagline — change to 'Contemporary mixed media artist'
 - [x] Reorder prints so Revolver Editions is second after I Saw the Whole Thing
 - [x] Move Portmanteau ahead of The Subject of Paint in Prints section
+- [x] Update About section with new artist statement text
