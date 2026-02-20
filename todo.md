@@ -408,3 +408,4 @@
 - [x] Move Portmanteau ahead of The Subject of Paint in Prints section
 - [x] Update About section with new artist statement text
 - [x] Add 'Goodbye Horses' upcycled piece to Upcycles section (12x12 in, £50)
+- [x] Update About section with revised artist statement (v2)
