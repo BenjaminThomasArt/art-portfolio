@@ -1,0 +1,45 @@
+{
+  "query": "SELECT id, title, display_order FROM prints ORDER BY display_order ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, display_order FROM prints ORDER BY display_order ASC;",
+  "rows": [
+    {
+      "id": "60001",
+      "title": "I Saw the Whole Thing",
+      "display_order": "1"
+    },
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "display_order": "2"
+    },
+    {
+      "id": "30001",
+      "title": "Portmanteau",
+      "display_order": "3"
+    },
+    {
+      "id": "30002",
+      "title": "One way or another",
+      "display_order": "4"
+    },
+    {
+      "id": "30003",
+      "title": "Tiefenschwarz",
+      "display_order": "5"
+    },
+    {
+      "id": "30004",
+      "title": "Candyflip",
+      "display_order": "6"
+    },
+    {
+      "id": "90001",
+      "title": "The Revolver Editions",
+      "display_order": "7"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdisplay_order\n60001\tI Saw the Whole Thing\t1\n1\tThe Subject of Paint\t2\n30001\tPortmanteau\t3\n30002\tOne way or another\t4\n30003\tTiefenschwarz\t5\n30004\tCandyflip\t6\n90001\tThe Revolver Editions\t7\n",
+  "stderr": "",
+  "execution_time_ms": 428
+}
