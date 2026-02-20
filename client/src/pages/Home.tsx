@@ -43,7 +43,7 @@ export default function Home() {
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#D87093] font-light tracking-wide">
-            Contemporary mixed media artist, London UK
+            Contemporary mixed media artist
           </p>
           <div className="flex items-center justify-center gap-1.5 sm:gap-3">
             <Link href="/originals">
