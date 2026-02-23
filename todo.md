@@ -413,3 +413,4 @@
 - [x] Add 'Bloom' to Featured Works on homepage at top
 - [x] Add year 2026 to Bloom artwork in database
 - [x] Update About section with revised artist statement (v3)
+- [x] Update About section with revised artist statement (v4)
