@@ -1,6 +1,7 @@
 import { trpc } from "@/lib/trpc";
 import { Instagram, Facebook, Twitter, Linkedin, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 
 export default function About() {
   const { data: artistInfo, isLoading } = trpc.artist.getInfo.useQuery();
@@ -110,10 +111,24 @@ export default function About() {
             {/* Bio */}
             <div className={artistInfo?.profileImageUrl ? "md:col-span-2" : "md:col-span-3"}>
               <div className="prose prose-lg max-w-none">
-                <p className="text-foreground leading-relaxed whitespace-pre-line">
-                  {artistInfo?.bio ||
-                    "Benjamin Thomas is a contemporary abstract artist based in London. His work develops through an ongoing process in which each piece builds on what came before, forming part of a connected and evolving body of work.\n\nHe approaches painting through instinct and close attention to process. Shapes, marks and textures carry from one work to the next, returning through layering, repetition and shifts in method. Earlier pieces often influence later ones, creating links across different materials and formats. Each work stands independently, while contributing to a thread that runs through the practice.\n\nHis Upcycled series extends this approach into found objects. Vinyl records sourced across East London are reworked with paint, allowing the object\u2019s history and new appearance to co-exist."}
-                </p>
+                {(() => {
+                  const bio = artistInfo?.bio ||
+                    "Benjamin Thomas is a contemporary abstract artist based in London. His work develops through an ongoing process in which each piece builds on what came before, forming part of a connected and evolving body of work.\n\nHe approaches painting through instinct and close attention to process. Shapes, marks and textures carry from one work to the next, returning through layering, repetition and shifts in method. Earlier pieces often influence later ones, creating links across different materials and formats. Each work stands independently, while contributing to a thread that runs through the practice.\n\nHis Upcycled series extends this approach into found objects. Vinyl records sourced across East London are reworked with paint, allowing the object\u2019s history and new appearance to co-exist.";
+                  const parts = bio.split(/(Upcycled)/);
+                  return (
+                    <p className="text-foreground leading-relaxed whitespace-pre-line">
+                      {parts.map((part, i) =>
+                        part === "Upcycled" ? (
+                          <Link key={i} href="/upcycles" className="text-[#d4707a] hover:text-[#c25d67] underline underline-offset-2">
+                            Upcycled
+                          </Link>
+                        ) : (
+                          <span key={i}>{part}</span>
+                        )
+                      )}
+                    </p>
+                  );
+                })()}
               </div>
             </div>
           </div>
