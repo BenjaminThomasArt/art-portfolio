@@ -414,3 +414,4 @@
 - [x] Add year 2026 to Bloom artwork in database
 - [x] Update About section with revised artist statement (v3)
 - [x] Update About section with revised artist statement (v4)
+- [x] Update About section with revised artist statement (v5)
