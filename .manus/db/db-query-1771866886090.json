@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artworks SET display_order = display_order + 10; INSERT INTO artworks (title, description, image_url, image_key, gallery_images, medium, dimensions, available, featured, for_sale, display_order) VALUES ('Bloom', 'Mixed media on PVC board, 120x80cm', 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg', 'bloom-1', '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XzKENsQnDKavkuqi.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KfJHWhfyoTjHCagB.jpeg\"]', 'Mixed media on PVC board', '120 x 80cm', 'yes', 1, 0, 1);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artworks SET display_order = display_order + 10; INSERT INTO artworks (title, description, image_url, image_key, gallery_images, medium, dimensions, available, featured, for_sale, display_order) VALUES ('Bloom', 'Mixed media on PVC board, 120x80cm', 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg', 'bloom-1', '[\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/XzKENsQnDKavkuqi.jpeg\",\"https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KfJHWhfyoTjHCagB.jpeg\"]', 'Mixed media on PVC board', '120 x 80cm', 'yes', 1, 0, 1);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 434
+}

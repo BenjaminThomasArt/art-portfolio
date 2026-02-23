@@ -9,6 +9,13 @@ export default function Home() {
   // Hardcoded featured artworks for homepage - using first single-painting images from Prints section
   const featuredArtworks = [
     {
+      id: 60001,
+      title: 'Bloom',
+      year: 2026,
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg',
+      medium: 'Mixed media on PVC board'
+    },
+    {
       id: 1,
       title: 'The Subject of Paint',
       year: 2026,

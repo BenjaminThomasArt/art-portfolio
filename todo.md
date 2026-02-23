@@ -409,3 +409,5 @@
 - [x] Update About section with new artist statement text
 - [x] Add 'Goodbye Horses' upcycled piece to Upcycles section (12x12 in, £50)
 - [x] Update About section with revised artist statement (v2)
+- [x] Add 'Bloom' artwork to Originals section at top (Mixed media on PVC board, 120x80cm, 3 images)
+- [x] Add 'Bloom' to Featured Works on homepage at top
