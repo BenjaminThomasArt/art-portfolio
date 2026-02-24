@@ -423,3 +423,4 @@
 - [x] Remove underline from 'Upcycled' link and change colour to same blue as 'Benjamin Thomas'
 - [x] Update About section with revised artist statement (v7)
 - [x] Update About section with revised artist statement (v8)
+- [x] Update About section with revised artist statement (v9)
