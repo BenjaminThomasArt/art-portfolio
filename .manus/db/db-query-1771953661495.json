@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE artist_info SET bio = 'Benjamin Thomas is a contemporary abstract artist based in London.\\n\\nHe approaches painting through iteration and investigation of process, exploring new works that build on what came before, and an ever-connecting, evolving wider practice.\\n\\nShapes, tones and gestures carry from one piece to the next, returning through layers, repetition and reproduction. This ''recycling'' of art creates links across different works, so while each stands independently, they contribute to a wider artistic body.\\n\\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined, fusing old life with new.' WHERE id = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE artist_info SET bio = 'Benjamin Thomas is a contemporary abstract artist based in London.\\n\\nHe approaches painting through iteration and investigation of process, exploring new works that build on what came before, and an ever-connecting, evolving wider practice.\\n\\nShapes, tones and gestures carry from one piece to the next, returning through layers, repetition and reproduction. This ''recycling'' of art creates links across different works, so while each stands independently, they contribute to a wider artistic body.\\n\\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined, fusing old life with new.' WHERE id = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 375
+}

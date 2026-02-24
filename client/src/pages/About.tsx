@@ -113,7 +113,7 @@ export default function About() {
               <div className="prose prose-lg max-w-none">
                 {(() => {
                   const bio = artistInfo?.bio ||
-                     "Benjamin Thomas is a contemporary abstract artist based in London.\n\nHe approaches painting through iteration and investigation of process, exploring new works that build on what came before, amounting to an ever-connecting and evolving artistic practice.\n\nShapes, tones and gestures carry from one artwork to the next, returning through layering, repetition and reproduction. This 'recycling' of art creates links across different works, so while each stands independently, they contribute to a cohesive body of work.\n\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined, fusing old life with new.";
+                     "Benjamin Thomas is a contemporary abstract artist based in London.\n\nHe approaches painting through iteration and investigation of process, exploring new works that build on what came before, and an ever-connecting, evolving wider practice.\n\nShapes, tones and gestures carry from one piece to the next, returning through layers, repetition and reproduction. This 'recycling' of art creates links across different works, so while each stands independently, they contribute to a wider artistic body.\n\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined, fusing old life with new.";
                   const parts = bio.split(/(Upcycled)/);
                   return (
                     <p className="text-foreground leading-relaxed whitespace-pre-line">
