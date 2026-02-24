@@ -421,3 +421,4 @@
 - [x] Remove 'Clapton, East' from About bio — change to just 'London'
 - [x] Remove 'Clapton, East' from About bio — change to just 'London'
 - [x] Remove underline from 'Upcycled' link and change colour to same blue as 'Benjamin Thomas'
+- [x] Update About section with revised artist statement (v7)
