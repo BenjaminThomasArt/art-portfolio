@@ -418,3 +418,6 @@
 - [x] Link 'Upcycled' text in About section to the Upcycles page
 - [x] Update About section with revised artist statement (v6)
 - [x] Fix smart quotes around 'recycling' in About section to use standard single quotes
+- [x] Remove 'Clapton, East' from About bio — change to just 'London'
+- [x] Remove 'Clapton, East' from About bio — change to just 'London'
+- [x] Remove underline from 'Upcycled' link and change colour to same blue as 'Benjamin Thomas'

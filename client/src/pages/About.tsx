@@ -113,13 +113,13 @@ export default function About() {
               <div className="prose prose-lg max-w-none">
                 {(() => {
                   const bio = artistInfo?.bio ||
-                     "Benjamin Thomas is a contemporary abstract artist based in Clapton, East London.\n\nHe approaches painting through instinct and investigation of process, developing a method in which new works build on what came before, forming a connected and evolving artistic practice.\n\nShapes, tones and gestures carry from one artwork to the next, returning through layering, repetition and reproduction. This 'recycling' of art creates links across different works, so while each stands independently, they contribute to a thread running through the practice.\n\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined for a second life, fusing old life with new.";
+                     "Benjamin Thomas is a contemporary abstract artist based in London.\n\nHe approaches painting through instinct and investigation of process, developing a method in which new works build on what came before, forming a connected and evolving artistic practice.\n\nShapes, tones and gestures carry from one artwork to the next, returning through layering, repetition and reproduction. This 'recycling' of art creates links across different works, so while each stands independently, they contribute to a thread running through the practice.\n\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined for a second life, fusing old life with new.";
                   const parts = bio.split(/(Upcycled)/);
                   return (
                     <p className="text-foreground leading-relaxed whitespace-pre-line">
                       {parts.map((part, i) =>
                         part === "Upcycled" ? (
-                          <Link key={i} href="/upcycles" className="text-[#d4707a] hover:text-[#c25d67] underline underline-offset-2">
+                          <Link key={i} href="/upcycles" className="text-[#003153] hover:text-[#004a7a] no-underline">
                             Upcycled
                           </Link>
                         ) : (
