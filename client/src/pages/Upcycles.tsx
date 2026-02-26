@@ -38,6 +38,15 @@ const upcycleArtworks = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jxQddmkdhYqUZLKK.PNG",
     ],
   },
+  {
+    id: 4,
+    title: "Bo Carter",
+    description: 'Upcycled vintage LP, 12"x12"',
+    price: 50,
+    images: [
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg",
+    ],
+  },
 ];
 
 export default function Upcycles() {

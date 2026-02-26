@@ -424,3 +424,4 @@
 - [x] Update About section with revised artist statement (v7)
 - [x] Update About section with revised artist statement (v8)
 - [x] Update About section with revised artist statement (v9)
+- [x] Add 'Bo Carter' upcycled piece to Upcycles section
