@@ -425,3 +425,5 @@
 - [x] Update About section with revised artist statement (v8)
 - [x] Update About section with revised artist statement (v9)
 - [x] Add 'Bo Carter' upcycled piece to Upcycles section
+- [x] Move Bo Carter to top of Upcycles list
+- [x] Remove price and Order button from Bo Carter (not for sale)

@@ -7,10 +7,21 @@ import { trackInitiateCheckout } from "@/lib/metaPixel";
 
 const upcycleArtworks = [
   {
+    id: 4,
+    title: "Bo Carter",
+    description: 'Upcycled vintage LP, 12"x12"',
+    price: null,
+    forSale: false,
+    images: [
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg",
+    ],
+  },
+  {
     id: 1,
     title: "Pre & Post",
     description: 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"',
     price: 75,
+    forSale: true,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/BuDNLXqkpRNyTRgX.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/kozKpAhIvAcgYroL.jpeg",
@@ -22,6 +33,7 @@ const upcycleArtworks = [
     title: "Do You Wanna Dance",
     description: 'Upcycled vintage LP triptych, 3 x 12"x12"',
     price: 100,
+    forSale: true,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/CuRLZscWwxTUWdoG.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/xLMzCLgwUiGZIvZV.jpeg",
@@ -34,17 +46,9 @@ const upcycleArtworks = [
     title: "Goodbye Horses",
     description: 'Upcycled vintage LP, 12"x12"',
     price: 50,
+    forSale: true,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/jxQddmkdhYqUZLKK.PNG",
-    ],
-  },
-  {
-    id: 4,
-    title: "Bo Carter",
-    description: 'Upcycled vintage LP, 12"x12"',
-    price: 50,
-    images: [
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg",
     ],
   },
 ];
@@ -71,25 +75,29 @@ export default function Upcycles() {
               />
               <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
               <p className="text-sm text-muted-foreground mb-3">{artwork.description}</p>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm text-muted-foreground">Price:</span>
-                <span className="text-xl font-serif">£{artwork.price}</span>
-              </div>
-              <button
-                onClick={() => {
-                  trackInitiateCheckout({ contentName: artwork.title, value: artwork.price });
-                  setOrderItem({
-                    title: artwork.title,
-                    price: `£${artwork.price}`,
-                    details: artwork.description,
-                    section: "upcycles",
-                  });
-                }}
-                className="w-full inline-flex items-center justify-center gap-1.5 py-2 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
-              >
-                <ShoppingBag size={13} />
-                Order
-              </button>
+              {artwork.forSale && artwork.price != null && (
+                <>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-muted-foreground">Price:</span>
+                    <span className="text-xl font-serif">£{artwork.price}</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      trackInitiateCheckout({ contentName: artwork.title, value: artwork.price! });
+                      setOrderItem({
+                        title: artwork.title,
+                        price: `£${artwork.price}`,
+                        details: artwork.description,
+                        section: "upcycles",
+                      });
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
+                  >
+                    <ShoppingBag size={13} />
+                    Order
+                  </button>
+                </>
+              )}
             </div>
           ))}
         </div>
