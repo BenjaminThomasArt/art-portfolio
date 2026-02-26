@@ -73,7 +73,12 @@ export default function Upcycles() {
                 title={artwork.title}
                 onImageClick={(src, alt) => setZoomImage({ src, alt })}
               />
-              <h3 className="text-lg font-serif mb-1">'{artwork.title}'</h3>
+              <h3 className="text-lg font-serif mb-1 flex items-center gap-2">
+                '{artwork.title}'
+                {!artwork.forSale && (
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-red-600 flex-shrink-0" title="Sold" />
+                )}
+              </h3>
               <p className="text-sm text-muted-foreground mb-3">{artwork.description}</p>
               {artwork.forSale && artwork.price != null && (
                 <>

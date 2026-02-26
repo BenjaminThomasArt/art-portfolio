@@ -427,3 +427,4 @@
 - [x] Add 'Bo Carter' upcycled piece to Upcycles section
 - [x] Move Bo Carter to top of Upcycles list
 - [x] Remove price and Order button from Bo Carter (not for sale)
+- [x] Add red 'sold' dot to Bo Carter on Upcycles page
