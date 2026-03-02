@@ -35,10 +35,10 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden group">
+      <section className="relative h-[65vh] md:h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden group">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110 bg-center md:bg-[center_top]"
+          className="absolute inset-0 bg-cover opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110 bg-top"
           style={{
             backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg)'
           }}
