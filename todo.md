@@ -430,3 +430,4 @@
 - [x] Add red 'sold' dot to Bo Carter on Upcycles page
 - [x] Pull hero background image down on desktop to show more paintings and less sink/tap area
 - [x] Review and adjust mobile hero background image to show more paintings and less sink/tap
+- [x] Crop mobile hero tighter so paintings are even more prominent
