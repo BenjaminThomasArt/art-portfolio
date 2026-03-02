@@ -14,6 +14,8 @@ const upcycleArtworks = [
     forSale: false,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-detail_70d6a08b.jpeg",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-full_8d971c69.jpeg",
     ],
   },
   {

@@ -30,6 +30,9 @@ const galleryImages = [
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/KJVTYMbUZmDXWCxu.jpeg", alt: "Artwork in situ" },
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/UaAYekILMuUTxyQA.jpeg", alt: "Cat with artwork" },
   { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/miZYbLXUpCJCPvAd.jpeg", alt: "Artist in studio" },
+  // Bo Carter upcycled LP images (indices 26-27)
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-detail_70d6a08b.jpeg", alt: "Bo Carter - detail" },
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-full_8d971c69.jpeg", alt: "Bo Carter - full view" },
 ];
 
 // Desktop layout: rows use aspect ratios tuned to avoid cropping artworks in photos.
@@ -113,6 +116,13 @@ const desktopRows: RowConfig[] = [
       { idx: 18, basis: 34, objectPosition: "center 35%" },
       { idx: 19, basis: 36, objectPosition: "center 45%" },
       { idx: 4, basis: 30, objectPosition: "center 40%" },
+    ],
+  },
+  {
+    rowAspect: "2.2/1",
+    images: [
+      { idx: 26, basis: 50, objectPosition: "center center" },
+      { idx: 27, basis: 50, objectPosition: "center center" },
     ],
   },
 ];
@@ -225,6 +235,12 @@ const mobileLayout: MobileRowConfig[] = [
 
   // 18. Final: two framed dark artworks (sq)
   { items: [{ idx: 4, aspect: "1/1", basis: 100 }] },
+
+  // 19. Bo Carter upcycled LP — pair
+  { items: [
+    { idx: 26, aspect: "1/1", basis: 50 },
+    { idx: 27, aspect: "1/1", basis: 50 },
+  ]},
 ];
 
 export default function InSituGallery() {

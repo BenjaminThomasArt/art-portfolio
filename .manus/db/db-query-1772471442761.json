@@ -1,0 +1,59 @@
+{
+  "query": "SELECT id, title, display_order, available, image_url FROM artworks ORDER BY display_order ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, display_order, available, image_url FROM artworks ORDER BY display_order ASC;",
+  "rows": [
+    {
+      "id": "60001",
+      "title": "Bloom",
+      "display_order": "1",
+      "available": "yes",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg"
+    },
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "display_order": "20",
+      "available": "yes",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "display_order": "30",
+      "available": "yes",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "display_order": "40",
+      "available": "sold",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "display_order": "50",
+      "available": "sold",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "display_order": "60",
+      "available": "yes",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yaRwKHGVLCebdeGm.png"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "display_order": "70",
+      "available": "sold",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdisplay_order\tavailable\timage_url\n60001\tBloom\t1\tyes\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg\n1\tThe Subject of Paint\t20\tyes\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg\n4\tTiefenschwarz\t30\tyes\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg\n999\tCandyflip\t40\tsold\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\n3\tChrysalis I & II\t50\tsold\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg\n5\tDelphium\t60\tyes\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yaRwKHGVLCebdeGm.png\n2\tI saw the whole thing\t70\tsold\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png\n",
+  "stderr": "",
+  "execution_time_ms": 354
+}

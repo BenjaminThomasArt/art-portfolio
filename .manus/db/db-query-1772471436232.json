@@ -1,0 +1,52 @@
+{
+  "query": "SELECT id, title, display_order, available FROM artworks ORDER BY display_order ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, display_order, available FROM artworks ORDER BY display_order ASC;",
+  "rows": [
+    {
+      "id": "60001",
+      "title": "Bloom",
+      "display_order": "1",
+      "available": "yes"
+    },
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "display_order": "20",
+      "available": "yes"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "display_order": "30",
+      "available": "yes"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "display_order": "40",
+      "available": "sold"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "display_order": "50",
+      "available": "sold"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "display_order": "60",
+      "available": "yes"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "display_order": "70",
+      "available": "sold"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdisplay_order\tavailable\n60001\tBloom\t1\tyes\n1\tThe Subject of Paint\t20\tyes\n4\tTiefenschwarz\t30\tyes\n999\tCandyflip\t40\tsold\n3\tChrysalis I & II\t50\tsold\n5\tDelphium\t60\tyes\n2\tI saw the whole thing\t70\tsold\n",
+  "stderr": "",
+  "execution_time_ms": 379
+}
