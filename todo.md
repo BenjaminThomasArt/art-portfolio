@@ -428,3 +428,4 @@
 - [x] Move Bo Carter to top of Upcycles list
 - [x] Remove price and Order button from Bo Carter (not for sale)
 - [x] Add red 'sold' dot to Bo Carter on Upcycles page
+- [x] Pull hero background image down on desktop to show more paintings and less sink/tap area
