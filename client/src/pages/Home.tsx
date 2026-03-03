@@ -118,7 +118,7 @@ export default function Home() {
           ) : featuredArtworks && featuredArtworks.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {featuredArtworks.slice(0, 6).map((artwork) => (
-                <Link key={artwork.id} href={`/artwork/${artwork.id}`}>
+                <Link key={artwork.id} href={artwork.id === 60002 ? '/upcycles' : `/artwork/${artwork.id}`}>
                   <div className="group cursor-pointer">
                     <div className="aspect-square overflow-hidden bg-muted mb-4">
                       <img

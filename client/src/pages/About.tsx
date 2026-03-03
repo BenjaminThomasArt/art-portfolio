@@ -14,7 +14,7 @@ export default function About() {
   const faqs = [
     {
       question: "What is your creative process?",
-      answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'upcycled' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
+      answer: "Everything starts as a traditional acrylic-on-canvas painting, but nothing stays that way for long. I rework pieces through photography, reprinting and further layers of paint — by brush, by spray, or both — until they become something new. Each piece carries the trace of every stage it's passed through. My 'artifacts' series takes the same idea in a different direction: second-hand vinyl records sourced around Hackney get their covers repainted, with the original record preserved and framed alongside. The process is always about iteration — creating something new from something old."
     },
     {
       question: "What materials do you use for prints?",
