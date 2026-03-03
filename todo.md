@@ -447,3 +447,4 @@
 - [x] Remove italic from homepage artist statement section
 - [x] Make "Giving art new life." appear on its own line on mobile tagline
 - [x] Remove italic from About page artist statement
+- [x] Make homepage tagline 25% smaller on mobile
