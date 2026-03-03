@@ -449,3 +449,4 @@
 - [x] Remove italic from About page artist statement
 - [x] Make homepage tagline 25% smaller on mobile
 - [x] Replace Bloom with Bo Carter in homepage featured works section
+- [x] Swap 'Remaking' and 'Reimagining' in homepage tagline
