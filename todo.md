@@ -451,3 +451,4 @@
 - [x] Replace Bloom with Bo Carter in homepage featured works section
 - [x] Swap 'Remaking' and 'Reimagining' in homepage tagline
 - [x] Replace 'unique' with 'new' in artist statement ("to create new works that carry traces of their forebears")
+- [x] Reduce homepage artist statement text size so 'life' doesn't orphan on its own line
