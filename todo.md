@@ -444,3 +444,5 @@
 - [x] Change Gallery.tsx page heading from "Originals" to "Paintings"
 - [x] Change Upcycles.tsx page heading from "Upcycles" to "Artifacts"
 - [x] Update About.tsx bio section with new artist statement and concise bio
+- [x] Remove italic from homepage artist statement section
+- [x] Make "Giving art new life." appear on its own line on mobile tagline
