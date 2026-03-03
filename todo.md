@@ -446,3 +446,4 @@
 - [x] Update About.tsx bio section with new artist statement and concise bio
 - [x] Remove italic from homepage artist statement section
 - [x] Make "Giving art new life." appear on its own line on mobile tagline
+- [x] Remove italic from About page artist statement

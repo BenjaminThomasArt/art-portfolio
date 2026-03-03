@@ -111,7 +111,7 @@ export default function About() {
             {/* Bio */}
             <div className={artistInfo?.profileImageUrl ? "md:col-span-2" : "md:col-span-3"}>
               <div className="prose prose-lg max-w-none">
-                <p className="text-foreground leading-relaxed italic mb-6">
+                <p className="text-foreground leading-relaxed mb-6">
                   My artistic practice is rooted in the act of renewal — reimagining artworks through painting, photography and print, always searching for new meaning. This process takes two forms. In one series, I turn inward, using my own paintings and photographs as source material, repeatedly reworking them through digital and physical layers to create unique works that carry traces of their forebears. In a parallel series, I look outward, sourcing found artifacts like vintage vinyl records and using paint to intervene in their surfaces, partially obscuring and partially retaining their original form. Both series are born from the same impulse: to remake; to reimagine; to give old works new life.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
