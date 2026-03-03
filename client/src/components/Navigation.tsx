@@ -8,9 +8,9 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/originals", label: "Originals" },
+    { href: "/originals", label: "Paintings" },
     { href: "/prints", label: "Prints" },
-    { href: "/upcycles", label: "Upcycles" },
+    { href: "/upcycles", label: "Artifacts" },
     { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },

@@ -184,7 +184,7 @@ export default function Gallery() {
       <div className="container">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <h1 className="text-4xl md:text-5xl font-serif tracking-tight text-[#003153]">Originals</h1>
+            <h1 className="text-4xl md:text-5xl font-serif tracking-tight text-[#003153]">Paintings</h1>
             {isAdmin && (
               <Button
                 variant={isEditMode ? "default" : "outline"}

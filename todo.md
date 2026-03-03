@@ -433,3 +433,14 @@
 - [x] Crop mobile hero tighter so paintings are even more prominent
 - [x] Add two new images to Bo Carter carousel on Upcycles page
 - [x] Add Bo Carter images to the Gallery page
+- [x] Rename "Originals" → "Paintings" in Navigation.tsx
+- [x] Rename "Upcycles" → "Artifacts" in Navigation.tsx
+- [x] Rename "Originals" → "Paintings" in Footer.tsx
+- [x] Rename "Upcycles" → "Artifacts" in Footer.tsx
+- [x] Update homepage tagline to "Remaking. Reimagining. Giving art new life."
+- [x] Update homepage hero buttons: Originals→Paintings, Upcycles→Artifacts
+- [x] Add artist statement section between hero and featured works on homepage
+- [x] Change "View originals" button to "View paintings" on homepage
+- [x] Change Gallery.tsx page heading from "Originals" to "Paintings"
+- [x] Change Upcycles.tsx page heading from "Upcycles" to "Artifacts"
+- [x] Update About.tsx bio section with new artist statement and concise bio

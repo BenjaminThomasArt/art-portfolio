@@ -50,12 +50,12 @@ export default function Home() {
             {artistInfo?.name || "Benjamin Thomas"}
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-[#D87093] font-light tracking-wide">
-            Contemporary mixed media artist
+            Remaking. Reimagining. Giving art new life.
           </p>
           <div className="flex items-center justify-center gap-1.5 sm:gap-3">
             <Link href="/originals">
               <Button variant="outline" className="text-[11px] sm:text-sm px-2 sm:px-4 h-8 sm:h-10">
-                Originals
+                Paintings
               </Button>
             </Link>
             <Link href="/prints">
@@ -65,7 +65,7 @@ export default function Home() {
             </Link>
             <Link href="/upcycles">
               <Button variant="outline" className="text-[11px] sm:text-sm px-2 sm:px-4 h-8 sm:h-10">
-                Upcycles
+                Artifacts
               </Button>
             </Link>
             <a
@@ -87,6 +87,17 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
           <ChevronDown size={24} className="text-muted-foreground/60" />
+        </div>
+      </section>
+
+      {/* Artist Statement */}
+      <section className="py-16 md:py-20">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-base md:text-lg leading-relaxed text-muted-foreground italic font-light">
+              My artistic practice is rooted in the act of renewal — reimagining artworks through painting, photography and print, always searching for new meaning. This process takes two forms. In one series, I turn inward, using my own paintings and photographs as source material, repeatedly reworking them through digital and physical layers to create unique works that carry traces of their forebears. In a parallel series, I look outward, sourcing found artifacts like vintage vinyl records and using paint to intervene in their surfaces, partially obscuring and partially retaining their original form. Both series are born from the same impulse: to remake; to reimagine; to give old works new life.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -134,7 +145,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link href="/originals">
               <Button variant="outline" size="lg">
-                View originals
+                View paintings
               </Button>
             </Link>
           </div>

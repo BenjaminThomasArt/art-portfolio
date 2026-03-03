@@ -111,24 +111,12 @@ export default function About() {
             {/* Bio */}
             <div className={artistInfo?.profileImageUrl ? "md:col-span-2" : "md:col-span-3"}>
               <div className="prose prose-lg max-w-none">
-                {(() => {
-                  const bio = artistInfo?.bio ||
-                     "Benjamin Thomas is a contemporary abstract artist based in London.\n\nHe approaches painting through iteration and investigation of process, exploring new works that build on what came before in an ever-connecting, always evolving practice.\n\nShapes, tones and gestures carry from one piece to the next, returning through layers, repetition and reproduction. This 'recycling' of art creates links across different works, so while each stands independently, they inform a wider artistic body.\n\nHis Upcycled series extends this approach into found objects; vintage vinyl records sourced across East London are reworked, refreshed and reimagined, fusing old life with new.";
-                  const parts = bio.split(/(Upcycled)/);
-                  return (
-                    <p className="text-foreground leading-relaxed whitespace-pre-line">
-                      {parts.map((part, i) =>
-                        part === "Upcycled" ? (
-                          <Link key={i} href="/upcycles" className="text-[#003153] hover:text-[#004a7a] no-underline">
-                            Upcycled
-                          </Link>
-                        ) : (
-                          <span key={i}>{part}</span>
-                        )
-                      )}
-                    </p>
-                  );
-                })()}
+                <p className="text-foreground leading-relaxed italic mb-6">
+                  My artistic practice is rooted in the act of renewal — reimagining artworks through painting, photography and print, always searching for new meaning. This process takes two forms. In one series, I turn inward, using my own paintings and photographs as source material, repeatedly reworking them through digital and physical layers to create unique works that carry traces of their forebears. In a parallel series, I look outward, sourcing found artifacts like vintage vinyl records and using paint to intervene in their surfaces, partially obscuring and partially retaining their original form. Both series are born from the same impulse: to remake; to reimagine; to give old works new life.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Benjamin Thomas is a contemporary mixed media artist based in London. Self-taught, he has been developing his practice for over five years, exhibiting and selling work to private collectors. His <Link href="/originals" className="text-[#003153] hover:text-[#004a7a] no-underline">paintings</Link> and <Link href="/upcycles" className="text-[#003153] hover:text-[#004a7a] no-underline">artifacts</Link> are available as originals and as high-quality prints.
+                </p>
               </div>
             </div>
           </div>
