@@ -454,3 +454,5 @@
 - [x] Reduce homepage artist statement text size so 'life' doesn't orphan on its own line
 - [x] Update FAQ creative process answer to reference 'artifacts' instead of 'upcycled'
 - [x] Link Bo Carter featured card to Artifacts page instead of artwork detail
+- [x] Add 'The Lonely Heart' to Paintings page with 2-image carousel
+- [x] Add 'The Lonely Heart' to Featured Works section on homepage

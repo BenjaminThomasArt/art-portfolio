@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO artworks (id, title, description, image_url, image_key, gallery_images, year, medium, dimensions, available, featured, for_sale, price, display_order) VALUES (60003, 'The Lonely Heart', 'Mixed media painting', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg', 'lonely-heart-framed', '[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg\",\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-studio_8803f2a8.jpeg\"]', 2026, 'Mixed media', NULL, 'yes', 1, 0, NULL, 5);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO artworks (id, title, description, image_url, image_key, gallery_images, year, medium, dimensions, available, featured, for_sale, price, display_order) VALUES (60003, 'The Lonely Heart', 'Mixed media painting', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg', 'lonely-heart-framed', '[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg\",\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-studio_8803f2a8.jpeg\"]', 2026, 'Mixed media', NULL, 'yes', 1, 0, NULL, 5);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 507
+}

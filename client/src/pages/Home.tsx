@@ -16,6 +16,13 @@ export default function Home() {
       medium: 'Upcycled vintage LP'
     },
     {
+      id: 60003,
+      title: 'The Lonely Heart',
+      year: 2026,
+      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg',
+      medium: 'Mixed media'
+    },
+    {
       id: 1,
       title: 'The Subject of Paint',
       year: 2026,
