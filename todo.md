@@ -462,3 +462,4 @@
 - [x] Update About page artist statement with new text (v10)
 - [x] Change homepage subheader/tagline to 'Making. Remaking. Renewing.'
 - [x] Add 'Madame Butterfly' to Artifacts section with red sold dot
+- [x] Replace Madame Butterfly image with new uploaded photo

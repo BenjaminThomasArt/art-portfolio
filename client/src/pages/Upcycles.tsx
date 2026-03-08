@@ -25,7 +25,7 @@ const upcycleArtworks = [
     price: null,
     forSale: false,
     images: [
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/madame-butterfly_8915a65e.jpeg",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/madame-butterfly-new_9f43d1ce.png",
     ],
   },
   {
