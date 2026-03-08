@@ -458,3 +458,5 @@
 - [x] Add 'The Lonely Heart' to Featured Works section on homepage
 - [x] Move The Lonely Heart to first position in Featured Works on homepage
 - [x] Move The Lonely Heart to first position in Paintings page
+- [x] Update homepage artist statement with new text (v10)
+- [x] Update About page artist statement with new text (v10)
