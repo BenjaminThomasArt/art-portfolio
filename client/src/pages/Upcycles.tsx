@@ -19,6 +19,16 @@ const upcycleArtworks = [
     ],
   },
   {
+    id: 5,
+    title: "Madame Butterfly",
+    description: 'Upcycled vintage LP, 12"x12"',
+    price: null,
+    forSale: false,
+    images: [
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/madame-butterfly_8915a65e.jpeg",
+    ],
+  },
+  {
     id: 1,
     title: "Pre & Post",
     description: 'Upcycled vintage vinyl artwork diptych; 2 x 12"x12"',
