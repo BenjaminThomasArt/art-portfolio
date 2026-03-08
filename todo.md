@@ -456,3 +456,5 @@
 - [x] Link Bo Carter featured card to Artifacts page instead of artwork detail
 - [x] Add 'The Lonely Heart' to Paintings page with 2-image carousel
 - [x] Add 'The Lonely Heart' to Featured Works section on homepage
+- [x] Move The Lonely Heart to first position in Featured Works on homepage
+- [x] Move The Lonely Heart to first position in Paintings page

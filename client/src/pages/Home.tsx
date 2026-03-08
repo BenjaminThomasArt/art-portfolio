@@ -9,18 +9,18 @@ export default function Home() {
   // Hardcoded featured artworks for homepage - using first single-painting images from Prints section
   const featuredArtworks = [
     {
-      id: 60002,
-      title: 'Bo Carter',
-      year: 2025,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg',
-      medium: 'Upcycled vintage LP'
-    },
-    {
       id: 60003,
       title: 'The Lonely Heart',
       year: 2026,
       imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg',
       medium: 'Mixed media'
+    },
+    {
+      id: 60002,
+      title: 'Bo Carter',
+      year: 2025,
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg',
+      medium: 'Upcycled vintage LP'
     },
     {
       id: 1,
