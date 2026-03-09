@@ -465,3 +465,4 @@
 - [x] Replace Madame Butterfly image with new uploaded photo
 - [x] Add Madame Butterfly image to Gallery page
 - [x] Add The Lonely Heart images to Gallery page
+- [x] Mix newer gallery images (Bo Carter, Madame Butterfly, The Lonely Heart) throughout the collage instead of grouping at the bottom

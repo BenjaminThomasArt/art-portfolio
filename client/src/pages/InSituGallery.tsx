@@ -63,11 +63,12 @@ const desktopRows: RowConfig[] = [
     ],
   },
   {
+    // Lonely Heart framed + artist selfie + cat with artwork
     rowAspect: "2.4/1",
     images: [
-      { idx: 21, basis: 24, objectPosition: "center 20%" },
-      { idx: 5, basis: 52, objectPosition: "center 45%" },
-      { idx: 24, basis: 24, objectPosition: "center 30%" },
+      { idx: 30, basis: 34, objectPosition: "center center" },
+      { idx: 21, basis: 32, objectPosition: "center 20%" },
+      { idx: 24, basis: 34, objectPosition: "center 30%" },
     ],
   },
   {
@@ -78,10 +79,11 @@ const desktopRows: RowConfig[] = [
     ],
   },
   {
+    // Madame Butterfly mixed in with existing images
     rowAspect: "2.4/1",
     images: [
       { idx: 7, basis: 30, objectPosition: "center 30%" },
-      { idx: 8, basis: 40, objectPosition: "center 35%" },
+      { idx: 28, basis: 40, objectPosition: "center center" },
       { idx: 9, basis: 30, objectPosition: "center 40%" },
     ],
   },
@@ -93,49 +95,52 @@ const desktopRows: RowConfig[] = [
     ],
   },
   {
+    // Bo Carter detail + pink diptych + artist reflection
     rowAspect: "2.4/1",
     images: [
-      { idx: 12, basis: 38, objectPosition: "center 40%" },
-      { idx: 13, basis: 34, objectPosition: "center 45%" },
+      { idx: 26, basis: 34, objectPosition: "center center" },
+      { idx: 5, basis: 38, objectPosition: "center 45%" },
       { idx: 20, basis: 28, objectPosition: "center 25%" },
     ],
   },
   {
     rowAspect: "2.4/1",
     images: [
-      { idx: 15, basis: 42, objectPosition: "center 40%" },
-      { idx: 16, basis: 58, objectPosition: "center 45%" },
+      { idx: 12, basis: 38, objectPosition: "center 40%" },
+      { idx: 13, basis: 34, objectPosition: "center 45%" },
+      { idx: 8, basis: 28, objectPosition: "center 35%" },
+    ],
+  },
+  {
+    // Lonely Heart studio + green botanical pair
+    rowAspect: "2.4/1",
+    images: [
+      { idx: 29, basis: 40, objectPosition: "center 30%" },
+      { idx: 15, basis: 60, objectPosition: "center 40%" },
     ],
   },
   {
     rowAspect: "2.4/1",
     images: [
-      { idx: 17, basis: 34, objectPosition: "center 40%" },
+      { idx: 16, basis: 40, objectPosition: "center 45%" },
+      { idx: 17, basis: 30, objectPosition: "center 40%" },
+      { idx: 27, basis: 30, objectPosition: "center center" },
+    ],
+  },
+  {
+    rowAspect: "2.4/1",
+    images: [
       { idx: 25, basis: 30, objectPosition: "center 20%" },
       { idx: 14, basis: 36, objectPosition: "center 35%" },
+      { idx: 18, basis: 34, objectPosition: "center 35%" },
     ],
   },
   {
     rowAspect: "2.4/1",
     images: [
-      { idx: 18, basis: 34, objectPosition: "center 35%" },
       { idx: 19, basis: 36, objectPosition: "center 45%" },
       { idx: 4, basis: 30, objectPosition: "center 40%" },
-    ],
-  },
-  {
-    rowAspect: "2.2/1",
-    images: [
-      { idx: 26, basis: 50, objectPosition: "center center" },
-      { idx: 27, basis: 50, objectPosition: "center center" },
-    ],
-  },
-  {
-    rowAspect: "2.4/1",
-    images: [
-      { idx: 28, basis: 34, objectPosition: "center center" },
-      { idx: 29, basis: 33, objectPosition: "center 30%" },
-      { idx: 30, basis: 33, objectPosition: "center center" },
+      { idx: 9, basis: 34, objectPosition: "center 40%" },
     ],
   },
 ];
@@ -180,25 +185,25 @@ const mobileLayout: MobileRowConfig[] = [
     { idx: 2, aspect: "1/1", basis: 42 },
   ]},
 
-  // 3. Full width: diptych in-situ (near-square 1.06:1)
-  { items: [{ idx: 23, aspect: "1/1", basis: 100 }] },
+  // 3. Full width: The Lonely Heart framed on wall
+  { items: [{ idx: 30, aspect: "1/1", basis: 100 }] },
 
-  // 4. Pair: artist selfie (sq) + triptych room (sq) — asymmetric
+  // 4. Pair: diptych in-situ + artist selfie
   { items: [
+    { idx: 23, aspect: "1/1", basis: 62 },
     { idx: 21, aspect: "1/1", basis: 38, objectPosition: "center 20%" },
-    { idx: 1, aspect: "1/1", basis: 62 },
   ]},
 
   // 5. Full width: pink diptych (sq)
   { items: [{ idx: 5, aspect: "1/1", basis: 100 }] },
 
-  // 6. Pair: cat with artwork (sq) + blue diptych living room (sq)
+  // 6. Pair: cat with artwork (sq) + Madame Butterfly
   { items: [
     { idx: 24, aspect: "1/1", basis: 45 },
-    { idx: 6, aspect: "1/1", basis: 55 },
+    { idx: 28, aspect: "1/1", basis: 55 },
   ]},
 
-  // 7. Full width: artist portrait (portrait 0.77:1) — taller container
+  // 7. Full width: artist portrait (portrait 0.77:1)
   { items: [{ idx: 22, aspect: "3/4", basis: 100, objectPosition: "center 15%" }] },
 
   // 8. Pair: blue sofa (sq) + small framed artwork (sq)
@@ -207,62 +212,62 @@ const mobileLayout: MobileRowConfig[] = [
     { idx: 7, aspect: "1/1", basis: 40 },
   ]},
 
-  // 9. Full width: sideboard with artworks (sq)
+  // 9. Full width: Bo Carter detail
+  { items: [{ idx: 26, aspect: "1/1", basis: 100 }] },
+
+  // 10. Pair: triptych room + blue diptych living room
+  { items: [
+    { idx: 1, aspect: "1/1", basis: 45 },
+    { idx: 6, aspect: "1/1", basis: 55 },
+  ]},
+
+  // 11. Full width: sideboard with artworks (sq)
   { items: [{ idx: 9, aspect: "1/1", basis: 100 }] },
 
-  // 10. Pair: grey armchair clouds (~sq) + blue artwork bedroom (sq)
+  // 12. Pair: grey armchair clouds + blue artwork bedroom
   { items: [
     { idx: 10, aspect: "1/1", basis: 45 },
     { idx: 3, aspect: "1/1", basis: 55 },
   ]},
 
-  // 11. Full width: yellow flowers (sq)
-  { items: [{ idx: 12, aspect: "1/1", basis: 100 }] },
+  // 13. Full width: The Lonely Heart studio shot
+  { items: [{ idx: 29, aspect: "1/1", basis: 100 }] },
 
-  // 12. Pair: dark diptych (sq) + artist reflection (~sq)
+  // 14. Pair: yellow flowers + dark diptych
   { items: [
-    { idx: 13, aspect: "1/1", basis: 55 },
-    { idx: 20, aspect: "1/1", basis: 45, objectPosition: "center 25%" },
+    { idx: 12, aspect: "1/1", basis: 50 },
+    { idx: 13, aspect: "1/1", basis: 50 },
   ]},
 
-  // 13. Full width: green botanical pair (sq)
+  // 15. Full width: green botanical pair (sq)
   { items: [{ idx: 15, aspect: "1/1", basis: 100 }] },
 
-  // 14. Pair: purple flower (sq) + green artwork bench (~sq 1.09:1)
+  // 16. Pair: purple flower + Bo Carter full view
   { items: [
     { idx: 16, aspect: "1/1", basis: 55 },
-    { idx: 17, aspect: "1/1", basis: 45 },
+    { idx: 27, aspect: "1/1", basis: 45 },
   ]},
 
-  // 15. Full width: artist painting through glass (portrait 0.64:1)
+  // 17. Full width: artist painting through glass (portrait)
   { items: [{ idx: 25, aspect: "2/3", basis: 100, objectPosition: "center 20%" }] },
 
-  // 16. Pair: kitchen with art (sq) + living room two artworks (landscape 1.45:1)
+  // 18. Pair: artist reflection + green artwork bench
+  { items: [
+    { idx: 20, aspect: "1/1", basis: 45, objectPosition: "center 25%" },
+    { idx: 17, aspect: "1/1", basis: 55 },
+  ]},
+
+  // 19. Pair: kitchen with art + living room two artworks
   { items: [
     { idx: 14, aspect: "1/1", basis: 48 },
     { idx: 18, aspect: "3/2", basis: 52 },
   ]},
 
-  // 17. Full width: concrete wall artwork (portrait 0.8:1)
+  // 20. Full width: concrete wall artwork (portrait)
   { items: [{ idx: 19, aspect: "4/5", basis: 100 }] },
 
-  // 18. Final: two framed dark artworks (sq)
+  // 21. Final: two framed dark artworks (sq)
   { items: [{ idx: 4, aspect: "1/1", basis: 100 }] },
-
-  // 19. Bo Carter upcycled LP — pair
-  { items: [
-    { idx: 26, aspect: "1/1", basis: 50 },
-    { idx: 27, aspect: "1/1", basis: 50 },
-  ]},
-
-  // 20. Madame Butterfly — full width
-  { items: [{ idx: 28, aspect: "1/1", basis: 100 }] },
-
-  // 21. The Lonely Heart — pair
-  { items: [
-    { idx: 29, aspect: "1/1", basis: 50 },
-    { idx: 30, aspect: "1/1", basis: 50 },
-  ]},
 ];
 
 export default function InSituGallery() {
