@@ -463,3 +463,5 @@
 - [x] Change homepage subheader/tagline to 'Making. Remaking. Renewing.'
 - [x] Add 'Madame Butterfly' to Artifacts section with red sold dot
 - [x] Replace Madame Butterfly image with new uploaded photo
+- [x] Add Madame Butterfly image to Gallery page
+- [x] Add The Lonely Heart images to Gallery page

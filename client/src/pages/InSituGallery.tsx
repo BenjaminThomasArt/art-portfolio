@@ -33,6 +33,11 @@ const galleryImages = [
   // Bo Carter upcycled LP images (indices 26-27)
   { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-detail_70d6a08b.jpeg", alt: "Bo Carter - detail" },
   { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/bo-carter-full_8d971c69.jpeg", alt: "Bo Carter - full view" },
+  // Madame Butterfly (index 28)
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/madame-butterfly-new_9f43d1ce.png", alt: "Madame Butterfly" },
+  // The Lonely Heart (indices 29-30)
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-studio_0dd847f3.jpeg", alt: "The Lonely Heart - studio" },
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg", alt: "The Lonely Heart - framed" },
 ];
 
 // Desktop layout: rows use aspect ratios tuned to avoid cropping artworks in photos.
@@ -123,6 +128,14 @@ const desktopRows: RowConfig[] = [
     images: [
       { idx: 26, basis: 50, objectPosition: "center center" },
       { idx: 27, basis: 50, objectPosition: "center center" },
+    ],
+  },
+  {
+    rowAspect: "2.4/1",
+    images: [
+      { idx: 28, basis: 34, objectPosition: "center center" },
+      { idx: 29, basis: 33, objectPosition: "center 30%" },
+      { idx: 30, basis: 33, objectPosition: "center center" },
     ],
   },
 ];
@@ -240,6 +253,15 @@ const mobileLayout: MobileRowConfig[] = [
   { items: [
     { idx: 26, aspect: "1/1", basis: 50 },
     { idx: 27, aspect: "1/1", basis: 50 },
+  ]},
+
+  // 20. Madame Butterfly — full width
+  { items: [{ idx: 28, aspect: "1/1", basis: 100 }] },
+
+  // 21. The Lonely Heart — pair
+  { items: [
+    { idx: 29, aspect: "1/1", basis: 50 },
+    { idx: 30, aspect: "1/1", basis: 50 },
   ]},
 ];
 
