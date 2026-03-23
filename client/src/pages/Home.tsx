@@ -47,7 +47,7 @@ export default function Home() {
         <div 
           className="absolute inset-0 opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110 bg-top bg-[length:180%] md:bg-cover bg-[position:65%_top] md:bg-[position:center_top]"
           style={{
-            backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg)'
+            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/new-hero-studio_98ba2420.webp)'
           }}
         />
         {/* Overlay for better text readability */}
