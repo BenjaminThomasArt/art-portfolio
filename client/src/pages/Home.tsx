@@ -42,10 +42,10 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[55vh] md:h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden group">
+      <section className="relative aspect-square md:aspect-auto md:h-[85vh] flex items-center justify-center bg-muted/30 overflow-hidden group">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110 bg-[length:220%] md:bg-cover bg-[position:30%_20%] md:bg-[position:center_center]"
+          className="absolute inset-0 opacity-45 transition-transform duration-[3000ms] ease-out group-hover:scale-110 bg-cover bg-center md:bg-[position:center_center]"
           style={{
             backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/new-hero-studio_98ba2420.webp)'
           }}
