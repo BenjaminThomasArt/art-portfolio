@@ -20,7 +20,7 @@ export default function Home() {
       title: 'The Lonely Heart',
       year: 2026,
       imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg',
-      medium: 'Mixed media'
+      medium: 'Mixed media on PVC board'
     },
     {
       id: 60002,
@@ -36,13 +36,6 @@ export default function Home() {
       imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg',
       medium: 'Mixed media on PVC board'
     },
-    {
-      id: 3,
-      title: 'Chrysalis',
-      year: 2026,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg',
-      medium: 'Mixed media on canvas'
-    }
   ];
   const isLoading = false;
 
