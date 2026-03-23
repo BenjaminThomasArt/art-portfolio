@@ -467,3 +467,4 @@
 - [x] Add The Lonely Heart images to Gallery page
 - [x] Mix newer gallery images (Bo Carter, Madame Butterfly, The Lonely Heart) throughout the collage instead of grouping at the bottom
 - [x] Replace homepage hero background image with new studio photo (artist with new painting)
+- [x] Adjust hero background image positioning so artist's face is visible on both desktop and mobile
