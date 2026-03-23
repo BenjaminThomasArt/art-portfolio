@@ -469,3 +469,6 @@
 - [x] Replace homepage hero background image with new studio photo (artist with new painting)
 - [x] Adjust hero background image positioning so artist's face is visible on both desktop and mobile
 - [x] Show full uncropped square hero image on mobile (no cropping, display image as-is)
+- [x] Add 'Something Good' painting to database with 2-image carousel (gallery wall shot + studio portrait)
+- [x] Add 'Something Good' as first painting on Paintings page
+- [x] Add 'Something Good' as new lead image in Featured Works on homepage

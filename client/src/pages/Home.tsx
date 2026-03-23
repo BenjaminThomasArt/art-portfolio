@@ -9,6 +9,13 @@ export default function Home() {
   // Hardcoded featured artworks for homepage - using first single-painting images from Prints section
   const featuredArtworks = [
     {
+      id: 150001,
+      title: 'Something Good',
+      year: 2026,
+      imageUrl: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg',
+      medium: 'Acrylic and spray on enlarged screen print'
+    },
+    {
       id: 60003,
       title: 'The Lonely Heart',
       year: 2026,

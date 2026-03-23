@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO artworks (title, description, image_url, image_key, gallery_images, year, medium, dimensions, available, featured, display_order, for_sale, price) VALUES ('Something Good', 'Acrylic and spray on enlarged screen print', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg', 'IMG_8767alt2copy_bad8efc7.jpg', '[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg\",\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8598copy_d77c623d.webp\"]', 2026, 'Acrylic and spray on enlarged screen print', '120 x 80 cm', 'yes', 1, 0, 0, NULL);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute INSERT INTO artworks (title, description, image_url, image_key, gallery_images, year, medium, dimensions, available, featured, display_order, for_sale, price) VALUES ('Something Good', 'Acrylic and spray on enlarged screen print', 'https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg', 'IMG_8767alt2copy_bad8efc7.jpg', '[\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg\",\"https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8598copy_d77c623d.webp\"]', 2026, 'Acrylic and spray on enlarged screen print', '120 x 80 cm', 'yes', 1, 0, 0, NULL);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 370
+}
