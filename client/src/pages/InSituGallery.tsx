@@ -38,6 +38,9 @@ const galleryImages = [
   // The Lonely Heart (indices 29-30)
   { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-studio_0dd847f3.jpeg", alt: "The Lonely Heart - studio" },
   { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg", alt: "The Lonely Heart - framed" },
+  // Something Good (indices 31-32)
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg", alt: "Something Good - gallery wall" },
+  { src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8598copy_d77c623d.webp", alt: "Something Good - artist in studio" },
 ];
 
 // Desktop layout: rows use aspect ratios tuned to avoid cropping artworks in photos.
@@ -48,10 +51,11 @@ interface RowConfig {
 
 const desktopRows: RowConfig[] = [
   {
+    // Something Good gallery wall + green sofa
     rowAspect: "1.6/1",
     images: [
+      { idx: 31, basis: 50, objectPosition: "center center" },
       { idx: 0, basis: 50, objectPosition: "center 30%" },
-      { idx: 11, basis: 50, objectPosition: "center 40%" },
     ],
   },
   {
@@ -112,11 +116,19 @@ const desktopRows: RowConfig[] = [
     ],
   },
   {
-    // Lonely Heart studio + green botanical pair
+    // Something Good artist in studio + Lonely Heart studio
     rowAspect: "2.4/1",
     images: [
-      { idx: 29, basis: 40, objectPosition: "center 30%" },
+      { idx: 32, basis: 45, objectPosition: "center 30%" },
+      { idx: 29, basis: 55, objectPosition: "center 30%" },
+    ],
+  },
+  {
+    // green botanical pair + blue sofa
+    rowAspect: "2.4/1",
+    images: [
       { idx: 15, basis: 60, objectPosition: "center 40%" },
+      { idx: 11, basis: 40, objectPosition: "center 40%" },
     ],
   },
   {
@@ -176,12 +188,12 @@ interface MobileRowConfig {
 }
 
 const mobileLayout: MobileRowConfig[] = [
-  // 1. Hero: green sofa — square image, full width
-  { items: [{ idx: 0, aspect: "1/1", basis: 100 }] },
+  // 1. Hero: Something Good gallery wall — full width
+  { items: [{ idx: 31, aspect: "4/5", basis: 100 }] },
 
-  // 2. Pair: blue triptych room (sq) + framed art (sq) — asymmetric
+  // 2. Pair: green sofa + framed art (sq) — asymmetric
   { items: [
-    { idx: 11, aspect: "1/1", basis: 58 },
+    { idx: 0, aspect: "1/1", basis: 58 },
     { idx: 2, aspect: "1/1", basis: 42 },
   ]},
 
@@ -230,8 +242,11 @@ const mobileLayout: MobileRowConfig[] = [
     { idx: 3, aspect: "1/1", basis: 55 },
   ]},
 
-  // 13. Full width: The Lonely Heart studio shot
-  { items: [{ idx: 29, aspect: "1/1", basis: 100 }] },
+  // 13. Something Good artist in studio + Lonely Heart studio
+  { items: [
+    { idx: 32, aspect: "1/1", basis: 50, objectPosition: "center 30%" },
+    { idx: 29, aspect: "1/1", basis: 50 },
+  ]},
 
   // 14. Pair: yellow flowers + dark diptych
   { items: [

@@ -474,3 +474,4 @@
 - [x] Add 'Something Good' as new lead image in Featured Works on homepage
 - [x] Remove Chrysalis from Featured Works section on homepage
 - [x] Update The Lonely Heart medium to 'Mixed media on PVC board' in database and Featured Works
+- [x] Add both Something Good images to the main gallery masonry layout
