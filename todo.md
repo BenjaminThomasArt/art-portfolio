@@ -475,3 +475,8 @@
 - [x] Remove Chrysalis from Featured Works section on homepage
 - [x] Update The Lonely Heart medium to 'Mixed media on PVC board' in database and Featured Works
 - [x] Add both Something Good images to the main gallery masonry layout
+- [x] Redesign Prints page: carousel-first browsing of all paintings as prints
+- [x] Build configure/checkout panel: size, finish, delivery options with live pricing
+- [x] Keep PayPal checkout (existing OrderDialog) for direct checkout on prints
+- [x] Wire existing artworks.getAll procedure for print catalog (all paintings as prints)
+- [ ] Test full prints redesign flow on desktop and mobile

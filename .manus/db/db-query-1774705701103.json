@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, title, image_url, display_order FROM artworks ORDER BY display_order LIMIT 30",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, image_url, display_order FROM artworks ORDER BY display_order LIMIT 30",
+  "rows": [
+    {
+      "id": "150001",
+      "title": "Something Good",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg",
+      "display_order": "0"
+    },
+    {
+      "id": "60003",
+      "title": "The Lonely Heart",
+      "image_url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg",
+      "display_order": "1"
+    },
+    {
+      "id": "60001",
+      "title": "Bloom",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg",
+      "display_order": "2"
+    },
+    {
+      "id": "1",
+      "title": "The Subject of Paint",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg",
+      "display_order": "20"
+    },
+    {
+      "id": "4",
+      "title": "Tiefenschwarz",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg",
+      "display_order": "30"
+    },
+    {
+      "id": "999",
+      "title": "Candyflip",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg",
+      "display_order": "40"
+    },
+    {
+      "id": "3",
+      "title": "Chrysalis I & II",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg",
+      "display_order": "50"
+    },
+    {
+      "id": "5",
+      "title": "Delphium",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yaRwKHGVLCebdeGm.png",
+      "display_order": "60"
+    },
+    {
+      "id": "2",
+      "title": "I saw the whole thing",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png",
+      "display_order": "70"
+    },
+    {
+      "id": "90001",
+      "title": "Bo Carter",
+      "image_url": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg",
+      "display_order": "75"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timage_url\tdisplay_order\n150001\tSomething Good\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_8767alt2copy_bad8efc7.jpg\t0\n60003\tThe Lonely Heart\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/lonely-heart-framed_3d36675b.jpeg\t1\n60001\tBloom\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/HEDtjilevvGOiSup.jpeg\t2\n1\tThe Subject of Paint\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg\t20\n4\tTiefenschwarz\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg\t30\n999\tCandyflip\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/QHACkzVepRYPOwsd.jpeg\t40\n3\tChrysalis I & II\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/ptVwaEZnLpjzVezQ.jpeg\t50\n5\tDelphium\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yaRwKHGVLCebdeGm.png\t60\n2\tI saw the whole thing\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/SyvimLnIvVOGcNJZ.png\t70\n90001\tBo Carter\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/yyLwjcyVrZWmUvwE.jpeg\t75\n",
+  "stderr": "",
+  "execution_time_ms": 353
+}
