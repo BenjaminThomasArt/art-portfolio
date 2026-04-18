@@ -484,3 +484,4 @@
 - [x] Add Studio Sale nav link in soft pink/red colour, far right of navigation (after Contact)
 - [x] Panel selection UI: Left panel, Right panel, Both panels with live pricing
 - [x] PayPal checkout integration for Studio Sale items
+- [x] Add all three Subject of Paint images (left panel, right panel, diptych) as carousel on Studio Sale page

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ImageZoom } from "@/components/ImageZoom";
+import { UpcycleCarousel } from "@/components/UpcycleCarousel";
 import { OrderDialog } from "@/components/OrderDialog";
 import { ShoppingBag } from "lucide-react";
 import { trackInitiateCheckout } from "@/lib/metaPixel";
@@ -11,8 +12,7 @@ interface SaleArtwork {
   medium: string;
   dimensions: string;
   year: number;
-  imageUrl: string;
-  galleryImages?: string[];
+  images: string[]; // carousel images: diptych, left panel, right panel, detail
   panelCount: number; // 1 = single, 2 = diptych, 3 = triptych
   singlePrice: number;
   setPrice: number;
@@ -28,10 +28,15 @@ const saleArtworks: SaleArtwork[] = [
     medium: "Mixed media diptych on PVC board",
     dimensions: "120 × 80 cm (each panel)",
     year: 2024,
-    imageUrl:
+    images: [
+      // Diptych (both panels together on gallery wall)
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg",
+      // Left panel
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg",
-    galleryImages: [
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg",
+      // Right panel
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg",
+      // Detail close-up
+      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg",
     ],
     panelCount: 2,
     singlePrice: 150,
@@ -152,18 +157,13 @@ function SaleCard({
   };
 
   return (
-    <div className="group">
-      {/* Image */}
-      <div
-        className="bg-[#f5f3f0] aspect-[4/3] flex items-center justify-center p-8 md:p-12 cursor-zoom-in mb-6"
-        onClick={() => onImageClick(artwork.imageUrl, artwork.title)}
-      >
-        <img
-          src={artwork.imageUrl}
-          alt={artwork.title}
-          className="max-w-full max-h-full object-contain drop-shadow-lg"
-        />
-      </div>
+    <div className="group relative">
+      {/* Image Carousel */}
+      <UpcycleCarousel
+        images={artwork.images}
+        title={artwork.title}
+        onImageClick={(src, alt) => onImageClick(src, alt)}
+      />
 
       {/* Info */}
       <h3 className="text-xl md:text-2xl font-serif mb-1">'{artwork.title}'</h3>
