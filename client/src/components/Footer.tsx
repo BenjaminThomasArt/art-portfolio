@@ -35,6 +35,7 @@ export default function Footer() {
     { label: "Gallery", href: "/gallery" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
+    { label: "Studio sale", href: "/studio-sale" },
   ];
 
   return (

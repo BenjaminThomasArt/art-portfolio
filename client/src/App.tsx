@@ -17,6 +17,7 @@ import Upcycles from "./pages/Upcycles";
 import InSituGallery from "./pages/InSituGallery";
 import AdminOrders from "./pages/AdminOrders";
 import ThankYou from "./pages/ThankYou";
+import StudioSale from "./pages/StudioSale";
 
 function Router() {
   const [location] = useLocation();
@@ -38,6 +39,7 @@ function Router() {
           <Route path="/artwork/:id" component={ArtworkDetail} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/studio-sale" component={StudioSale} />
           <Route path="/admin/orders" component={AdminOrders} />
           <Route path="/thank-you" component={ThankYou} />
           <Route path={"/404"} component={NotFound} />

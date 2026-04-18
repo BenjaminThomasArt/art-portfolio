@@ -479,4 +479,8 @@
 - [x] Build configure/checkout panel: size, finish, delivery options with live pricing
 - [x] Keep PayPal checkout (existing OrderDialog) for direct checkout on prints
 - [x] Wire existing artworks.getAll procedure for print catalog (all paintings as prints)
-- [ ] Test full prints redesign flow on desktop and mobile
+- [x] Test full prints redesign flow on desktop and mobile
+- [x] Create Studio Sale page with 'The Subject of Paint' (Left panel £150, Right panel £150, Both £250)
+- [x] Add Studio Sale nav link in soft pink/red colour, far right of navigation (after Contact)
+- [x] Panel selection UI: Left panel, Right panel, Both panels with live pricing
+- [x] PayPal checkout integration for Studio Sale items

@@ -14,6 +14,7 @@ export default function Navigation() {
     { href: "/gallery", label: "Gallery" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
+    { href: "/studio-sale", label: "Studio sale", highlight: true },
   ];
 
   const isActive = (href: string) => {
@@ -38,9 +39,13 @@ export default function Navigation() {
               <Link key={link.href} href={link.href}>
                 <span
                   className={`text-sm tracking-wide transition-colors ${
-                    isActive(link.href)
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                    (link as any).highlight
+                      ? isActive(link.href)
+                        ? "text-[#D87093] font-medium"
+                        : "text-[#D87093] hover:text-[#C4607D]"
+                      : isActive(link.href)
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.label}
@@ -67,9 +72,11 @@ export default function Navigation() {
                 <Link key={link.href} href={link.href}>
                   <span
                     className={`text-sm tracking-wide block py-2 transition-colors ${
-                      isActive(link.href)
-                        ? "text-foreground"
-                        : "text-muted-foreground"
+                      (link as any).highlight
+                        ? "text-[#D87093] font-medium"
+                        : isActive(link.href)
+                          ? "text-foreground"
+                          : "text-muted-foreground"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
