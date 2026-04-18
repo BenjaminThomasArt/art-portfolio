@@ -485,3 +485,4 @@
 - [x] Panel selection UI: Left panel, Right panel, Both panels with live pricing
 - [x] PayPal checkout integration for Studio Sale items
 - [x] Add all three Subject of Paint images (left panel, right panel, diptych) as carousel on Studio Sale page
+- [x] Add Tiefenschwarz to Studio Sale page with all images carousel (£100 per panel, £175 for both)
