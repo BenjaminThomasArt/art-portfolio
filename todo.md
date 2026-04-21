@@ -496,3 +496,4 @@
 - [x] Update Lights Out framed pricing: £125 per single panel framed, £250 both panels framed
 - [x] Update Tiefenschwarz dimensions to 70 × 50 cm on Studio Sale
 - [x] Add framed option to Tiefenschwarz: £150 per panel framed, £275 both framed
+- [x] Reorder Ashi images: swap 1st (diptych) and 3rd (right panel close-up), so diptych is last

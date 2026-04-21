@@ -87,9 +87,9 @@ const saleArtworks: SaleArtwork[] = [
     dimensions: "80 × 60 cm (each canvas)",
     year: 2025,
     images: [
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/WhatsAppImage2026-04-21at18.14.05_051f94d9.jpeg",
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/Unknown-2copy_238d28d7.webp",
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/Unknown-1copy_8e71d0dd.webp",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/Unknown-2copy_238d28d7.webp",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/WhatsAppImage2026-04-21at18.14.05_051f94d9.jpeg",
     ],
     panelCount: 2,
     singlePrice: 150,
