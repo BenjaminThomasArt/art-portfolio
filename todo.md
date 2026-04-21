@@ -499,3 +499,4 @@
 - [x] Reorder Ashi images: swap 1st (diptych) and 3rd (right panel close-up), so diptych is last
 - [x] Fix year: The Subject of Paint to 2026 on Studio Sale
 - [x] Fix year: Lights Out to 2024 on Studio Sale
+- [x] Change Lights Out panel labels from Left/Right to Top/Bottom

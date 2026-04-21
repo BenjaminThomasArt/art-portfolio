@@ -20,6 +20,7 @@ interface SaleArtwork {
   framedSinglePrice?: number;
   framedSetPrice?: number;
   setOnly?: boolean; // sold only as complete set, no per-panel option
+  panelLabels?: [string, string]; // custom labels for [left, right] panels
 }
 
 type PanelSelection = "left" | "centre" | "right" | "both";
@@ -116,6 +117,7 @@ const saleArtworks: SaleArtwork[] = [
     hasFrameOption: true,
     framedSinglePrice: 125,
     framedSetPrice: 250,
+    panelLabels: ["Top panel", "Bottom panel"],
   },
 ];
 
@@ -218,13 +220,15 @@ function SaleCard({
   const priceLabel = `£${currentPrice}`;
 
   // ── Panel label ──
+  const leftLabel = artwork.panelLabels?.[0] ?? "Left panel";
+  const rightLabel = artwork.panelLabels?.[1] ?? "Right panel";
   const panelLabel =
     panelSelection === "left"
-      ? "Left panel"
+      ? leftLabel
       : panelSelection === "centre"
         ? "Centre panel"
         : panelSelection === "right"
-          ? "Right panel"
+          ? rightLabel
           : artwork.panelCount === 3
             ? "All three canvases (triptych)"
             : artwork.panelCount === 2
@@ -318,9 +322,9 @@ function SaleCard({
                   }`}
                 >
                   {sel === "left"
-                    ? "Left panel"
+                    ? leftLabel
                     : sel === "right"
-                      ? "Right panel"
+                      ? rightLabel
                       : "Both panels"}
                 </button>
               ))}
