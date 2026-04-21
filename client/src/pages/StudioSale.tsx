@@ -31,10 +31,9 @@ const saleArtworks: SaleArtwork[] = [
     id: 1,
     title: "The Subject of Paint",
     medium: "Mixed media diptych on PVC board",
-    dimensions: "120 × 80 cm (each panel)",
+    dimensions: "80 × 60 cm (each panel)",
     year: 2024,
     images: [
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/RcShSgUXwbChGdpY.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/gDaTJysOZkIUEOEB.jpg",
@@ -362,7 +361,7 @@ function SaleCard({
       <div className="border-t border-border pt-4 mb-4">
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">
-            {isSingle ? "Price per canvas" : "Price"}
+            {isSingle ? "Price per panel" : "Price"}
           </span>
           <span className="text-2xl font-serif">{priceLabel}</span>
         </div>

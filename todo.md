@@ -490,3 +490,6 @@
 - [x] Add 'Ashi' diptych to Studio Sale (3 images, £150 unframed / £250 framed, set only)
 - [x] Update SaleCard component to support triptych panel selection, framed/unframed toggle, and set-only mode
 - [x] Add 'Lights Out' diptych to Studio Sale (3 images, £75 per panel / £150 both unframed / £250 both framed)
+- [x] Remove first image (kitchen/tap) from Subject of Paint carousel on Studio Sale
+- [x] Change 'Price per canvas' to 'Price per panel' for Subject of Paint on Studio Sale
+- [x] Update Subject of Paint dimensions to 80 × 60 cm on Studio Sale page
