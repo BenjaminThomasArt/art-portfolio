@@ -46,7 +46,7 @@ const saleArtworks: SaleArtwork[] = [
     id: 4,
     title: "Tiefenschwarz",
     medium: "Mixed media diptych on canvas",
-    dimensions: "80 × 60 cm (each panel)",
+    dimensions: "70 × 50 cm (each panel)",
     year: 2025,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/FXJQbMhAtfjsTITp.jpg",
@@ -56,6 +56,9 @@ const saleArtworks: SaleArtwork[] = [
     panelCount: 2,
     singlePrice: 100,
     setPrice: 175,
+    hasFrameOption: true,
+    framedSinglePrice: 150,
+    framedSetPrice: 275,
   },
   {
     id: 5,

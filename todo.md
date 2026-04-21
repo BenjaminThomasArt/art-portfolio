@@ -494,3 +494,5 @@
 - [x] Change 'Price per canvas' to 'Price per panel' for Subject of Paint on Studio Sale
 - [x] Update Subject of Paint dimensions to 80 × 60 cm on Studio Sale page
 - [x] Update Lights Out framed pricing: £125 per single panel framed, £250 both panels framed
+- [x] Update Tiefenschwarz dimensions to 70 × 50 cm on Studio Sale
+- [x] Add framed option to Tiefenschwarz: £150 per panel framed, £275 both framed
