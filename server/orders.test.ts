@@ -26,6 +26,7 @@ vi.mock("./_core/notification", () => ({
 vi.mock("./email", () => ({
   sendOrderConfirmation: vi.fn().mockResolvedValue(true),
   sendOrderStatusUpdate: vi.fn().mockResolvedValue(true),
+  sendOwnerOrderNotification: vi.fn().mockResolvedValue(true),
 }));
 
 // Mock getOrderById for status update email tests

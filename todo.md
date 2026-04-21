@@ -500,3 +500,8 @@
 - [x] Fix year: The Subject of Paint to 2026 on Studio Sale
 - [x] Fix year: Lights Out to 2024 on Studio Sale
 - [x] Change Lights Out panel labels from Left/Right to Top/Bottom
+- [x] Add owner notification when a contact enquiry is submitted
+- [x] Add owner notification when a print order is placed
+- [x] Add owner notification when a Studio Sale order is placed
+- [x] Send owner email notification when a contact enquiry is submitted
+- [x] Send owner email notification when an order is placed (in addition to buyer confirmation)

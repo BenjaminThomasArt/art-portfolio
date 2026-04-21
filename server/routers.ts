@@ -107,7 +107,7 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         const { createOrder } = await import("./db");
         const { notifyOwner } = await import("./_core/notification");
-        const { sendOrderConfirmation } = await import("./email");
+        const { sendOrderConfirmation, sendOwnerOrderNotification } = await import("./email");
 
         const { orderRef } = await createOrder({
           buyerName: input.buyerName,
@@ -148,10 +148,11 @@ export const appRouter = router({
         });
 
         // Send buyer confirmation email (non-blocking)
-        sendOrderConfirmation({
+        const orderEmailData = {
           orderRef,
           buyerName: input.buyerName,
           buyerEmail: input.buyerEmail,
+          buyerPhone: input.buyerPhone,
           itemTitle: input.itemTitle,
           itemDetails: input.itemDetails || '',
           itemPrice: input.itemPrice,
@@ -164,7 +165,11 @@ export const appRouter = router({
           county: input.county,
           postcode: input.postcode,
           country: input.country,
-        }).catch(err => console.error('[Orders] Failed to send confirmation email:', err));
+        };
+        sendOrderConfirmation(orderEmailData).catch(err => console.error('[Orders] Failed to send confirmation email:', err));
+
+        // Send owner email notification (non-blocking)
+        sendOwnerOrderNotification(orderEmailData).catch(err => console.error('[Orders] Failed to send owner order email:', err));
 
         return { success: true, orderRef };
       }),
@@ -245,7 +250,16 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         const { createInquiry } = await import("./db");
         const { notifyOwner } = await import("./_core/notification");
+        const { sendOwnerEnquiryNotification } = await import("./email");
         
+        // Look up artwork title if artworkId provided
+        let artworkTitle: string | null = null;
+        if (input.artworkId) {
+          const { getArtworkById } = await import("./db");
+          const artwork = await getArtworkById(input.artworkId);
+          artworkTitle = artwork?.title || null;
+        }
+
         await createInquiry({
           type: input.type,
           name: input.name,
@@ -260,6 +274,16 @@ export const appRouter = router({
           title: `New ${input.type} inquiry`,
           content: `From: ${input.name} (${input.email})\nMessage: ${input.message}`,
         });
+
+        // Send owner email notification (non-blocking)
+        sendOwnerEnquiryNotification({
+          type: input.type,
+          name: input.name,
+          email: input.email,
+          phone: input.phone,
+          message: input.message,
+          artworkTitle,
+        }).catch(err => console.error('[Inquiries] Failed to send owner enquiry email:', err));
 
         return { success: true };
       }),

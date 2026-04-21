@@ -1,6 +1,16 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
+
+// Mock the notification module
+vi.mock("./_core/notification", () => ({
+  notifyOwner: vi.fn().mockResolvedValue(true),
+}));
+
+// Mock the email module
+vi.mock("./email", () => ({
+  sendOwnerEnquiryNotification: vi.fn().mockResolvedValue(true),
+}));
 
 function createTestContext(): TrpcContext {
   const ctx: TrpcContext = {

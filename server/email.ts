@@ -14,6 +14,7 @@ interface OrderConfirmationData {
   orderRef: string;
   buyerName: string;
   buyerEmail: string;
+  buyerPhone?: string | null;
   itemTitle: string;
   itemDetails: string;
   itemPrice: string;
@@ -135,6 +136,200 @@ Benjamin Thomas Art
     return true;
   } catch (error) {
     console.error("[Email] Failed to send status update:", error);
+    return false;
+  }
+}
+
+// ─── Owner notification: new enquiry ────────────────────────────────
+interface EnquiryNotificationData {
+  type: string;
+  name: string;
+  email: string;
+  phone?: string | null;
+  message: string;
+  artworkTitle?: string | null;
+}
+
+export async function sendOwnerEnquiryNotification(data: EnquiryNotificationData): Promise<boolean> {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const ownerEmail = process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+
+  const typeLabel = data.type === "print" ? "Print enquiry" : data.type === "commission" ? "Commission enquiry" : "Contact enquiry";
+
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas Art</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Website notification</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <h2 style="margin:0 0 16px;font-size:20px;font-weight:normal;color:#003153;">New ${typeLabel}</h2>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;background-color:#fafaf8;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">From</p>
+                    <p style="margin:0;font-size:14px;color:#333;">${data.name} (${data.email})${data.phone ? ` — ${data.phone}` : ''}</p>
+                  </td>
+                </tr>
+                ${data.artworkTitle ? `<tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Artwork</p>
+                    <p style="margin:0;font-size:14px;color:#333;">'${data.artworkTitle}'</p>
+                  </td>
+                </tr>` : ''}
+                <tr>
+                  <td style="padding:12px 16px;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Message</p>
+                    <p style="margin:0;font-size:14px;color:#333;line-height:1.6;">${data.message.replace(/\n/g, '<br>')}</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:16px 0 0;font-size:13px;color:#666;">Reply directly to this email to respond to ${data.name}.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#aaa;">&copy; Benjamin Thomas Art — Website Notification</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  const textContent = `New ${typeLabel}\n\nFrom: ${data.name} (${data.email})${data.phone ? ` — ${data.phone}` : ''}${data.artworkTitle ? `\nArtwork: '${data.artworkTitle}'` : ''}\n\nMessage:\n${data.message}\n\nReply to this email to respond to ${data.name}.`;
+
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: ownerEmail,
+      replyTo: data.email,
+      subject: `${typeLabel} from ${data.name}`,
+      text: textContent,
+      html: htmlContent,
+    });
+    console.log(`[Email] Owner enquiry notification sent for ${typeLabel} from ${data.name}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send owner enquiry notification:", error);
+    return false;
+  }
+}
+
+// ─── Owner notification: new order ─────────────────────────────────
+export async function sendOwnerOrderNotification(data: OrderConfirmationData): Promise<boolean> {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const ownerEmail = process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+
+  const shippingZoneLabel = data.shippingZone === "uk" ? "UK" : data.shippingZone === "europe" ? "Europe" : "Rest of World";
+  const addressParts = [data.addressLine1, data.addressLine2, data.city, data.county, data.postcode, data.country].filter(Boolean);
+
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas Art</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Website notification</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <h2 style="margin:0 0 16px;font-size:20px;font-weight:normal;color:#003153;">💰 New Order — ${data.orderRef}</h2>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;background-color:#fafaf8;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Item</p>
+                    <p style="margin:0;font-size:15px;color:#333;">'${data.itemTitle}'</p>
+                    <p style="margin:4px 0 0;font-size:13px;color:#666;">${data.itemDetails}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:13px;color:#666;">Item price</td><td align="right" style="font-size:13px;color:#333;">${data.itemPrice}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:13px;color:#666;">Delivery (${shippingZoneLabel})</td><td align="right" style="font-size:13px;color:#333;">${data.shippingCost}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;background-color:#fafaf8;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:14px;font-weight:bold;color:#003153;">Total</td><td align="right" style="font-size:14px;font-weight:bold;color:#003153;">${data.totalPrice}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <div style="margin-top:20px;">
+                <p style="margin:0 0 4px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Buyer</p>
+                <p style="margin:0;font-size:14px;color:#333;">${data.buyerName} (${data.buyerEmail})${data.buyerPhone ? ` — ${data.buyerPhone}` : ''}</p>
+              </div>
+              <div style="margin-top:16px;">
+                <p style="margin:0 0 4px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Ship to</p>
+                <p style="margin:0;font-size:14px;color:#333;line-height:1.6;">${addressParts.join('<br>')}</p>
+              </div>
+              <div style="margin-top:20px;padding:16px;background-color:#fff8e1;border:1px solid #ffe082;border-radius:4px;">
+                <p style="margin:0;font-size:13px;color:#333;line-height:1.6;">Check your PayPal for the incoming payment. The buyer has been asked to include <strong>${data.orderRef}</strong> in the payment note.</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#aaa;">&copy; Benjamin Thomas Art — Website Notification</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  const textContent = `New Order — ${data.orderRef}\n\nItem: '${data.itemTitle}'\nDetails: ${data.itemDetails}\nItem price: ${data.itemPrice}\nDelivery (${shippingZoneLabel}): ${data.shippingCost}\nTotal: ${data.totalPrice}\n\nBuyer: ${data.buyerName} (${data.buyerEmail})${data.buyerPhone ? ` — ${data.buyerPhone}` : ''}\n\nShip to:\n${addressParts.join('\n')}\n\nCheck your PayPal for the incoming payment.`;
+
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: ownerEmail,
+      replyTo: data.buyerEmail,
+      subject: `New order ${data.orderRef}: '${data.itemTitle}'`,
+      text: textContent,
+      html: htmlContent,
+    });
+    console.log(`[Email] Owner order notification sent for ${data.orderRef}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send owner order notification:", error);
     return false;
   }
 }
