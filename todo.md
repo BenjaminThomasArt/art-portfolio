@@ -505,3 +505,4 @@
 - [x] Add owner notification when a Studio Sale order is placed
 - [x] Send owner email notification when a contact enquiry is submitted
 - [x] Send owner email notification when an order is placed (in addition to buyer confirmation)
+- [x] Write vitest tests for owner email notification functions (enquiry + order)
