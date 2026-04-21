@@ -493,3 +493,4 @@
 - [x] Remove first image (kitchen/tap) from Subject of Paint carousel on Studio Sale
 - [x] Change 'Price per canvas' to 'Price per panel' for Subject of Paint on Studio Sale
 - [x] Update Subject of Paint dimensions to 80 × 60 cm on Studio Sale page
+- [x] Update Lights Out framed pricing: £125 per single panel framed, £250 both panels framed

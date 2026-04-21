@@ -111,7 +111,7 @@ const saleArtworks: SaleArtwork[] = [
     singlePrice: 75,
     setPrice: 150,
     hasFrameOption: true,
-    framedSinglePrice: 250,
+    framedSinglePrice: 125,
     framedSetPrice: 250,
   },
 ];
