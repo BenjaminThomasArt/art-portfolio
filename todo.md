@@ -486,3 +486,7 @@
 - [x] PayPal checkout integration for Studio Sale items
 - [x] Add all three Subject of Paint images (left panel, right panel, diptych) as carousel on Studio Sale page
 - [x] Add Tiefenschwarz to Studio Sale page with all images carousel (£100 per panel, £175 for both)
+- [x] Add 'Beg, Steal and Borrow' triptych to Studio Sale (4 images, £200 unframed / £350 framed, set only)
+- [x] Add 'Ashi' diptych to Studio Sale (3 images, £150 unframed / £250 framed, set only)
+- [x] Update SaleCard component to support triptych panel selection, framed/unframed toggle, and set-only mode
+- [x] Add 'Lights Out' diptych to Studio Sale (3 images, £75 per panel / £150 both unframed / £250 both framed)
