@@ -32,7 +32,7 @@ const saleArtworks: SaleArtwork[] = [
     title: "The Subject of Paint",
     medium: "Mixed media diptych on PVC board",
     dimensions: "80 × 60 cm (each panel)",
-    year: 2024,
+    year: 2026,
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/MWJVdOgEzUOCqJqg.jpeg",
       "https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/tScekjOtLlzvxkrS.jpeg",
@@ -104,7 +104,7 @@ const saleArtworks: SaleArtwork[] = [
     title: "Lights Out",
     medium: "Acrylic on canvas (diptych)",
     dimensions: "70 × 50 cm (each canvas)",
-    year: 2025,
+    year: 2024,
     images: [
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/WhatsAppImage2026-04-21at18.14.21(1)_1122908e.jpeg",
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/WhatsAppImage2026-04-21at18.14.21(2)_b553e896.jpeg",

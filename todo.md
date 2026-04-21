@@ -497,3 +497,5 @@
 - [x] Update Tiefenschwarz dimensions to 70 × 50 cm on Studio Sale
 - [x] Add framed option to Tiefenschwarz: £150 per panel framed, £275 both framed
 - [x] Reorder Ashi images: swap 1st (diptych) and 3rd (right panel close-up), so diptych is last
+- [x] Fix year: The Subject of Paint to 2026 on Studio Sale
+- [x] Fix year: Lights Out to 2024 on Studio Sale
