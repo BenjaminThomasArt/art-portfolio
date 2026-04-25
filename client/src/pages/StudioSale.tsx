@@ -42,6 +42,9 @@ const saleArtworks: SaleArtwork[] = [
     panelCount: 2,
     singlePrice: 150,
     setPrice: 250,
+    hasFrameOption: true,
+    framedSinglePrice: 200,
+    framedSetPrice: 350,
   },
   {
     id: 4,

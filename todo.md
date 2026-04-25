@@ -506,3 +506,4 @@
 - [x] Send owner email notification when a contact enquiry is submitted
 - [x] Send owner email notification when an order is placed (in addition to buyer confirmation)
 - [x] Write vitest tests for owner email notification functions (enquiry + order)
+- [x] Add framed/unframed option for Paint works in Studio Sale (£50 per panel surcharge for framing)
