@@ -510,3 +510,4 @@
 - [x] Add "Figurina" (upcycled vintage LP diptych, 12x12 inches each) to Artifacts section with 4 images
 - [x] Remove 4th image from Figurina gallery in Artifacts section
 - [x] Adjust 3rd Figurina image brightness/exposure to match 2nd image
+- [x] Fix yellow colour cast on 3rd Figurina image — colour-balanced wall to match 2nd image
