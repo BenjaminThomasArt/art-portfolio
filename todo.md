@@ -508,3 +508,5 @@
 - [x] Write vitest tests for owner email notification functions (enquiry + order)
 - [x] Add framed/unframed option for Paint works in Studio Sale (£50 per panel surcharge for framing)
 - [x] Add "Figurina" (upcycled vintage LP diptych, 12x12 inches each) to Artifacts section with 4 images
+- [x] Remove 4th image from Figurina gallery in Artifacts section
+- [x] Adjust 3rd Figurina image brightness/exposure to match 2nd image
