@@ -122,6 +122,22 @@ const saleArtworks: SaleArtwork[] = [
     framedSetPrice: 250,
     panelLabels: ["Top panel", "Bottom panel"],
   },
+  {
+    id: 8,
+    title: "Figurina",
+    medium: "Upcycled vintage LP diptych",
+    dimensions: '12" × 12" (each panel)',
+    year: 2024,
+    images: [
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9237_8de655dd.PNG",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9232_aca7dd03.PNG",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9226_final_d11cd5cb.jpeg",
+    ],
+    panelCount: 2,
+    singlePrice: 50,
+    setPrice: 90,
+    panelLabels: ["Top panel", "Bottom panel"],
+  },
 ];
 
 // ─── Component ──────────────────────────────────────────────────────
