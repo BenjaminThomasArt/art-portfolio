@@ -11,7 +11,11 @@ const upcycleArtworks = [
     title: "Figurina",
     description: 'Upcycled vintage LP diptych, 2 x 12"x12"',
     price: null,
-    forSale: false,
+    forSale: true,
+    isDiptych: true,
+    singlePrice: 50,
+    setPrice: 90,
+    panelLabels: ["Top panel", "Bottom panel"],
     images: [
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9237_8de655dd.PNG",
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9232_aca7dd03.PNG",
@@ -80,6 +84,7 @@ const upcycleArtworks = [
 export default function Upcycles() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [orderItem, setOrderItem] = useState<{ title: string; price: string; details: string; section: "prints" | "upcycles" } | null>(null);
+  const [diptychSelection, setDiptychSelection] = useState<Record<number, "top" | "bottom" | "both">>({});
 
   return (
     <div className="py-24">
@@ -104,7 +109,56 @@ export default function Upcycles() {
                 )}
               </h3>
               <p className="text-sm text-muted-foreground mb-3">{artwork.description}</p>
-              {artwork.forSale && artwork.price != null && (
+              {artwork.forSale && artwork.isDiptych && (
+                <>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {(["top", "bottom", "both"] as const).map((opt) => {
+                      const labels = artwork.panelLabels || ["Left panel", "Right panel"];
+                      const label = opt === "top" ? labels[0] : opt === "bottom" ? labels[1] : "Both panels";
+                      const selected = (diptychSelection[artwork.id] || "both") === opt;
+                      return (
+                        <button
+                          key={opt}
+                          onClick={() => setDiptychSelection((s) => ({ ...s, [artwork.id]: opt }))}
+                          className={`px-3 py-1.5 text-xs border transition-colors ${
+                            selected
+                              ? "bg-foreground text-background border-foreground"
+                              : "border-foreground/30 text-foreground hover:border-foreground"
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-muted-foreground">Price:</span>
+                    <span className="text-xl font-serif">
+                      £{(diptychSelection[artwork.id] || "both") === "both" ? artwork.setPrice : artwork.singlePrice}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      const sel = diptychSelection[artwork.id] || "both";
+                      const price = sel === "both" ? artwork.setPrice! : artwork.singlePrice!;
+                      const labels = artwork.panelLabels || ["Left panel", "Right panel"];
+                      const panelDetail = sel === "top" ? labels[0] : sel === "bottom" ? labels[1] : "Both panels";
+                      trackInitiateCheckout({ contentName: artwork.title, value: price });
+                      setOrderItem({
+                        title: artwork.title,
+                        price: `£${price}`,
+                        details: `${artwork.description} — ${panelDetail}`,
+                        section: "upcycles",
+                      });
+                    }}
+                    className="w-full inline-flex items-center justify-center gap-1.5 py-2 text-xs border border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors"
+                  >
+                    <ShoppingBag size={13} />
+                    Order
+                  </button>
+                </>
+              )}
+              {artwork.forSale && !artwork.isDiptych && artwork.price != null && (
                 <>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm text-muted-foreground">Price:</span>

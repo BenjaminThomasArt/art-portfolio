@@ -513,3 +513,5 @@
 - [x] Fix yellow colour cast on 3rd Figurina image — colour-balanced wall to match 2nd image
 - [x] Reduce exposure on 3rd Figurina image to better match 2nd image
 - [x] Add Figurina to Studio Sale with order functionality (£50 one panel, £90 both)
+- [x] Remove Figurina from Studio Sale section
+- [x] Add order functionality (£50 one panel, £90 both) to Figurina in Artifacts section
