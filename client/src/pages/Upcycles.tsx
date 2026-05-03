@@ -19,7 +19,7 @@ const upcycleArtworks = [
     images: [
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9237_8de655dd.PNG",
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9232_aca7dd03.PNG",
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9226_bordered_9be71409.jpeg",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663325255079/TGNsMbsGdWXQhRmCtYbG6q/IMG_9226_artwork_bright_baca9031.jpeg",
     ],
   },
   {
