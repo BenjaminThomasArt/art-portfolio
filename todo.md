@@ -515,3 +515,4 @@
 - [x] Add Figurina to Studio Sale with order functionality (£50 one panel, £90 both)
 - [x] Remove Figurina from Studio Sale section
 - [x] Add order functionality (£50 one panel, £90 both) to Figurina in Artifacts section
+- [x] Apply perspective correction to 3rd Figurina image so it appears straight-on (front-facing)
