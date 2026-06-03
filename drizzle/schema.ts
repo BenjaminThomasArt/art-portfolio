@@ -145,3 +145,84 @@ export const orders = mysqlTable("orders", {
 
 export type Order = typeof orders.$inferSelect;
 export type InsertOrder = typeof orders.$inferInsert;
+
+/**
+ * ========================================
+ * BAMBINA - Surrogacy Planning App Tables
+ * ========================================
+ * Shared household-level data (not per-user scoped)
+ */
+
+/**
+ * Checklist items for the surrogacy timeline
+ */
+export const bambinaChecklist = mysqlTable("bambina_checklist", {
+  id: int("id").autoincrement().primaryKey(),
+  category: varchar("category", { length: 100 }).notNull(), // e.g., "legal", "medical", "travel", "financial", "nursery"
+  phase: varchar("phase", { length: 100 }).notNull(), // e.g., "first_trimester", "second_trimester", "third_trimester", "post_birth"
+  title: varchar("title", { length: 500 }).notNull(),
+  description: text("description"),
+  completed: int("completed").default(0).notNull(), // 0 = pending, 1 = completed
+  notes: text("notes"),
+  snoozedWeeks: int("snoozed_weeks").default(0).notNull(),
+  dueWeek: int("due_week"), // week of gestation when this is due
+  sortOrder: int("sort_order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BambinaChecklistItem = typeof bambinaChecklist.$inferSelect;
+export type InsertBambinaChecklistItem = typeof bambinaChecklist.$inferInsert;
+
+/**
+ * Shopping list items for baby essentials
+ */
+export const bambinaShopping = mysqlTable("bambina_shopping", {
+  id: int("id").autoincrement().primaryKey(),
+  category: varchar("category", { length: 100 }).notNull(), // e.g., "feeding", "sleeping", "clothing", "travel", "bath", "health"
+  title: varchar("title", { length: 500 }).notNull(),
+  notes: text("notes"), // e.g., "provided by MSJ", price info, links
+  purchased: int("purchased").default(0).notNull(), // 0 = not purchased, 1 = purchased
+  sortOrder: int("sort_order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BambinaShoppingItem = typeof bambinaShopping.$inferSelect;
+export type InsertBambinaShoppingItem = typeof bambinaShopping.$inferInsert;
+
+/**
+ * Freeform notes with categories
+ */
+export const bambinaNotes = mysqlTable("bambina_notes", {
+  id: int("id").autoincrement().primaryKey(),
+  category: varchar("category", { length: 100 }).notNull(), // e.g., "general", "medical", "travel", "questions"
+  title: varchar("title", { length: 255 }),
+  content: text("content").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BambinaNote = typeof bambinaNotes.$inferSelect;
+export type InsertBambinaNote = typeof bambinaNotes.$inferInsert;
+
+/**
+ * Payment tracking for surrogacy journey
+ */
+export const bambinaPayments = mysqlTable("bambina_payments", {
+  id: int("id").autoincrement().primaryKey(),
+  category: varchar("category", { length: 100 }).notNull(), // e.g., "agency", "legal", "medical", "surrogate", "travel"
+  description: varchar("description", { length: 500 }).notNull(),
+  amount: varchar("amount", { length: 100 }).notNull(), // e.g., "USD $15,500" or "MXN $28,000"
+  currency: varchar("currency", { length: 10 }).notNull(), // "USD", "MXN", "GBP"
+  amountNumeric: int("amount_numeric"), // numeric value in smallest unit for sorting/totals
+  dueMonth: varchar("due_month", { length: 50 }), // e.g., "Month 10", "Week 16"
+  paid: int("paid").default(0).notNull(), // 0 = unpaid, 1 = paid
+  paidDate: timestamp("paid_date"),
+  sortOrder: int("sort_order").default(0).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BambinaPayment = typeof bambinaPayments.$inferSelect;
+export type InsertBambinaPayment = typeof bambinaPayments.$inferInsert;

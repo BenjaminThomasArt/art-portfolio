@@ -516,3 +516,25 @@
 - [x] Remove Figurina from Studio Sale section
 - [x] Add order functionality (£50 one panel, £90 both) to Figurina in Artifacts section
 - [x] Apply perspective correction to 3rd Figurina image so it appears straight-on (front-facing)
+
+## Bambina - Secret Surrogacy Planning App
+
+- [x] Database schema: checklist_items, shopping_items, user_notes, payments tables
+- [x] tRPC procedures for checklist (toggle, snooze, add notes)
+- [x] tRPC procedures for shopping list (toggle purchased)
+- [x] tRPC procedures for notes (create, list, delete)
+- [x] tRPC procedures for payments (list, toggle paid)
+- [x] Secret route at /bambina not linked from main navigation
+- [x] Mexican-inspired design with Playfair Display + Nunito fonts
+- [x] Countdown section to Oct 11, 2026
+- [x] Timeline/checklist section with real obstetrics data
+- [x] Payments tracking with real cashflow data
+- [x] To Buy shopping list with real items from Sophie's email
+- [x] Contacts section with real contact details
+- [x] Notes section with categories
+- [x] Shared household-level data (not per-user)
+- [x] Auth required for DB sync, localStorage fallback
+- [x] Resources footer with helpful links
+- [x] Decorative Mexican tile border strip
+- [x] Vitest tests for bambina router (15 tests passing)
+- [x] Standalone page without site navigation/footer

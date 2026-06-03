@@ -18,6 +18,8 @@ import InSituGallery from "./pages/InSituGallery";
 import AdminOrders from "./pages/AdminOrders";
 import ThankYou from "./pages/ThankYou";
 import StudioSale from "./pages/StudioSale";
+import { lazy, Suspense } from "react";
+const Bambina = lazy(() => import("./pages/Bambina"));
 
 function Router() {
   const [location] = useLocation();
@@ -25,13 +27,22 @@ function Router() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  // Bambina is a standalone secret page — no site navigation/footer
+  if (location === "/bambina") {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#FDF6EC]" />}>
+        <Bambina />
+      </Suspense>
+    );
+  }
   
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-1 pt-16">
         <Switch>
-          <Route path={"/"} component={Home} />
+          <Route path="/" component={Home} />
           <Route path="/originals" component={Gallery} />
           <Route path="/prints" component={Shop} />
           <Route path="/upcycles" component={Upcycles} />
@@ -42,7 +53,7 @@ function Router() {
           <Route path="/studio-sale" component={StudioSale} />
           <Route path="/admin/orders" component={AdminOrders} />
           <Route path="/thank-you" component={ThankYou} />
-          <Route path={"/404"} component={NotFound} />
+          <Route path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </main>
