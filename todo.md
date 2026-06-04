@@ -554,3 +554,4 @@
 - [x] Make Countdown the default tab when landing on /bambina page
 - [x] Add expand/collapse functionality to Payments section
 - [x] Split hero title: "Ben & Fed's" on line 1, "Mexico Adventure" on line 2
+- [x] Add actual calendar dates to payment schedule (map month numbers to real dates)

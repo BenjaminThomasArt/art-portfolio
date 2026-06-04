@@ -448,6 +448,28 @@ function WeekTimeline() {
 }
 
 // ============ PAYMENTS COMPONENT ============
+function getPaymentMonthDate(dueMonth: string): string | null {
+  // Map payment schedule months to approximate calendar dates based on pregnancy weeks
+  // Due date: Oct 11, 2026 = Week 40. Conception: Jan 4, 2026.
+  const weekDateMap: Record<string, string> = {
+    "Month 1 - IP Onboarding": "Aug 2025",
+    "Month 2-3 - Embryo Transport": "Sep–Oct 2025",
+    "Month 4 - Surrogate Match": "Nov 2025",
+    "Month 5 - Embryo Transfer Prep": "Dec 2025",
+    "Month 6 - Embryo Transfer": "Jan 2026",
+    "Month 8 - Beta+": "Mar 2026",
+    "Month 9 - 12 Week Gestation": "Mar–Apr 2026",
+    "Month 10 - 16 Weeks": "Apr 2026",
+    "Month 11 - 20 Weeks": "May–Jun 2026",
+    "Month 12 - 24 Weeks": "Jun 2026",
+    "Month 13 - 28 Weeks": "Jul 2026",
+    "Month 14-15 - 32-36 Weeks": "Aug–Sep 2026",
+    "Month 16 - Birth (40 Weeks)": "Oct 2026",
+    "Month 17-18 - Post Birth": "Oct–Nov 2026",
+  };
+  return weekDateMap[dueMonth] || null;
+}
+
 function Payments() {
   const { data: payments = [], refetch } = trpc.bambina.payments.getAll.useQuery();
   const { isAuthenticated } = useAuth();
@@ -512,9 +534,16 @@ function Payments() {
             >
               <div className="flex items-center gap-2">
                 <span className={`text-xs transition-transform ${isExpanded ? "rotate-90" : ""}`}>›</span>
-                <h3 className="font-playfair text-lg font-semibold text-deep-teal">
-                  {month}
-                </h3>
+                <div>
+                  <h3 className="font-playfair text-base sm:text-lg font-semibold text-deep-teal">
+                    {month}
+                  </h3>
+                  {getPaymentMonthDate(month) && (
+                    <p className="font-nunito text-[10px] sm:text-xs text-stone-400 mt-0.5">
+                      {getPaymentMonthDate(month)}
+                    </p>
+                  )}
+                </div>
               </div>
               <span className={`font-nunito text-xs font-medium px-2 py-0.5 rounded-full ${
                 paidCount === monthPayments.length
