@@ -162,7 +162,7 @@ function Countdown() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 text-center">
       <p className="font-nunito text-sm uppercase tracking-[0.3em] text-terracotta mb-6">
-        Meet your bambina in...
+        We'll meet bambina in...
       </p>
       <div className="flex justify-center gap-4 md:gap-8">
         {[
@@ -937,8 +937,8 @@ export default function Bambina() {
         )}
       </div>
 
-      {/* Progress card only on timeline/countdown tabs */}
-      {(activeTab === "timeline" || activeTab === "countdown") && <ProgressCard />}
+      {/* Progress card only on timeline tab */}
+      {activeTab === "timeline" && <ProgressCard />}
 
       {/* Tab Content */}
       <div ref={contentRef} className="scroll-mt-16">
