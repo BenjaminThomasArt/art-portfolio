@@ -511,14 +511,14 @@ function Payments() {
             >
               <div className="flex items-center gap-2">
                 <span className={`text-xs transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}>›</span>
-                <div>
+                <div className="flex items-baseline gap-2">
                   <h3 className="font-playfair text-sm sm:text-base font-semibold text-deep-teal">
                     {month.replace(/^Month\s*\d+(-\d+)?\s*-\s*/, "")}
                   </h3>
                   {getPaymentMonthDate(month) && (
-                    <p className="font-nunito text-[10px] sm:text-xs text-stone-400 mt-0.5">
-                      {getPaymentMonthDate(month)}
-                    </p>
+                    <span className="font-nunito text-[10px] sm:text-xs text-stone-400">
+                      · {getPaymentMonthDate(month)}
+                    </span>
                   )}
                 </div>
               </div>
@@ -576,6 +576,16 @@ function ShoppingList() {
   const { data: items = [], refetch } = trpc.bambina.shopping.getAll.useQuery();
   const { isAuthenticated } = useAuth();
   const toggleMutation = trpc.bambina.shopping.toggle.useMutation({ onSuccess: () => refetch() });
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+
+  const toggleCategory = useCallback((cat: string) => {
+    setExpandedCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
+  }, []);
 
   const grouped = useMemo(() => {
     const g: Record<string, typeof items> = {};
@@ -626,39 +636,60 @@ function ShoppingList() {
         </p>
       </div>
 
-      {Object.entries(grouped).map(([category, categoryItems]) => (
-        <div key={category}>
-          <h3 className="font-playfair text-lg font-semibold text-deep-teal mb-3">
-            {categoryLabels[category] || category}
-          </h3>
-          <div className="space-y-2">
-            {categoryItems.map((item) => (
-              <div
-                key={item.id}
-                className={`flex items-center gap-3 p-3 rounded-lg bg-white border border-stone-100 shadow-sm ${
-                  item.purchased ? "opacity-60" : ""
-                }`}
-              >
-                <Checkbox
-                  checked={!!item.purchased}
-                  onCheckedChange={(checked) => {
-                    toggleMutation.mutate({ id: item.id, purchased: !!checked });
-                  }}
-                  className="border-stone-300 data-[state=checked]:bg-deep-teal data-[state=checked]:border-deep-teal"
-                />
-                <div className="flex-1">
-                  <p className={`font-nunito text-sm ${item.purchased ? "line-through text-stone-400" : "text-stone-700"}`}>
-                    {item.title}
-                  </p>
-                  {item.notes && (
-                    <p className="font-nunito text-xs text-stone-400 mt-0.5">{item.notes}</p>
-                  )}
-                </div>
+      {Object.entries(grouped).map(([category, categoryItems]) => {
+        const isExpanded = expandedCategories.has(category);
+        const purchasedCount = categoryItems.filter((i) => i.purchased).length;
+        return (
+          <div key={category}>
+            <button
+              onClick={() => toggleCategory(category)}
+              className="w-full flex items-center justify-between border-b border-stone-100 pb-3 mb-3"
+            >
+              <div className="flex items-center gap-2">
+                <span className={`text-xs transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}>›</span>
+                <h3 className="font-playfair text-sm sm:text-base font-semibold text-deep-teal">
+                  {categoryLabels[category] || category}
+                </h3>
               </div>
-            ))}
+              <span className={`font-nunito text-xs font-medium px-2 py-0.5 rounded-full ${
+                purchasedCount === categoryItems.length
+                  ? "bg-deep-teal/10 text-deep-teal"
+                  : "bg-terracotta/10 text-terracotta"
+              }`}>
+                {purchasedCount}/{categoryItems.length}
+              </span>
+            </button>
+            {isExpanded && (
+              <div className="space-y-2">
+                {categoryItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className={`flex items-center gap-3 p-3 rounded-lg bg-white border border-stone-100 shadow-sm ${
+                      item.purchased ? "opacity-60" : ""
+                    }`}
+                  >
+                    <Checkbox
+                      checked={!!item.purchased}
+                      onCheckedChange={(checked) => {
+                        toggleMutation.mutate({ id: item.id, purchased: !!checked });
+                      }}
+                      className="border-stone-300 data-[state=checked]:bg-deep-teal data-[state=checked]:border-deep-teal"
+                    />
+                    <div className="flex-1">
+                      <p className={`font-nunito text-sm ${item.purchased ? "line-through text-stone-400" : "text-stone-700"}`}>
+                        {item.title}
+                      </p>
+                      {item.notes && (
+                        <p className="font-nunito text-xs text-stone-400 mt-0.5">{item.notes}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

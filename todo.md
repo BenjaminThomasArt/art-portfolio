@@ -557,3 +557,5 @@
 - [x] Add actual calendar dates to payment schedule (map month numbers to real dates)
 - [x] Remove historical (paid) payments from database, keep only upcoming payments
 - [x] Design polish pass on Bambina page: consistent spacing, typography, colors, and component styling across all tabs
+- [x] Fix payment dates placement to be uniform (inline with title using · separator)
+- [x] Add expand/collapse functionality to To Buy section categories
