@@ -8,7 +8,7 @@ export const bambinaRouter = router({
       const { getAllChecklistItems } = await import("./bambina-db");
       return getAllChecklistItems();
     }),
-    toggle: protectedProcedure
+    toggle: publicProcedure
       .input(z.object({ id: z.number(), completed: z.boolean() }))
       .mutation(async ({ input }) => {
         const { toggleChecklistItem } = await import("./bambina-db");
@@ -51,7 +51,7 @@ export const bambinaRouter = router({
       const { getAllShoppingItems } = await import("./bambina-db");
       return getAllShoppingItems();
     }),
-    toggle: protectedProcedure
+    toggle: publicProcedure
       .input(z.object({ id: z.number(), purchased: z.boolean() }))
       .mutation(async ({ input }) => {
         const { toggleShoppingItem } = await import("./bambina-db");
@@ -117,7 +117,7 @@ export const bambinaRouter = router({
       const { getAllPayments } = await import("./bambina-db");
       return getAllPayments();
     }),
-    toggle: protectedProcedure
+    toggle: publicProcedure
       .input(z.object({ id: z.number(), paid: z.boolean() }))
       .mutation(async ({ input }) => {
         const { togglePayment } = await import("./bambina-db");

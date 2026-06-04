@@ -354,7 +354,6 @@ function WeekTimeline() {
                       >
                         <Checkbox
                           checked={!!item.completed}
-                          disabled={!isAuthenticated}
                           onCheckedChange={(checked) => {
                             toggleMutation.mutate({ id: item.id, completed: !!checked });
                           }}
@@ -543,7 +542,6 @@ function Payments() {
                   >
                     <Checkbox
                       checked={!!payment.paid}
-                      disabled={!isAuthenticated}
                       onCheckedChange={(checked) => {
                         toggleMutation.mutate({ id: payment.id, paid: !!checked });
                       }}
@@ -644,7 +642,6 @@ function ShoppingList() {
               >
                 <Checkbox
                   checked={!!item.purchased}
-                  disabled={!isAuthenticated}
                   onCheckedChange={(checked) => {
                     toggleMutation.mutate({ id: item.id, purchased: !!checked });
                   }}

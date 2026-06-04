@@ -1496,7 +1496,7 @@ var bambinaRouter = router({
       const { getAllChecklistItems: getAllChecklistItems2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       return getAllChecklistItems2();
     }),
-    toggle: protectedProcedure.input(z2.object({ id: z2.number(), completed: z2.boolean() })).mutation(async ({ input }) => {
+    toggle: publicProcedure.input(z2.object({ id: z2.number(), completed: z2.boolean() })).mutation(async ({ input }) => {
       const { toggleChecklistItem: toggleChecklistItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       await toggleChecklistItem2(input.id, input.completed);
       return { success: true };
@@ -1530,7 +1530,7 @@ var bambinaRouter = router({
       const { getAllShoppingItems: getAllShoppingItems2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       return getAllShoppingItems2();
     }),
-    toggle: protectedProcedure.input(z2.object({ id: z2.number(), purchased: z2.boolean() })).mutation(async ({ input }) => {
+    toggle: publicProcedure.input(z2.object({ id: z2.number(), purchased: z2.boolean() })).mutation(async ({ input }) => {
       const { toggleShoppingItem: toggleShoppingItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       await toggleShoppingItem2(input.id, input.purchased);
       return { success: true };
@@ -1584,7 +1584,7 @@ var bambinaRouter = router({
       const { getAllPayments: getAllPayments2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       return getAllPayments2();
     }),
-    toggle: protectedProcedure.input(z2.object({ id: z2.number(), paid: z2.boolean() })).mutation(async ({ input }) => {
+    toggle: publicProcedure.input(z2.object({ id: z2.number(), paid: z2.boolean() })).mutation(async ({ input }) => {
       const { togglePayment: togglePayment2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
       await togglePayment2(input.id, input.paid);
       return { success: true };
