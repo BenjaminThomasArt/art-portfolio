@@ -538,3 +538,9 @@
 - [x] Decorative Mexican tile border strip
 - [x] Vitest tests for bambina router (15 tests passing)
 - [x] Standalone page without site navigation/footer
+- [x] Redesign Bambina page: sticky top nav bar with tab links
+- [x] Redesign Bambina page: hero banner with warm Mexican imagery and papel picado
+- [x] Redesign Bambina page: progress card showing current week and days remaining
+- [x] Redesign Bambina page: week-by-week timeline with vertical line, dot markers, collapsible sections
+- [x] Redesign Bambina page: NOW badge on current week, date ranges, task count badges
+- [x] Redesign Bambina page: task cards with checkboxes, priority labels, expand arrows
