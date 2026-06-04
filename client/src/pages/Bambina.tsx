@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef, createContext, useContext } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
@@ -7,6 +7,94 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+
+// ============ LANGUAGE / i18n ============
+type Lang = "en" | "it";
+const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: "en", setLang: () => {} });
+function useLang() { return useContext(LangContext); }
+
+const t: Record<string, Record<Lang, string>> = {
+  // Nav tabs
+  "tab.countdown": { en: "Countdown", it: "Conto alla rovescia" },
+  "tab.timeline": { en: "Timeline", it: "Cronologia" },
+  "tab.payments": { en: "Payments", it: "Pagamenti" },
+  "tab.shopping": { en: "To Buy", it: "Da comprare" },
+  "tab.contacts": { en: "Contacts", it: "Contatti" },
+  "tab.notes": { en: "Notes", it: "Note" },
+  // Hero
+  "hero.title1": { en: "Ben & Fed's", it: "L'avventura messicana" },
+  "hero.title2": { en: "Mexico Adventure", it: "di Ben & Fed" },
+  // Countdown
+  "countdown.intro": { en: "We'll meet bambina in...", it: "Incontreremo la bambina tra..." },
+  "countdown.days": { en: "Days", it: "Giorni" },
+  "countdown.hours": { en: "Hours", it: "Ore" },
+  "countdown.minutes": { en: "Minutes", it: "Minuti" },
+  "countdown.seconds": { en: "Seconds", it: "Secondi" },
+  // Progress card
+  "progress.currently": { en: "Currently", it: "Attualmente" },
+  "progress.weekOf": { en: "of pregnancy", it: "di gravidanza" },
+  "progress.untilDue": { en: "Until due date", it: "Alla data prevista" },
+  "progress.weeks": { en: "weeks", it: "settimane" },
+  "progress.days": { en: "days", it: "giorni" },
+  "progress.conception": { en: "Conception", it: "Concepimento" },
+  // Timeline
+  "timeline.title": { en: "Week-by-Week Plan", it: "Piano settimana per settimana" },
+  "timeline.subtitle": { en: "Tick off tasks as you go", it: "Spunta le attività man mano" },
+  "timeline.prePregnancy": { en: "Pre-Pregnancy", it: "Pre-gravidanza" },
+  "timeline.postBirth": { en: "Post-Birth", it: "Post-nascita" },
+  "timeline.week": { en: "Week", it: "Settimana" },
+  "timeline.now": { en: "Now", it: "Ora" },
+  "timeline.beforeConception": { en: "Before conception", it: "Prima del concepimento" },
+  "timeline.afterOct": { en: "After Oct 11", it: "Dopo l'11 ott" },
+  "timeline.loading": { en: "Loading timeline...", it: "Caricamento cronologia..." },
+  "timeline.snoozed": { en: "Snoozed", it: "Posticipato" },
+  "timeline.save": { en: "Save", it: "Salva" },
+  // Payments
+  "payments.title": { en: "Payments", it: "Pagamenti" },
+  // Shopping
+  "shopping.title": { en: "To Buy", it: "Da comprare" },
+  "shopping.progress": { en: "Shopping Progress", it: "Progresso acquisti" },
+  "shopping.itemsOf": { en: "of", it: "di" },
+  "shopping.itemsPurchased": { en: "items purchased", it: "articoli acquistati" },
+  "shopping.feeding": { en: "\ud83c\udf7c Bottle Feeding", it: "\ud83c\udf7c Allattamento con biberon" },
+  "shopping.sleeping": { en: "\ud83d\ude34 Sleeping", it: "\ud83d\ude34 Nanna" },
+  "shopping.nappies": { en: "\ud83d\udc76 Nappies", it: "\ud83d\udc76 Pannolini" },
+  "shopping.clothing": { en: "\ud83d\udc55 Baby Clothing", it: "\ud83d\udc55 Abbigliamento neonato" },
+  "shopping.bathing": { en: "\ud83d\udec1 Bathing", it: "\ud83d\udec1 Bagnetto" },
+  "shopping.health": { en: "\ud83c\udfe5 Health & Safety", it: "\ud83c\udfe5 Salute e sicurezza" },
+  "shopping.travel": { en: "\ud83d\ude97 Travel & On-the-Go", it: "\ud83d\ude97 Viaggio e passeggiate" },
+  "shopping.expressing": { en: "\ud83e\udd31 Expressing Equipment", it: "\ud83e\udd31 Attrezzatura per tiralatte" },
+  "shopping.miscellaneous": { en: "\ud83d\udce6 Miscellaneous", it: "\ud83d\udce6 Varie" },
+  // Contacts
+  "contacts.title": { en: "Contacts", it: "Contatti" },
+  // Notes
+  "notes.title": { en: "Notes", it: "Note" },
+  "notes.addNote": { en: "+ Add Note", it: "+ Aggiungi nota" },
+  "notes.titlePlaceholder": { en: "Title (optional)", it: "Titolo (opzionale)" },
+  "notes.contentPlaceholder": { en: "Write your note...", it: "Scrivi la tua nota..." },
+  "notes.save": { en: "Save Note", it: "Salva nota" },
+  "notes.cancel": { en: "Cancel", it: "Annulla" },
+  "notes.empty": { en: "No notes yet. Add your first note above.", it: "Nessuna nota ancora. Aggiungi la tua prima nota sopra." },
+  "notes.deleteConfirm": { en: "Delete this note?", it: "Eliminare questa nota?" },
+  "notes.contentRequired": { en: "Note content is required", it: "Il contenuto della nota è obbligatorio" },
+  // Auth
+  "auth.signIn": { en: "Sign in to edit & sync →", it: "Accedi per modificare e sincronizzare →" },
+  "auth.signedAs": { en: "Signed in as", it: "Connesso come" },
+  // Resources
+  "resources.title": { en: "Helpful Resources", it: "Risorse utili" },
+  // Footer
+  "footer.text": { en: "Made with love for our bambina", it: "Fatto con amore per la nostra bambina" },
+};
+
+function T({ k }: { k: string }) {
+  const { lang } = useLang();
+  return <>{t[k]?.[lang] || t[k]?.en || k}</>;
+}
+
+function useT(k: string): string {
+  const { lang } = useLang();
+  return t[k]?.[lang] || t[k]?.en || k;
+}
 
 // ============ CONSTANTS ============
 const DUE_DATE = new Date("2026-10-11T00:00:00");
@@ -41,20 +129,21 @@ type TabId = "countdown" | "timeline" | "payments" | "shopping" | "contacts" | "
 
 function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: (t: TabId) => void }) {
   const tabs: { id: TabId; label: string; icon: string }[] = [
-    { id: "countdown", label: "Countdown", icon: "◇" },
-    { id: "timeline", label: "Timeline", icon: "◉" },
-    { id: "payments", label: "Payments", icon: "◫" },
-    { id: "shopping", label: "To Buy", icon: "☐" },
-    { id: "contacts", label: "Contacts", icon: "☺" },
-    { id: "notes", label: "Notes", icon: "◪" },
+    { id: "countdown", label: useT("tab.countdown"), icon: "◇" },
+    { id: "timeline", label: useT("tab.timeline"), icon: "◉" },
+    { id: "payments", label: useT("tab.payments"), icon: "◫" },
+    { id: "shopping", label: useT("tab.shopping"), icon: "☐" },
+    { id: "contacts", label: useT("tab.contacts"), icon: "☺" },
+    { id: "notes", label: useT("tab.notes"), icon: "◪" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
       <div className="max-w-4xl mx-auto px-2 md:px-4 flex items-center h-12 md:h-14">
-        <span className="font-playfair text-sm font-semibold text-deep-teal mr-6 hidden md:block">
-          🌵 Ben & Fed's Mexico Adventure
+        <span className="font-playfair text-sm font-semibold text-deep-teal mr-3 hidden md:block">
+          🌵 <T k="hero.title1" /> <T k="hero.title2" />
         </span>
+        <LanguageToggle />
         <div className="flex gap-0.5 md:gap-1 flex-1 justify-center md:justify-start">
           {tabs.map((tab) => (
             <button
@@ -90,7 +179,7 @@ function HeroBanner() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg leading-tight">
-          Ben & Fed's<br />Mexico Adventure
+          <T k="hero.title1" /><br /><T k="hero.title2" />
         </h1>
       </div>
       {/* Mexican tile bottom border */}
@@ -124,12 +213,12 @@ function ProgressCard() {
       <div className="bg-white rounded-2xl border border-stone-100 p-5 shadow-sm">
         <div className="flex justify-between items-start mb-3">
           <div>
-            <p className="font-nunito text-xs text-stone-400 uppercase tracking-wider">Currently</p>
-            <p className="font-playfair text-xl font-bold text-stone-800">Week {currentWeek} of pregnancy</p>
+            <p className="font-nunito text-xs text-stone-400 uppercase tracking-wider"><T k="progress.currently" /></p>
+            <p className="font-playfair text-xl font-bold text-stone-800"><T k="timeline.week" /> {currentWeek} <T k="progress.weekOf" /></p>
           </div>
           <div className="text-right">
-            <p className="font-nunito text-xs text-stone-400 uppercase tracking-wider">Until due date</p>
-            <p className="font-playfair text-xl font-bold text-terracotta">{weeksLeft} weeks ({daysLeft} days)</p>
+            <p className="font-nunito text-xs text-stone-400 uppercase tracking-wider"><T k="progress.untilDue" /></p>
+            <p className="font-playfair text-xl font-bold text-terracotta">{weeksLeft} <T k="progress.weeks" /> ({daysLeft} <T k="progress.days" />)</p>
           </div>
         </div>
         <div className="relative">
@@ -140,7 +229,7 @@ function ProgressCard() {
             />
           </div>
           <div className="flex justify-between mt-1">
-            <span className="font-nunito text-xs text-stone-400">Conception</span>
+            <span className="font-nunito text-xs text-stone-400"><T k="progress.conception" /></span>
             <span className="font-nunito text-xs text-stone-400">Oct 11</span>
           </div>
         </div>
@@ -161,14 +250,14 @@ function Countdown() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 md:py-14 text-center">
       <p className="font-nunito text-sm tracking-wide text-terracotta/80 mb-8">
-        We'll meet bambina in...
+        <T k="countdown.intro" />
       </p>
       <div className="flex justify-center gap-3 md:gap-6">
         {[
-          { value: timeLeft.days, label: "Days" },
-          { value: timeLeft.hours, label: "Hours" },
-          { value: timeLeft.minutes, label: "Minutes" },
-          { value: timeLeft.seconds, label: "Seconds" },
+          { value: timeLeft.days, label: useT("countdown.days") },
+          { value: timeLeft.hours, label: useT("countdown.hours") },
+          { value: timeLeft.minutes, label: useT("countdown.minutes") },
+          { value: timeLeft.seconds, label: useT("countdown.seconds") },
         ].map((item) => (
           <div key={item.label} className="flex flex-col items-center bg-white/80 rounded-2xl px-3 py-4 md:px-6 md:py-5 shadow-sm border border-stone-100">
             <span className="font-playfair text-3xl md:text-5xl font-bold text-deep-teal tabular-nums">
@@ -262,15 +351,16 @@ function WeekTimeline() {
     });
   }, []);
 
+  const { lang } = useLang();
   const getWeekLabel = (week: number): string => {
-    if (week === 0) return "Pre-Pregnancy";
-    if (week === 41) return "Post-Birth";
-    return `Week ${week}`;
+    if (week === 0) return t["timeline.prePregnancy"]?.[lang] || "Pre-Pregnancy";
+    if (week === 41) return t["timeline.postBirth"]?.[lang] || "Post-Birth";
+    return `${t["timeline.week"]?.[lang] || "Week"} ${week}`;
   };
 
   const getWeekDates = (week: number): string => {
-    if (week === 0) return "Before conception";
-    if (week === 41) return "After Oct 11";
+    if (week === 0) return t["timeline.beforeConception"]?.[lang] || "Before conception";
+    if (week === 41) return t["timeline.afterOct"]?.[lang] || "After Oct 11";
     const { start, end } = getWeekDateRange(week);
     return `${start} – ${end}`;
   };
@@ -280,8 +370,8 @@ function WeekTimeline() {
       <div className="flex items-center gap-3 mb-6">
         <span className="text-xl">📋</span>
         <div>
-          <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Week-by-Week Plan</h2>
-          <p className="font-nunito text-xs md:text-sm text-stone-400">Tick off tasks as you go</p>
+          <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="timeline.title" /></h2>
+          <p className="font-nunito text-xs md:text-sm text-stone-400"><T k="timeline.subtitle" /></p>
         </div>
       </div>
 
@@ -324,7 +414,7 @@ function WeekTimeline() {
                     </span>
                     {isCurrentWeek && (
                       <span className="bg-terracotta text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">
-                        Now
+                        <T k="timeline.now" />
                       </span>
                     )}
                   </div>
@@ -442,7 +532,7 @@ function WeekTimeline() {
       </div>
 
       {items.length === 0 && (
-        <p className="font-nunito text-stone-400 text-center py-8">Loading timeline...</p>
+        <p className="font-nunito text-stone-400 text-center py-8"><T k="timeline.loading" /></p>
       )}
     </div>
   );
@@ -500,7 +590,7 @@ function Payments() {
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-xl">💰</span>
-        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Payments</h2>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="payments.title" /></h2>
       </div>
 
       {Object.entries(grouped).map(([month, monthPayments]) => {
@@ -604,28 +694,29 @@ function ShoppingList() {
     return { purchased, total: items.length, pct: items.length ? Math.round((purchased / items.length) * 100) : 0 };
   }, [items]);
 
+  const { lang } = useLang();
   const categoryLabels: Record<string, string> = {
-    feeding: "🍼 Bottle Feeding",
-    sleeping: "😴 Sleeping",
-    nappies: "👶 Nappies",
-    clothing: "👕 Baby Clothing",
-    bathing: "🛁 Bathing",
-    health: "🏥 Health & Safety",
-    travel: "🚗 Travel & On-the-Go",
-    expressing: "🤱 Expressing Equipment",
-    miscellaneous: "📦 Miscellaneous",
+    feeding: t["shopping.feeding"]?.[lang] || "🍼 Bottle Feeding",
+    sleeping: t["shopping.sleeping"]?.[lang] || "😴 Sleeping",
+    nappies: t["shopping.nappies"]?.[lang] || "👶 Nappies",
+    clothing: t["shopping.clothing"]?.[lang] || "👕 Baby Clothing",
+    bathing: t["shopping.bathing"]?.[lang] || "🛁 Bathing",
+    health: t["shopping.health"]?.[lang] || "🏥 Health & Safety",
+    travel: t["shopping.travel"]?.[lang] || "🚗 Travel & On-the-Go",
+    expressing: t["shopping.expressing"]?.[lang] || "🤱 Expressing Equipment",
+    miscellaneous: t["shopping.miscellaneous"]?.[lang] || "📦 Miscellaneous",
   };
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-xl">🛒</span>
-        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">To Buy</h2>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="shopping.title" /></h2>
       </div>
 
       <div className="bg-white rounded-2xl border border-stone-100 p-4 shadow-sm">
         <div className="flex justify-between items-center mb-2">
-          <span className="font-nunito text-sm text-stone-500">Shopping Progress</span>
+          <span className="font-nunito text-sm text-stone-500"><T k="shopping.progress" /></span>
           <span className="font-nunito text-sm font-semibold text-deep-teal">{progress.pct}%</span>
         </div>
         <div className="w-full h-2.5 bg-stone-100 rounded-full overflow-hidden">
@@ -635,7 +726,7 @@ function ShoppingList() {
           />
         </div>
         <p className="font-nunito text-xs text-stone-400 mt-1.5">
-          {progress.purchased} of {progress.total} items purchased
+          {progress.purchased} <T k="shopping.itemsOf" /> {progress.total} <T k="shopping.itemsPurchased" />
         </p>
       </div>
 
@@ -754,7 +845,7 @@ function Contacts() {
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-4">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-xl">📇</span>
-        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Contacts</h2>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="contacts.title" /></h2>
       </div>
       {contacts.map((contact, i) => (
         <div key={i} className="p-4 md:p-5 rounded-2xl bg-white border border-stone-100 shadow-sm hover:border-terracotta/30 transition-all duration-200 hover:shadow-md">
@@ -786,6 +877,7 @@ function Contacts() {
 function Notes() {
   const { data: notes = [], refetch } = trpc.bambina.notes.getAll.useQuery();
   const { isAuthenticated } = useAuth();
+  const { lang } = useLang();
   const createMutation = trpc.bambina.notes.create.useMutation({ onSuccess: () => { refetch(); setNewNote({ category: "general", title: "", content: "" }); setShowForm(false); toast.success("Note saved"); } });
   const deleteMutation = trpc.bambina.notes.delete.useMutation({ onSuccess: () => { refetch(); toast.success("Note deleted"); } });
   const [newNote, setNewNote] = useState({ category: "general", title: "", content: "" });
@@ -806,7 +898,7 @@ function Notes() {
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-xl">📝</span>
-        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Notes</h2>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="notes.title" /></h2>
       </div>
 
       {isAuthenticated && (
@@ -816,7 +908,7 @@ function Notes() {
               onClick={() => setShowForm(true)}
               className="bg-deep-teal hover:bg-deep-teal/90 font-nunito"
             >
-              + Add Note
+              <T k="notes.addNote" />
             </Button>
           ) : (
             <div className="p-4 rounded-xl bg-white border border-stone-100 shadow-sm space-y-3">
@@ -831,14 +923,14 @@ function Notes() {
                   ))}
                 </select>
                 <Input
-                  placeholder="Title (optional)"
+                  placeholder={useT("notes.titlePlaceholder")}
                   value={newNote.title}
                   onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
                   className="font-nunito"
                 />
               </div>
               <Textarea
-                placeholder="Write your note..."
+                placeholder={useT("notes.contentPlaceholder")}
                 value={newNote.content}
                 onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
                 className="font-nunito"
@@ -847,16 +939,16 @@ function Notes() {
               <div className="flex gap-2">
                 <Button
                   onClick={() => {
-                    if (!newNote.content.trim()) { toast.error("Note content is required"); return; }
+                    if (!newNote.content.trim()) { toast.error(t["notes.contentRequired"]?.[lang] || "Note content is required"); return; }
                     createMutation.mutate(newNote);
                   }}
                   className="bg-deep-teal hover:bg-deep-teal/90 font-nunito"
                   disabled={createMutation.isPending}
                 >
-                  Save Note
+                  <T k="notes.save" />
                 </Button>
                 <Button variant="outline" onClick={() => setShowForm(false)} className="font-nunito">
-                  Cancel
+                  <T k="notes.cancel" />
                 </Button>
               </div>
             </div>
@@ -885,7 +977,7 @@ function Notes() {
                   {isAuthenticated && (
                     <button
                       onClick={() => {
-                        if (confirm("Delete this note?")) deleteMutation.mutate({ id: note.id });
+                        if (confirm(t["notes.deleteConfirm"]?.[lang] || "Delete this note?")) deleteMutation.mutate({ id: note.id });
                       }}
                       className="text-stone-400 hover:text-red-500 transition-colors text-sm"
                     >
@@ -900,7 +992,7 @@ function Notes() {
       ))}
 
       {notes.length === 0 && !showForm && (
-        <p className="font-nunito text-stone-400 text-center py-8">No notes yet. Add your first note above.</p>
+        <p className="font-nunito text-stone-400 text-center py-8"><T k="notes.empty" /></p>
       )}
     </div>
   );
@@ -920,7 +1012,7 @@ function Resources() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 mt-6 border-t border-stone-100">
       <h3 className="font-playfair text-base font-semibold text-deep-teal mb-4 text-center">
-        Helpful Resources
+        <T k="resources.title" />
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
         {links.map((link) => (
@@ -940,10 +1032,45 @@ function Resources() {
 }
 
 // ============ MAIN BAMBINA PAGE ============
+// ============ LANGUAGE TOGGLE ============
+function LanguageToggle() {
+  const { lang, setLang } = useLang();
+  return (
+    <div className="flex items-center gap-0.5 bg-stone-100 rounded-full p-0.5 md:mr-3">
+      <button
+        onClick={() => setLang("en")}
+        className={`font-nunito text-[10px] md:text-xs px-2 py-0.5 rounded-full transition-all ${
+          lang === "en" ? "bg-white text-deep-teal font-semibold shadow-sm" : "text-stone-400 hover:text-stone-600"
+        }`}
+      >
+        EN
+      </button>
+      <button
+        onClick={() => setLang("it")}
+        className={`font-nunito text-[10px] md:text-xs px-2 py-0.5 rounded-full transition-all ${
+          lang === "it" ? "bg-white text-deep-teal font-semibold shadow-sm" : "text-stone-400 hover:text-stone-600"
+        }`}
+      >
+        IT
+      </button>
+    </div>
+  );
+}
+
 export default function Bambina() {
   const { isAuthenticated, user } = useAuth();
   const [activeTab, setActiveTab] = useState<TabId>("countdown");
   const contentRef = useRef<HTMLDivElement>(null);
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("bambina-lang") as Lang) || "en";
+    }
+    return "en";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("bambina-lang", lang);
+  }, [lang]);
 
   const handleTabChange = useCallback((tab: TabId) => {
     setActiveTab(tab);
@@ -954,6 +1081,7 @@ export default function Bambina() {
   }, []);
 
   return (
+    <LangContext.Provider value={{ lang, setLang }}>
     <div className="min-h-screen bg-warm-cream">
       <StickyNav activeTab={activeTab} onTabChange={handleTabChange} />
       <HeroBanner />
@@ -965,12 +1093,12 @@ export default function Bambina() {
             href={getLoginUrl()}
             className="font-nunito text-xs text-terracotta hover:text-burnt-orange underline transition-colors"
           >
-            Sign in to edit & sync →
+            <T k="auth.signIn" />
           </a>
         )}
         {isAuthenticated && user && (
           <p className="font-nunito text-xs text-stone-400">
-            Signed in as {user.name || user.email || "User"} ✓
+            <T k="auth.signedAs" /> {user.name || user.email || "User"} ✓
           </p>
         )}
       </div>
@@ -991,12 +1119,13 @@ export default function Bambina() {
       {/* Footer */}
       <div className="text-center py-10">
         <p className="font-nunito text-xs text-stone-300">
-          Made with love for our bambina 🇲🇽 🇬🇧 🇮🇹
+          <T k="footer.text" /> 🇲🇽 🇬🇧 🇮🇹
         </p>
       </div>
 
       {/* Bottom tile border */}
       <div className="h-3 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
     </div>
+    </LangContext.Provider>
   );
 }

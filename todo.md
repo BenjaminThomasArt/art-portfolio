@@ -559,3 +559,4 @@
 - [x] Design polish pass on Bambina page: consistent spacing, typography, colors, and component styling across all tabs
 - [x] Fix payment dates placement to be uniform (inline with title using · separator)
 - [x] Add expand/collapse functionality to To Buy section categories
+- [x] Add English/Italian language toggle to Bambina pages with translated UI text
