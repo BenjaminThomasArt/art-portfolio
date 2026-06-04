@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
@@ -79,7 +79,7 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
 // ============ HERO BANNER ============
 function HeroBanner() {
   return (
-    <div className="relative h-48 md:h-64 overflow-hidden">
+    <div className="relative h-32 md:h-56 overflow-hidden">
       {/* Mexican tile top border */}
       <div className="absolute top-0 left-0 right-0 h-4 z-10 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
       <img
@@ -869,15 +869,23 @@ function Resources() {
 export default function Bambina() {
   const { isAuthenticated, user } = useAuth();
   const [activeTab, setActiveTab] = useState<TabId>("timeline");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleTabChange = useCallback((tab: TabId) => {
+    setActiveTab(tab);
+    // Scroll content into view after tab switch (especially important on mobile)
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 100);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
-      <StickyNav activeTab={activeTab} onTabChange={setActiveTab} />
+      <StickyNav activeTab={activeTab} onTabChange={handleTabChange} />
       <HeroBanner />
-      <PapelPicado />
 
-      {/* Auth status */}
-      <div className="text-center py-2">
+      {/* Auth status - compact */}
+      <div className="text-center py-1">
         {!isAuthenticated && (
           <a
             href={getLoginUrl()}
@@ -893,15 +901,18 @@ export default function Bambina() {
         )}
       </div>
 
-      <ProgressCard />
+      {/* Progress card only on timeline/countdown tabs */}
+      {(activeTab === "timeline" || activeTab === "countdown") && <ProgressCard />}
 
       {/* Tab Content */}
+      <div ref={contentRef} className="scroll-mt-16">
       {activeTab === "countdown" && <Countdown />}
       {activeTab === "timeline" && <WeekTimeline />}
       {activeTab === "payments" && <Payments />}
       {activeTab === "shopping" && <ShoppingList />}
       {activeTab === "contacts" && <Contacts />}
       {activeTab === "notes" && <Notes />}
+      </div>
 
       <Resources />
 
