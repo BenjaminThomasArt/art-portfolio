@@ -88,7 +88,7 @@ function HeroBanner() {
         className="w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-4">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
         <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
           Ben & Fed's<br />Mexico Adventure
         </h1>
