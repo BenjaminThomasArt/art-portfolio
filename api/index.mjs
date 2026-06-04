@@ -8,120 +8,9 @@ var __export = (target, all) => {
     __defProp(target, name, { get: all[name], enumerable: true });
 };
 
-// server/_core/env.ts
-var ENV;
-var init_env = __esm({
-  "server/_core/env.ts"() {
-    "use strict";
-    ENV = {
-      appId: process.env.VITE_APP_ID ?? "",
-      cookieSecret: process.env.JWT_SECRET ?? "",
-      databaseUrl: process.env.DATABASE_URL ?? "",
-      oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
-      ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
-      isProduction: process.env.NODE_ENV === "production",
-      forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
-      forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? ""
-    };
-  }
-});
-
-// server/_core/notification.ts
-var notification_exports = {};
-__export(notification_exports, {
-  notifyOwner: () => notifyOwner
-});
-import { TRPCError } from "@trpc/server";
-async function notifyOwner(payload) {
-  const { title, content } = validatePayload(payload);
-  if (!ENV.forgeApiUrl) {
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: "Notification service URL is not configured."
-    });
-  }
-  if (!ENV.forgeApiKey) {
-    throw new TRPCError({
-      code: "INTERNAL_SERVER_ERROR",
-      message: "Notification service API key is not configured."
-    });
-  }
-  const endpoint = buildEndpointUrl(ENV.forgeApiUrl);
-  try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        authorization: `Bearer ${ENV.forgeApiKey}`,
-        "content-type": "application/json",
-        "connect-protocol-version": "1"
-      },
-      body: JSON.stringify({ title, content })
-    });
-    if (!response.ok) {
-      const detail = await response.text().catch(() => "");
-      console.warn(
-        `[Notification] Failed to notify owner (${response.status} ${response.statusText})${detail ? `: ${detail}` : ""}`
-      );
-      return false;
-    }
-    return true;
-  } catch (error) {
-    console.warn("[Notification] Error calling notification service:", error);
-    return false;
-  }
-}
-var TITLE_MAX_LENGTH, CONTENT_MAX_LENGTH, trimValue, isNonEmptyString, buildEndpointUrl, validatePayload;
-var init_notification = __esm({
-  "server/_core/notification.ts"() {
-    "use strict";
-    init_env();
-    TITLE_MAX_LENGTH = 1200;
-    CONTENT_MAX_LENGTH = 2e4;
-    trimValue = (value) => value.trim();
-    isNonEmptyString = (value) => typeof value === "string" && value.trim().length > 0;
-    buildEndpointUrl = (baseUrl) => {
-      const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-      return new URL(
-        "webdevtoken.v1.WebDevService/SendNotification",
-        normalizedBase
-      ).toString();
-    };
-    validatePayload = (input) => {
-      if (!isNonEmptyString(input.title)) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Notification title is required."
-        });
-      }
-      if (!isNonEmptyString(input.content)) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Notification content is required."
-        });
-      }
-      const title = trimValue(input.title);
-      const content = trimValue(input.content);
-      if (title.length > TITLE_MAX_LENGTH) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: `Notification title must be at most ${TITLE_MAX_LENGTH} characters.`
-        });
-      }
-      if (content.length > CONTENT_MAX_LENGTH) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: `Notification content must be at most ${CONTENT_MAX_LENGTH} characters.`
-        });
-      }
-      return { title, content };
-    };
-  }
-});
-
 // drizzle/schema.ts
 import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
-var users, artworks, inquiries, artistInfo, prints;
+var users, artworks, inquiries, artistInfo, prints, orders, bambinaChecklist, bambinaShopping, bambinaNotes, bambinaPayments;
 var init_schema = __esm({
   "drizzle/schema.ts"() {
     "use strict";
@@ -207,10 +96,116 @@ var init_schema = __esm({
       // 0 = unavailable, 1 = available
       isDiptych: int("is_diptych").default(0).notNull(),
       // 0 = single piece, 1 = diptych (two panels)
+      panelCount: int("panel_count").default(1).notNull(),
+      // 1 = single, 2 = diptych, 3 = triptych
       displayOrder: int("display_order").default(0).notNull(),
       createdAt: timestamp("created_at").defaultNow().notNull(),
       updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
     });
+    orders = mysqlTable("orders", {
+      id: int("id").autoincrement().primaryKey(),
+      orderRef: varchar("order_ref", { length: 20 }).notNull().unique(),
+      /** Buyer details */
+      buyerName: varchar("buyer_name", { length: 255 }).notNull(),
+      buyerEmail: varchar("buyer_email", { length: 320 }).notNull(),
+      buyerPhone: varchar("buyer_phone", { length: 50 }),
+      /** Shipping address */
+      addressLine1: varchar("address_line1", { length: 255 }).notNull(),
+      addressLine2: varchar("address_line2", { length: 255 }),
+      city: varchar("city", { length: 100 }).notNull(),
+      county: varchar("county", { length: 100 }),
+      postcode: varchar("postcode", { length: 20 }).notNull(),
+      country: varchar("country", { length: 100 }).notNull(),
+      /** Item details */
+      section: mysqlEnum("section", ["prints", "upcycles"]).notNull(),
+      itemTitle: varchar("item_title", { length: 255 }).notNull(),
+      itemDetails: text("item_details"),
+      // material, size, panel selection etc.
+      price: varchar("price", { length: 50 }).notNull(),
+      /** Order status */
+      status: mysqlEnum("status", ["pending", "paid", "shipped", "delivered", "cancelled"]).default("pending").notNull(),
+      notes: text("notes"),
+      createdAt: timestamp("created_at").defaultNow().notNull(),
+      updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+    });
+    bambinaChecklist = mysqlTable("bambina_checklist", {
+      id: int("id").autoincrement().primaryKey(),
+      category: varchar("category", { length: 100 }).notNull(),
+      // e.g., "legal", "medical", "travel", "financial", "nursery"
+      phase: varchar("phase", { length: 100 }).notNull(),
+      // e.g., "first_trimester", "second_trimester", "third_trimester", "post_birth"
+      title: varchar("title", { length: 500 }).notNull(),
+      description: text("description"),
+      completed: int("completed").default(0).notNull(),
+      // 0 = pending, 1 = completed
+      notes: text("notes"),
+      snoozedWeeks: int("snoozed_weeks").default(0).notNull(),
+      dueWeek: int("due_week"),
+      // week of gestation when this is due
+      sortOrder: int("sort_order").default(0).notNull(),
+      createdAt: timestamp("created_at").defaultNow().notNull(),
+      updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+    });
+    bambinaShopping = mysqlTable("bambina_shopping", {
+      id: int("id").autoincrement().primaryKey(),
+      category: varchar("category", { length: 100 }).notNull(),
+      // e.g., "feeding", "sleeping", "clothing", "travel", "bath", "health"
+      title: varchar("title", { length: 500 }).notNull(),
+      notes: text("notes"),
+      // e.g., "provided by MSJ", price info, links
+      purchased: int("purchased").default(0).notNull(),
+      // 0 = not purchased, 1 = purchased
+      sortOrder: int("sort_order").default(0).notNull(),
+      createdAt: timestamp("created_at").defaultNow().notNull(),
+      updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+    });
+    bambinaNotes = mysqlTable("bambina_notes", {
+      id: int("id").autoincrement().primaryKey(),
+      category: varchar("category", { length: 100 }).notNull(),
+      // e.g., "general", "medical", "travel", "questions"
+      title: varchar("title", { length: 255 }),
+      content: text("content").notNull(),
+      createdAt: timestamp("created_at").defaultNow().notNull(),
+      updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+    });
+    bambinaPayments = mysqlTable("bambina_payments", {
+      id: int("id").autoincrement().primaryKey(),
+      category: varchar("category", { length: 100 }).notNull(),
+      // e.g., "agency", "legal", "medical", "surrogate", "travel"
+      description: varchar("description", { length: 500 }).notNull(),
+      amount: varchar("amount", { length: 100 }).notNull(),
+      // e.g., "USD $15,500" or "MXN $28,000"
+      currency: varchar("currency", { length: 10 }).notNull(),
+      // "USD", "MXN", "GBP"
+      amountNumeric: int("amount_numeric"),
+      // numeric value in smallest unit for sorting/totals
+      dueMonth: varchar("due_month", { length: 50 }),
+      // e.g., "Month 10", "Week 16"
+      paid: int("paid").default(0).notNull(),
+      // 0 = unpaid, 1 = paid
+      paidDate: timestamp("paid_date"),
+      sortOrder: int("sort_order").default(0).notNull(),
+      createdAt: timestamp("created_at").defaultNow().notNull(),
+      updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull()
+    });
+  }
+});
+
+// server/_core/env.ts
+var ENV;
+var init_env = __esm({
+  "server/_core/env.ts"() {
+    "use strict";
+    ENV = {
+      appId: process.env.VITE_APP_ID ?? "",
+      cookieSecret: process.env.JWT_SECRET ?? "",
+      databaseUrl: process.env.DATABASE_URL ?? "",
+      oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
+      ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
+      isProduction: process.env.NODE_ENV === "production",
+      forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
+      forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? ""
+    };
   }
 });
 
@@ -219,20 +214,25 @@ var db_exports = {};
 __export(db_exports, {
   createArtwork: () => createArtwork,
   createInquiry: () => createInquiry,
+  createOrder: () => createOrder,
   createPrint: () => createPrint,
   deleteArtwork: () => deleteArtwork,
   getAllArtworks: () => getAllArtworks,
   getAllInquiries: () => getAllInquiries,
+  getAllOrders: () => getAllOrders,
   getAllPrints: () => getAllPrints,
   getArtistInfo: () => getArtistInfo,
   getArtworkById: () => getArtworkById,
   getDb: () => getDb,
   getFeaturedArtworks: () => getFeaturedArtworks,
+  getOrderById: () => getOrderById,
+  getOrderByRef: () => getOrderByRef,
   getPrintById: () => getPrintById,
   getShopArtworks: () => getShopArtworks,
   getUserByOpenId: () => getUserByOpenId,
   updateArtwork: () => updateArtwork,
   updateInquiryStatus: () => updateInquiryStatus,
+  updateOrderStatus: () => updateOrderStatus,
   upsertArtistInfo: () => upsertArtistInfo,
   upsertUser: () => upsertUser
 });
@@ -388,6 +388,7 @@ async function getAllPrints() {
     sizeInfo: prints.sizeInfo,
     available: prints.available,
     isDiptych: prints.isDiptych,
+    panelCount: prints.panelCount,
     displayOrder: prints.displayOrder,
     createdAt: prints.createdAt,
     galleryImages: prints.galleryImages,
@@ -407,6 +408,44 @@ async function createPrint(print) {
   const result = await db.insert(prints).values(print);
   return result;
 }
+function generateOrderRef() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const prefix = "BT";
+  let ref = "";
+  for (let i = 0; i < 6; i++) {
+    ref += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return `${prefix}-${ref}`;
+}
+async function createOrder(order) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const orderRef = generateOrderRef();
+  await db.insert(orders).values({ ...order, orderRef });
+  return { orderRef };
+}
+async function getOrderByRef(orderRef) {
+  const db = await getDb();
+  if (!db) return void 0;
+  const result = await db.select().from(orders).where(eq(orders.orderRef, orderRef)).limit(1);
+  return result.length > 0 ? result[0] : void 0;
+}
+async function getAllOrders() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(orders).orderBy(orders.createdAt);
+}
+async function getOrderById(id) {
+  const db = await getDb();
+  if (!db) return null;
+  const [order] = await db.select().from(orders).where(eq(orders.id, id));
+  return order || null;
+}
+async function updateOrderStatus(id, status) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(orders).set({ status }).where(eq(orders.id, id));
+}
 var _db;
 var init_db = __esm({
   "server/db.ts"() {
@@ -417,7 +456,674 @@ var init_db = __esm({
   }
 });
 
-// api/index.ts
+// server/_core/notification.ts
+var notification_exports = {};
+__export(notification_exports, {
+  notifyOwner: () => notifyOwner
+});
+import { TRPCError } from "@trpc/server";
+async function notifyOwner(payload) {
+  const { title, content } = validatePayload(payload);
+  if (!ENV.forgeApiUrl) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Notification service URL is not configured."
+    });
+  }
+  if (!ENV.forgeApiKey) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Notification service API key is not configured."
+    });
+  }
+  const endpoint = buildEndpointUrl(ENV.forgeApiUrl);
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        authorization: `Bearer ${ENV.forgeApiKey}`,
+        "content-type": "application/json",
+        "connect-protocol-version": "1"
+      },
+      body: JSON.stringify({ title, content })
+    });
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      console.warn(
+        `[Notification] Failed to notify owner (${response.status} ${response.statusText})${detail ? `: ${detail}` : ""}`
+      );
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.warn("[Notification] Error calling notification service:", error);
+    return false;
+  }
+}
+var TITLE_MAX_LENGTH, CONTENT_MAX_LENGTH, trimValue, isNonEmptyString2, buildEndpointUrl, validatePayload;
+var init_notification = __esm({
+  "server/_core/notification.ts"() {
+    "use strict";
+    init_env();
+    TITLE_MAX_LENGTH = 1200;
+    CONTENT_MAX_LENGTH = 2e4;
+    trimValue = (value) => value.trim();
+    isNonEmptyString2 = (value) => typeof value === "string" && value.trim().length > 0;
+    buildEndpointUrl = (baseUrl) => {
+      const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+      return new URL(
+        "webdevtoken.v1.WebDevService/SendNotification",
+        normalizedBase
+      ).toString();
+    };
+    validatePayload = (input) => {
+      if (!isNonEmptyString2(input.title)) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Notification title is required."
+        });
+      }
+      if (!isNonEmptyString2(input.content)) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Notification content is required."
+        });
+      }
+      const title = trimValue(input.title);
+      const content = trimValue(input.content);
+      if (title.length > TITLE_MAX_LENGTH) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `Notification title must be at most ${TITLE_MAX_LENGTH} characters.`
+        });
+      }
+      if (content.length > CONTENT_MAX_LENGTH) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `Notification content must be at most ${CONTENT_MAX_LENGTH} characters.`
+        });
+      }
+      return { title, content };
+    };
+  }
+});
+
+// server/bambina-db.ts
+var bambina_db_exports = {};
+__export(bambina_db_exports, {
+  createChecklistItem: () => createChecklistItem,
+  createNote: () => createNote,
+  createPayment: () => createPayment,
+  createShoppingItem: () => createShoppingItem,
+  deleteNote: () => deleteNote,
+  getAllChecklistItems: () => getAllChecklistItems,
+  getAllNotes: () => getAllNotes,
+  getAllPayments: () => getAllPayments,
+  getAllShoppingItems: () => getAllShoppingItems,
+  snoozeChecklistItem: () => snoozeChecklistItem,
+  toggleChecklistItem: () => toggleChecklistItem,
+  togglePayment: () => togglePayment,
+  toggleShoppingItem: () => toggleShoppingItem,
+  updateChecklistNotes: () => updateChecklistNotes,
+  updateNote: () => updateNote
+});
+import { eq as eq2 } from "drizzle-orm";
+async function getAllChecklistItems() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(bambinaChecklist).orderBy(bambinaChecklist.phase, bambinaChecklist.sortOrder);
+}
+async function toggleChecklistItem(id, completed) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaChecklist).set({ completed: completed ? 1 : 0 }).where(eq2(bambinaChecklist.id, id));
+}
+async function updateChecklistNotes(id, notes) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaChecklist).set({ notes }).where(eq2(bambinaChecklist.id, id));
+}
+async function snoozeChecklistItem(id, weeks) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaChecklist).set({ snoozedWeeks: weeks }).where(eq2(bambinaChecklist.id, id));
+}
+async function createChecklistItem(item) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(bambinaChecklist).values(item);
+}
+async function getAllShoppingItems() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(bambinaShopping).orderBy(bambinaShopping.category, bambinaShopping.sortOrder);
+}
+async function toggleShoppingItem(id, purchased) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaShopping).set({ purchased: purchased ? 1 : 0 }).where(eq2(bambinaShopping.id, id));
+}
+async function createShoppingItem(item) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(bambinaShopping).values(item);
+}
+async function getAllNotes() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(bambinaNotes).orderBy(bambinaNotes.category, bambinaNotes.createdAt);
+}
+async function createNote(note) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(bambinaNotes).values(note);
+}
+async function updateNote(id, data) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaNotes).set(data).where(eq2(bambinaNotes.id, id));
+}
+async function deleteNote(id) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(bambinaNotes).where(eq2(bambinaNotes.id, id));
+}
+async function getAllPayments() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(bambinaPayments).orderBy(bambinaPayments.sortOrder);
+}
+async function togglePayment(id, paid) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(bambinaPayments).set({ paid: paid ? 1 : 0, paidDate: paid ? /* @__PURE__ */ new Date() : null }).where(eq2(bambinaPayments.id, id));
+}
+async function createPayment(payment) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(bambinaPayments).values(payment);
+}
+var init_bambina_db = __esm({
+  "server/bambina-db.ts"() {
+    "use strict";
+    init_schema();
+    init_db();
+  }
+});
+
+// server/email.ts
+var email_exports = {};
+__export(email_exports, {
+  sendOrderConfirmation: () => sendOrderConfirmation,
+  sendOrderStatusUpdate: () => sendOrderStatusUpdate,
+  sendOwnerEnquiryNotification: () => sendOwnerEnquiryNotification,
+  sendOwnerOrderNotification: () => sendOwnerOrderNotification
+});
+import nodemailer from "nodemailer";
+async function sendOrderStatusUpdate(data) {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const isShipped = data.newStatus === "shipped";
+  const subject = isShipped ? `Your order ${data.orderRef} has been shipped` : `Your order ${data.orderRef} has been delivered`;
+  const heading = isShipped ? "Your artwork is on its way" : "Your artwork has been delivered";
+  const bodyText = isShipped ? `Great news! Your order <strong style="color:#003153;">${data.orderRef}</strong> for '${data.itemTitle}' has been shipped and is on its way to you.${data.trackingNumber ? ` Your tracking number is <strong>${data.trackingNumber}</strong>.` : ""}` : `Your order <strong style="color:#003153;">${data.orderRef}</strong> for '${data.itemTitle}' has been marked as delivered. We hope you love your new artwork!`;
+  const plainBody = isShipped ? `Great news! Your order ${data.orderRef} for '${data.itemTitle}' has been shipped and is on its way to you.${data.trackingNumber ? ` Your tracking number is ${data.trackingNumber}.` : ""}` : `Your order ${data.orderRef} for '${data.itemTitle}' has been marked as delivered. We hope you love your new artwork!`;
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Fine art &amp; more</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <div style="text-align:center;margin-bottom:24px;">
+                <div style="display:inline-block;width:48px;height:48px;border-radius:50%;background-color:${isShipped ? "#f0e6ff" : "#e6f7e6"};line-height:48px;font-size:24px;">${isShipped ? "\u{1F4E6}" : "\u2705"}</div>
+              </div>
+              <h2 style="margin:0 0 12px;font-size:20px;font-weight:normal;color:#003153;text-align:center;">${heading}</h2>
+              <p style="margin:0;font-size:14px;color:#666;line-height:1.6;text-align:center;">
+                Dear ${data.buyerName},
+              </p>
+              <p style="margin:12px 0 0;font-size:14px;color:#666;line-height:1.6;text-align:center;">
+                ${bodyText}
+              </p>
+            </td>
+          </tr>
+          ${!isShipped ? `
+          <tr>
+            <td style="padding:0 40px 32px;">
+              <div style="padding:16px;background-color:#f0f7ff;border:1px solid #d0e3f0;border-radius:4px;text-align:center;">
+                <p style="margin:0;font-size:13px;color:#003153;line-height:1.6;">
+                  If you love your artwork, we'd really appreciate it if you shared a photo of it in your space. Tag us on Instagram!
+                </p>
+              </div>
+            </td>
+          </tr>` : ""}
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#888;line-height:1.6;">
+                If you have any questions about your order, please reply to this email or get in touch via WhatsApp at +44 7597 765530.
+              </p>
+              <p style="margin:12px 0 0;font-size:12px;color:#aaa;">
+                &copy; Benjamin Thomas Art
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+  const textContent = `
+${heading}
+
+Dear ${data.buyerName},
+
+${plainBody}
+
+If you have any questions, reply to this email or contact via WhatsApp at +44 7597 765530.
+
+Benjamin Thomas Art
+`;
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: data.buyerEmail,
+      subject,
+      text: textContent.trim(),
+      html: htmlContent
+    });
+    console.log(`[Email] Status update (${data.newStatus}) sent to ${data.buyerEmail} for ${data.orderRef}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send status update:", error);
+    return false;
+  }
+}
+async function sendOwnerEnquiryNotification(data) {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const ownerEmail = process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const typeLabel = data.type === "print" ? "Print enquiry" : data.type === "commission" ? "Commission enquiry" : "Contact enquiry";
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas Art</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Website notification</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <h2 style="margin:0 0 16px;font-size:20px;font-weight:normal;color:#003153;">New ${typeLabel}</h2>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;background-color:#fafaf8;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">From</p>
+                    <p style="margin:0;font-size:14px;color:#333;">${data.name} (${data.email})${data.phone ? ` \u2014 ${data.phone}` : ""}</p>
+                  </td>
+                </tr>
+                ${data.artworkTitle ? `<tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Artwork</p>
+                    <p style="margin:0;font-size:14px;color:#333;">'${data.artworkTitle}'</p>
+                  </td>
+                </tr>` : ""}
+                <tr>
+                  <td style="padding:12px 16px;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Message</p>
+                    <p style="margin:0;font-size:14px;color:#333;line-height:1.6;">${data.message.replace(/\n/g, "<br>")}</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:16px 0 0;font-size:13px;color:#666;">Reply directly to this email to respond to ${data.name}.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#aaa;">&copy; Benjamin Thomas Art \u2014 Website Notification</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+  const textContent = `New ${typeLabel}
+
+From: ${data.name} (${data.email})${data.phone ? ` \u2014 ${data.phone}` : ""}${data.artworkTitle ? `
+Artwork: '${data.artworkTitle}'` : ""}
+
+Message:
+${data.message}
+
+Reply to this email to respond to ${data.name}.`;
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: ownerEmail,
+      replyTo: data.email,
+      subject: `${typeLabel} from ${data.name}`,
+      text: textContent,
+      html: htmlContent
+    });
+    console.log(`[Email] Owner enquiry notification sent for ${typeLabel} from ${data.name}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send owner enquiry notification:", error);
+    return false;
+  }
+}
+async function sendOwnerOrderNotification(data) {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const ownerEmail = process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const shippingZoneLabel = data.shippingZone === "uk" ? "UK" : data.shippingZone === "europe" ? "Europe" : "Rest of World";
+  const addressParts = [data.addressLine1, data.addressLine2, data.city, data.county, data.postcode, data.country].filter(Boolean);
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas Art</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Website notification</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;">
+              <h2 style="margin:0 0 16px;font-size:20px;font-weight:normal;color:#003153;">\u{1F4B0} New Order \u2014 ${data.orderRef}</h2>
+              <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;background-color:#fafaf8;">
+                    <p style="margin:0 0 2px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Item</p>
+                    <p style="margin:0;font-size:15px;color:#333;">'${data.itemTitle}'</p>
+                    <p style="margin:4px 0 0;font-size:13px;color:#666;">${data.itemDetails}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:13px;color:#666;">Item price</td><td align="right" style="font-size:13px;color:#333;">${data.itemPrice}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:13px;color:#666;">Delivery (${shippingZoneLabel})</td><td align="right" style="font-size:13px;color:#333;">${data.shippingCost}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;background-color:#fafaf8;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr><td style="font-size:14px;font-weight:bold;color:#003153;">Total</td><td align="right" style="font-size:14px;font-weight:bold;color:#003153;">${data.totalPrice}</td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <div style="margin-top:20px;">
+                <p style="margin:0 0 4px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Buyer</p>
+                <p style="margin:0;font-size:14px;color:#333;">${data.buyerName} (${data.buyerEmail})${data.buyerPhone ? ` \u2014 ${data.buyerPhone}` : ""}</p>
+              </div>
+              <div style="margin-top:16px;">
+                <p style="margin:0 0 4px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Ship to</p>
+                <p style="margin:0;font-size:14px;color:#333;line-height:1.6;">${addressParts.join("<br>")}</p>
+              </div>
+              <div style="margin-top:20px;padding:16px;background-color:#fff8e1;border:1px solid #ffe082;border-radius:4px;">
+                <p style="margin:0;font-size:13px;color:#333;line-height:1.6;">Check your PayPal for the incoming payment. The buyer has been asked to include <strong>${data.orderRef}</strong> in the payment note.</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#aaa;">&copy; Benjamin Thomas Art \u2014 Website Notification</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+  const textContent = `New Order \u2014 ${data.orderRef}
+
+Item: '${data.itemTitle}'
+Details: ${data.itemDetails}
+Item price: ${data.itemPrice}
+Delivery (${shippingZoneLabel}): ${data.shippingCost}
+Total: ${data.totalPrice}
+
+Buyer: ${data.buyerName} (${data.buyerEmail})${data.buyerPhone ? ` \u2014 ${data.buyerPhone}` : ""}
+
+Ship to:
+${addressParts.join("\n")}
+
+Check your PayPal for the incoming payment.`;
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: ownerEmail,
+      replyTo: data.buyerEmail,
+      subject: `New order ${data.orderRef}: '${data.itemTitle}'`,
+      text: textContent,
+      html: htmlContent
+    });
+    console.log(`[Email] Owner order notification sent for ${data.orderRef}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send owner order notification:", error);
+    return false;
+  }
+}
+async function sendOrderConfirmation(data) {
+  const fromEmail = process.env.SMTP_USER || process.env.CONTACT_EMAIL || "benjaminthomasart@mail.com";
+  const shippingZoneLabel = data.shippingZone === "uk" ? "UK" : data.shippingZone === "europe" ? "Europe" : "Rest of World";
+  const addressParts = [
+    data.addressLine1,
+    data.addressLine2,
+    data.city,
+    data.county,
+    data.postcode,
+    data.country
+  ].filter(Boolean);
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f3f0;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3f0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e5e5e5;">
+          <!-- Header -->
+          <tr>
+            <td style="padding:32px 40px 24px;border-bottom:1px solid #e5e5e5;">
+              <h1 style="margin:0;font-size:24px;font-weight:normal;color:#003153;font-family:Georgia,'Times New Roman',serif;">Benjamin Thomas</h1>
+              <p style="margin:4px 0 0;font-size:13px;color:#888;">Fine art &amp; more</p>
+            </td>
+          </tr>
+          
+          <!-- Confirmation -->
+          <tr>
+            <td style="padding:32px 40px 16px;">
+              <h2 style="margin:0 0 8px;font-size:20px;font-weight:normal;color:#003153;">Order confirmed</h2>
+              <p style="margin:0;font-size:14px;color:#666;line-height:1.6;">
+                Thank you for your order, ${data.buyerName}. Your order reference is <strong style="color:#003153;">${data.orderRef}</strong>.
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Order Details -->
+          <tr>
+            <td style="padding:16px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;">
+                <tr>
+                  <td style="padding:16px;border-bottom:1px solid #e5e5e5;background-color:#fafaf8;">
+                    <p style="margin:0 0 4px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Item</p>
+                    <p style="margin:0;font-size:15px;color:#333;">'${data.itemTitle}'</p>
+                    <p style="margin:4px 0 0;font-size:13px;color:#666;">${data.itemDetails}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="font-size:13px;color:#666;">Item price</td>
+                        <td align="right" style="font-size:13px;color:#333;">${data.itemPrice}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;border-bottom:1px solid #e5e5e5;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="font-size:13px;color:#666;">Delivery (${shippingZoneLabel})</td>
+                        <td align="right" style="font-size:13px;color:#333;">${data.shippingCost}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:12px 16px;background-color:#fafaf8;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="font-size:14px;font-weight:bold;color:#003153;">Total</td>
+                        <td align="right" style="font-size:14px;font-weight:bold;color:#003153;">${data.totalPrice}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Shipping Address -->
+          <tr>
+            <td style="padding:16px 40px;">
+              <p style="margin:0 0 8px;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Shipping to</p>
+              <p style="margin:0;font-size:14px;color:#333;line-height:1.6;">
+                ${addressParts.join("<br>")}
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Payment Note -->
+          <tr>
+            <td style="padding:16px 40px 32px;">
+              <div style="padding:16px;background-color:#f0f7ff;border:1px solid #d0e3f0;border-radius:4px;">
+                <p style="margin:0;font-size:13px;color:#003153;line-height:1.6;">
+                  Please include your order reference <strong>${data.orderRef}</strong> in the PayPal payment note so we can match your payment to this order. Once payment is confirmed, we'll begin preparing your artwork for dispatch.
+                </p>
+              </div>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="padding:24px 40px;border-top:1px solid #e5e5e5;background-color:#fafaf8;">
+              <p style="margin:0;font-size:12px;color:#888;line-height:1.6;">
+                If you have any questions about your order, please reply to this email or get in touch via WhatsApp at +44 7597 765530.
+              </p>
+              <p style="margin:12px 0 0;font-size:12px;color:#aaa;">
+                &copy; Benjamin Thomas Art
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+  const textContent = `
+Order Confirmation \u2014 ${data.orderRef}
+
+Thank you for your order, ${data.buyerName}.
+
+Order Reference: ${data.orderRef}
+
+Item: '${data.itemTitle}'
+Details: ${data.itemDetails}
+Item price: ${data.itemPrice}
+Delivery (${shippingZoneLabel}): ${data.shippingCost}
+Total: ${data.totalPrice}
+
+Shipping to:
+${addressParts.join("\n")}
+
+Please include your order reference ${data.orderRef} in the PayPal payment note so we can match your payment to this order. Once payment is confirmed, we'll begin preparing your artwork for dispatch.
+
+If you have any questions, reply to this email or contact via WhatsApp at +44 7597 765530.
+
+Benjamin Thomas Art
+`;
+  try {
+    await transporter.sendMail({
+      from: `"Benjamin Thomas Art" <${fromEmail}>`,
+      to: data.buyerEmail,
+      subject: `Order confirmation \u2014 ${data.orderRef}`,
+      text: textContent.trim(),
+      html: htmlContent
+    });
+    console.log(`[Email] Order confirmation sent to ${data.buyerEmail} for ${data.orderRef}`);
+    return true;
+  } catch (error) {
+    console.error("[Email] Failed to send order confirmation:", error);
+    return false;
+  }
+}
+var transporter;
+var init_email = __esm({
+  "server/email.ts"() {
+    "use strict";
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || "smtp.mail.com",
+      port: parseInt(process.env.SMTP_PORT || "465"),
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER || "",
+        pass: process.env.SMTP_PASS || ""
+      }
+    });
+  }
+});
+
+// server/api-entry.ts
 import "dotenv/config";
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -428,6 +1134,9 @@ var ONE_YEAR_MS = 1e3 * 60 * 60 * 24 * 365;
 var AXIOS_TIMEOUT_MS = 3e4;
 var UNAUTHED_ERR_MSG = "Please login (10001)";
 var NOT_ADMIN_ERR_MSG = "You do not have required permission (10002)";
+
+// server/_core/oauth.ts
+init_db();
 
 // server/_core/cookies.ts
 function isSecureRequest(req) {
@@ -446,168 +1155,6 @@ function getSessionCookieOptions(req) {
   };
 }
 
-// server/_core/systemRouter.ts
-init_notification();
-import { z } from "zod";
-
-// server/_core/trpc.ts
-import { initTRPC, TRPCError as TRPCError2 } from "@trpc/server";
-import superjson from "superjson";
-var t = initTRPC.context().create({
-  transformer: superjson
-});
-var router = t.router;
-var publicProcedure = t.procedure;
-var requireUser = t.middleware(async (opts) => {
-  const { ctx, next } = opts;
-  if (!ctx.user) {
-    throw new TRPCError2({ code: "UNAUTHORIZED", message: UNAUTHED_ERR_MSG });
-  }
-  return next({
-    ctx: {
-      ...ctx,
-      user: ctx.user
-    }
-  });
-});
-var protectedProcedure = t.procedure.use(requireUser);
-var adminProcedure = t.procedure.use(
-  t.middleware(async (opts) => {
-    const { ctx, next } = opts;
-    if (!ctx.user || ctx.user.role !== "admin") {
-      throw new TRPCError2({ code: "FORBIDDEN", message: NOT_ADMIN_ERR_MSG });
-    }
-    return next({
-      ctx: {
-        ...ctx,
-        user: ctx.user
-      }
-    });
-  })
-);
-
-// server/_core/systemRouter.ts
-var systemRouter = router({
-  health: publicProcedure.input(
-    z.object({
-      timestamp: z.number().min(0, "timestamp cannot be negative")
-    })
-  ).query(() => ({
-    ok: true
-  })),
-  notifyOwner: adminProcedure.input(
-    z.object({
-      title: z.string().min(1, "title is required"),
-      content: z.string().min(1, "content is required")
-    })
-  ).mutation(async ({ input }) => {
-    const delivered = await notifyOwner(input);
-    return {
-      success: delivered
-    };
-  })
-});
-
-// server/routers.ts
-import { z as z2 } from "zod";
-var appRouter = router({
-  // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
-  system: systemRouter,
-  auth: router({
-    me: publicProcedure.query((opts) => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true
-      };
-    })
-  }),
-  // Public artwork routes
-  artworks: router({
-    getAll: publicProcedure.query(async () => {
-      const { getAllArtworks: getAllArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getAllArtworks2();
-    }),
-    getFeatured: publicProcedure.query(async () => {
-      const { getFeaturedArtworks: getFeaturedArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getFeaturedArtworks2();
-    }),
-    getById: publicProcedure.input(z2.object({ id: z2.number() })).query(async ({ input }) => {
-      const { getArtworkById: getArtworkById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getArtworkById2(input.id);
-    }),
-    updateDisplayOrder: protectedProcedure.input(
-      z2.object({
-        artworkId: z2.number(),
-        newDisplayOrder: z2.number()
-      })
-    ).mutation(async ({ input, ctx }) => {
-      if (ctx.user?.role !== "admin") {
-        throw new Error("Unauthorized");
-      }
-      const { updateArtwork: updateArtwork2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      await updateArtwork2(input.artworkId, { displayOrder: input.newDisplayOrder });
-      return { success: true };
-    })
-  }),
-  // Shop routes
-  shop: router({
-    getArtworks: publicProcedure.query(async () => {
-      const { getShopArtworks: getShopArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getShopArtworks2();
-    })
-  }),
-  // Prints routes
-  prints: router({
-    getAll: publicProcedure.query(async () => {
-      const { getAllPrints: getAllPrints2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getAllPrints2();
-    }),
-    getById: publicProcedure.input(z2.object({ id: z2.number() })).query(async ({ input }) => {
-      const { getPrintById: getPrintById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getPrintById2(input.id);
-    })
-  }),
-  // Artist info routes
-  artist: router({
-    getInfo: publicProcedure.query(async () => {
-      const { getArtistInfo: getArtistInfo2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return getArtistInfo2();
-    })
-  }),
-  // Inquiry routes
-  inquiries: router({
-    submit: publicProcedure.input(
-      z2.object({
-        type: z2.enum(["contact", "print", "commission"]),
-        name: z2.string().min(1),
-        email: z2.string().email(),
-        phone: z2.string().optional(),
-        message: z2.string().min(1),
-        artworkId: z2.number().optional()
-      })
-    ).mutation(async ({ input }) => {
-      const { createInquiry: createInquiry2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { notifyOwner: notifyOwner2 } = await Promise.resolve().then(() => (init_notification(), notification_exports));
-      await createInquiry2({
-        type: input.type,
-        name: input.name,
-        email: input.email,
-        phone: input.phone || null,
-        message: input.message,
-        artworkId: input.artworkId || null
-      });
-      await notifyOwner2({
-        title: `New ${input.type} inquiry`,
-        content: `From: ${input.name} (${input.email})
-Message: ${input.message}`
-      });
-      return { success: true };
-    })
-  })
-});
-
 // shared/_core/errors.ts
 var HttpError = class extends Error {
   constructor(statusCode, message) {
@@ -624,7 +1171,7 @@ init_env();
 import axios from "axios";
 import { parse as parseCookieHeader } from "cookie";
 import { SignJWT, jwtVerify } from "jose";
-var isNonEmptyString2 = (value) => typeof value === "string" && value.length > 0;
+var isNonEmptyString = (value) => typeof value === "string" && value.length > 0;
 var EXCHANGE_TOKEN_PATH = `/webdev.v1.WebDevAuthPublicService/ExchangeToken`;
 var GET_USER_INFO_PATH = `/webdev.v1.WebDevAuthPublicService/GetUserInfo`;
 var GET_USER_INFO_WITH_JWT_PATH = `/webdev.v1.WebDevAuthPublicService/GetUserInfoWithJwt`;
@@ -766,7 +1313,7 @@ var SDKServer = class {
         algorithms: ["HS256"]
       });
       const { openId, appId, name } = payload;
-      if (!isNonEmptyString2(openId) || !isNonEmptyString2(appId) || !isNonEmptyString2(name)) {
+      if (!isNonEmptyString(openId) || !isNonEmptyString(appId) || !isNonEmptyString(name)) {
         console.warn("[Auth] Session payload missing required fields");
         return null;
       }
@@ -837,23 +1384,7 @@ var SDKServer = class {
 };
 var sdk = new SDKServer();
 
-// server/_core/context.ts
-async function createContext(opts) {
-  let user = null;
-  try {
-    user = await sdk.authenticateRequest(opts.req);
-  } catch (error) {
-    user = null;
-  }
-  return {
-    req: opts.req,
-    res: opts.res,
-    user
-  };
-}
-
 // server/_core/oauth.ts
-init_db();
 function getQueryParam(req, key) {
   const value = req.query[key];
   return typeof value === "string" ? value : void 0;
@@ -894,7 +1425,457 @@ function registerOAuthRoutes(app2) {
   });
 }
 
-// api/index.ts
+// server/_core/systemRouter.ts
+init_notification();
+import { z } from "zod";
+
+// server/_core/trpc.ts
+import { initTRPC, TRPCError as TRPCError2 } from "@trpc/server";
+import superjson from "superjson";
+var t = initTRPC.context().create({
+  transformer: superjson
+});
+var router = t.router;
+var publicProcedure = t.procedure;
+var requireUser = t.middleware(async (opts) => {
+  const { ctx, next } = opts;
+  if (!ctx.user) {
+    throw new TRPCError2({ code: "UNAUTHORIZED", message: UNAUTHED_ERR_MSG });
+  }
+  return next({
+    ctx: {
+      ...ctx,
+      user: ctx.user
+    }
+  });
+});
+var protectedProcedure = t.procedure.use(requireUser);
+var adminProcedure = t.procedure.use(
+  t.middleware(async (opts) => {
+    const { ctx, next } = opts;
+    if (!ctx.user || ctx.user.role !== "admin") {
+      throw new TRPCError2({ code: "FORBIDDEN", message: NOT_ADMIN_ERR_MSG });
+    }
+    return next({
+      ctx: {
+        ...ctx,
+        user: ctx.user
+      }
+    });
+  })
+);
+
+// server/_core/systemRouter.ts
+var systemRouter = router({
+  health: publicProcedure.input(
+    z.object({
+      timestamp: z.number().min(0, "timestamp cannot be negative")
+    })
+  ).query(() => ({
+    ok: true
+  })),
+  notifyOwner: adminProcedure.input(
+    z.object({
+      title: z.string().min(1, "title is required"),
+      content: z.string().min(1, "content is required")
+    })
+  ).mutation(async ({ input }) => {
+    const delivered = await notifyOwner(input);
+    return {
+      success: delivered
+    };
+  })
+});
+
+// server/bambina-router.ts
+import { z as z2 } from "zod";
+var bambinaRouter = router({
+  // ============ CHECKLIST ============
+  checklist: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllChecklistItems: getAllChecklistItems2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      return getAllChecklistItems2();
+    }),
+    toggle: protectedProcedure.input(z2.object({ id: z2.number(), completed: z2.boolean() })).mutation(async ({ input }) => {
+      const { toggleChecklistItem: toggleChecklistItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await toggleChecklistItem2(input.id, input.completed);
+      return { success: true };
+    }),
+    updateNotes: protectedProcedure.input(z2.object({ id: z2.number(), notes: z2.string() })).mutation(async ({ input }) => {
+      const { updateChecklistNotes: updateChecklistNotes2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await updateChecklistNotes2(input.id, input.notes);
+      return { success: true };
+    }),
+    snooze: protectedProcedure.input(z2.object({ id: z2.number(), weeks: z2.number() })).mutation(async ({ input }) => {
+      const { snoozeChecklistItem: snoozeChecklistItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await snoozeChecklistItem2(input.id, input.weeks);
+      return { success: true };
+    }),
+    create: protectedProcedure.input(z2.object({
+      category: z2.string(),
+      phase: z2.string(),
+      title: z2.string(),
+      description: z2.string().optional(),
+      dueWeek: z2.number().optional(),
+      sortOrder: z2.number().optional()
+    })).mutation(async ({ input }) => {
+      const { createChecklistItem: createChecklistItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await createChecklistItem2(input);
+      return { success: true };
+    })
+  }),
+  // ============ SHOPPING ============
+  shopping: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllShoppingItems: getAllShoppingItems2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      return getAllShoppingItems2();
+    }),
+    toggle: protectedProcedure.input(z2.object({ id: z2.number(), purchased: z2.boolean() })).mutation(async ({ input }) => {
+      const { toggleShoppingItem: toggleShoppingItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await toggleShoppingItem2(input.id, input.purchased);
+      return { success: true };
+    }),
+    create: protectedProcedure.input(z2.object({
+      category: z2.string(),
+      title: z2.string(),
+      notes: z2.string().optional(),
+      sortOrder: z2.number().optional()
+    })).mutation(async ({ input }) => {
+      const { createShoppingItem: createShoppingItem2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await createShoppingItem2(input);
+      return { success: true };
+    })
+  }),
+  // ============ NOTES ============
+  notes: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllNotes: getAllNotes2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      return getAllNotes2();
+    }),
+    create: protectedProcedure.input(z2.object({
+      category: z2.string(),
+      title: z2.string().optional(),
+      content: z2.string()
+    })).mutation(async ({ input }) => {
+      const { createNote: createNote2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await createNote2(input);
+      return { success: true };
+    }),
+    update: protectedProcedure.input(z2.object({
+      id: z2.number(),
+      title: z2.string().optional(),
+      content: z2.string().optional(),
+      category: z2.string().optional()
+    })).mutation(async ({ input }) => {
+      const { updateNote: updateNote2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      const { id, ...data } = input;
+      await updateNote2(id, data);
+      return { success: true };
+    }),
+    delete: protectedProcedure.input(z2.object({ id: z2.number() })).mutation(async ({ input }) => {
+      const { deleteNote: deleteNote2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await deleteNote2(input.id);
+      return { success: true };
+    })
+  }),
+  // ============ PAYMENTS ============
+  payments: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllPayments: getAllPayments2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      return getAllPayments2();
+    }),
+    toggle: protectedProcedure.input(z2.object({ id: z2.number(), paid: z2.boolean() })).mutation(async ({ input }) => {
+      const { togglePayment: togglePayment2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await togglePayment2(input.id, input.paid);
+      return { success: true };
+    }),
+    create: protectedProcedure.input(z2.object({
+      category: z2.string(),
+      description: z2.string(),
+      amount: z2.string(),
+      currency: z2.string(),
+      amountNumeric: z2.number().optional(),
+      dueMonth: z2.string().optional(),
+      paid: z2.number().optional(),
+      sortOrder: z2.number().optional()
+    })).mutation(async ({ input }) => {
+      const { createPayment: createPayment2 } = await Promise.resolve().then(() => (init_bambina_db(), bambina_db_exports));
+      await createPayment2(input);
+      return { success: true };
+    })
+  })
+});
+
+// server/routers.ts
+import { z as z3 } from "zod";
+var appRouter = router({
+  // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
+  system: systemRouter,
+  bambina: bambinaRouter,
+  auth: router({
+    me: publicProcedure.query((opts) => opts.ctx.user),
+    logout: publicProcedure.mutation(({ ctx }) => {
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      return {
+        success: true
+      };
+    })
+  }),
+  // Public artwork routes
+  artworks: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllArtworks: getAllArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getAllArtworks2();
+    }),
+    getFeatured: publicProcedure.query(async () => {
+      const { getFeaturedArtworks: getFeaturedArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getFeaturedArtworks2();
+    }),
+    getById: publicProcedure.input(z3.object({ id: z3.number() })).query(async ({ input }) => {
+      const { getArtworkById: getArtworkById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getArtworkById2(input.id);
+    }),
+    updateDisplayOrder: protectedProcedure.input(
+      z3.object({
+        artworkId: z3.number(),
+        newDisplayOrder: z3.number()
+      })
+    ).mutation(async ({ input, ctx }) => {
+      if (ctx.user?.role !== "admin") {
+        throw new Error("Unauthorized");
+      }
+      const { updateArtwork: updateArtwork2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      await updateArtwork2(input.artworkId, { displayOrder: input.newDisplayOrder });
+      return { success: true };
+    })
+  }),
+  // Shop routes
+  shop: router({
+    getArtworks: publicProcedure.query(async () => {
+      const { getShopArtworks: getShopArtworks2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getShopArtworks2();
+    })
+  }),
+  // Prints routes
+  prints: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllPrints: getAllPrints2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getAllPrints2();
+    }),
+    getById: publicProcedure.input(z3.object({ id: z3.number() })).query(async ({ input }) => {
+      const { getPrintById: getPrintById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getPrintById2(input.id);
+    })
+  }),
+  // Artist info routes
+  artist: router({
+    getInfo: publicProcedure.query(async () => {
+      const { getArtistInfo: getArtistInfo2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getArtistInfo2();
+    })
+  }),
+  // Order routes
+  orders: router({
+    create: publicProcedure.input(
+      z3.object({
+        // Buyer details
+        buyerName: z3.string().min(1),
+        buyerEmail: z3.string().email(),
+        buyerPhone: z3.string().optional(),
+        // Shipping address
+        addressLine1: z3.string().min(1),
+        addressLine2: z3.string().optional(),
+        city: z3.string().min(1),
+        county: z3.string().optional(),
+        postcode: z3.string().min(1),
+        country: z3.string().min(1),
+        // Item details
+        section: z3.enum(["prints", "upcycles"]),
+        itemTitle: z3.string(),
+        itemDetails: z3.string().optional(),
+        price: z3.string(),
+        shippingZone: z3.enum(["uk", "europe", "row"]),
+        shippingCost: z3.string(),
+        itemPrice: z3.string()
+      })
+    ).mutation(async ({ input }) => {
+      const { createOrder: createOrder2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { notifyOwner: notifyOwner2 } = await Promise.resolve().then(() => (init_notification(), notification_exports));
+      const { sendOrderConfirmation: sendOrderConfirmation2, sendOwnerOrderNotification: sendOwnerOrderNotification2 } = await Promise.resolve().then(() => (init_email(), email_exports));
+      const { orderRef } = await createOrder2({
+        buyerName: input.buyerName,
+        buyerEmail: input.buyerEmail,
+        buyerPhone: input.buyerPhone || null,
+        addressLine1: input.addressLine1,
+        addressLine2: input.addressLine2 || null,
+        city: input.city,
+        county: input.county || null,
+        postcode: input.postcode,
+        country: input.country,
+        section: input.section,
+        itemTitle: input.itemTitle,
+        itemDetails: input.itemDetails || null,
+        price: input.price
+      });
+      const addressParts = [input.addressLine1, input.addressLine2, input.city, input.county, input.postcode, input.country].filter(Boolean);
+      await notifyOwner2({
+        title: `\u{1F4B0} New order ${orderRef}: '${input.itemTitle}'`,
+        content: [
+          `Order ref: ${orderRef}`,
+          `Item: '${input.itemTitle}'`,
+          `Details: ${input.itemDetails || "N/A"}`,
+          `Item price: ${input.itemPrice}`,
+          `Delivery (${input.shippingZone.toUpperCase()}): ${input.shippingCost}`,
+          `Total: ${input.price}`,
+          ``,
+          `Buyer: ${input.buyerName}`,
+          `Email: ${input.buyerEmail}`,
+          input.buyerPhone ? `Phone: ${input.buyerPhone}` : null,
+          ``,
+          `Ship to:`,
+          addressParts.join(", "),
+          ``,
+          `Check your PayPal for the incoming payment.`
+        ].filter(Boolean).join("\n")
+      });
+      const orderEmailData = {
+        orderRef,
+        buyerName: input.buyerName,
+        buyerEmail: input.buyerEmail,
+        buyerPhone: input.buyerPhone,
+        itemTitle: input.itemTitle,
+        itemDetails: input.itemDetails || "",
+        itemPrice: input.itemPrice,
+        shippingZone: input.shippingZone,
+        shippingCost: input.shippingCost,
+        totalPrice: input.price,
+        addressLine1: input.addressLine1,
+        addressLine2: input.addressLine2,
+        city: input.city,
+        county: input.county,
+        postcode: input.postcode,
+        country: input.country
+      };
+      sendOrderConfirmation2(orderEmailData).catch((err) => console.error("[Orders] Failed to send confirmation email:", err));
+      sendOwnerOrderNotification2(orderEmailData).catch((err) => console.error("[Orders] Failed to send owner order email:", err));
+      return { success: true, orderRef };
+    }),
+    // Admin: get all orders
+    getAll: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user?.role !== "admin") throw new Error("Unauthorized");
+      const { getAllOrders: getAllOrders2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      return getAllOrders2();
+    }),
+    // Admin: update order status
+    updateStatus: protectedProcedure.input(z3.object({
+      id: z3.number(),
+      status: z3.enum(["pending", "paid", "shipped", "delivered", "cancelled"])
+    })).mutation(async ({ input, ctx }) => {
+      if (ctx.user?.role !== "admin") throw new Error("Unauthorized");
+      const { updateOrderStatus: updateOrderStatus2, getOrderById: getOrderById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      await updateOrderStatus2(input.id, input.status);
+      if (input.status === "shipped" || input.status === "delivered") {
+        const order = await getOrderById2(input.id);
+        if (order) {
+          const { sendOrderStatusUpdate: sendOrderStatusUpdate2 } = await Promise.resolve().then(() => (init_email(), email_exports));
+          sendOrderStatusUpdate2({
+            orderRef: order.orderRef,
+            buyerName: order.buyerName,
+            buyerEmail: order.buyerEmail,
+            itemTitle: order.itemTitle,
+            newStatus: input.status
+          }).catch((err) => console.error("[Orders] Failed to send status email:", err));
+        }
+      }
+      return { success: true };
+    }),
+    // Keep legacy notification for backwards compatibility
+    notifyPayPalClick: publicProcedure.input(
+      z3.object({
+        title: z3.string(),
+        price: z3.string(),
+        material: z3.string().optional(),
+        size: z3.string().optional(),
+        section: z3.enum(["prints", "upcycles"])
+      })
+    ).mutation(async ({ input }) => {
+      const { notifyOwner: notifyOwner2 } = await Promise.resolve().then(() => (init_notification(), notification_exports));
+      const details = input.section === "prints" ? `${input.material} \xB7 ${input.size}` : "Upcycled vinyl";
+      await notifyOwner2({
+        title: `\u{1F4B0} PayPal order: '${input.title}'`,
+        content: `Someone clicked Pay with PayPal for '${input.title}'.
+Details: ${details}
+Price: ${input.price}
+
+Check your PayPal for the incoming payment.`
+      });
+      return { success: true };
+    })
+  }),
+  // Inquiry routes
+  inquiries: router({
+    submit: publicProcedure.input(
+      z3.object({
+        type: z3.enum(["contact", "print", "commission"]),
+        name: z3.string().min(1),
+        email: z3.string().email(),
+        phone: z3.string().optional(),
+        message: z3.string().min(1),
+        artworkId: z3.number().optional()
+      })
+    ).mutation(async ({ input }) => {
+      const { createInquiry: createInquiry2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { notifyOwner: notifyOwner2 } = await Promise.resolve().then(() => (init_notification(), notification_exports));
+      const { sendOwnerEnquiryNotification: sendOwnerEnquiryNotification2 } = await Promise.resolve().then(() => (init_email(), email_exports));
+      let artworkTitle = null;
+      if (input.artworkId) {
+        const { getArtworkById: getArtworkById2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+        const artwork = await getArtworkById2(input.artworkId);
+        artworkTitle = artwork?.title || null;
+      }
+      await createInquiry2({
+        type: input.type,
+        name: input.name,
+        email: input.email,
+        phone: input.phone || null,
+        message: input.message,
+        artworkId: input.artworkId || null
+      });
+      await notifyOwner2({
+        title: `New ${input.type} inquiry`,
+        content: `From: ${input.name} (${input.email})
+Message: ${input.message}`
+      });
+      sendOwnerEnquiryNotification2({
+        type: input.type,
+        name: input.name,
+        email: input.email,
+        phone: input.phone,
+        message: input.message,
+        artworkTitle
+      }).catch((err) => console.error("[Inquiries] Failed to send owner enquiry email:", err));
+      return { success: true };
+    })
+  })
+});
+
+// server/_core/context.ts
+async function createContext(opts) {
+  let user = null;
+  try {
+    user = await sdk.authenticateRequest(opts.req);
+  } catch (error) {
+    user = null;
+  }
+  return {
+    req: opts.req,
+    res: opts.res,
+    user
+  };
+}
+
+// server/api-entry.ts
 var app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -909,7 +1890,7 @@ app.use(
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true });
 });
-var index_default = app;
+var api_entry_default = app;
 export {
-  index_default as default
+  api_entry_default as default
 };

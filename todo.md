@@ -546,3 +546,6 @@
 - [x] Redesign Bambina page: task cards with checkboxes, priority labels, expand arrows
 - [x] Remove timeline items before Week 20 from database
 - [x] Make all timeline sections collapsed by default (no auto-expand)
+- [x] Fix production bug: api/index.mjs was stale (missing bambina code) causing Loading... on live site
+- [x] Rebuild api/index.mjs from server/api-entry.ts with correct Vercel serverless export format
+- [x] Update vercel-build script to rebuild api/index.mjs during deployment (prevents future staleness)
