@@ -514,7 +514,7 @@ function Payments() {
                 <span className={`text-xs transition-transform ${isExpanded ? "rotate-90" : ""}`}>›</span>
                 <div>
                   <h3 className="font-playfair text-base sm:text-lg font-semibold text-deep-teal">
-                    {month}
+                    {month.replace(/^Month\s*\d+(-\d+)?\s*-\s*/, "")}
                   </h3>
                   {getPaymentMonthDate(month) && (
                     <p className="font-nunito text-[10px] sm:text-xs text-stone-400 mt-0.5">
