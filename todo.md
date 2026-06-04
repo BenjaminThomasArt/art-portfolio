@@ -550,3 +550,5 @@
 - [x] Rebuild api/index.mjs from server/api-entry.ts with correct Vercel serverless export format
 - [x] Update vercel-build script to rebuild api/index.mjs during deployment (prevents future staleness)
 - [x] Reduce size of Bambina nav tabs so they all fit on mobile screen without overlapping
+- [x] Add actual calendar dates to timeline week headers (e.g. "Week 20 · May 31 – Jun 6")
+- [x] Make Countdown the default tab when landing on /bambina page

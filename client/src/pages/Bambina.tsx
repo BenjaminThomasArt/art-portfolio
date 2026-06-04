@@ -327,7 +327,7 @@ function WeekTimeline() {
                     )}
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="font-nunito text-xs text-stone-400 hidden sm:inline">{getWeekDates(week)}</span>
+                    <span className="font-nunito text-[10px] sm:text-xs text-stone-400">{getWeekDates(week)}</span>
                     <span className={`font-nunito text-xs font-medium px-2 py-0.5 rounded-full ${
                       completedCount === totalCount && totalCount > 0
                         ? "bg-deep-teal/10 text-deep-teal"
@@ -865,7 +865,7 @@ function Resources() {
 // ============ MAIN BAMBINA PAGE ============
 export default function Bambina() {
   const { isAuthenticated, user } = useAuth();
-  const [activeTab, setActiveTab] = useState<TabId>("timeline");
+  const [activeTab, setActiveTab] = useState<TabId>("countdown");
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleTabChange = useCallback((tab: TabId) => {
