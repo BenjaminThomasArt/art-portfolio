@@ -181,7 +181,10 @@ function Countdown() {
         ))}
       </div>
       <p className="font-nunito text-sm text-stone-400 mt-8">
-        October 11, 2026 — Hospital Español, Polanco, Mexico City
+        October 11, 2026
+      </p>
+      <p className="font-nunito text-xs text-stone-400 mt-1">
+        Hospital Español, Polanco, Mexico City
       </p>
     </div>
   );
