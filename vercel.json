@@ -10,9 +10,7 @@
     }
   },
   "rewrites": [
-    { "source": "/api/trpc/:path*", "destination": "/api/index.mjs" },
-    { "source": "/api/oauth/:path*", "destination": "/api/index.mjs" },
-    { "source": "/api/health", "destination": "/api/index.mjs" },
+    { "source": "/api/:path*", "destination": "/api/index.mjs" },
     { "source": "/:path*", "destination": "/index.html" }
   ]
 }
