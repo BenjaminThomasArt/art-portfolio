@@ -92,10 +92,7 @@ function HeroBanner() {
         <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
           Ben & Fed's Mexico Adventure
         </h1>
-        <p className="font-nunito text-sm md:text-base text-white/90 mt-2 drop-shadow-md max-w-lg">
-          Your complete planning hub for bringing your baby home from Mexico City.
-          Hospital Español, Polanco — Due October 11, 2026.
-        </p>
+
       </div>
       {/* Mexican tile bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-4 bg-[repeating-linear-gradient(90deg,#1B5E5E_0px,#1B5E5E_20px,#C2703E_20px,#C2703E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
@@ -913,8 +910,6 @@ export default function Bambina() {
       {activeTab === "contacts" && <Contacts />}
       {activeTab === "notes" && <Notes />}
       </div>
-
-      <Resources />
 
       {/* Footer */}
       <div className="text-center py-8">
