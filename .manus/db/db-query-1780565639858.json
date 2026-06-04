@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, title, due_week FROM bambina_checklist WHERE title LIKE '%Mindful%' OR title LIKE '%Weekly scan%' ORDER BY due_week;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, due_week FROM bambina_checklist WHERE title LIKE '%Mindful%' OR title LIKE '%Weekly scan%' ORDER BY due_week;",
+  "rows": [
+    {
+      "id": "15",
+      "title": "Mindful Surrogacy Session 1 (Week 26-30)",
+      "due_week": "26"
+    },
+    {
+      "id": "19",
+      "title": "Mindful Surrogacy Session 2 (Week 30-34)",
+      "due_week": "30"
+    },
+    {
+      "id": "24",
+      "title": "Weekly scans from 37 WOG - assess need for delivery",
+      "due_week": "39"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdue_week\n15\tMindful Surrogacy Session 1 (Week 26-30)\t26\n19\tMindful Surrogacy Session 2 (Week 30-34)\t30\n24\tWeekly scans from 37 WOG - assess need for delivery\t39\n",
+  "stderr": "",
+  "execution_time_ms": 564
+}

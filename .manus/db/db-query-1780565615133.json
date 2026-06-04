@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE bambina_checklist SET due_week = 26 WHERE title LIKE '%Mindful Surrogacy Session 1%';\nUPDATE bambina_checklist SET due_week = 20 WHERE title LIKE '%Anatomy scan%';\nUPDATE bambina_checklist SET due_week = 39 WHERE title LIKE '%Delivery%' OR title LIKE '%C-section%' OR title LIKE '%delivery%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE bambina_checklist SET due_week = 26 WHERE title LIKE '%Mindful Surrogacy Session 1%';\nUPDATE bambina_checklist SET due_week = 20 WHERE title LIKE '%Anatomy scan%';\nUPDATE bambina_checklist SET due_week = 39 WHERE title LIKE '%Delivery%' OR title LIKE '%C-section%' OR title LIKE '%delivery%';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 683
+}

@@ -1,0 +1,154 @@
+{
+  "query": "SELECT id, title, due_week, category FROM bambina_checklist WHERE due_week IS NOT NULL ORDER BY due_week, sort_order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, due_week, category FROM bambina_checklist WHERE due_week IS NOT NULL ORDER BY due_week, sort_order;",
+  "rows": [
+    {
+      "id": "12",
+      "title": "Anatomy scan",
+      "due_week": "20",
+      "category": "medical"
+    },
+    {
+      "id": "16",
+      "title": "Book accommodation in Mexico City",
+      "due_week": "20",
+      "category": "travel"
+    },
+    {
+      "id": "17",
+      "title": "Book flights to Mexico City",
+      "due_week": "20",
+      "category": "travel"
+    },
+    {
+      "id": "14",
+      "title": "UK Legal Fees - instruct UK lawyer",
+      "due_week": "22",
+      "category": "legal"
+    },
+    {
+      "id": "15",
+      "title": "Mindful Surrogacy Session 1 (Week 26-30)",
+      "due_week": "26",
+      "category": "agency"
+    },
+    {
+      "id": "20",
+      "title": "Week 26-28 catch-up call with Sophie",
+      "due_week": "26",
+      "category": "agency"
+    },
+    {
+      "id": "21",
+      "title": "Regular Scan + Flu vaccine (27 WOG)",
+      "due_week": "27",
+      "category": "medical"
+    },
+    {
+      "id": "30008",
+      "title": "Confirm sleeping items with MSJ",
+      "due_week": "28",
+      "category": "shopping"
+    },
+    {
+      "id": "19",
+      "title": "Mindful Surrogacy Session 2 (Week 30-34)",
+      "due_week": "30",
+      "category": "agency"
+    },
+    {
+      "id": "22",
+      "title": "Growth Scan + Vagina Cultures (32 WOG)",
+      "due_week": "32",
+      "category": "medical"
+    },
+    {
+      "id": "30001",
+      "title": "Purchase expressing equipment from Amazon Mexico",
+      "due_week": "32",
+      "category": "shopping"
+    },
+    {
+      "id": "30002",
+      "title": "Purchase baby bottles & feeding supplies",
+      "due_week": "32",
+      "category": "shopping"
+    },
+    {
+      "id": "28",
+      "title": "Purchase expressing equipment from Amazon Mexico",
+      "due_week": "34",
+      "category": "financial"
+    },
+    {
+      "id": "30003",
+      "title": "Purchase nappies & changing supplies",
+      "due_week": "34",
+      "category": "shopping"
+    },
+    {
+      "id": "30004",
+      "title": "Purchase baby clothing",
+      "due_week": "34",
+      "category": "shopping"
+    },
+    {
+      "id": "30005",
+      "title": "Purchase bathing supplies",
+      "due_week": "34",
+      "category": "shopping"
+    },
+    {
+      "id": "30006",
+      "title": "Purchase health & safety items",
+      "due_week": "34",
+      "category": "shopping"
+    },
+    {
+      "id": "23",
+      "title": "Regular Scan + Blood Count + Coagulation (36 WOG)",
+      "due_week": "36",
+      "category": "medical"
+    },
+    {
+      "id": "26",
+      "title": "Arrive in Mexico City before birth",
+      "due_week": "36",
+      "category": "travel"
+    },
+    {
+      "id": "27",
+      "title": "Set up nursery/baby area in accommodation",
+      "due_week": "36",
+      "category": "nursery"
+    },
+    {
+      "id": "30007",
+      "title": "Purchase travel & on-the-go gear",
+      "due_week": "36",
+      "category": "shopping"
+    },
+    {
+      "id": "24",
+      "title": "Weekly scans from 37 WOG - assess need for delivery",
+      "due_week": "37",
+      "category": "medical"
+    },
+    {
+      "id": "30",
+      "title": "Ensure car seat is ready for hospital discharge",
+      "due_week": "38",
+      "category": "medical"
+    },
+    {
+      "id": "29",
+      "title": "Delivery at Hospital Español (C-section)",
+      "due_week": "39",
+      "category": "medical"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdue_week\tcategory\n12\tAnatomy scan\t20\tmedical\n16\tBook accommodation in Mexico City\t20\ttravel\n17\tBook flights to Mexico City\t20\ttravel\n14\tUK Legal Fees - instruct UK lawyer\t22\tlegal\n15\tMindful Surrogacy Session 1 (Week 26-30)\t26\tagency\n20\tWeek 26-28 catch-up call with Sophie\t26\tagency\n21\tRegular Scan + Flu vaccine (27 WOG)\t27\tmedical\n30008\tConfirm sleeping items with MSJ\t28\tshopping\n19\tMindful Surrogacy Session 2 (Week 30-34)\t30\tagency\n22\tGrowth Scan + Vagina Cultures (32 WOG)\t32\tmedical\n30001\tPurchase expressing equipment from Amazon Mexico\t32\tshopping\n30002\tPurchase baby bottles & feeding supplies\t32\tshopping\n28\tPurchase expressing equipment from Amazon Mexico\t34\tfinancial\n30003\tPurchase nappies & changing supplies\t34\tshopping\n30004\tPurchase baby clothing\t34\tshopping\n30005\tPurchase bathing supplies\t34\tshopping\n30006\tPurchase health & safety items\t34\tshopping\n23\tRegular Scan + Blood Count + Coagulation (36 WOG)\t36\tmedical\n26\tArrive in Mexico City before birth\t36\ttravel\n27\tSet up nursery/baby area in accommodation\t36\tnursery\n30007\tPurchase travel & on-the-go gear\t36\tshopping\n24\tWeekly scans from 37 WOG - assess need for delivery\t37\tmedical\n30\tEnsure car seat is ready for hospital discharge\t38\tmedical\n29\tDelivery at Hospital Español (C-section)\t39\tmedical\n",
+  "stderr": "",
+  "execution_time_ms": 577
+}

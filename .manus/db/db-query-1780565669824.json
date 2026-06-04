@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, title, due_week FROM bambina_checklist WHERE due_week = 28 ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, due_week FROM bambina_checklist WHERE due_week = 28 ORDER BY id;",
+  "rows": [
+    {
+      "id": "25",
+      "title": "Confirm cot sheets (3-4) at 28 weeks",
+      "due_week": "28"
+    },
+    {
+      "id": "30008",
+      "title": "Confirm sleeping items with MSJ",
+      "due_week": "28"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdue_week\n25\tConfirm cot sheets (3-4) at 28 weeks\t28\n30008\tConfirm sleeping items with MSJ\t28\n",
+  "stderr": "",
+  "execution_time_ms": 575
+}

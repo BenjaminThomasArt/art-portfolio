@@ -1,0 +1,45 @@
+{
+  "query": "DELETE FROM bambina_checklist WHERE id = 28;\nSELECT id, title, due_week FROM bambina_checklist WHERE due_week >= 36 ORDER BY due_week, sort_order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute DELETE FROM bambina_checklist WHERE id = 28;\nSELECT id, title, due_week FROM bambina_checklist WHERE due_week >= 36 ORDER BY due_week, sort_order;",
+  "rows": [
+    {
+      "id": "23",
+      "title": "Regular Scan + Blood Count + Coagulation (36 WOG)",
+      "due_week": "36"
+    },
+    {
+      "id": "26",
+      "title": "Arrive in Mexico City before birth",
+      "due_week": "36"
+    },
+    {
+      "id": "27",
+      "title": "Set up nursery/baby area in accommodation",
+      "due_week": "36"
+    },
+    {
+      "id": "30007",
+      "title": "Purchase travel & on-the-go gear",
+      "due_week": "36"
+    },
+    {
+      "id": "24",
+      "title": "Weekly scans from 37 WOG - assess need for delivery",
+      "due_week": "37"
+    },
+    {
+      "id": "30",
+      "title": "Ensure car seat is ready for hospital discharge",
+      "due_week": "38"
+    },
+    {
+      "id": "29",
+      "title": "Delivery at Hospital Español (C-section)",
+      "due_week": "39"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdue_week\n23\tRegular Scan + Blood Count + Coagulation (36 WOG)\t36\n26\tArrive in Mexico City before birth\t36\n27\tSet up nursery/baby area in accommodation\t36\n30007\tPurchase travel & on-the-go gear\t36\n24\tWeekly scans from 37 WOG - assess need for delivery\t37\n30\tEnsure car seat is ready for hospital discharge\t38\n29\tDelivery at Hospital Español (C-section)\t39\n",
+  "stderr": "",
+  "execution_time_ms": 660
+}

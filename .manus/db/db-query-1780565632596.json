@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE bambina_checklist SET title = 'Mindful Surrogacy Session 1 (Week 26-30)', due_week = 26 WHERE id = 15;\nUPDATE bambina_checklist SET title = 'Mindful Surrogacy Session 2 (Week 30-34)', due_week = 30 WHERE id = 19;\nUPDATE bambina_checklist SET due_week = 38 WHERE id = 30;\nUPDATE bambina_checklist SET title = 'Anatomy scan' WHERE id = 12;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute UPDATE bambina_checklist SET title = 'Mindful Surrogacy Session 1 (Week 26-30)', due_week = 26 WHERE id = 15;\nUPDATE bambina_checklist SET title = 'Mindful Surrogacy Session 2 (Week 30-34)', due_week = 30 WHERE id = 19;\nUPDATE bambina_checklist SET due_week = 38 WHERE id = 30;\nUPDATE bambina_checklist SET title = 'Anatomy scan' WHERE id = 12;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 775
+}
