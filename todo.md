@@ -556,3 +556,4 @@
 - [x] Split hero title: "Ben & Fed's" on line 1, "Mexico Adventure" on line 2
 - [x] Add actual calendar dates to payment schedule (map month numbers to real dates)
 - [x] Remove historical (paid) payments from database, keep only upcoming payments
+- [x] Design polish pass on Bambina page: consistent spacing, typography, colors, and component styling across all tabs

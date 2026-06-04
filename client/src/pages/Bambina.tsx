@@ -50,8 +50,8 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
-      <div className="max-w-4xl mx-auto px-2 md:px-4 flex items-center h-14">
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
+      <div className="max-w-4xl mx-auto px-2 md:px-4 flex items-center h-12 md:h-14">
         <span className="font-playfair text-sm font-semibold text-deep-teal mr-6 hidden md:block">
           🌵 Ben & Fed's Mexico Adventure
         </span>
@@ -60,10 +60,10 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
-              className={`font-nunito text-[11px] md:text-sm px-1.5 md:px-3 py-1 md:py-1.5 rounded-md transition-all ${
+              className={`font-nunito text-[11px] md:text-sm px-2 md:px-3 py-1.5 md:py-2 rounded-full transition-all duration-200 ${
                 activeTab === tab.id
-                  ? "bg-terracotta text-white font-medium"
-                  : "text-stone-500 hover:text-stone-700 hover:bg-stone-100"
+                  ? "bg-terracotta text-white font-semibold shadow-sm"
+                  : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
               }`}
             >
               <span className="hidden md:inline mr-1">{tab.icon}</span>
@@ -79,23 +79,22 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
 // ============ HERO BANNER ============
 function HeroBanner() {
   return (
-    <div className="relative h-32 md:h-56 overflow-hidden">
+    <div className="relative h-36 md:h-60 overflow-hidden">
       {/* Mexican tile top border */}
-      <div className="absolute top-0 left-0 right-0 h-4 z-10 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
+      <div className="absolute top-0 left-0 right-0 h-3 z-10 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
       <img
         src={HERO_IMAGE}
         alt="Mexican street at sunset"
         className="w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/50" />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
+        <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg leading-tight">
           Ben & Fed's<br />Mexico Adventure
         </h1>
-
       </div>
       {/* Mexican tile bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-4 bg-[repeating-linear-gradient(90deg,#1B5E5E_0px,#1B5E5E_20px,#C2703E_20px,#C2703E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
+      <div className="absolute bottom-0 left-0 right-0 h-3 bg-[repeating-linear-gradient(90deg,#1B5E5E_0px,#1B5E5E_20px,#C2703E_20px,#C2703E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
     </div>
   );
 }
@@ -103,10 +102,10 @@ function HeroBanner() {
 // ============ PAPEL PICADO ============
 function PapelPicado() {
   return (
-    <div className="flex justify-center py-4">
-      <div className="flex gap-1">
+    <div className="flex justify-center py-3">
+      <div className="flex gap-1.5">
         {["🏵️", "🌸", "🌺", "🌼", "🏵️", "🌸", "🌺"].map((flower, i) => (
-          <span key={i} className="text-lg opacity-70">{flower}</span>
+          <span key={i} className="text-base opacity-60">{flower}</span>
         ))}
       </div>
     </div>
@@ -121,8 +120,8 @@ function ProgressCard() {
   const progress = Math.min(100, (currentWeek / 40) * 100);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6">
-      <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm">
+    <div className="max-w-2xl mx-auto px-4 py-4">
+      <div className="bg-white rounded-2xl border border-stone-100 p-5 shadow-sm">
         <div className="flex justify-between items-start mb-3">
           <div>
             <p className="font-nunito text-xs text-stone-400 uppercase tracking-wider">Currently</p>
@@ -160,28 +159,28 @@ function Countdown() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12 text-center">
-      <p className="font-nunito text-sm tracking-wide text-terracotta mb-6">
+    <div className="max-w-2xl mx-auto px-4 py-10 md:py-14 text-center">
+      <p className="font-nunito text-sm tracking-wide text-terracotta/80 mb-8">
         We'll meet bambina in...
       </p>
-      <div className="flex justify-center gap-4 md:gap-8">
+      <div className="flex justify-center gap-3 md:gap-6">
         {[
           { value: timeLeft.days, label: "Days" },
           { value: timeLeft.hours, label: "Hours" },
           { value: timeLeft.minutes, label: "Minutes" },
           { value: timeLeft.seconds, label: "Seconds" },
         ].map((item) => (
-          <div key={item.label} className="flex flex-col items-center">
-            <span className="font-playfair text-4xl md:text-6xl font-bold text-deep-teal">
+          <div key={item.label} className="flex flex-col items-center bg-white/80 rounded-2xl px-3 py-4 md:px-6 md:py-5 shadow-sm border border-stone-100">
+            <span className="font-playfair text-3xl md:text-5xl font-bold text-deep-teal tabular-nums">
               {String(item.value).padStart(2, "0")}
             </span>
-            <span className="font-nunito text-xs uppercase tracking-wider text-terracotta/70 mt-1">
+            <span className="font-nunito text-[10px] md:text-xs uppercase tracking-wider text-terracotta/70 mt-1.5">
               {item.label}
             </span>
           </div>
         ))}
       </div>
-      <p className="font-nunito text-sm text-stone-500 mt-8">
+      <p className="font-nunito text-sm text-stone-400 mt-8">
         October 11, 2026 — Hospital Español, Polanco, Mexico City
       </p>
     </div>
@@ -276,10 +275,10 @@ function WeekTimeline() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
       <div className="flex items-center gap-3 mb-6">
-        <span className="text-2xl">📋</span>
+        <span className="text-xl">📋</span>
         <div>
-          <h2 className="font-playfair text-2xl font-bold text-stone-800">Week-by-Week Plan</h2>
-          <p className="font-nunito text-sm text-stone-500">Your single source of truth — tick off tasks as you go</p>
+          <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Week-by-Week Plan</h2>
+          <p className="font-nunito text-xs md:text-sm text-stone-400">Tick off tasks as you go</p>
         </div>
       </div>
 
@@ -496,9 +495,9 @@ function Payments() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">💰</span>
-        <h2 className="font-playfair text-2xl font-bold text-stone-800">Payments</h2>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-xl">💰</span>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Payments</h2>
       </div>
 
       {Object.entries(grouped).map(([month, monthPayments]) => {
@@ -508,12 +507,12 @@ function Payments() {
           <div key={month}>
             <button
               onClick={() => toggleMonth(month)}
-              className="w-full flex items-center justify-between border-b border-stone-100 pb-2 mb-3 group"
+              className="w-full flex items-center justify-between border-b border-stone-100 pb-3 mb-3 group"
             >
               <div className="flex items-center gap-2">
-                <span className={`text-xs transition-transform ${isExpanded ? "rotate-90" : ""}`}>›</span>
+                <span className={`text-xs transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}>›</span>
                 <div>
-                  <h3 className="font-playfair text-base sm:text-lg font-semibold text-deep-teal">
+                  <h3 className="font-playfair text-sm sm:text-base font-semibold text-deep-teal">
                     {month.replace(/^Month\s*\d+(-\d+)?\s*-\s*/, "")}
                   </h3>
                   {getPaymentMonthDate(month) && (
@@ -606,23 +605,23 @@ function ShoppingList() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">🛒</span>
-        <h2 className="font-playfair text-2xl font-bold text-stone-800">To Buy</h2>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-xl">🛒</span>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">To Buy</h2>
       </div>
 
-      <div className="bg-white rounded-xl border border-stone-100 p-4 shadow-sm">
+      <div className="bg-white rounded-2xl border border-stone-100 p-4 shadow-sm">
         <div className="flex justify-between items-center mb-2">
-          <span className="font-nunito text-sm text-stone-600">Shopping Progress</span>
+          <span className="font-nunito text-sm text-stone-500">Shopping Progress</span>
           <span className="font-nunito text-sm font-semibold text-deep-teal">{progress.pct}%</span>
         </div>
-        <div className="w-full h-3 bg-stone-100 rounded-full overflow-hidden">
+        <div className="w-full h-2.5 bg-stone-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-terracotta to-burnt-orange rounded-full transition-all duration-500"
+            className="h-full bg-gradient-to-r from-terracotta to-burnt-orange rounded-full transition-all duration-700"
             style={{ width: `${progress.pct}%` }}
           />
         </div>
-        <p className="font-nunito text-xs text-stone-400 mt-1">
+        <p className="font-nunito text-xs text-stone-400 mt-1.5">
           {progress.purchased} of {progress.total} items purchased
         </p>
       </div>
@@ -711,12 +710,12 @@ function Contacts() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-4">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">📇</span>
-        <h2 className="font-playfair text-2xl font-bold text-stone-800">Contacts</h2>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-xl">📇</span>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Contacts</h2>
       </div>
       {contacts.map((contact, i) => (
-        <div key={i} className="p-5 rounded-xl bg-white border border-stone-100 shadow-sm hover:border-terracotta/30 transition-colors">
+        <div key={i} className="p-4 md:p-5 rounded-2xl bg-white border border-stone-100 shadow-sm hover:border-terracotta/30 transition-all duration-200 hover:shadow-md">
           <h3 className="font-playfair text-lg font-semibold text-deep-teal">{contact.name}</h3>
           <p className="font-nunito text-sm text-terracotta">{contact.role}</p>
           {contact.org && <p className="font-nunito text-sm text-stone-500">{contact.org}</p>}
@@ -763,9 +762,9 @@ function Notes() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">📝</span>
-        <h2 className="font-playfair text-2xl font-bold text-stone-800">Notes</h2>
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-xl">📝</span>
+        <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800">Notes</h2>
       </div>
 
       {isAuthenticated && (
@@ -830,7 +829,7 @@ function Notes() {
           </h3>
           <div className="space-y-3">
             {categoryNotes.map((note) => (
-              <div key={note.id} className="p-4 rounded-xl bg-white border border-stone-100 shadow-sm">
+              <div key={note.id} className="p-4 rounded-2xl bg-white border border-stone-100 shadow-sm">
                 <div className="flex justify-between items-start">
                   <div>
                     {note.title && (
@@ -877,18 +876,18 @@ function Resources() {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8 mt-8 border-t border-stone-200">
-      <h3 className="font-playfair text-lg font-semibold text-deep-teal mb-4 text-center">
+    <div className="max-w-2xl mx-auto px-4 py-8 mt-6 border-t border-stone-100">
+      <h3 className="font-playfair text-base font-semibold text-deep-teal mb-4 text-center">
         Helpful Resources
       </h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
         {links.map((link) => (
           <a
             key={link.label}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-nunito text-sm text-stone-600 hover:text-deep-teal transition-colors p-3 rounded-lg bg-white border border-stone-100 hover:border-terracotta/30 text-center shadow-sm"
+            className="font-nunito text-xs md:text-sm text-stone-500 hover:text-deep-teal transition-all duration-200 p-3 rounded-xl bg-white border border-stone-100 hover:border-terracotta/30 hover:shadow-md text-center shadow-sm"
           >
             {link.label} ↗
           </a>
@@ -913,7 +912,7 @@ export default function Bambina() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
+    <div className="min-h-screen bg-warm-cream">
       <StickyNav activeTab={activeTab} onTabChange={handleTabChange} />
       <HeroBanner />
 
@@ -948,14 +947,14 @@ export default function Bambina() {
       </div>
 
       {/* Footer */}
-      <div className="text-center py-8">
-        <p className="font-nunito text-xs text-stone-400">
+      <div className="text-center py-10">
+        <p className="font-nunito text-xs text-stone-300">
           Made with love for our bambina 🇲🇽 🇬🇧 🇮🇹
         </p>
       </div>
 
       {/* Bottom tile border */}
-      <div className="h-4 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
+      <div className="h-3 bg-[repeating-linear-gradient(90deg,#C2703E_0px,#C2703E_20px,#1B5E5E_20px,#1B5E5E_40px,#D4845A_40px,#D4845A_60px,#8B4513_60px,#8B4513_80px)]" />
     </div>
   );
 }
