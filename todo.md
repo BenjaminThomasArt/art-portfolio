@@ -555,3 +555,4 @@
 - [x] Add expand/collapse functionality to Payments section
 - [x] Split hero title: "Ben & Fed's" on line 1, "Mexico Adventure" on line 2
 - [x] Add actual calendar dates to payment schedule (map month numbers to real dates)
+- [x] Remove historical (paid) payments from database, keep only upcoming payments
