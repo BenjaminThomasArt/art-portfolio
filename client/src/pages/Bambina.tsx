@@ -143,7 +143,6 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
         <span className="font-playfair text-sm font-semibold text-deep-teal mr-3 hidden md:block">
           🌵 <T k="hero.title1" /> <T k="hero.title2" />
         </span>
-        <LanguageToggle />
         <div className="flex gap-0.5 md:gap-1 flex-1 justify-center md:justify-start">
           {tabs.map((tab) => (
             <button
@@ -1117,10 +1116,11 @@ export default function Bambina() {
       </div>
 
       {/* Footer */}
-      <div className="text-center py-10">
+      <div className="py-10 flex flex-col items-center gap-3">
         <p className="font-nunito text-xs text-stone-300">
           <T k="footer.text" /> 🇲🇽 🇬🇧 🇮🇹
         </p>
+        <LanguageToggle />
       </div>
 
       {/* Bottom tile border */}
