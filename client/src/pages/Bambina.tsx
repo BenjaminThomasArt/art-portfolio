@@ -9,6 +9,37 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
+// Helper to compute actual calendar date from gestational week
+const DUE_DATE_MS = new Date("2026-10-11T00:00:00").getTime();
+const WEEK_0_MS = DUE_DATE_MS - 40 * 7 * 24 * 60 * 60 * 1000; // Jan 4, 2026
+
+function getDateFromWeek(week: number | null | undefined): string | null {
+  if (!week) return null;
+  const date = new Date(WEEK_0_MS + week * 7 * 24 * 60 * 60 * 1000);
+  return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
+
+// Post-birth items: approximate dates relative to due date
+function getPostBirthDate(title: string): string | null {
+  const dueMs = DUE_DATE_MS;
+  if (title.includes("7 days")) {
+    return new Date(dueMs + 7 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  if (title.includes("10 days")) {
+    return new Date(dueMs + 10 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  if (title.includes("1 month")) {
+    return new Date(dueMs + 30 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  if (title.includes("40 days")) {
+    return new Date(dueMs + 40 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  if (title.includes("Fit to Fly")) {
+    return new Date(dueMs + 45 * 24 * 60 * 60 * 1000).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  return null;
+}
+
 // ============ COUNTDOWN COMPONENT ============
 function Countdown() {
   const dueDate = useMemo(() => new Date("2026-10-11T00:00:00"), []);
@@ -129,7 +160,14 @@ function Timeline() {
                         {item.category}
                       </span>
                       {item.dueWeek && (
-                        <span className="text-xs font-nunito text-stone-400">Week {item.dueWeek}</span>
+                        <span className="text-xs font-nunito text-stone-400">
+                          Week {item.dueWeek} · {getDateFromWeek(item.dueWeek)}
+                        </span>
+                      )}
+                      {!item.dueWeek && item.phase === "post_birth" && getPostBirthDate(item.title) && (
+                        <span className="text-xs font-nunito text-stone-400">
+                          ~{getPostBirthDate(item.title)}
+                        </span>
                       )}
                       {item.snoozedWeeks > 0 && (
                         <span className="text-xs font-nunito text-amber-600">Snoozed {item.snoozedWeeks}w</span>
