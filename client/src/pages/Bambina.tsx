@@ -55,7 +55,7 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
         <span className="font-playfair text-sm font-semibold text-deep-teal mr-6 hidden md:block">
           🌵 Ben & Fed's Mexico Adventure
         </span>
-        <div className="flex gap-1 flex-1 justify-center md:justify-start">
+        <div className="flex gap-1 flex-1 justify-center md:justify-start overflow-x-auto scrollbar-hide">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -67,7 +67,7 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
               }`}
             >
               <span className="hidden md:inline mr-1">{tab.icon}</span>
-              {tab.label}
+              <span className="whitespace-nowrap">{tab.label}</span>
             </button>
           ))}
         </div>
@@ -330,7 +330,7 @@ function WeekTimeline() {
                     )}
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="font-nunito text-xs text-stone-400">{getWeekDates(week)}</span>
+                    <span className="font-nunito text-xs text-stone-400 hidden sm:inline">{getWeekDates(week)}</span>
                     <span className={`font-nunito text-xs font-medium px-2 py-0.5 rounded-full ${
                       completedCount === totalCount && totalCount > 0
                         ? "bg-deep-teal/10 text-deep-teal"
