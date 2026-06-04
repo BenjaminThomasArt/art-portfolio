@@ -128,6 +128,7 @@ function getWeeksUntilDue(): number {
 type TabId = "countdown" | "timeline" | "payments" | "shopping" | "contacts" | "notes";
 
 function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: (t: TabId) => void }) {
+  const { lang } = useLang();
   const tabs: { id: TabId; label: string; icon: string }[] = [
     { id: "countdown", label: useT("tab.countdown"), icon: "◇" },
     { id: "timeline", label: useT("tab.timeline"), icon: "◉" },
@@ -148,7 +149,7 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
-              className={`font-nunito text-[11px] md:text-sm px-2 md:px-3 py-1.5 md:py-2 rounded-full transition-all duration-200 ${
+              className={`font-nunito ${lang === "it" ? "text-[9px] md:text-xs px-1.5 md:px-2.5" : "text-[11px] md:text-sm px-2 md:px-3"} py-1.5 md:py-2 rounded-full transition-all duration-200 ${
                 activeTab === tab.id
                   ? "bg-terracotta text-white font-semibold shadow-sm"
                   : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
