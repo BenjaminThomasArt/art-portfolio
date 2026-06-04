@@ -248,10 +248,7 @@ function WeekTimeline() {
     return nearest;
   }, [weekGroups, currentWeek]);
 
-  // Auto-expand the active week
-  useEffect(() => {
-    setExpandedWeeks((prev) => { const next = new Set(Array.from(prev)); next.add(activeWeek); return next; });
-  }, [activeWeek]);
+  // All sections collapsed by default — user expands manually
 
   const sortedWeeks = useMemo(() => {
     return Object.keys(weekGroups).map(Number).sort((a, b) => a - b);

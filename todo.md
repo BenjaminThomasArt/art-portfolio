@@ -544,3 +544,5 @@
 - [x] Redesign Bambina page: week-by-week timeline with vertical line, dot markers, collapsible sections
 - [x] Redesign Bambina page: NOW badge on current week, date ranges, task count badges
 - [x] Redesign Bambina page: task cards with checkboxes, priority labels, expand arrows
+- [x] Remove timeline items before Week 20 from database
+- [x] Make all timeline sections collapsed by default (no auto-expand)

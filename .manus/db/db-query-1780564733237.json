@@ -1,0 +1,172 @@
+{
+  "query": "SELECT id, title, phase, due_week FROM bambina_checklist ORDER BY due_week;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user RXsnsHaxFXFzWXK.root --database TGNsMbsGdWXQhRmCtYbG6q --execute SELECT id, title, phase, due_week FROM bambina_checklist ORDER BY due_week;",
+  "rows": [
+    {
+      "id": "35",
+      "title": "Fit to Fly appointment",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "37",
+      "title": "Mexican legal fees - stage 3 (filiation proceedings)",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "32",
+      "title": "General check-up - 7 days post-birth (surrogate)",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "33",
+      "title": "Pediatric check - 10 days post-birth",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "34",
+      "title": "Pediatric check - 1 month post-birth",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "31",
+      "title": "Suture removal - 7 days post-birth (surrogate)",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "36",
+      "title": "40 days post-birth check-up (surrogate)",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "38",
+      "title": "Register birth at Mexico City Civil Registry",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "39",
+      "title": "Apply for UK passport for baby",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "40",
+      "title": "Fly home to London with baby",
+      "phase": "post_birth",
+      "due_week": "NULL"
+    },
+    {
+      "id": "14",
+      "title": "UK Legal Fees - instruct UK lawyer (Week 20)",
+      "phase": "second_trimester",
+      "due_week": "20"
+    },
+    {
+      "id": "17",
+      "title": "Book flights to Mexico City",
+      "phase": "second_trimester",
+      "due_week": "20"
+    },
+    {
+      "id": "16",
+      "title": "Book accommodation in Mexico City",
+      "phase": "second_trimester",
+      "due_week": "20"
+    },
+    {
+      "id": "15",
+      "title": "Mindful Surrogacy Session 1 (Week 20-24)",
+      "phase": "second_trimester",
+      "due_week": "20"
+    },
+    {
+      "id": "12",
+      "title": "Anatomy scan (22 WOG)",
+      "phase": "second_trimester",
+      "due_week": "22"
+    },
+    {
+      "id": "19",
+      "title": "Mindful Surrogacy Session 2 (Week 24-30)",
+      "phase": "second_trimester",
+      "due_week": "24"
+    },
+    {
+      "id": "20",
+      "title": "Week 26-28 catch-up call with Sophie",
+      "phase": "second_trimester",
+      "due_week": "26"
+    },
+    {
+      "id": "21",
+      "title": "Regular Scan + Flu vaccine (27 WOG)",
+      "phase": "third_trimester",
+      "due_week": "27"
+    },
+    {
+      "id": "25",
+      "title": "Confirm cot sheets (3-4) at 28 weeks",
+      "phase": "third_trimester",
+      "due_week": "28"
+    },
+    {
+      "id": "22",
+      "title": "Growth Scan + Vagina Cultures (32 WOG)",
+      "phase": "third_trimester",
+      "due_week": "32"
+    },
+    {
+      "id": "28",
+      "title": "Purchase expressing equipment from Amazon Mexico",
+      "phase": "third_trimester",
+      "due_week": "34"
+    },
+    {
+      "id": "27",
+      "title": "Set up nursery/baby area in accommodation",
+      "phase": "third_trimester",
+      "due_week": "36"
+    },
+    {
+      "id": "26",
+      "title": "Arrive in Mexico City before birth",
+      "phase": "third_trimester",
+      "due_week": "36"
+    },
+    {
+      "id": "23",
+      "title": "Regular Scan + Blood Count + Coagulation (36 WOG)",
+      "phase": "third_trimester",
+      "due_week": "36"
+    },
+    {
+      "id": "24",
+      "title": "Weekly scans from 37 WOG - assess need for delivery",
+      "phase": "third_trimester",
+      "due_week": "37"
+    },
+    {
+      "id": "30",
+      "title": "Ensure car seat is ready for hospital discharge",
+      "phase": "birth",
+      "due_week": "40"
+    },
+    {
+      "id": "29",
+      "title": "Delivery at Hospital Español (C-section)",
+      "phase": "birth",
+      "due_week": "40"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tphase\tdue_week\n35\tFit to Fly appointment\tpost_birth\tNULL\n37\tMexican legal fees - stage 3 (filiation proceedings)\tpost_birth\tNULL\n32\tGeneral check-up - 7 days post-birth (surrogate)\tpost_birth\tNULL\n33\tPediatric check - 10 days post-birth\tpost_birth\tNULL\n34\tPediatric check - 1 month post-birth\tpost_birth\tNULL\n31\tSuture removal - 7 days post-birth (surrogate)\tpost_birth\tNULL\n36\t40 days post-birth check-up (surrogate)\tpost_birth\tNULL\n38\tRegister birth at Mexico City Civil Registry\tpost_birth\tNULL\n39\tApply for UK passport for baby\tpost_birth\tNULL\n40\tFly home to London with baby\tpost_birth\tNULL\n14\tUK Legal Fees - instruct UK lawyer (Week 20)\tsecond_trimester\t20\n17\tBook flights to Mexico City\tsecond_trimester\t20\n16\tBook accommodation in Mexico City\tsecond_trimester\t20\n15\tMindful Surrogacy Session 1 (Week 20-24)\tsecond_trimester\t20\n12\tAnatomy scan (22 WOG)\tsecond_trimester\t22\n19\tMindful Surrogacy Session 2 (Week 24-30)\tsecond_trimester\t24\n20\tWeek 26-28 catch-up call with Sophie\tsecond_trimester\t26\n21\tRegular Scan + Flu vaccine (27 WOG)\tthird_trimester\t27\n25\tConfirm cot sheets (3-4) at 28 weeks\tthird_trimester\t28\n22\tGrowth Scan + Vagina Cultures (32 WOG)\tthird_trimester\t32\n28\tPurchase expressing equipment from Amazon Mexico\tthird_trimester\t34\n27\tSet up nursery/baby area in accommodation\tthird_trimester\t36\n26\tArrive in Mexico City before birth\tthird_trimester\t36\n23\tRegular Scan + Blood Count + Coagulation (36 WOG)\tthird_trimester\t36\n24\tWeekly scans from 37 WOG - assess need for delivery\tthird_trimester\t37\n30\tEnsure car seat is ready for hospital discharge\tbirth\t40\n29\tDelivery at Hospital Español (C-section)\tbirth\t40\n",
+  "stderr": "",
+  "execution_time_ms": 569
+}
