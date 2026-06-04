@@ -549,3 +549,4 @@
 - [x] Fix production bug: api/index.mjs was stale (missing bambina code) causing Loading... on live site
 - [x] Rebuild api/index.mjs from server/api-entry.ts with correct Vercel serverless export format
 - [x] Update vercel-build script to rebuild api/index.mjs during deployment (prevents future staleness)
+- [x] Reduce size of Bambina nav tabs so they all fit on mobile screen without overlapping

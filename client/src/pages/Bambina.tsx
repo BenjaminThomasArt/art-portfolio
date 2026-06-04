@@ -51,16 +51,16 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
 
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
-      <div className="max-w-4xl mx-auto px-4 flex items-center h-14">
+      <div className="max-w-4xl mx-auto px-2 md:px-4 flex items-center h-14">
         <span className="font-playfair text-sm font-semibold text-deep-teal mr-6 hidden md:block">
           🌵 Ben & Fed's Mexico Adventure
         </span>
-        <div className="flex gap-1 flex-1 justify-center md:justify-start overflow-x-auto scrollbar-hide">
+        <div className="flex gap-0.5 md:gap-1 flex-1 justify-center md:justify-start">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
-              className={`font-nunito text-xs md:text-sm px-2 md:px-3 py-1.5 rounded-md transition-all ${
+              className={`font-nunito text-[11px] md:text-sm px-1.5 md:px-3 py-1 md:py-1.5 rounded-md transition-all ${
                 activeTab === tab.id
                   ? "bg-terracotta text-white font-medium"
                   : "text-stone-500 hover:text-stone-700 hover:bg-stone-100"
