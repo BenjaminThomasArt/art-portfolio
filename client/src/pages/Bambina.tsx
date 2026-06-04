@@ -161,7 +161,7 @@ function Countdown() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12 text-center">
-      <p className="font-nunito text-sm uppercase tracking-[0.3em] text-terracotta mb-6">
+      <p className="font-nunito text-sm tracking-wide text-terracotta mb-6">
         We'll meet bambina in...
       </p>
       <div className="flex justify-center gap-4 md:gap-8">
