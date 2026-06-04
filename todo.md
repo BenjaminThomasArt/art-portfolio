@@ -552,3 +552,5 @@
 - [x] Reduce size of Bambina nav tabs so they all fit on mobile screen without overlapping
 - [x] Add actual calendar dates to timeline week headers (e.g. "Week 20 · May 31 – Jun 6")
 - [x] Make Countdown the default tab when landing on /bambina page
+- [x] Add expand/collapse functionality to Payments section
+- [x] Split hero title: "Ben & Fed's" on line 1, "Mexico Adventure" on line 2

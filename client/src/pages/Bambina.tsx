@@ -90,7 +90,7 @@ function HeroBanner() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-4">
         <h1 className="font-playfair text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
-          Ben & Fed's Mexico Adventure
+          Ben & Fed's<br />Mexico Adventure
         </h1>
 
       </div>
@@ -452,6 +452,16 @@ function Payments() {
   const { data: payments = [], refetch } = trpc.bambina.payments.getAll.useQuery();
   const { isAuthenticated } = useAuth();
   const toggleMutation = trpc.bambina.payments.toggle.useMutation({ onSuccess: () => refetch() });
+  const [expandedMonths, setExpandedMonths] = useState<Set<string>>(new Set());
+
+  const toggleMonth = useCallback((month: string) => {
+    setExpandedMonths((prev) => {
+      const next = new Set(prev);
+      if (next.has(month)) next.delete(month);
+      else next.add(month);
+      return next;
+    });
+  }, []);
 
   const grouped = useMemo(() => {
     const g: Record<string, typeof payments> = {};
@@ -491,46 +501,67 @@ function Payments() {
         </div>
       </div>
 
-      {Object.entries(grouped).map(([month, monthPayments]) => (
-        <div key={month}>
-          <h3 className="font-playfair text-lg font-semibold text-deep-teal mb-3 border-b border-stone-100 pb-2">
-            {month}
-          </h3>
-          <div className="space-y-2">
-            {monthPayments.map((payment) => (
-              <div
-                key={payment.id}
-                className={`flex items-center gap-3 p-3 rounded-lg bg-white border border-stone-100 shadow-sm ${
-                  payment.paid ? "opacity-60" : ""
-                }`}
-              >
-                <Checkbox
-                  checked={!!payment.paid}
-                  disabled={!isAuthenticated}
-                  onCheckedChange={(checked) => {
-                    toggleMutation.mutate({ id: payment.id, paid: !!checked });
-                  }}
-                  className="border-stone-300 data-[state=checked]:bg-deep-teal data-[state=checked]:border-deep-teal"
-                />
-                <div className="flex-1">
-                  <p className={`font-nunito text-sm ${payment.paid ? "line-through text-stone-400" : "text-stone-700"}`}>
-                    {payment.description}
-                  </p>
-                  <span className="text-[10px] font-nunito uppercase tracking-wider text-stone-400">
-                    {payment.category}
-                  </span>
-                </div>
-                <div className="text-right">
-                  <p className={`font-nunito font-semibold text-sm ${payment.paid ? "text-stone-400" : "text-deep-teal"}`}>
-                    {payment.amount}
-                  </p>
-                  <p className="font-nunito text-[10px] text-stone-400">{payment.currency}</p>
-                </div>
+      {Object.entries(grouped).map(([month, monthPayments]) => {
+        const isExpanded = expandedMonths.has(month);
+        const paidCount = monthPayments.filter((p) => p.paid).length;
+        return (
+          <div key={month}>
+            <button
+              onClick={() => toggleMonth(month)}
+              className="w-full flex items-center justify-between border-b border-stone-100 pb-2 mb-3 group"
+            >
+              <div className="flex items-center gap-2">
+                <span className={`text-xs transition-transform ${isExpanded ? "rotate-90" : ""}`}>›</span>
+                <h3 className="font-playfair text-lg font-semibold text-deep-teal">
+                  {month}
+                </h3>
               </div>
-            ))}
+              <span className={`font-nunito text-xs font-medium px-2 py-0.5 rounded-full ${
+                paidCount === monthPayments.length
+                  ? "bg-deep-teal/10 text-deep-teal"
+                  : "bg-terracotta/10 text-terracotta"
+              }`}>
+                {paidCount}/{monthPayments.length}
+              </span>
+            </button>
+            {isExpanded && (
+              <div className="space-y-2">
+                {monthPayments.map((payment) => (
+                  <div
+                    key={payment.id}
+                    className={`flex items-center gap-3 p-3 rounded-lg bg-white border border-stone-100 shadow-sm ${
+                      payment.paid ? "opacity-60" : ""
+                    }`}
+                  >
+                    <Checkbox
+                      checked={!!payment.paid}
+                      disabled={!isAuthenticated}
+                      onCheckedChange={(checked) => {
+                        toggleMutation.mutate({ id: payment.id, paid: !!checked });
+                      }}
+                      className="border-stone-300 data-[state=checked]:bg-deep-teal data-[state=checked]:border-deep-teal"
+                    />
+                    <div className="flex-1">
+                      <p className={`font-nunito text-sm ${payment.paid ? "line-through text-stone-400" : "text-stone-700"}`}>
+                        {payment.description}
+                      </p>
+                      <span className="text-[10px] font-nunito uppercase tracking-wider text-stone-400">
+                        {payment.category}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <p className={`font-nunito font-semibold text-sm ${payment.paid ? "text-stone-400" : "text-deep-teal"}`}>
+                        {payment.amount}
+                      </p>
+                      <p className="font-nunito text-[10px] text-stone-400">{payment.currency}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
