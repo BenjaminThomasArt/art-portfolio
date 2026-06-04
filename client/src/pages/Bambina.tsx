@@ -495,32 +495,11 @@ function Payments() {
     return g;
   }, [payments]);
 
-  const totalsByStatus = useMemo(() => {
-    const paid = payments.filter((p) => p.paid);
-    const unpaid = payments.filter((p) => !p.paid);
-    return { paid: paid.length, unpaid: unpaid.length, total: payments.length };
-  }, [payments]);
-
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
       <div className="flex items-center gap-3 mb-2">
         <span className="text-2xl">💰</span>
         <h2 className="font-playfair text-2xl font-bold text-stone-800">Payments</h2>
-      </div>
-
-      <div className="grid grid-cols-3 gap-3">
-        <div className="text-center p-4 rounded-xl bg-white border border-stone-100 shadow-sm">
-          <p className="font-playfair text-2xl font-bold text-deep-teal">{totalsByStatus.paid}</p>
-          <p className="font-nunito text-xs text-stone-500">Paid</p>
-        </div>
-        <div className="text-center p-4 rounded-xl bg-white border border-stone-100 shadow-sm">
-          <p className="font-playfair text-2xl font-bold text-terracotta">{totalsByStatus.unpaid}</p>
-          <p className="font-nunito text-xs text-stone-500">Remaining</p>
-        </div>
-        <div className="text-center p-4 rounded-xl bg-white border border-stone-100 shadow-sm">
-          <p className="font-playfair text-2xl font-bold text-stone-600">{totalsByStatus.total}</p>
-          <p className="font-nunito text-xs text-stone-500">Total</p>
-        </div>
       </div>
 
       {Object.entries(grouped).map(([month, monthPayments]) => {
