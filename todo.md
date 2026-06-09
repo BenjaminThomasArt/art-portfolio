@@ -562,3 +562,5 @@
 - [x] Add English/Italian language toggle to Bambina pages with translated UI text
 - [x] Add Newborn Guide tab to Bambina pages with care essentials for first 3 months
 - [x] Expand Newborn Guide with more detail: feeding positions/latch/formula prep, wake windows/routines, step-by-step bathing, cry types/PURPLE crying, jaundice/vitamins/vaccinations, practical tips/hospital bag, partner bonding section
+- [x] Update feeding content to be bottle-feeding specific (remove breastfeeding positions/latch, focus on formula and bottle techniques)
+- [x] Add Further Reading section at end of Newborn Guide with links to trusted resources

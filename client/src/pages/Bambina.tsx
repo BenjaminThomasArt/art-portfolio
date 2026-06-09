@@ -95,7 +95,7 @@ const t: Record<string, Record<Lang, string>> = {
   "guide.milestones": { en: "Milestones (0-3 months)", it: "Tappe di sviluppo (0-3 mesi)" },
   "guide.bonding": { en: "Bonding & Wellbeing", it: "Legame e benessere" },
   "guide.emergency": { en: "When to Call the Doctor", it: "Quando chiamare il medico" },
-  "guide.feedingPositions": { en: "Breastfeeding Positions & Latch", it: "Posizioni per l'allattamento e attacco" },
+  "guide.feedingPositions": { en: "Bottle Feeding Technique", it: "Tecnica di alimentazione con biberon" },
   "guide.formulaPrep": { en: "Formula Preparation & Bottle Safety", it: "Preparazione del latte artificiale e sicurezza del biberon" },
   "guide.wakeWindows": { en: "Wake Windows & Routines", it: "Finestre di veglia e routine" },
   "guide.purpleCrying": { en: "The PURPLE Crying Period", it: "Il periodo del pianto PURPLE" },
@@ -1078,45 +1078,60 @@ function NewbornGuide() {
       {/* Feeding */}
       <GuideSection title={useT("guide.feeding")}>
         <p>{en
-          ? "Newborns feed every 2\u20133 hours (8\u201312 times per day). Feed on demand \u2014 hunger signs include rooting, sucking fingers, lip smacking, and fussing. Crying is a late sign of hunger."
-          : "I neonati mangiano ogni 2\u20133 ore (8\u201312 volte al giorno). Allatta a richiesta \u2014 i segnali di fame includono il riflesso di ricerca, succhiarsi le dita, schioccare le labbra e agitarsi. Il pianto è un segnale tardivo di fame."
+          ? "Newborns feed every 2–3 hours (8–12 times per day). Feed on demand — hunger signs include rooting, sucking fingers, lip smacking, and fussing. Crying is a late sign of hunger."
+          : "I neonati mangiano ogni 2–3 ore (8–12 volte al giorno). Dai da mangiare a richiesta — i segnali di fame includono il riflesso di ricerca, succhiarsi le dita, schioccare le labbra e agitarsi. Il pianto è un segnale tardivo di fame."
         }</p>
         <p>{en
-          ? "Breastfed babies are getting enough if they have 6+ wet nappies per day, several poops (colour changes from black meconium to yellow/mustard by day 4\u20135), seem satisfied after feeds, and gain weight steadily."
-          : "I bambini allattati al seno mangiano abbastanza se hanno 6+ pannolini bagnati al giorno, diverse evacuazioni (il colore cambia dal meconio nero al giallo/senape entro il giorno 4\u20135), sembrano soddisfatti dopo le poppate e aumentano di peso costantemente."
+          ? "Your baby is getting enough if they have 6+ wet nappies per day, several poops (colour changes from black meconium to yellow/green by day 4–5), seem satisfied after feeds, and gain weight steadily."
+          : "Il tuo bambino mangia abbastanza se ha 6+ pannolini bagnati al giorno, diverse evacuazioni (il colore cambia dal meconio nero al giallo/verde entro il giorno 4–5), sembra soddisfatto dopo le poppate e aumenta di peso costantemente."
+        }</p>
+        <p className="font-semibold text-stone-700">{en ? "How much formula by age:" : "Quanto latte artificiale per età:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "First few days: 15–60ml per feed (tiny tummy!)" : "Primi giorni: 15–60ml per poppata (pancino piccolo!)"}</li>
+          <li>{en ? "1–2 weeks: 60–90ml per feed, every 2–3 hours" : "1–2 settimane: 60–90ml per poppata, ogni 2–3 ore"}</li>
+          <li>{en ? "1 month: 90–120ml per feed, every 3–4 hours" : "1 mese: 90–120ml per poppata, ogni 3–4 ore"}</li>
+          <li>{en ? "2 months: 120–150ml per feed" : "2 mesi: 120–150ml per poppata"}</li>
+          <li>{en ? "3 months: 150–210ml per feed" : "3 mesi: 150–210ml per poppata"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "These are guidelines — every baby is different. Let baby guide you. Signs they've had enough: turning away, pushing the bottle out, falling asleep, or slowing right down."
+          : "Queste sono linee guida — ogni bambino è diverso. Lascia che il bambino ti guidi. Segni che ha avuto abbastanza: voltarsi, spingere via il biberon, addormentarsi o rallentare molto."
         }</p>
         <p>{en
-          ? "Cluster feeding (feeding very frequently for several hours, often in the evening) is completely normal, especially in the first 6 weeks. It doesn't mean your milk supply is low \u2014 it's how baby stimulates more milk production."
-          : "L'allattamento a grappolo (poppate molto frequenti per diverse ore, spesso la sera) è completamente normale, specialmente nelle prime 6 settimane. Non significa che la produzione di latte sia bassa \u2014 è il modo in cui il bambino stimola una maggiore produzione di latte."
-        }</p>
-        <p>{en
-          ? "Burp your baby during and after feeds \u2014 over the shoulder, sitting up on your lap, or face-down across your knees. Some babies need lots of burping, others very little."
-          : "Fai fare il ruttino durante e dopo le poppate \u2014 sulla spalla, seduto sulle ginocchia, o a pancia in giù sulle ginocchia. Alcuni bambini hanno bisogno di molto ruttino, altri molto poco."
+          ? "Burp your baby during and after feeds — over the shoulder, sitting up on your lap, or face-down across your knees. Bottle-fed babies tend to swallow more air, so burping is especially important."
+          : "Fai fare il ruttino durante e dopo le poppate — sulla spalla, seduto sulle ginocchia, o a pancia in giù sulle ginocchia. I bambini alimentati con biberon tendono a ingoiare più aria, quindi il ruttino è particolarmente importante."
         }</p>
       </GuideSection>
 
-      {/* Breastfeeding Positions & Latch */}
+      {/* Bottle Feeding Technique */}
       <GuideSection title={useT("guide.feedingPositions")}>
-        <p className="font-semibold text-stone-700">{en ? "Common breastfeeding positions:" : "Posizioni comuni per l'allattamento:"}</p>
-        <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Cradle hold \u2014 baby lies across your front, tummy to tummy, head in the crook of your arm" : "Posizione a culla \u2014 il bambino giace di fronte a te, pancia contro pancia, testa nell'incavo del braccio"}</li>
-          <li>{en ? "Cross-cradle \u2014 similar but opposite hand supports baby's head, giving more control for newborns" : "Culla incrociata \u2014 simile ma la mano opposta sostiene la testa del bambino, dando più controllo per i neonati"}</li>
-          <li>{en ? "Rugby/football hold \u2014 baby tucked under your arm like a ball, good after C-section" : "Posizione a rugby \u2014 bambino infilato sotto il braccio come una palla, buona dopo il cesareo"}</li>
-          <li>{en ? "Side-lying \u2014 both lying on your sides facing each other, great for night feeds" : "Sdraiata di lato \u2014 entrambi sdraiati sui fianchi uno di fronte all'altro, ottima per le poppate notturne"}</li>
-          <li>{en ? "Laid-back/biological nurturing \u2014 recline and let baby find the breast naturally" : "Posizione reclinata/nurturing biologico \u2014 reclinati e lascia che il bambino trovi il seno naturalmente"}</li>
-        </ul>
-        <p className="font-semibold text-stone-700 mt-3">{en ? "Signs of a good latch:" : "Segni di un buon attacco:"}</p>
-        <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Wide open mouth covering most of the areola, not just the nipple" : "Bocca ben aperta che copre la maggior parte dell'areola, non solo il capezzolo"}</li>
-          <li>{en ? "Chin touching the breast, nose free" : "Mento che tocca il seno, naso libero"}</li>
-          <li>{en ? "Lips flanged outward (like a fish)" : "Labbra rivolte verso l'esterno (come un pesce)"}</li>
-          <li>{en ? "Rhythmic sucking with audible swallowing" : "Suzione ritmica con deglutizione udibile"}</li>
-          <li>{en ? "No pain after the initial latch (some tenderness in the first week is normal)" : "Nessun dolore dopo l'attacco iniziale (un po' di sensibilità nella prima settimana è normale)"}</li>
-        </ul>
-        <p className="mt-3">{en
-          ? "If breastfeeding is painful or baby isn't gaining weight, seek help from a lactation consultant early. Most latch issues can be resolved with guidance."
-          : "Se l'allattamento è doloroso o il bambino non aumenta di peso, cerca aiuto da una consulente per l'allattamento. La maggior parte dei problemi di attacco può essere risolta con una guida."
+        <p className="font-semibold text-stone-700">{en ? "Paced bottle feeding (recommended):" : "Alimentazione a ritmo controllato (raccomandata):"}</p>
+        <p>{en
+          ? "Paced feeding mimics the natural rhythm of feeding and helps prevent overfeeding. It gives baby more control over how much they drink."
+          : "L'alimentazione a ritmo controllato imita il ritmo naturale dell'alimentazione e aiuta a prevenire la sovralimentazione. Dà al bambino più controllo su quanto beve."
         }</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Hold baby in a semi-upright position (not lying flat)" : "Tieni il bambino in posizione semi-eretta (non sdraiato)"}</li>
+          <li>{en ? "Hold the bottle horizontally — just enough tilt to fill the teat" : "Tieni il biberon orizzontale — inclinato appena abbastanza da riempire la tettarella"}</li>
+          <li>{en ? "Let baby draw the teat in rather than pushing it in" : "Lascia che il bambino attiri la tettarella piuttosto che spingerla dentro"}</li>
+          <li>{en ? "Pause every few minutes — lower the bottle to let baby rest" : "Fai una pausa ogni pochi minuti — abbassa il biberon per far riposare il bambino"}</li>
+          <li>{en ? "Switch sides halfway through (helps eye development and prevents preference)" : "Cambia lato a metà poppata (aiuta lo sviluppo visivo e previene preferenze)"}</li>
+          <li>{en ? "A feed should take 15–20 minutes, not 5" : "Una poppata dovrebbe durare 15–20 minuti, non 5"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Choosing the right teat:" : "Scegliere la tettarella giusta:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Start with a slow-flow (size 1) teat for newborns" : "Inizia con una tettarella a flusso lento (taglia 1) per neonati"}</li>
+          <li>{en ? "If baby is gulping, choking, or milk leaks from mouth — flow is too fast" : "Se il bambino ingoia troppo, si strozza, o il latte esce dalla bocca — il flusso è troppo veloce"}</li>
+          <li>{en ? "If baby is frustrated, collapsing the teat, or taking very long — try the next size up" : "Se il bambino è frustrato, schiaccia la tettarella, o impiega troppo tempo — prova la taglia successiva"}</li>
+          <li>{en ? "Move to size 2 around 3–6 months (every baby is different)" : "Passa alla taglia 2 intorno ai 3–6 mesi (ogni bambino è diverso)"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Bonding during bottle feeds:" : "Legame durante le poppate con biberon:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Hold baby close with skin-to-skin contact when possible" : "Tieni il bambino vicino con contatto pelle a pelle quando possibile"}</li>
+          <li>{en ? "Make eye contact and talk softly during feeds" : "Mantieni il contatto visivo e parla dolcemente durante le poppate"}</li>
+          <li>{en ? "Limit the number of people who feed baby in the early weeks (helps baby feel secure)" : "Limita il numero di persone che danno da mangiare al bambino nelle prime settimane (aiuta il bambino a sentirsi sicuro)"}</li>
+          <li>{en ? "Both parents can share feeds equally — great for bonding" : "Entrambi i genitori possono condividere le poppate equamente — ottimo per il legame"}</li>
+        </ul>
       </GuideSection>
 
       {/* Formula Preparation */}
@@ -1285,8 +1300,8 @@ function NewbornGuide() {
         }</p>
         <p className="font-semibold text-stone-700 mt-3">{en ? "Vitamin D:" : "Vitamina D:"}</p>
         <p>{en
-          ? "All breastfed babies should receive vitamin D drops (8.5\u201310 micrograms/day) from birth. Formula-fed babies don't need supplements until they're having less than 500ml of formula per day."
-          : "Tutti i bambini allattati al seno dovrebbero ricevere gocce di vitamina D (8,5\u201310 microgrammi/giorno) dalla nascita. I bambini alimentati con formula non hanno bisogno di integratori fino a quando non assumono meno di 500ml di formula al giorno."
+          ? "Your baby won't need vitamin D supplements while drinking 500ml or more of formula per day (it's already fortified). Once they drop below that amount (e.g. when starting solids), give 8.5201310 micrograms/day of vitamin D drops."
+          : "Il vostro bambino non avrà bisogno di integratori di vitamina D finché beve 500ml o più di formula al giorno (è già fortificata). Una volta che scende sotto quella quantità (es. quando inizia i cibi solidi), date 8,5201310 microgrammi/giorno di gocce di vitamina D."
         }</p>
         <p className="font-semibold text-stone-700 mt-3">{en ? "Reflux/spit-up:" : "Reflusso/rigurgito:"}</p>
         <p>{en
@@ -1437,7 +1452,7 @@ function NewbornGuide() {
           <li>{en ? "Portable changing mat" : "Fasciatoio portatile"}</li>
           <li>{en ? "Spare outfit (for baby AND a spare top for you \u2014 spit-up happens)" : "Cambio vestiti (per il bambino E una maglia di ricambio per te \u2014 il rigurgito succede)"}</li>
           <li>{en ? "Muslin cloths (2\u20133)" : "Mussole (2\u20133)"}</li>
-          <li>{en ? "Bottle and pre-measured formula (if formula feeding)" : "Biberon e formula pre-dosata (se allatti con formula)"}</li>
+          <li>{en ? "Bottles and pre-measured formula portions" : "Biberon e porzioni di formula pre-dosate"}</li>
           <li>{en ? "Dummy/pacifier (if using)" : "Ciuccio (se lo usi)"}</li>
           <li>{en ? "Barrier cream" : "Crema barriera"}</li>
           <li>{en ? "Hat and blanket (for temperature changes)" : "Cappellino e coperta (per i cambi di temperatura)"}</li>
@@ -1469,6 +1484,75 @@ function NewbornGuide() {
           : "Fidati del tuo istinto. Se qualcosa non ti sembra giusto, è sempre meglio farsi controllare. Nessun medico ti giudicherà mai per essere prudente con un neonato."
         }</p>
       </GuideSection>
+
+      {/* Further Reading */}
+      <div className="mt-8 p-5 bg-white/60 rounded-2xl border border-stone-100">
+        <h3 className="font-playfair text-lg font-semibold text-deep-teal mb-4">
+          {en ? "Further Reading & Resources" : "Approfondimenti e risorse"}
+        </h3>
+        <p className="text-sm text-stone-600 mb-4">
+          {en
+            ? "Trusted sources for when you want to dive deeper into any topic:"
+            : "Fonti affidabili per quando volete approfondire qualsiasi argomento:"
+          }
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "General Newborn Care" : "Cura generale del neonato"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li><a href="https://www.nhs.uk/conditions/baby/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">NHS - Your baby</a> {en ? "— comprehensive UK health service guide" : "— guida completa del servizio sanitario britannico"}</li>
+              <li><a href="https://kidshealth.org/en/parents/guide-parents.html" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">KidsHealth - Guide for First-Time Parents</a> {en ? "— clear, practical advice" : "— consigli chiari e pratici"}</li>
+              <li><a href="https://www.healthychildren.org/English/ages-stages/baby/Pages/default.aspx" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">HealthyChildren.org (AAP)</a> {en ? "— American Academy of Pediatrics" : "— Accademia Americana di Pediatria"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Feeding" : "Alimentazione"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li><a href="https://www.nhs.uk/conditions/baby/breastfeeding-and-bottle-feeding/bottle-feeding/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">NHS - Bottle Feeding Advice</a> {en ? "— formula preparation, sterilising, paced feeding" : "— preparazione formula, sterilizzazione, alimentazione a ritmo"}</li>
+              <li><a href="https://www.unicef.org.uk/babyfriendly/baby-friendly-resources/bottle-feeding-resources/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">UNICEF Baby Friendly - Bottle Feeding</a> {en ? "— responsive bottle feeding guide" : "— guida all'alimentazione responsiva con biberon"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Sleep & Safety" : "Sonno e sicurezza"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li><a href="https://www.lullabytrust.org.uk/safer-sleep-advice/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">The Lullaby Trust - Safer Sleep</a> {en ? "— UK SIDS prevention charity" : "— ente benefico britannico per la prevenzione della SIDS"}</li>
+              <li><a href="https://www.basisonline.org.uk/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">BASIS - Baby Sleep Info Source</a> {en ? "— evidence-based sleep information" : "— informazioni sul sonno basate sull'evidenza"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Crying & Soothing" : "Pianto e consolazione"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li><a href="http://www.purplecrying.info/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">PURPLE Crying</a> {en ? "— understanding the crying curve in newborns" : "— comprendere la curva del pianto nei neonati"}</li>
+              <li><a href="https://www.happiestbaby.com/blogs/baby/the-5-ss-for-soothing-babies" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">Happiest Baby - The 5 S's</a> {en ? "— Dr. Karp's soothing techniques" : "— tecniche calmanti del Dr. Karp"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Mental Health & Wellbeing" : "Salute mentale e benessere"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li><a href="https://www.nhs.uk/mental-health/conditions/post-natal-depression/overview/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">NHS - Postnatal Depression</a> {en ? "— symptoms, support, and treatment" : "— sintomi, supporto e trattamento"}</li>
+              <li><a href="https://www.postpartum.net/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">Postpartum Support International</a> {en ? "— helpline and resources for new parents" : "— linea di aiuto e risorse per neo-genitori"}</li>
+              <li><a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/postnatal-depression-and-perinatal-mental-health/" target="_blank" rel="noopener noreferrer" className="text-deep-teal underline hover:text-teal-700">Mind - Perinatal Mental Health</a> {en ? "— for both parents" : "— per entrambi i genitori"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Books (Recommended)" : "Libri (consigliati)"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li>{en ? "\"The Happiest Baby on the Block\" — Harvey Karp (soothing & sleep)" : "\"Il bambino più felice del mondo\" — Harvey Karp (consolazione e sonno)"}</li>
+              <li>{en ? "\"What to Expect the First Year\" — Heidi Murkoff (comprehensive reference)" : "\"Cosa aspettarsi il primo anno\" — Heidi Murkoff (riferimento completo)"}</li>
+              <li>{en ? "\"Cribsheet\" — Emily Oster (data-driven parenting decisions)" : "\"Cribsheet\" — Emily Oster (decisioni genitoriali basate sui dati)"}</li>
+              <li>{en ? "\"The Wonder Weeks\" — Hetty van de Rijt (developmental leaps)" : "\"Le settimane magiche\" — Hetty van de Rijt (salti di sviluppo)"}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="font-semibold text-stone-700 text-sm">{en ? "Apps" : "App"}</p>
+            <ul className="list-disc list-inside space-y-1 ml-2 text-sm text-stone-600">
+              <li>{en ? "Huckleberry — feed/sleep/nappy tracking" : "Huckleberry — monitoraggio poppate/sonno/pannolini"}</li>
+              <li>{en ? "Wonder Weeks — developmental leap predictions" : "Wonder Weeks — previsioni dei salti di sviluppo"}</li>
+              <li>{en ? "Baby Tracker — all-in-one daily log" : "Baby Tracker — diario giornaliero tutto-in-uno"}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
