@@ -165,16 +165,16 @@ function StickyNav({ activeTab, onTabChange }: { activeTab: TabId; onTabChange: 
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
-      <div className="max-w-4xl mx-auto px-2 md:px-4 flex items-center h-12 md:h-14">
+      <div className="max-w-4xl mx-auto px-1 md:px-4 flex items-center h-12 md:h-14">
         <span className="font-playfair text-sm font-semibold text-deep-teal mr-3 hidden md:block">
           🌵 <T k="hero.title1" /> <T k="hero.title2" />
         </span>
-        <div className="flex gap-0.5 md:gap-1 flex-1 justify-center md:justify-start">
+        <div className="flex gap-0 md:gap-1 flex-1 justify-center md:justify-start">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => onTabChange(tab.id)}
-              className={`font-nunito ${lang === "it" ? "text-[9px] md:text-xs px-1.5 md:px-2.5" : "text-[11px] md:text-sm px-2 md:px-3"} py-1.5 md:py-2 rounded-full transition-all duration-200 ${
+              className={`font-nunito ${lang === "it" ? "text-[8px] md:text-xs px-1 md:px-2.5" : "text-[9px] md:text-sm px-1.5 md:px-3"} py-1 md:py-2 rounded-full transition-all duration-200 ${
                 activeTab === tab.id
                   ? "bg-terracotta text-white font-semibold shadow-sm"
                   : "text-stone-500 hover:text-stone-700 hover:bg-stone-50"
