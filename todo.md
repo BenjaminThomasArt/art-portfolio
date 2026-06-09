@@ -564,3 +564,4 @@
 - [x] Expand Newborn Guide with more detail: feeding positions/latch/formula prep, wake windows/routines, step-by-step bathing, cry types/PURPLE crying, jaundice/vitamins/vaccinations, practical tips/hospital bag, partner bonding section
 - [x] Update feeding content to be bottle-feeding specific (remove breastfeeding positions/latch, focus on formula and bottle techniques)
 - [x] Add Further Reading section at end of Newborn Guide with links to trusted resources
+- [x] Rename bambina to bambino throughout (URL route, page text, translations, hero, countdown, footer)

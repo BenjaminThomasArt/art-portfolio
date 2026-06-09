@@ -25,7 +25,7 @@ const t: Record<string, Record<Lang, string>> = {
   "hero.title1": { en: "Ben & Fed's", it: "L'avventura messicana" },
   "hero.title2": { en: "Mexico Adventure", it: "di Ben & Fed" },
   // Countdown
-  "countdown.intro": { en: "We'll meet bambina in...", it: "Incontreremo la bambina tra..." },
+  "countdown.intro": { en: "We'll meet bambino in...", it: "Incontreremo il bambino tra..." },
   "countdown.days": { en: "Days", it: "Giorni" },
   "countdown.hours": { en: "Hours", it: "Ore" },
   "countdown.minutes": { en: "Minutes", it: "Minuti" },
@@ -107,7 +107,7 @@ const t: Record<string, Record<Lang, string>> = {
   "guide.nappyBag": { en: "Nappy Bag Essentials", it: "Essenziali per la borsa del cambio" },
   "guide.partnerBonding": { en: "Partner & Dad Bonding", it: "Legame con il papà e il partner" },
   // Footer
-  "footer.text": { en: "Made with love for our bambina", it: "Fatto con amore per la nostra bambina" },
+  "footer.text": { en: "Made with love for our bambino", it: "Fatto con amore per il nostro bambino" },
 };
 
 function T({ k }: { k: string }) {

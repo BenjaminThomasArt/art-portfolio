@@ -28,8 +28,8 @@ function Router() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  // Bambina is a standalone secret page — no site navigation/footer
-  if (location === "/bambina") {
+  // Bambino is a standalone secret page — no site navigation/footer
+  if (location === "/bambino" || location === "/bambina") {
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#FDF6EC]" />}>
         <Bambina />
