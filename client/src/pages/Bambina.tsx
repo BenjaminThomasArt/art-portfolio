@@ -95,6 +95,17 @@ const t: Record<string, Record<Lang, string>> = {
   "guide.milestones": { en: "Milestones (0-3 months)", it: "Tappe di sviluppo (0-3 mesi)" },
   "guide.bonding": { en: "Bonding & Wellbeing", it: "Legame e benessere" },
   "guide.emergency": { en: "When to Call the Doctor", it: "Quando chiamare il medico" },
+  "guide.feedingPositions": { en: "Breastfeeding Positions & Latch", it: "Posizioni per l'allattamento e attacco" },
+  "guide.formulaPrep": { en: "Formula Preparation & Bottle Safety", it: "Preparazione del latte artificiale e sicurezza del biberon" },
+  "guide.wakeWindows": { en: "Wake Windows & Routines", it: "Finestre di veglia e routine" },
+  "guide.purpleCrying": { en: "The PURPLE Crying Period", it: "Il periodo del pianto PURPLE" },
+  "guide.bathSteps": { en: "Step-by-Step Bath Guide", it: "Guida passo passo al bagnetto" },
+  "guide.commonConditions": { en: "Common Conditions", it: "Condizioni comuni" },
+  "guide.vaccinations": { en: "Vaccinations (UK Schedule)", it: "Vaccinazioni (calendario UK)" },
+  "guide.fourthTrimester": { en: "The Fourth Trimester", it: "Il quarto trimestre" },
+  "guide.hospitalBag": { en: "Hospital Bag Checklist", it: "Lista per la borsa dell'ospedale" },
+  "guide.nappyBag": { en: "Nappy Bag Essentials", it: "Essenziali per la borsa del cambio" },
+  "guide.partnerBonding": { en: "Partner & Dad Bonding", it: "Legame con il papà e il partner" },
   // Footer
   "footer.text": { en: "Made with love for our bambina", it: "Fatto con amore per la nostra bambina" },
 };
@@ -1048,102 +1059,283 @@ function NewbornGuide() {
         </p>
       </div>
 
+      {/* The Fourth Trimester */}
+      <GuideSection title={useT("guide.fourthTrimester")}>
+        <p>{en
+          ? "The 'fourth trimester' refers to the first 3 months after birth. Your baby has spent 9 months in a warm, dark, snug environment and is now adjusting to the outside world. Everything is new and overwhelming for them."
+          : "Il 'quarto trimestre' si riferisce ai primi 3 mesi dopo la nascita. Il tuo bambino ha trascorso 9 mesi in un ambiente caldo, buio e accogliente e ora si sta adattando al mondo esterno. Tutto è nuovo e travolgente per lui."
+        }</p>
+        <p>{en
+          ? "During this time, recreating womb-like conditions (warmth, closeness, gentle movement, white noise) helps baby feel secure. Expect lots of feeding, sleeping, and crying \u2014 this is normal. Your baby isn't manipulating you; they genuinely need constant comfort and closeness."
+          : "Durante questo periodo, ricreare condizioni simili all'utero (calore, vicinanza, movimento dolce, rumore bianco) aiuta il bambino a sentirsi sicuro. Aspettati molte poppate, sonno e pianto \u2014 questo è normale. Il tuo bambino non ti sta manipolando; ha davvero bisogno di conforto e vicinanza costanti."
+        }</p>
+        <p>{en
+          ? "For you as parents, this is also a huge adjustment. Be patient with yourselves. There's no such thing as a perfect parent \u2014 good enough is good enough. Lower your expectations for housework, socialising, and productivity. Your only job right now is keeping baby fed, safe, and loved."
+          : "Per voi come genitori, anche questo è un enorme adattamento. Siate pazienti con voi stessi. Non esiste il genitore perfetto \u2014 abbastanza buono è abbastanza buono. Abbassate le aspettative per le faccende domestiche, la socializzazione e la produttività. Il vostro unico compito ora è tenere il bambino nutrito, al sicuro e amato."
+        }</p>
+      </GuideSection>
+
       {/* Feeding */}
       <GuideSection title={useT("guide.feeding")}>
         <p>{en
-          ? "Newborns feed every 2–3 hours (8–12 times per day). Feed on demand — hunger signs include rooting, sucking fingers, and fussing. Crying is a late sign of hunger."
-          : "I neonati mangiano ogni 2–3 ore (8–12 volte al giorno). Allatta a richiesta — i segnali di fame includono il riflesso di ricerca, succhiarsi le dita e agitarsi. Il pianto è un segnale tardivo di fame."
+          ? "Newborns feed every 2\u20133 hours (8\u201312 times per day). Feed on demand \u2014 hunger signs include rooting, sucking fingers, lip smacking, and fussing. Crying is a late sign of hunger."
+          : "I neonati mangiano ogni 2\u20133 ore (8\u201312 volte al giorno). Allatta a richiesta \u2014 i segnali di fame includono il riflesso di ricerca, succhiarsi le dita, schioccare le labbra e agitarsi. Il pianto è un segnale tardivo di fame."
         }</p>
         <p>{en
-          ? "Breastfed babies are getting enough if they have 6+ wet nappies per day, several poops, seem satisfied after feeds, and gain weight steadily."
-          : "I bambini allattati al seno mangiano abbastanza se hanno 6+ pannolini bagnati al giorno, diverse evacuazioni, sembrano soddisfatti dopo le poppate e aumentano di peso costantemente."
+          ? "Breastfed babies are getting enough if they have 6+ wet nappies per day, several poops (colour changes from black meconium to yellow/mustard by day 4\u20135), seem satisfied after feeds, and gain weight steadily."
+          : "I bambini allattati al seno mangiano abbastanza se hanno 6+ pannolini bagnati al giorno, diverse evacuazioni (il colore cambia dal meconio nero al giallo/senape entro il giorno 4\u20135), sembrano soddisfatti dopo le poppate e aumentano di peso costantemente."
         }</p>
         <p>{en
-          ? "Formula-fed babies start with 60–90ml per feed, increasing to 120–150ml by 2 months. Burp your baby during and after feeds — over the shoulder, sitting up, or face-down on your lap."
-          : "I bambini alimentati con formula iniziano con 60–90ml per poppata, aumentando a 120–150ml entro i 2 mesi. Fai fare il ruttino durante e dopo le poppate — sulla spalla, seduto, o a pancia in giù sulle ginocchia."
+          ? "Cluster feeding (feeding very frequently for several hours, often in the evening) is completely normal, especially in the first 6 weeks. It doesn't mean your milk supply is low \u2014 it's how baby stimulates more milk production."
+          : "L'allattamento a grappolo (poppate molto frequenti per diverse ore, spesso la sera) è completamente normale, specialmente nelle prime 6 settimane. Non significa che la produzione di latte sia bassa \u2014 è il modo in cui il bambino stimola una maggiore produzione di latte."
+        }</p>
+        <p>{en
+          ? "Burp your baby during and after feeds \u2014 over the shoulder, sitting up on your lap, or face-down across your knees. Some babies need lots of burping, others very little."
+          : "Fai fare il ruttino durante e dopo le poppate \u2014 sulla spalla, seduto sulle ginocchia, o a pancia in giù sulle ginocchia. Alcuni bambini hanno bisogno di molto ruttino, altri molto poco."
+        }</p>
+      </GuideSection>
+
+      {/* Breastfeeding Positions & Latch */}
+      <GuideSection title={useT("guide.feedingPositions")}>
+        <p className="font-semibold text-stone-700">{en ? "Common breastfeeding positions:" : "Posizioni comuni per l'allattamento:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Cradle hold \u2014 baby lies across your front, tummy to tummy, head in the crook of your arm" : "Posizione a culla \u2014 il bambino giace di fronte a te, pancia contro pancia, testa nell'incavo del braccio"}</li>
+          <li>{en ? "Cross-cradle \u2014 similar but opposite hand supports baby's head, giving more control for newborns" : "Culla incrociata \u2014 simile ma la mano opposta sostiene la testa del bambino, dando più controllo per i neonati"}</li>
+          <li>{en ? "Rugby/football hold \u2014 baby tucked under your arm like a ball, good after C-section" : "Posizione a rugby \u2014 bambino infilato sotto il braccio come una palla, buona dopo il cesareo"}</li>
+          <li>{en ? "Side-lying \u2014 both lying on your sides facing each other, great for night feeds" : "Sdraiata di lato \u2014 entrambi sdraiati sui fianchi uno di fronte all'altro, ottima per le poppate notturne"}</li>
+          <li>{en ? "Laid-back/biological nurturing \u2014 recline and let baby find the breast naturally" : "Posizione reclinata/nurturing biologico \u2014 reclinati e lascia che il bambino trovi il seno naturalmente"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Signs of a good latch:" : "Segni di un buon attacco:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Wide open mouth covering most of the areola, not just the nipple" : "Bocca ben aperta che copre la maggior parte dell'areola, non solo il capezzolo"}</li>
+          <li>{en ? "Chin touching the breast, nose free" : "Mento che tocca il seno, naso libero"}</li>
+          <li>{en ? "Lips flanged outward (like a fish)" : "Labbra rivolte verso l'esterno (come un pesce)"}</li>
+          <li>{en ? "Rhythmic sucking with audible swallowing" : "Suzione ritmica con deglutizione udibile"}</li>
+          <li>{en ? "No pain after the initial latch (some tenderness in the first week is normal)" : "Nessun dolore dopo l'attacco iniziale (un po' di sensibilità nella prima settimana è normale)"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "If breastfeeding is painful or baby isn't gaining weight, seek help from a lactation consultant early. Most latch issues can be resolved with guidance."
+          : "Se l'allattamento è doloroso o il bambino non aumenta di peso, cerca aiuto da una consulente per l'allattamento. La maggior parte dei problemi di attacco può essere risolta con una guida."
+        }</p>
+      </GuideSection>
+
+      {/* Formula Preparation */}
+      <GuideSection title={useT("guide.formulaPrep")}>
+        <p>{en
+          ? "Formula-fed babies start with 60\u201390ml per feed in the first weeks, increasing to 120\u2013150ml by 2 months, and up to 180\u2013210ml by 3 months. Every baby is different \u2014 let them guide you."
+          : "I bambini alimentati con formula iniziano con 60\u201390ml per poppata nelle prime settimane, aumentando a 120\u2013150ml entro i 2 mesi, e fino a 180\u2013210ml entro i 3 mesi. Ogni bambino è diverso \u2014 lascia che ti guidi."
+        }</p>
+        <p className="font-semibold text-stone-700">{en ? "Safe formula preparation:" : "Preparazione sicura del latte artificiale:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Boil fresh water and let it cool to no less than 70\u00b0C (kills bacteria in the powder)" : "Fai bollire acqua fresca e lasciala raffreddare a non meno di 70\u00b0C (uccide i batteri nella polvere)"}</li>
+          <li>{en ? "Pour water into sterilised bottle first, then add powder" : "Versa prima l'acqua nel biberon sterilizzato, poi aggiungi la polvere"}</li>
+          <li>{en ? "Use the exact scoop measurement \u2014 don't pack or heap" : "Usa la misura esatta del misurino \u2014 non comprimere o colmare"}</li>
+          <li>{en ? "Cool quickly under cold running water before feeding" : "Raffredda rapidamente sotto acqua corrente fredda prima di dare da mangiare"}</li>
+          <li>{en ? "Test temperature on your wrist \u2014 should feel lukewarm, not hot" : "Testa la temperatura sul polso \u2014 deve sembrare tiepida, non calda"}</li>
+          <li>{en ? "Use within 2 hours of preparation. Discard any leftover milk" : "Usa entro 2 ore dalla preparazione. Scarta il latte avanzato"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Sterilising bottles:" : "Sterilizzare i biberon:"}</p>
+        <p>{en
+          ? "Sterilise all bottles, teats, and equipment until baby is 12 months old. Methods: steam steriliser (quickest), cold water sterilising solution, or boiling in water for 10 minutes. Wash everything in hot soapy water first."
+          : "Sterilizza tutti i biberon, le tettarelle e l'attrezzatura fino a quando il bambino ha 12 mesi. Metodi: sterilizzatore a vapore (il più veloce), soluzione sterilizzante ad acqua fredda, o bollitura in acqua per 10 minuti. Lava tutto prima in acqua calda e sapone."
         }</p>
       </GuideSection>
 
       {/* Sleep */}
       <GuideSection title={useT("guide.sleep")}>
         <p>{en
-          ? "Newborns sleep 14–17 hours per day in 2–4 hour stretches. Many babies sleep through the night (6–8 hours) by 3 months, but don't worry if yours doesn't."
-          : "I neonati dormono 14–17 ore al giorno in periodi di 2–4 ore. Molti bambini dormono tutta la notte (6–8 ore) entro i 3 mesi, ma non preoccuparti se il tuo non lo fa."
+          ? "Newborns sleep 14\u201317 hours per day in 2\u20134 hour stretches. They don't know the difference between day and night yet \u2014 this is normal and resolves gradually."
+          : "I neonati dormono 14\u201317 ore al giorno in periodi di 2\u20134 ore. Non conoscono ancora la differenza tra giorno e notte \u2014 questo è normale e si risolve gradualmente."
         }</p>
-        <p className="font-semibold text-stone-700">{en
-          ? "Safe sleep rules:"
-          : "Regole per un sonno sicuro:"
-        }</p>
+        <p className="font-semibold text-stone-700">{en ? "Safe sleep rules:" : "Regole per un sonno sicuro:"}</p>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Always place baby on their back to sleep" : "Metti sempre il bambino a dormire sulla schiena"}</li>
-          <li>{en ? "Firm, flat mattress — no loose bedding, pillows, or toys" : "Materasso rigido e piatto — niente coperte sciolte, cuscini o giocattoli"}</li>
-          <li>{en ? "Room sharing (not bed sharing) for the first 6 months" : "Condivisione della stanza (non del letto) per i primi 6 mesi"}</li>
-          <li>{en ? "Room temperature: 16–20°C" : "Temperatura della stanza: 16–20°C"}</li>
-          <li>{en ? "Alternate head position nightly to prevent flat spots" : "Alterna la posizione della testa ogni notte per prevenire appiattimenti"}</li>
+          <li>{en ? "Always on their back, every sleep, every time" : "Sempre sulla schiena, ogni sonno, ogni volta"}</li>
+          <li>{en ? "Firm, flat mattress \u2014 no loose bedding, pillows, bumpers, or toys" : "Materasso rigido e piatto \u2014 niente coperte sciolte, cuscini, paracolpi o giocattoli"}</li>
+          <li>{en ? "Room sharing (not bed sharing) for at least the first 6 months" : "Condivisione della stanza (non del letto) per almeno i primi 6 mesi"}</li>
+          <li>{en ? "Room temperature: 16\u201320\u00b0C \u2014 feel baby's chest/back to check (hands and feet are often cool)" : "Temperatura della stanza: 16\u201320\u00b0C \u2014 tocca il petto/schiena per controllare (mani e piedi sono spesso freddi)"}</li>
+          <li>{en ? "Feet at the bottom of the cot ('feet to foot' position)" : "Piedi in fondo alla culla (posizione 'piedi al fondo')"}</li>
+          <li>{en ? "No smoking around baby \u2014 this is the biggest modifiable risk factor for SIDS" : "Non fumare vicino al bambino \u2014 questo è il più grande fattore di rischio modificabile per la SIDS"}</li>
         </ul>
       </GuideSection>
 
-      {/* Bathing */}
-      <GuideSection title={useT("guide.bathing")}>
+      {/* Wake Windows */}
+      <GuideSection title={useT("guide.wakeWindows")}>
         <p>{en
-          ? "You don't need to bathe your baby every day — 2–3 times per week is fine. On other days, 'top and tail' (wash face, neck, hands, and bottom with cotton wool and warm water)."
-          : "Non è necessario fare il bagnetto ogni giorno — 2–3 volte a settimana è sufficiente. Negli altri giorni, lava viso, collo, mani e sederino con cotone e acqua tiepida."
+          ? "A 'wake window' is how long baby can comfortably stay awake between naps. Overtired babies actually find it harder to fall asleep, so watching these windows helps prevent meltdowns."
+          : "Una 'finestra di veglia' è quanto tempo il bambino può stare comodamente sveglio tra i pisolini. I bambini troppo stanchi trovano in realtà più difficile addormentarsi, quindi osservare queste finestre aiuta a prevenire le crisi."
         }</p>
-        <p>{en
-          ? "Use sponge baths only until the umbilical cord stump falls off (1–3 weeks). Water should be warm, not hot — test with your wrist or elbow. Never leave baby alone in water."
-          : "Usa solo spugnature fino a quando il moncone del cordone ombelicale non cade (1–3 settimane). L'acqua deve essere tiepida, non calda — testa con il polso o il gomito. Non lasciare mai il bambino solo nell'acqua."
+        <p className="font-semibold text-stone-700">{en ? "Wake windows by age:" : "Finestre di veglia per età:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "0\u20134 weeks: 30\u201360 minutes (very short!)" : "0\u20134 settimane: 30\u201360 minuti (molto brevi!)"}</li>
+          <li>{en ? "4\u20138 weeks: 45\u201390 minutes" : "4\u20138 settimane: 45\u201390 minuti"}</li>
+          <li>{en ? "2\u20133 months: 60\u2013120 minutes" : "2\u20133 mesi: 60\u2013120 minuti"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Sleepy cues to watch for:" : "Segnali di sonno da osservare:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Yawning, eye rubbing, pulling ears" : "Sbadigli, strofinarsi gli occhi, tirarsi le orecchie"}</li>
+          <li>{en ? "Turning away from stimulation, staring blankly" : "Voltarsi dalla stimolazione, sguardo fisso nel vuoto"}</li>
+          <li>{en ? "Fussing, jerky movements, arching back" : "Agitazione, movimenti a scatti, inarcamento della schiena"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "Day/night confusion: In the first weeks, keep daytime bright and active (don't tiptoe around naps), and nighttime dark and boring (dim lights, minimal talking, no play during night feeds). This helps baby's circadian rhythm develop."
+          : "Confusione giorno/notte: Nelle prime settimane, mantieni il giorno luminoso e attivo (non camminare in punta di piedi durante i pisolini), e la notte buia e noiosa (luci basse, parlare al minimo, niente gioco durante le poppate notturne). Questo aiuta lo sviluppo del ritmo circadiano del bambino."
         }</p>
+      </GuideSection>
+
+      {/* Bathing Step-by-Step */}
+      <GuideSection title={useT("guide.bathSteps")}>
         <p>{en
-          ? "Keep the room warm, have everything ready beforehand. Pat dry carefully, especially in skin folds."
-          : "Tieni la stanza calda, prepara tutto in anticipo. Asciuga tamponando con cura, specialmente nelle pieghe della pelle."
+          ? "You don't need to bathe baby every day \u2014 2\u20133 times per week is plenty. On other days, 'top and tail' (wash face, neck folds, hands, and bottom with cotton wool and warm water)."
+          : "Non è necessario fare il bagnetto ogni giorno \u2014 2\u20133 volte a settimana è sufficiente. Negli altri giorni, lava viso, pieghe del collo, mani e sederino con cotone e acqua tiepida."
+        }</p>
+        <p className="font-semibold text-stone-700">{en ? "Before the cord stump falls off (sponge bath):" : "Prima che il moncone cada (spugnatura):"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Lay baby on a warm towel on a flat surface" : "Adagia il bambino su un asciugamano caldo su una superficie piatta"}</li>
+          <li>{en ? "Use a damp cloth to gently clean face, body, and nappy area" : "Usa un panno umido per pulire delicatamente viso, corpo e zona pannolino"}</li>
+          <li>{en ? "Keep the cord stump dry \u2014 it falls off in 1\u20133 weeks" : "Tieni il moncone asciutto \u2014 cade in 1\u20133 settimane"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Full bath (once cord has fallen off):" : "Bagnetto completo (dopo la caduta del moncone):"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Fill baby bath with 8\u201310cm of water at 37\u201338\u00b0C (test with elbow or thermometer)" : "Riempi la vaschetta con 8\u201310cm di acqua a 37\u201338\u00b0C (testa con il gomito o un termometro)"}</li>
+          <li>{en ? "Have everything ready: towel, clean nappy, clothes, cotton wool" : "Prepara tutto: asciugamano, pannolino pulito, vestiti, cotone"}</li>
+          <li>{en ? "Support head and neck with one hand at all times" : "Sostieni testa e collo con una mano in ogni momento"}</li>
+          <li>{en ? "Wash hair last to prevent heat loss" : "Lava i capelli per ultimi per prevenire la perdita di calore"}</li>
+          <li>{en ? "Use plain water only for the first month; mild baby wash after that" : "Usa solo acqua per il primo mese; detergente delicato per bambini dopo"}</li>
+          <li>{en ? "Pat dry carefully, especially in skin folds (neck, armpits, behind ears)" : "Asciuga tamponando con cura, specialmente nelle pieghe (collo, ascelle, dietro le orecchie)"}</li>
+          <li>{en ? "Never leave baby unattended in water, even for a second" : "Non lasciare mai il bambino incustodito nell'acqua, nemmeno per un secondo"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "Nail trimming: Use baby nail scissors or a file. Best done when baby is asleep or feeding. Trim straight across to avoid ingrown nails."
+          : "Taglio delle unghie: Usa forbicine per bambini o una limetta. Meglio farlo quando il bambino dorme o mangia. Taglia dritto per evitare unghie incarnite."
         }</p>
       </GuideSection>
 
       {/* Nappies */}
       <GuideSection title={useT("guide.nappies")}>
         <p>{en
-          ? "Expect 6–8 wet nappies per day (a sign of good feeding). Change frequently to prevent nappy rash. Clean front to back (especially important for girls)."
-          : "Aspettati 6–8 pannolini bagnati al giorno (segno di buona alimentazione). Cambia frequentemente per prevenire l'eritema da pannolino. Pulisci da davanti a dietro (particolarmente importante per le femmine)."
+          ? "Expect 6\u20138 wet nappies per day (a sign of good feeding). In the first few days, you'll see dark meconium poos, transitioning to yellow/mustard by day 4\u20135. Formula-fed poo is firmer and darker."
+          : "Aspettati 6\u20138 pannolini bagnati al giorno (segno di buona alimentazione). Nei primi giorni, vedrai feci scure di meconio, che diventano gialle/senape entro il giorno 4\u20135. Le feci con formula sono più solide e scure."
         }</p>
         <p>{en
-          ? "Let skin air dry or pat gently. Use barrier cream if redness appears. For the umbilical cord: keep it clean and dry, fold the nappy below it."
-          : "Lascia asciugare la pelle all'aria o tampona delicatamente. Usa crema barriera se appare rossore. Per il cordone ombelicale: tienilo pulito e asciutto, piega il pannolino sotto."
+          ? "Change frequently to prevent nappy rash. Clean front to back (especially important for girls). Let skin air dry or pat gently. Use barrier cream (zinc oxide) if redness appears."
+          : "Cambia frequentemente per prevenire l'eritema da pannolino. Pulisci da davanti a dietro (particolarmente importante per le femmine). Lascia asciugare la pelle all'aria o tampona delicatamente. Usa crema barriera (ossido di zinco) se appare rossore."
+        }</p>
+        <p>{en
+          ? "For the umbilical cord: fold the nappy below it to keep it dry and exposed to air. Don't pull it off \u2014 it will fall naturally."
+          : "Per il cordone ombelicale: piega il pannolino sotto per tenerlo asciutto ed esposto all'aria. Non tirarlo \u2014 cadrà naturalmente."
+        }</p>
+      </GuideSection>
+
+      {/* PURPLE Crying */}
+      <GuideSection title={useT("guide.purpleCrying")}>
+        <p>{en
+          ? "PURPLE is an acronym that describes a normal phase of increased crying in healthy babies. It's not your fault and it doesn't mean something is wrong."
+          : "PURPLE è un acronimo che descrive una fase normale di pianto aumentato nei bambini sani. Non è colpa tua e non significa che qualcosa non va."
+        }</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "P \u2014 Peak of crying (usually around 2 months, then decreases)" : "P \u2014 Picco del pianto (di solito intorno ai 2 mesi, poi diminuisce)"}</li>
+          <li>{en ? "U \u2014 Unexpected (comes and goes without reason)" : "U \u2014 Inaspettato (va e viene senza motivo)"}</li>
+          <li>{en ? "R \u2014 Resists soothing (may not stop no matter what you do)" : "R \u2014 Resiste al conforto (potrebbe non fermarsi qualunque cosa tu faccia)"}</li>
+          <li>{en ? "P \u2014 Pain-like face (but baby is not in pain)" : "P \u2014 Espressione di dolore (ma il bambino non ha dolore)"}</li>
+          <li>{en ? "L \u2014 Long-lasting (can cry for 5+ hours a day)" : "L \u2014 Di lunga durata (può piangere per 5+ ore al giorno)"}</li>
+          <li>{en ? "E \u2014 Evening (often worse in late afternoon/evening)" : "E \u2014 Sera (spesso peggio nel tardo pomeriggio/sera)"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "This phase typically starts around 2 weeks, peaks at 6\u20138 weeks, and resolves by 3\u20135 months. It's the most common time for parents to feel frustrated \u2014 it's okay to put baby down safely in their cot and step away for a few minutes to breathe."
+          : "Questa fase inizia tipicamente intorno alle 2 settimane, raggiunge il picco a 6\u20138 settimane e si risolve entro 3\u20135 mesi. \u00c8 il momento più comune in cui i genitori si sentono frustrati \u2014 va bene mettere il bambino giù in sicurezza nella culla e allontanarsi per qualche minuto per respirare."
         }</p>
       </GuideSection>
 
       {/* Soothing */}
       <GuideSection title={useT("guide.soothing")}>
-        <p className="font-semibold text-stone-700">{en ? "The 5 S's:" : "Le 5 S:"}</p>
+        <p className="font-semibold text-stone-700">{en ? "The 5 S's (Dr. Harvey Karp):" : "Le 5 S (Dr. Harvey Karp):"}</p>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Swaddle — wrap snugly in a blanket" : "Fasciare — avvolgi strettamente in una coperta"}</li>
-          <li>{en ? "Side/Stomach — hold on their side (never for sleeping)" : "Fianco/Pancia — tieni sul fianco (mai per dormire)"}</li>
-          <li>{en ? "Shush — white noise or gentle shushing" : "Shh — rumore bianco o un dolce 'shh'"}</li>
-          <li>{en ? "Swing — gentle rhythmic rocking" : "Dondolare — movimento ritmico delicato"}</li>
-          <li>{en ? "Suck — offer a pacifier or let them feed" : "Succhiare — offri un ciuccio o lascia poppare"}</li>
+          <li>{en ? "Swaddle \u2014 wrap snugly with arms inside (stops startle reflex). Stop swaddling when baby shows signs of rolling" : "Fasciare \u2014 avvolgi strettamente con le braccia dentro (ferma il riflesso di Moro). Smetti di fasciare quando il bambino mostra segni di rotolamento"}</li>
+          <li>{en ? "Side/Stomach \u2014 hold on their side or tummy (for soothing only, never for sleeping)" : "Fianco/Pancia \u2014 tieni sul fianco o sulla pancia (solo per calmare, mai per dormire)"}</li>
+          <li>{en ? "Shush \u2014 loud white noise (as loud as a shower) mimics womb sounds" : "Shh \u2014 rumore bianco forte (forte come una doccia) imita i suoni dell'utero"}</li>
+          <li>{en ? "Swing \u2014 small, fast, jiggly movements (supporting head). Not big swings" : "Dondolare \u2014 piccoli movimenti rapidi e tremolanti (sostenendo la testa). Non grandi oscillazioni"}</li>
+          <li>{en ? "Suck \u2014 pacifier, clean finger, or breast. Sucking is deeply calming" : "Succhiare \u2014 ciuccio, dito pulito o seno. La suzione è profondamente calmante"}</li>
         </ul>
-        <p>{en
-          ? "Skin-to-skin contact is powerful for calming. Colic (excessive crying 3+ hours, 3+ days/week) peaks at 6 weeks and usually resolves by 3–4 months."
-          : "Il contatto pelle a pelle è molto efficace per calmare. Le coliche (pianto eccessivo 3+ ore, 3+ giorni/settimana) raggiungono il picco a 6 settimane e di solito si risolvono entro 3–4 mesi."
+        <p className="mt-3">{en
+          ? "Other soothing techniques: skin-to-skin contact, warm bath, going for a walk or drive, baby wearing (sling/carrier), gentle massage, singing or humming."
+          : "Altre tecniche calmanti: contatto pelle a pelle, bagnetto caldo, fare una passeggiata o un giro in auto, portare il bambino (fascia/marsupio), massaggio delicato, cantare o canticchiare."
         }</p>
-        <p className="font-semibold text-red-600">{en
-          ? "Never shake a baby. If overwhelmed, put them down safely and take a break."
-          : "Non scuotere mai un bambino. Se sei sopraffatto, mettilo giù in sicurezza e prenditi una pausa."
+        <p className="font-semibold text-red-600 mt-3">{en
+          ? "Never shake a baby. Shaking can cause brain damage or death. If you feel overwhelmed, put baby down safely in their cot and walk away. Call someone for support."
+          : "Non scuotere mai un bambino. Lo scuotimento può causare danni cerebrali o morte. Se ti senti sopraffatto, metti il bambino giù in sicurezza nella culla e allontanati. Chiama qualcuno per supporto."
+        }</p>
+      </GuideSection>
+
+      {/* Common Conditions */}
+      <GuideSection title={useT("guide.commonConditions")}>
+        <p className="font-semibold text-stone-700">{en ? "Jaundice:" : "Ittero:"}</p>
+        <p>{en
+          ? "Very common (affects ~60% of newborns). Causes yellowing of skin and eyes, usually appearing day 2\u20133. Mild jaundice resolves on its own within 2 weeks. Feed frequently to help flush bilirubin. If yellowing is severe, spreads to legs/arms, or baby is very sleepy/won't feed, seek medical attention \u2014 phototherapy (light treatment) may be needed."
+          : "Molto comune (colpisce ~60% dei neonati). Causa ingiallimento della pelle e degli occhi, di solito appare al giorno 2\u20133. L'ittero lieve si risolve da solo entro 2 settimane. Allatta frequentemente per aiutare a eliminare la bilirubina. Se l'ingiallimento è grave, si estende a gambe/braccia, o il bambino è molto sonnolento/non mangia, cerca attenzione medica \u2014 potrebbe essere necessaria la fototerapia."
+        }</p>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Cradle cap:" : "Crosta lattea:"}</p>
+        <p>{en
+          ? "Yellowish, scaly patches on baby's scalp. Harmless and very common. Gently massage with oil (olive or coconut), leave for 15 minutes, then brush with a soft baby brush. Usually clears by 6\u201312 months."
+          : "Chiazze giallastre e squamose sul cuoio capelluto del bambino. Innocua e molto comune. Massaggia delicatamente con olio (oliva o cocco), lascia per 15 minuti, poi spazzola con una spazzola morbida per bambini. Di solito scompare entro 6\u201312 mesi."
+        }</p>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Baby acne:" : "Acne neonatale:"}</p>
+        <p>{en
+          ? "Small red or white bumps on face, usually appearing at 2\u20134 weeks. Caused by maternal hormones. Don't squeeze or apply creams \u2014 it clears on its own within a few weeks."
+          : "Piccoli brufoli rossi o bianchi sul viso, di solito appaiono a 2\u20134 settimane. Causati dagli ormoni materni. Non spremere o applicare creme \u2014 scompare da solo entro poche settimane."
+        }</p>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Vitamin D:" : "Vitamina D:"}</p>
+        <p>{en
+          ? "All breastfed babies should receive vitamin D drops (8.5\u201310 micrograms/day) from birth. Formula-fed babies don't need supplements until they're having less than 500ml of formula per day."
+          : "Tutti i bambini allattati al seno dovrebbero ricevere gocce di vitamina D (8,5\u201310 microgrammi/giorno) dalla nascita. I bambini alimentati con formula non hanno bisogno di integratori fino a quando non assumono meno di 500ml di formula al giorno."
+        }</p>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "Reflux/spit-up:" : "Reflusso/rigurgito:"}</p>
+        <p>{en
+          ? "Very common in newborns \u2014 the valve at the top of the stomach is still maturing. Keep baby upright for 20\u201330 minutes after feeds. Small, frequent feeds may help. It usually improves by 12 months. See a doctor if baby is in pain, refusing feeds, or not gaining weight."
+          : "Molto comune nei neonati \u2014 la valvola in cima allo stomaco sta ancora maturando. Tieni il bambino in posizione verticale per 20\u201330 minuti dopo le poppate. Poppate piccole e frequenti possono aiutare. Di solito migliora entro 12 mesi. Consulta un medico se il bambino ha dolore, rifiuta le poppate o non aumenta di peso."
+        }</p>
+      </GuideSection>
+
+      {/* Vaccinations */}
+      <GuideSection title={useT("guide.vaccinations")}>
+        <p>{en
+          ? "Vaccinations protect your baby against serious diseases. In the UK, the schedule begins at 8 weeks:"
+          : "Le vaccinazioni proteggono il tuo bambino da malattie gravi. Nel Regno Unito, il calendario inizia a 8 settimane:"
+        }</p>
+        <p className="font-semibold text-stone-700">{en ? "8 weeks:" : "8 settimane:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "6-in-1 vaccine (diphtheria, tetanus, whooping cough, polio, Hib, hepatitis B)" : "Vaccino 6-in-1 (difterite, tetano, pertosse, polio, Hib, epatite B)"}</li>
+          <li>{en ? "Rotavirus (oral drops)" : "Rotavirus (gocce orali)"}</li>
+          <li>{en ? "MenB (meningococcal B)" : "MenB (meningococco B)"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "12 weeks:" : "12 settimane:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "6-in-1 vaccine (2nd dose)" : "Vaccino 6-in-1 (2a dose)"}</li>
+          <li>{en ? "Rotavirus (2nd dose)" : "Rotavirus (2a dose)"}</li>
+          <li>{en ? "Pneumococcal (PCV)" : "Pneumococco (PCV)"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "After vaccination, baby may be fussy, sleepy, or have a mild fever. Infant paracetamol (Calpol) is recommended after MenB vaccine. Cuddles and feeding help comfort them."
+          : "Dopo la vaccinazione, il bambino potrebbe essere irritabile, sonnolento o avere una leggera febbre. Il paracetamolo per neonati (Calpol) è raccomandato dopo il vaccino MenB. Coccole e poppate aiutano a confortarlo."
+        }</p>
+        <p className="text-stone-500 text-xs mt-2 italic">{en
+          ? "Note: If baby is born in Mexico, the local vaccination schedule may differ. Discuss with your paediatrician which schedule to follow."
+          : "Nota: Se il bambino nasce in Messico, il calendario vaccinale locale potrebbe essere diverso. Discuti con il tuo pediatra quale calendario seguire."
         }</p>
       </GuideSection>
 
       {/* Health & Safety */}
       <GuideSection title={useT("guide.health")}>
         <p>{en
-          ? "Normal temperature is 36.4°C. A fever of 38°C or higher in a baby under 3 months needs immediate medical attention."
-          : "La temperatura normale è 36,4°C. Una febbre di 38°C o superiore in un bambino sotto i 3 mesi richiede attenzione medica immediata."
+          ? "Normal temperature is 36.4\u00b0C. A fever of 38\u00b0C or higher in a baby under 3 months needs immediate medical attention \u2014 don't wait."
+          : "La temperatura normale è 36,4\u00b0C. Una febbre di 38\u00b0C o superiore in un bambino sotto i 3 mesi richiede attenzione medica immediata \u2014 non aspettare."
         }</p>
         <p>{en
-          ? "The umbilical cord stump falls off in 1–3 weeks — keep it dry and clean. The fontanelles (soft spots) are normal and close gradually over the first 18 months."
-          : "Il moncone del cordone ombelicale cade in 1–3 settimane — tienilo asciutto e pulito. Le fontanelle (punti morbidi) sono normali e si chiudono gradualmente nei primi 18 mesi."
+          ? "Start tummy time from day one \u2014 even 1\u20132 minutes counts. Build up gradually to 15\u201320 minutes by 3 months. This strengthens neck, shoulder, and core muscles needed for rolling and crawling later."
+          : "Inizia il 'tummy time' dal primo giorno \u2014 anche 1\u20132 minuti contano. Aumenta gradualmente fino a 15\u201320 minuti entro i 3 mesi. Questo rafforza i muscoli del collo, delle spalle e del core necessari per rotolare e gattonare in seguito."
         }</p>
         <p>{en
-          ? "Start tummy time from day one — a few minutes at a time, building up gradually. This strengthens neck and shoulder muscles."
-          : "Inizia il 'tummy time' dal primo giorno — pochi minuti alla volta, aumentando gradualmente. Questo rafforza i muscoli del collo e delle spalle."
+          ? "The fontanelles (soft spots) are normal \u2014 the front one closes by 12\u201318 months. A bulging fontanelle (when baby is calm and upright) or a sunken one (dehydration) needs medical attention."
+          : "Le fontanelle (punti morbidi) sono normali \u2014 quella anteriore si chiude entro 12\u201318 mesi. Una fontanella sporgente (quando il bambino è calmo e in posizione verticale) o infossata (disidratazione) richiede attenzione medica."
         }</p>
       </GuideSection>
 
@@ -1152,36 +1344,105 @@ function NewbornGuide() {
         <div className="space-y-2">
           <p className="font-semibold text-stone-700">{en ? "Month 1:" : "Mese 1:"}</p>
           <p>{en
-            ? "Focuses on faces 20–30cm away, startles at loud sounds, lifts head briefly during tummy time, sleeps most of the day."
-            : "Si concentra sui visi a 20–30cm di distanza, si spaventa ai rumori forti, solleva brevemente la testa durante il tummy time, dorme la maggior parte del giorno."
+            ? "Focuses on faces 20\u201330cm away, startles at loud sounds, lifts head briefly during tummy time, sleeps most of the day, strong grasp reflex, prefers high-contrast patterns."
+            : "Si concentra sui visi a 20\u201330cm di distanza, si spaventa ai rumori forti, solleva brevemente la testa durante il tummy time, dorme la maggior parte del giorno, forte riflesso di presa, preferisce motivi ad alto contrasto."
           }</p>
           <p className="font-semibold text-stone-700">{en ? "Month 2:" : "Mese 2:"}</p>
           <p>{en
-            ? "Starts to smile socially, makes cooing sounds, follows objects with eyes, holds head up more steadily."
-            : "Inizia a sorridere socialmente, emette suoni di 'coo', segue gli oggetti con gli occhi, tiene la testa più stabilmente."
+            ? "First real smiles! Makes cooing and gurgling sounds, follows objects with eyes, holds head up more steadily, begins to notice their own hands, more alert during wake periods."
+            : "Primi veri sorrisi! Emette suoni di 'coo' e gorgoglii, segue gli oggetti con gli occhi, tiene la testa più stabilmente, inizia a notare le proprie mani, più vigile durante i periodi di veglia."
           }</p>
           <p className="font-semibold text-stone-700">{en ? "Month 3:" : "Mese 3:"}</p>
           <p>{en
-            ? "Recognises familiar faces, reaches for objects, laughs and giggles, holds head steady, pushes up on arms during tummy time."
-            : "Riconosce i visi familiari, cerca di afferrare gli oggetti, ride e fa versetti, tiene la testa ferma, si spinge sulle braccia durante il tummy time."
+            ? "Recognises familiar faces and voices, reaches for objects, laughs and giggles, holds head steady, pushes up on arms during tummy time, may start to roll from tummy to back, more predictable sleep patterns emerging."
+            : "Riconosce visi e voci familiari, cerca di afferrare gli oggetti, ride e fa versetti, tiene la testa ferma, si spinge sulle braccia durante il tummy time, potrebbe iniziare a rotolare dalla pancia alla schiena, emergono schemi di sonno più prevedibili."
           }</p>
         </div>
+        <p className="text-stone-500 text-xs mt-3 italic">{en
+          ? "Every baby develops at their own pace. These are guidelines, not deadlines. If you have concerns, speak to your health visitor or paediatrician."
+          : "Ogni bambino si sviluppa al proprio ritmo. Queste sono linee guida, non scadenze. Se hai dubbi, parla con il tuo pediatra."
+        }</p>
       </GuideSection>
 
-      {/* Bonding */}
+      {/* Partner & Dad Bonding */}
+      <GuideSection title={useT("guide.partnerBonding")}>
+        <p>{en
+          ? "Bonding isn't instant for everyone \u2014 and that's okay. It builds over time through daily care. Here are ways for dads and partners to connect:"
+          : "Il legame non è istantaneo per tutti \u2014 e va bene così. Si costruisce nel tempo attraverso le cure quotidiane. Ecco modi per papà e partner di connettersi:"
+        }</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Skin-to-skin contact \u2014 hold baby against your bare chest. This releases oxytocin and helps baby recognise your scent and heartbeat" : "Contatto pelle a pelle \u2014 tieni il bambino contro il petto nudo. Questo rilascia ossitocina e aiuta il bambino a riconoscere il tuo odore e battito cardiaco"}</li>
+          <li>{en ? "Take ownership of bath time or a specific routine" : "Prenditi la responsabilità del bagnetto o di una routine specifica"}</li>
+          <li>{en ? "Do night feeds (expressed milk or formula) so both parents share the load" : "Fai le poppate notturne (latte estratto o formula) così entrambi i genitori condividono il carico"}</li>
+          <li>{en ? "Nappy changes \u2014 it's one-on-one time with eye contact and chat" : "Cambi pannolino \u2014 è tempo uno a uno con contatto visivo e chiacchiere"}</li>
+          <li>{en ? "Baby wearing \u2014 use a sling or carrier for walks" : "Portare il bambino \u2014 usa una fascia o un marsupio per le passeggiate"}</li>
+          <li>{en ? "Talk, read, and sing to baby \u2014 they learn your voice quickly" : "Parla, leggi e canta al bambino \u2014 impara la tua voce velocemente"}</li>
+          <li>{en ? "Be the 'settling' parent \u2014 rock, bounce, and soothe baby to sleep" : "Sii il genitore che 'calma' \u2014 dondola, fai saltellare e calma il bambino per farlo addormentare"}</li>
+        </ul>
+        <p className="mt-3">{en
+          ? "It's also normal for partners to feel anxious, overwhelmed, or even low after the birth. Postnatal depression affects 1 in 10 dads. Talk about how you're feeling and seek help if you need it."
+          : "È anche normale per i partner sentirsi ansiosi, sopraffatti o anche giù dopo la nascita. La depressione postnatale colpisce 1 papà su 10. Parla di come ti senti e cerca aiuto se ne hai bisogno."
+        }</p>
+      </GuideSection>
+
+      {/* Bonding & Wellbeing */}
       <GuideSection title={useT("guide.bonding")}>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Skin-to-skin contact as much as possible" : "Contatto pelle a pelle il più possibile"}</li>
-          <li>{en ? "Talk, sing, and read to baby from day one" : "Parla, canta e leggi al bambino dal primo giorno"}</li>
-          <li>{en ? "Respond to cries promptly — you can't spoil a newborn" : "Rispondi al pianto prontamente — non puoi viziare un neonato"}</li>
-          <li>{en ? "Take turns with your partner for night feeds" : "Fai i turni con il partner per le poppate notturne"}</li>
-          <li>{en ? "Accept help from family and friends" : "Accetta aiuto da famiglia e amici"}</li>
-          <li>{en ? "It's normal to feel overwhelmed — seek support if needed" : "È normale sentirsi sopraffatti — cerca supporto se necessario"}</li>
+          <li>{en ? "Respond to cries promptly \u2014 you cannot spoil a newborn. Every response builds trust" : "Rispondi al pianto prontamente \u2014 non puoi viziare un neonato. Ogni risposta costruisce fiducia"}</li>
+          <li>{en ? "Eye contact during feeds creates powerful connection" : "Il contatto visivo durante le poppate crea una connessione potente"}</li>
+          <li>{en ? "Gentle massage \u2014 use a natural oil and stroke limbs, tummy (clockwise), and back" : "Massaggio delicato \u2014 usa un olio naturale e accarezza arti, pancia (in senso orario) e schiena"}</li>
+          <li>{en ? "Accept help from family and friends \u2014 you don't have to do this alone" : "Accetta aiuto da famiglia e amici \u2014 non devi farcela da solo"}</li>
+          <li>{en ? "Lower expectations \u2014 a fed baby and surviving parents is a successful day" : "Abbassa le aspettative \u2014 un bambino nutrito e genitori che sopravvivono è una giornata di successo"}</li>
         </ul>
-        <p>{en
-          ? "Postnatal depression can affect both parents. Watch for persistent low mood, anxiety, or withdrawal and speak to a doctor if concerned."
-          : "La depressione postnatale può colpire entrambi i genitori. Fai attenzione a umore basso persistente, ansia o ritiro sociale e parla con un medico se preoccupato."
+        <p className="mt-3">{en
+          ? "Postnatal depression can affect both parents. Warning signs: persistent sadness lasting more than 2 weeks, loss of interest, difficulty bonding with baby, intrusive thoughts, or withdrawing from others. It's treatable \u2014 speak to your doctor."
+          : "La depressione postnatale può colpire entrambi i genitori. Segnali d'allarme: tristezza persistente che dura più di 2 settimane, perdita di interesse, difficoltà a legare con il bambino, pensieri intrusivi o ritiro dagli altri. È curabile \u2014 parla con il tuo medico."
         }</p>
+      </GuideSection>
+
+      {/* Hospital Bag */}
+      <GuideSection title={useT("guide.hospitalBag")}>
+        <p className="font-semibold text-stone-700">{en ? "For baby:" : "Per il bambino:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "6\u20138 bodysuits/vests and sleepsuits" : "6\u20138 body/canottiere e tutine"}</li>
+          <li>{en ? "A going-home outfit and hat" : "Un vestito per tornare a casa e un cappellino"}</li>
+          <li>{en ? "Scratch mittens and socks" : "Guantini antigraffio e calzini"}</li>
+          <li>{en ? "Newborn nappies (pack of 20+)" : "Pannolini per neonati (confezione da 20+)"}</li>
+          <li>{en ? "Cotton wool or water wipes" : "Cotone o salviette ad acqua"}</li>
+          <li>{en ? "Muslin cloths (5\u20136 \u2014 you'll use them constantly)" : "Mussole (5\u20136 \u2014 le userai costantemente)"}</li>
+          <li>{en ? "Blanket for the car/journey home" : "Coperta per l'auto/viaggio a casa"}</li>
+          <li>{en ? "Car seat (must be installed before birth)" : "Seggiolino auto (deve essere installato prima della nascita)"}</li>
+        </ul>
+        <p className="font-semibold text-stone-700 mt-3">{en ? "For parents:" : "Per i genitori:"}</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "Phone charger (long cable!)" : "Caricatore del telefono (cavo lungo!)"}</li>
+          <li>{en ? "Comfortable clothes and slippers" : "Vestiti comodi e pantofole"}</li>
+          <li>{en ? "Snacks and drinks" : "Snack e bevande"}</li>
+          <li>{en ? "Toiletries and lip balm" : "Articoli da toilette e burrocacao"}</li>
+          <li>{en ? "Camera or phone for photos" : "Fotocamera o telefono per le foto"}</li>
+          <li>{en ? "Important documents (ID, insurance, birth plan)" : "Documenti importanti (ID, assicurazione, piano del parto)"}</li>
+          <li>{en ? "Pillow from home for comfort" : "Cuscino da casa per il comfort"}</li>
+        </ul>
+      </GuideSection>
+
+      {/* Nappy Bag Essentials */}
+      <GuideSection title={useT("guide.nappyBag")}>
+        <p>{en
+          ? "For going out with a newborn, always have these packed and ready:"
+          : "Per uscire con un neonato, tieni sempre pronto:"
+        }</p>
+        <ul className="list-disc list-inside space-y-1 ml-2">
+          <li>{en ? "4\u20136 nappies (you'll be surprised how many you need)" : "4\u20136 pannolini (ti sorprenderà quanti ne servono)"}</li>
+          <li>{en ? "Wipes and nappy bags for disposal" : "Salviette e sacchetti per lo smaltimento"}</li>
+          <li>{en ? "Portable changing mat" : "Fasciatoio portatile"}</li>
+          <li>{en ? "Spare outfit (for baby AND a spare top for you \u2014 spit-up happens)" : "Cambio vestiti (per il bambino E una maglia di ricambio per te \u2014 il rigurgito succede)"}</li>
+          <li>{en ? "Muslin cloths (2\u20133)" : "Mussole (2\u20133)"}</li>
+          <li>{en ? "Bottle and pre-measured formula (if formula feeding)" : "Biberon e formula pre-dosata (se allatti con formula)"}</li>
+          <li>{en ? "Dummy/pacifier (if using)" : "Ciuccio (se lo usi)"}</li>
+          <li>{en ? "Barrier cream" : "Crema barriera"}</li>
+          <li>{en ? "Hat and blanket (for temperature changes)" : "Cappellino e coperta (per i cambi di temperatura)"}</li>
+          <li>{en ? "Hand sanitiser" : "Disinfettante per le mani"}</li>
+        </ul>
       </GuideSection>
 
       {/* When to Call the Doctor */}
@@ -1191,16 +1452,22 @@ function NewbornGuide() {
           : "Cerca aiuto medico immediato se il tuo bambino ha:"
         }</p>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>{en ? "Fever of 38°C or higher" : "Febbre di 38°C o superiore"}</li>
-          <li>{en ? "Difficulty breathing or blue lips" : "Difficoltà a respirare o labbra blu"}</li>
-          <li>{en ? "Won't feed or feeding much less than usual" : "Non mangia o mangia molto meno del solito"}</li>
-          <li>{en ? "Very sleepy or hard to wake" : "Molto sonnolento o difficile da svegliare"}</li>
-          <li>{en ? "Persistent vomiting (not just spit-up)" : "Vomito persistente (non solo rigurgito)"}</li>
-          <li>{en ? "Fewer than 6 wet nappies in 24 hours" : "Meno di 6 pannolini bagnati in 24 ore"}</li>
-          <li>{en ? "Yellow skin/eyes getting worse (jaundice)" : "Pelle/occhi gialli che peggiorano (ittero)"}</li>
-          <li>{en ? "Rash that doesn't fade when pressed" : "Eruzione cutanea che non scompare alla pressione"}</li>
+          <li>{en ? "Fever of 38\u00b0C or higher (under 3 months = always urgent)" : "Febbre di 38\u00b0C o superiore (sotto i 3 mesi = sempre urgente)"}</li>
+          <li>{en ? "Difficulty breathing, grunting, or blue/grey lips" : "Difficoltà a respirare, grugniti o labbra blu/grigie"}</li>
+          <li>{en ? "Won't feed or feeding much less than usual for 8+ hours" : "Non mangia o mangia molto meno del solito per 8+ ore"}</li>
+          <li>{en ? "Very sleepy, floppy, or hard to wake" : "Molto sonnolento, floscio o difficile da svegliare"}</li>
+          <li>{en ? "Persistent vomiting (not just normal spit-up)" : "Vomito persistente (non solo il normale rigurgito)"}</li>
+          <li>{en ? "Fewer than 6 wet nappies in 24 hours (dehydration)" : "Meno di 6 pannolini bagnati in 24 ore (disidratazione)"}</li>
+          <li>{en ? "Yellow skin/eyes getting worse after day 3 (jaundice)" : "Pelle/occhi gialli che peggiorano dopo il giorno 3 (ittero)"}</li>
+          <li>{en ? "Rash that doesn't fade when pressed (glass test \u2014 possible meningitis)" : "Eruzione cutanea che non scompare alla pressione (test del bicchiere \u2014 possibile meningite)"}</li>
           <li>{en ? "Bulging or sunken fontanelle" : "Fontanella sporgente o infossata"}</li>
+          <li>{en ? "Seizures or unusual jerking movements" : "Convulsioni o movimenti a scatti insoliti"}</li>
+          <li>{en ? "Umbilical cord area red, smelly, or oozing" : "Area del cordone ombelicale rossa, maleodorante o con perdite"}</li>
         </ul>
+        <p className="mt-3 text-stone-500 text-sm">{en
+          ? "Trust your instincts. If something feels wrong, it's always better to get checked. No doctor will ever mind you being cautious with a newborn."
+          : "Fidati del tuo istinto. Se qualcosa non ti sembra giusto, è sempre meglio farsi controllare. Nessun medico ti giudicherà mai per essere prudente con un neonato."
+        }</p>
       </GuideSection>
     </div>
   );
