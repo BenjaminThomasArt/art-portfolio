@@ -560,3 +560,4 @@
 - [x] Fix payment dates placement to be uniform (inline with title using · separator)
 - [x] Add expand/collapse functionality to To Buy section categories
 - [x] Add English/Italian language toggle to Bambina pages with translated UI text
+- [x] Add Newborn Guide tab to Bambina pages with care essentials for first 3 months
