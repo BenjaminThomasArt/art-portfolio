@@ -30,6 +30,8 @@ const t: Record<string, Record<Lang, string>> = {
   "countdown.hours": { en: "Hours", it: "Ore" },
   "countdown.minutes": { en: "Minutes", it: "Minuti" },
   "countdown.seconds": { en: "Seconds", it: "Secondi" },
+  "countdown.date": { en: "October 11, 2026", it: "11 ottobre 2026" },
+  "countdown.location": { en: "Hospital Español, Polanco, Mexico City", it: "Hospital Español, Polanco, Città del Messico" },
   // Progress card
   "progress.currently": { en: "Currently", it: "Attualmente" },
   "progress.weekOf": { en: "of pregnancy", it: "di gravidanza" },
@@ -37,6 +39,7 @@ const t: Record<string, Record<Lang, string>> = {
   "progress.weeks": { en: "weeks", it: "settimane" },
   "progress.days": { en: "days", it: "giorni" },
   "progress.conception": { en: "Conception", it: "Concepimento" },
+  "progress.dueShort": { en: "Oct 11", it: "11 ott" },
   // Timeline
   "timeline.title": { en: "Week-by-Week Plan", it: "Piano settimana per settimana" },
   "timeline.subtitle": { en: "Tick off tasks as you go", it: "Spunta le attività man mano" },
@@ -49,6 +52,9 @@ const t: Record<string, Record<Lang, string>> = {
   "timeline.loading": { en: "Loading timeline...", it: "Caricamento cronologia..." },
   "timeline.snoozed": { en: "Snoozed", it: "Posticipato" },
   "timeline.save": { en: "Save", it: "Salva" },
+  "timeline.addNote": { en: "Add note", it: "Aggiungi nota" },
+  "timeline.snoozeOneWeek": { en: "Snooze 1 week", it: "Posticipa di 1 settimana" },
+  "timeline.snoozedMoreWeek": { en: "Snoozed for 1 more week", it: "Posticipato di un'altra settimana" },
   // Payments
   "payments.title": { en: "Payments", it: "Pagamenti" },
   // Shopping
@@ -77,6 +83,8 @@ const t: Record<string, Record<Lang, string>> = {
   "notes.empty": { en: "No notes yet. Add your first note above.", it: "Nessuna nota ancora. Aggiungi la tua prima nota sopra." },
   "notes.deleteConfirm": { en: "Delete this note?", it: "Eliminare questa nota?" },
   "notes.contentRequired": { en: "Note content is required", it: "Il contenuto della nota è obbligatorio" },
+  "notes.saved": { en: "Note saved", it: "Nota salvata" },
+  "notes.deleted": { en: "Note deleted", it: "Nota eliminata" },
   // Auth
   "auth.signIn": { en: "Sign in to edit & sync →", it: "Accedi per modificare e sincronizzare →" },
   "auth.signedAs": { en: "Signed in as", it: "Connesso come" },
@@ -133,11 +141,49 @@ function getCurrentWeek(): number {
   return Math.max(0, Math.min(40, weeksSinceConception));
 }
 
-function getWeekDateRange(week: number): { start: string; end: string } {
+function getLocale(lang: Lang): string {
+  return lang === "it" ? "it-IT" : "en-GB";
+}
+
+function getWeekDateRange(week: number, lang: Lang): { start: string; end: string } {
   const startMs = CONCEPTION_MS + week * WEEK_MS;
   const endMs = startMs + WEEK_MS - 1;
-  const fmt = (ms: number) => new Date(ms).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  const fmt = (ms: number) => new Date(ms).toLocaleDateString(getLocale(lang), { day: "numeric", month: "short" });
   return { start: fmt(startMs), end: fmt(endMs) };
+}
+
+function translateCategory(category: string, lang: Lang): string {
+  if (lang === "en") return category;
+
+  const categoryMap: Record<string, string> = {
+    general: "Generale",
+    medical: "Medico",
+    travel: "Viaggio",
+    legal: "Legale",
+    questions: "Domande",
+    shopping: "Acquisti",
+    agency: "Agenzia",
+    nursery: "Cameretta",
+    financial: "Finanziario",
+    admin: "Amministrazione",
+    surrogate: "Surrogata",
+    support: "Supporto",
+    birth: "Parto",
+    "post birth": "Post-parto",
+    post_birth: "Post-parto",
+    feeding: "Alimentazione",
+    sleeping: "Nanna",
+    nappies: "Pannolini",
+    clothing: "Abbigliamento",
+    bathing: "Bagnetto",
+    health: "Salute",
+    "health & safety": "Salute e sicurezza",
+    "travel & on-the-go": "Viaggio e passeggiate",
+    "expressing equipment": "Attrezzatura per tiralatte",
+    miscellaneous: "Varie",
+  };
+
+  return categoryMap[category.toLowerCase().trim()] || category;
 }
 
 function getDaysUntilDue(): number {
@@ -228,6 +274,7 @@ function PapelPicado() {
 
 // ============ PROGRESS CARD ============
 function ProgressCard() {
+  const { lang } = useLang();
   const currentWeek = getCurrentWeek();
   const weeksLeft = getWeeksUntilDue();
   const daysLeft = getDaysUntilDue();
@@ -255,7 +302,7 @@ function ProgressCard() {
           </div>
           <div className="flex justify-between mt-1">
             <span className="font-nunito text-xs text-stone-400"><T k="progress.conception" /></span>
-            <span className="font-nunito text-xs text-stone-400">Oct 11</span>
+            <span className="font-nunito text-xs text-stone-400"><T k="progress.dueShort" /></span>
           </div>
         </div>
       </div>
@@ -265,6 +312,7 @@ function ProgressCard() {
 
 // ============ COUNTDOWN COMPONENT ============
 function Countdown() {
+  const { lang } = useLang();
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   useEffect(() => {
@@ -295,10 +343,10 @@ function Countdown() {
         ))}
       </div>
       <p className="font-nunito text-sm text-stone-400 mt-8">
-        October 11, 2026
+        <T k="countdown.date" />
       </p>
       <p className="font-nunito text-xs text-stone-400 mt-1">
-        Hospital Español, Polanco, Mexico City
+        <T k="countdown.location" />
       </p>
     </div>
   );
@@ -319,6 +367,7 @@ function getTimeLeft() {
 function WeekTimeline() {
   const { data: items = [], refetch } = trpc.bambina.checklist.getAll.useQuery();
   const { isAuthenticated } = useAuth();
+  const { lang } = useLang();
   const toggleMutation = trpc.bambina.checklist.toggle.useMutation({ onSuccess: () => refetch() });
   const updateNotesMutation = trpc.bambina.checklist.updateNotes.useMutation({ onSuccess: () => refetch() });
   const snoozeMutation = trpc.bambina.checklist.snooze.useMutation({ onSuccess: () => refetch() });
@@ -376,7 +425,6 @@ function WeekTimeline() {
     });
   }, []);
 
-  const { lang } = useLang();
   const getWeekLabel = (week: number): string => {
     if (week === 0) return t["timeline.prePregnancy"]?.[lang] || "Pre-Pregnancy";
     if (week === 41) return t["timeline.postBirth"]?.[lang] || "Post-Birth";
@@ -386,7 +434,7 @@ function WeekTimeline() {
   const getWeekDates = (week: number): string => {
     if (week === 0) return t["timeline.beforeConception"]?.[lang] || "Before conception";
     if (week === 41) return t["timeline.afterOct"]?.[lang] || "After Oct 11";
-    const { start, end } = getWeekDateRange(week);
+    const { start, end } = getWeekDateRange(week, lang);
     return `${start} – ${end}`;
   };
 
@@ -493,10 +541,12 @@ function WeekTimeline() {
                               item.category === "financial" ? "bg-yellow-50 text-yellow-700" :
                               "bg-stone-50 text-stone-500"
                             }`}>
-                              {item.category}
+                              {translateCategory(item.category, lang)}
                             </span>
                             {item.snoozedWeeks > 0 && (
-                              <span className="text-[10px] font-nunito text-amber-600">⏰ Snoozed {item.snoozedWeeks}w</span>
+                              <span className="text-[10px] font-nunito text-amber-600">
+                                ⏰ {lang === "it" ? `Posticipato di ${item.snoozedWeeks} sett.` : `Snoozed ${item.snoozedWeeks}w`}
+                              </span>
                             )}
                           </div>
                           {item.notes && editingNotes !== item.id && (
@@ -520,7 +570,7 @@ function WeekTimeline() {
                                 }}
                                 className="bg-deep-teal hover:bg-deep-teal/90 text-xs"
                               >
-                                Save
+                                <T k="timeline.save" />
                               </Button>
                             </div>
                           )}
@@ -530,17 +580,17 @@ function WeekTimeline() {
                             <button
                               onClick={() => { setEditingNotes(item.id); setNoteText(item.notes || ""); }}
                               className="text-stone-300 hover:text-terracotta transition-colors text-xs"
-                              title="Add note"
+                              title={useT("timeline.addNote")}
                             >
                               ✎
                             </button>
                             <button
                               onClick={() => {
                                 snoozeMutation.mutate({ id: item.id, weeks: (item.snoozedWeeks || 0) + 1 });
-                                toast.info("Snoozed for 1 more week");
+                                toast.info(t["timeline.snoozedMoreWeek"]?.[lang] || "Snoozed for 1 more week");
                               }}
                               className="text-stone-300 hover:text-amber-600 transition-colors text-xs"
-                              title="Snooze 1 week"
+                              title={useT("timeline.snoozeOneWeek")}
                             >
                               ⏰
                             </button>
@@ -564,31 +614,51 @@ function WeekTimeline() {
 }
 
 // ============ PAYMENTS COMPONENT ============
-function getPaymentMonthDate(dueMonth: string): string | null {
-  // Map payment schedule months to approximate calendar dates based on pregnancy weeks
-  // Due date: Oct 11, 2026 = Week 40. Conception: Jan 4, 2026.
-  const weekDateMap: Record<string, string> = {
-    "Month 1 - IP Onboarding": "Aug 2025",
-    "Month 2-3 - Embryo Transport": "Sep–Oct 2025",
-    "Month 4 - Surrogate Match": "Nov 2025",
-    "Month 5 - Embryo Transfer Prep": "Dec 2025",
-    "Month 6 - Embryo Transfer": "Jan 2026",
-    "Month 8 - Beta+": "Mar 2026",
-    "Month 9 - 12 Week Gestation": "Mar–Apr 2026",
-    "Month 10 - 16 Weeks": "Apr 2026",
-    "Month 11 - 20 Weeks": "May–Jun 2026",
-    "Month 12 - 24 Weeks": "Jun 2026",
-    "Month 13 - 28 Weeks": "Jul 2026",
-    "Month 14-15 - 32-36 Weeks": "Aug–Sep 2026",
-    "Month 16 - Birth (40 Weeks)": "Oct 2026",
-    "Month 17-18 - Post Birth": "Oct–Nov 2026",
+function getPaymentMonthLabel(dueMonth: string, lang: Lang): string {
+  const labelMap: Record<string, Record<Lang, string>> = {
+    "Month 1 - IP Onboarding": { en: "IP Onboarding", it: "Onboarding dei genitori" },
+    "Month 2-3 - Embryo Transport": { en: "Embryo Transport", it: "Trasporto embrione" },
+    "Month 4 - Surrogate Match": { en: "Surrogate Match", it: "Abbinamento con la surrogata" },
+    "Month 5 - Embryo Transfer Prep": { en: "Embryo Transfer Prep", it: "Preparazione al transfer" },
+    "Month 6 - Embryo Transfer": { en: "Embryo Transfer", it: "Transfer embrionale" },
+    "Month 8 - Beta+": { en: "Beta+", it: "Beta+" },
+    "Month 9 - 12 Week Gestation": { en: "12 Week Gestation", it: "12 settimane di gestazione" },
+    "Month 10 - 16 Weeks": { en: "16 Weeks", it: "16 settimane" },
+    "Month 11 - 20 Weeks": { en: "20 Weeks", it: "20 settimane" },
+    "Month 12 - 24 Weeks": { en: "24 Weeks", it: "24 settimane" },
+    "Month 13 - 28 Weeks": { en: "28 Weeks", it: "28 settimane" },
+    "Month 14-15 - 32-36 Weeks": { en: "32-36 Weeks", it: "32-36 settimane" },
+    "Month 16 - Birth (40 Weeks)": { en: "Birth (40 Weeks)", it: "Nascita (40 settimane)" },
+    "Month 17-18 - Post Birth": { en: "Post Birth", it: "Post-parto" },
   };
-  return weekDateMap[dueMonth] || null;
+
+  return labelMap[dueMonth]?.[lang] || dueMonth.replace(/^Month\s*\d+(-\d+)?\s*-\s*/, "");
+}
+
+function getPaymentMonthDate(dueMonth: string, lang: Lang): string | null {
+  const weekDateMap: Record<string, Record<Lang, string>> = {
+    "Month 1 - IP Onboarding": { en: "Aug 2025", it: "ago 2025" },
+    "Month 2-3 - Embryo Transport": { en: "Sep–Oct 2025", it: "set–ott 2025" },
+    "Month 4 - Surrogate Match": { en: "Nov 2025", it: "nov 2025" },
+    "Month 5 - Embryo Transfer Prep": { en: "Dec 2025", it: "dic 2025" },
+    "Month 6 - Embryo Transfer": { en: "Jan 2026", it: "gen 2026" },
+    "Month 8 - Beta+": { en: "Mar 2026", it: "mar 2026" },
+    "Month 9 - 12 Week Gestation": { en: "Mar–Apr 2026", it: "mar–apr 2026" },
+    "Month 10 - 16 Weeks": { en: "Apr 2026", it: "apr 2026" },
+    "Month 11 - 20 Weeks": { en: "May–Jun 2026", it: "mag–giu 2026" },
+    "Month 12 - 24 Weeks": { en: "Jun 2026", it: "giu 2026" },
+    "Month 13 - 28 Weeks": { en: "Jul 2026", it: "lug 2026" },
+    "Month 14-15 - 32-36 Weeks": { en: "Aug–Sep 2026", it: "ago–set 2026" },
+    "Month 16 - Birth (40 Weeks)": { en: "Oct 2026", it: "ott 2026" },
+    "Month 17-18 - Post Birth": { en: "Oct–Nov 2026", it: "ott–nov 2026" },
+  };
+  return weekDateMap[dueMonth]?.[lang] || null;
 }
 
 function Payments() {
   const { data: payments = [], refetch } = trpc.bambina.payments.getAll.useQuery();
   const { isAuthenticated } = useAuth();
+  const { lang } = useLang();
   const toggleMutation = trpc.bambina.payments.toggle.useMutation({ onSuccess: () => refetch() });
   const [expandedMonths, setExpandedMonths] = useState<Set<string>>(new Set());
 
@@ -631,11 +701,11 @@ function Payments() {
                 <span className={`text-xs transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}>›</span>
                 <div className="flex items-baseline gap-2">
                   <h3 className="font-playfair text-sm sm:text-base font-semibold text-deep-teal">
-                    {month.replace(/^Month\s*\d+(-\d+)?\s*-\s*/, "")}
+                    {getPaymentMonthLabel(month, lang)}
                   </h3>
-                  {getPaymentMonthDate(month) && (
+                  {getPaymentMonthDate(month, lang) && (
                     <span className="font-nunito text-[10px] sm:text-xs text-stone-400">
-                      · {getPaymentMonthDate(month)}
+                      · {getPaymentMonthDate(month, lang)}
                     </span>
                   )}
                 </div>
@@ -669,7 +739,7 @@ function Payments() {
                         {payment.description}
                       </p>
                       <span className="text-[10px] font-nunito uppercase tracking-wider text-stone-400">
-                        {payment.category}
+                        {translateCategory(payment.category, lang)}
                       </span>
                     </div>
                     <div className="text-right">
@@ -815,10 +885,11 @@ function ShoppingList() {
 
 // ============ CONTACTS COMPONENT ============
 function Contacts() {
+  const { lang } = useLang();
   const contacts = [
     {
       name: "Sophie Smith",
-      role: "Senior Member Experience Manager, EMEA & APAC",
+      role: lang === "it" ? "Responsabile senior dell'esperienza membri, EMEA e APAC" : "Senior Member Experience Manager, EMEA & APAC",
       org: "My Surrogacy Journey",
       email: "sophie@mysurrogacyjourney.com",
       phone: "+44 7852 657146",
@@ -826,7 +897,7 @@ function Contacts() {
     },
     {
       name: "Deborah Ngolo",
-      role: "Legal / Admin Contact",
+      role: lang === "it" ? "Contatto legale / amministrativo" : "Legal / Admin Contact",
       org: "My Surrogacy Journey",
       email: "",
       phone: "",
@@ -834,15 +905,15 @@ function Contacts() {
     },
     {
       name: "Dr. Victor",
-      role: "Obstetrics Lead",
+      role: lang === "it" ? "Responsabile ostetrico" : "Obstetrics Lead",
       org: "Hospital Español",
       email: "",
       phone: "",
-      address: "Polanco, Mexico City",
+      address: lang === "it" ? "Polanco, Città del Messico" : "Polanco, Mexico City",
     },
     {
       name: "Hospital Español",
-      role: "Birthing Hospital",
+      role: lang === "it" ? "Ospedale del parto" : "Birthing Hospital",
       org: "",
       email: "",
       phone: "",
@@ -850,16 +921,16 @@ function Contacts() {
     },
     {
       name: "Ariadna Rodríguez Luna",
-      role: "Surrogate",
+      role: lang === "it" ? "Gestante" : "Surrogate",
       org: "",
       email: "",
       phone: "",
-      address: "Mexico City",
+      address: lang === "it" ? "Città del Messico" : "Mexico City",
     },
     {
       name: "Dr Raul Ramirez Flores",
-      role: "Obstetrics Medical Coordinator",
-      org: "My Surrogacy Journey Mexico City",
+      role: lang === "it" ? "Coordinatore medico ostetrico" : "Obstetrics Medical Coordinator",
+      org: lang === "it" ? "My Surrogacy Journey Città del Messico" : "My Surrogacy Journey Mexico City",
       email: "drraul.ramirezflores@mysurrogacyjourney.com",
       phone: "",
       address: "Spaces Torre Concreta, 8th Floor, Calzada Gral. Mariana Escobedo 526, Anzures, Mexico City, 11590",
@@ -903,8 +974,8 @@ function Notes() {
   const { data: notes = [], refetch } = trpc.bambina.notes.getAll.useQuery();
   const { isAuthenticated } = useAuth();
   const { lang } = useLang();
-  const createMutation = trpc.bambina.notes.create.useMutation({ onSuccess: () => { refetch(); setNewNote({ category: "general", title: "", content: "" }); setShowForm(false); toast.success("Note saved"); } });
-  const deleteMutation = trpc.bambina.notes.delete.useMutation({ onSuccess: () => { refetch(); toast.success("Note deleted"); } });
+  const createMutation = trpc.bambina.notes.create.useMutation({ onSuccess: () => { refetch(); setNewNote({ category: "general", title: "", content: "" }); setShowForm(false); toast.success(t["notes.saved"]?.[lang] || "Note saved"); } });
+  const deleteMutation = trpc.bambina.notes.delete.useMutation({ onSuccess: () => { refetch(); toast.success(t["notes.deleted"]?.[lang] || "Note deleted"); } });
   const [newNote, setNewNote] = useState({ category: "general", title: "", content: "" });
   const [showForm, setShowForm] = useState(false);
 
@@ -944,7 +1015,7 @@ function Notes() {
                   className="font-nunito text-sm border border-stone-200 rounded-md px-3 py-2 bg-white"
                 >
                   {categories.map((c) => (
-                    <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
+                    <option key={c} value={c}>{translateCategory(c, lang)}</option>
                   ))}
                 </select>
                 <Input
@@ -984,7 +1055,7 @@ function Notes() {
       {Object.entries(grouped).map(([category, categoryNotes]) => (
         <div key={category}>
           <h3 className="font-playfair text-lg font-semibold text-deep-teal mb-3 capitalize">
-            {category}
+            {translateCategory(category, lang)}
           </h3>
           <div className="space-y-3">
             {categoryNotes.map((note) => (
@@ -996,7 +1067,7 @@ function Notes() {
                     )}
                     <p className="font-nunito text-sm text-stone-600 whitespace-pre-wrap">{note.content}</p>
                     <p className="font-nunito text-xs text-stone-400 mt-2">
-                      {new Date(note.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                      {new Date(note.createdAt).toLocaleDateString(getLocale(lang), { day: "numeric", month: "short", year: "numeric" })}
                     </p>
                   </div>
                   {isAuthenticated && (
@@ -1622,12 +1693,13 @@ export default function Bambina() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState<Lang>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("bambina-lang") as Lang) || "en";
+      return (localStorage.getItem("bambino-lang") as Lang) || (localStorage.getItem("bambina-lang") as Lang) || "en";
     }
     return "en";
   });
 
   useEffect(() => {
+    localStorage.setItem("bambino-lang", lang);
     localStorage.setItem("bambina-lang", lang);
   }, [lang]);
 
