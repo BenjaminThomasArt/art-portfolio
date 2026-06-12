@@ -25,7 +25,7 @@
 - [x] Contact page
 - [x] Navigation component
 - [x] Footer with social links
-- [ ] Instagram feed component (using manual upload approach)
+- [x] Instagram feed component (using manual upload approach) — superseded: artworks uploaded manually to S3/DB
 - [x] Print inquiry form component
 
 ## Design & Styling
@@ -319,7 +319,7 @@
 - [x] Update Chrysalis I & II medium to 'Mixed media diptych on PVC board'
 - [x] Fix Portmanteau and One Way or Another images not showing in Prints section (URLs were fine, browser cache)
 - [x] Reduce gallery mat border on One Way or Another in Prints by 50%
-- [ ] Match One Way or Another border/wall size to Portmanteau border size
+- [x] Match One Way or Another border/wall size to Portmanteau border size — duplicate of line 323 (already done)
 - [x] Match outer border size on 'One way or another' to 'Portmanteau' in Prints section
 - [x] Clean up Portmanteau image: remove gallery wall, keep painting + mat + frame + code padding
 - [x] Replace Portmanteau with user's new photograph (used as-is, no cropping)
@@ -349,8 +349,8 @@
 - [x] Rework Revolver Editions composite: place all three artworks on a single unified wall background (AI-generated)
 - [x] Remove errant blue spot near top right of Revolver Editions centre panel image
 - [x] Regenerate triptych composite image using the fixed centre panel (blue spot still visible in composite)
-- [ ] Fix missing triptych composite image in Revolver Editions carousel
-- [ ] Fix panel selector (left/centre/right) not always showing for Revolver Editions triptych
+- [x] Fix missing triptych composite image in Revolver Editions carousel — obsolete: Prints page redesigned (line 478) to use artworks.getAll without prints table
+- [x] Fix panel selector (left/centre/right) not always showing for Revolver Editions triptych — obsolete: panel selector moved to Studio Sale page only
 - [x] Create new Gallery page with organic masonry collage of in-situ artwork photos
 - [x] Add Gallery to navigation between Upcycles and About
 - [x] Upload 20 gallery images to S3
