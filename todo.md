@@ -566,3 +566,4 @@
 - [x] Add Further Reading section at end of Newborn Guide with links to trusted resources
 - [x] Rename bambina to bambino throughout (URL route, page text, translations, hero, countdown, footer)
 - [x] Audit and complete all Italian translations on Bambino pages (ensure all text is translated when toggled to IT)
+- [x] Fix 'Add Note' button not visible on mobile in Bambino notes section

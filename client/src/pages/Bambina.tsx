@@ -997,60 +997,61 @@ function Notes() {
         <h2 className="font-playfair text-xl md:text-2xl font-bold text-stone-800"><T k="notes.title" /></h2>
       </div>
 
-      {isAuthenticated && (
-        <div>
-          {!showForm ? (
-            <Button
-              onClick={() => setShowForm(true)}
-              className="bg-deep-teal hover:bg-deep-teal/90 font-nunito"
-            >
-              <T k="notes.addNote" />
-            </Button>
-          ) : (
-            <div className="p-4 rounded-xl bg-white border border-stone-100 shadow-sm space-y-3">
-              <div className="flex gap-3">
-                <select
-                  value={newNote.category}
-                  onChange={(e) => setNewNote({ ...newNote, category: e.target.value })}
-                  className="font-nunito text-sm border border-stone-200 rounded-md px-3 py-2 bg-white"
-                >
-                  {categories.map((c) => (
-                    <option key={c} value={c}>{translateCategory(c, lang)}</option>
-                  ))}
-                </select>
-                <Input
-                  placeholder={useT("notes.titlePlaceholder")}
-                  value={newNote.title}
-                  onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
-                  className="font-nunito"
-                />
-              </div>
-              <Textarea
-                placeholder={useT("notes.contentPlaceholder")}
-                value={newNote.content}
-                onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
+      <div>
+        {!showForm ? (
+          <Button
+            onClick={() => {
+              if (!isAuthenticated) { toast.error(lang === "it" ? "Accedi per aggiungere note" : "Sign in to add notes"); return; }
+              setShowForm(true);
+            }}
+            className="bg-deep-teal hover:bg-deep-teal/90 font-nunito w-full sm:w-auto"
+          >
+            <T k="notes.addNote" />
+          </Button>
+        ) : (
+          <div className="p-3 sm:p-4 rounded-xl bg-white border border-stone-100 shadow-sm space-y-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <select
+                value={newNote.category}
+                onChange={(e) => setNewNote({ ...newNote, category: e.target.value })}
+                className="font-nunito text-sm border border-stone-200 rounded-md px-3 py-2 bg-white w-full sm:w-auto"
+              >
+                {categories.map((c) => (
+                  <option key={c} value={c}>{translateCategory(c, lang)}</option>
+                ))}
+              </select>
+              <Input
+                placeholder={useT("notes.titlePlaceholder")}
+                value={newNote.title}
+                onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
                 className="font-nunito"
-                rows={3}
               />
-              <div className="flex gap-2">
-                <Button
-                  onClick={() => {
-                    if (!newNote.content.trim()) { toast.error(t["notes.contentRequired"]?.[lang] || "Note content is required"); return; }
-                    createMutation.mutate(newNote);
-                  }}
-                  className="bg-deep-teal hover:bg-deep-teal/90 font-nunito"
-                  disabled={createMutation.isPending}
-                >
-                  <T k="notes.save" />
-                </Button>
-                <Button variant="outline" onClick={() => setShowForm(false)} className="font-nunito">
-                  <T k="notes.cancel" />
-                </Button>
-              </div>
             </div>
-          )}
-        </div>
-      )}
+            <Textarea
+              placeholder={useT("notes.contentPlaceholder")}
+              value={newNote.content}
+              onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
+              className="font-nunito"
+              rows={3}
+            />
+            <div className="flex gap-2">
+              <Button
+                onClick={() => {
+                  if (!newNote.content.trim()) { toast.error(t["notes.contentRequired"]?.[lang] || "Note content is required"); return; }
+                  createMutation.mutate(newNote);
+                }}
+                className="bg-deep-teal hover:bg-deep-teal/90 font-nunito flex-1 sm:flex-none"
+                disabled={createMutation.isPending}
+              >
+                <T k="notes.save" />
+              </Button>
+              <Button variant="outline" onClick={() => setShowForm(false)} className="font-nunito flex-1 sm:flex-none">
+                <T k="notes.cancel" />
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {Object.entries(grouped).map(([category, categoryNotes]) => (
         <div key={category}>
