@@ -567,3 +567,4 @@
 - [x] Rename bambina to bambino throughout (URL route, page text, translations, hero, countdown, footer)
 - [x] Audit and complete all Italian translations on Bambino pages (ensure all text is translated when toggled to IT)
 - [x] Fix 'Add Note' button not visible on mobile in Bambino notes section
+- [x] Add 'Pupa' painting (Acrylic and spray paint on PVC board, 80x60cm, June 2026) to Featured Works with 5 gallery images and detail page at /artwork/180001
