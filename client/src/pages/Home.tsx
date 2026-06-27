@@ -12,7 +12,7 @@ export default function Home() {
       id: 180001,
       title: 'Pupa',
       year: 2026,
-      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/LBewsEcqkEQipgPx.jpg',
+      imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663325255079/WGIOHRONWOYiCEhk.jpg',
       medium: 'Acrylic and spray paint on PVC board'
     },
     {
